@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/init" />
+
+## init
+
+To init a package, simply run the following command in an empty directory.
+
+```shell
+mkdir my-new-project
+cd my-new-project
+npx --legacy-peer-deps -p @tablecheck/scripts tablecheck-scripts init
+```
+
+## Using init to upgrade existing projects
+
+If you have a project using an older version of our tooling you can attempt to shortcut the upgrade process by simply running the init command again.
+Note that you do need the `@latest` or the current version of scripts in your folder will be used instead of the newest one.
+This is not a perfect upgrade and is likely to break all your code, it's recommended to carefully check the git diff and revert any unwanted changes afterwards.
+
+```shell
+npx --legacy-peer-deps -p @tablecheck/scripts@latest tablecheck-scripts init
+```

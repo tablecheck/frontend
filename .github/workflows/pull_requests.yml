@@ -2,10 +2,6 @@ name: Pull Request Workflow
 
 on: [pull_request]
 
-permissions:
-  contents: read
-  pull-requests: write
-
 jobs:
   setup:
     runs-on: ubuntu-latest
@@ -19,7 +15,7 @@ jobs:
 
       - name: Read .nvmrc
         id: nvm
-        run: echo `::set-output name=nvmrc::$(cat .nvmrc)`
+        run: echo ::set-output name=nvmrc::$(cat .nvmrc)
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -45,6 +41,9 @@ jobs:
           node-version: ${{ needs.setup.outputs.nvmrc }}
           cache: npm
 
+      - name: Restore npm installs and Lerna setup
+        run: npm ci --legacy-peer-deps
+
       - name: Validate all commits from PR
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
@@ -66,11 +65,14 @@ jobs:
           node-version: ${{ needs.setup.outputs.nvmrc }}
           cache: npm
 
+      - name: Restore npm installs and Lerna setup
+        run: npm ci --legacy-peer-deps
+
       - name: Audit Dependencies
         run: npm run audit:ci
         env:
           OSSI_USERNAME: ${{ secrets.OSSI_USERNAME }}
-          OSSI_TOKEN: ${{ sectrets.OSSI_TOKEN }}
+          OSSI_TOKEN: ${{ secrets.OSSI_TOKEN }}
 
   test:
     needs: [setup]
@@ -86,6 +88,9 @@ jobs:
         with:
           node-version: ${{ needs.setup.outputs.nvmrc }}
           cache: npm
+
+      - name: Restore npm installs and Lerna setup
+        run: npm ci --legacy-peer-deps
 
       - name: Run Tests
         run: npm test

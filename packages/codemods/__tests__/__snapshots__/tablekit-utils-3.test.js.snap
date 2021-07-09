@@ -1,0 +1,329 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tablekit-utils-3 should convert tablekitTheme10_1.tsx 1`] = `
+"import {
+  COLORS as BASE,
+  color as colorResolver,
+  typography,
+  DEPTH,
+  SPACING,
+  Z_INDICES,
+  SIZES,
+  FIELD_HEIGHTS,
+  useTypography
+} from '@tablekit/theme';
+import { CLASSIC_COLORS, COLORS } from '@tablekit/other';
+import { SizeType } from '@tablekit/theme/types';
+import { OtherType } from '@tablekit/theme/lib/types';
+const TYPOGRAPHY = 'something about type';
+
+const Spacing = 'true';
+
+function calculateMinimumHeight(props) {
+  const { minimumRows, theme } = props;
+  const col = colorResolver('blue')({ theme });
+  const padding = parseFloat(SPACING.L3) * 2;
+  const typographySettings = typography(props.font, 'L2')(props);
+  const lineHeight = parseFloat(typographySettings.lineHeight);
+  const font = useTypography('L1');
+  return \`\${padding + lineHeight * minimumRows}px\`;
+}
+
+const size: SizeType = SIZES.XXLARGE;
+let size2: typeof SIZES;
+let size3: keyof SIZES;
+type sizeObj = {
+  [key in SIZES]: string;
+};
+type sizeTypeA = $Values<typeof SIZES>[];
+
+const theme = {
+  backgroundActiveColor: (props: any) =>
+    hexToRgba(colorResolver('primary2')(props), 0.2)
+};
+
+export const EventPreview = styled.div\`
+  border-style: dashed;
+  border-width: 1px;
+  border-color: \${colorResolver('border')};
+  border-color: \${colorResolver('border')()};
+  border-color: \${(props) => colorResolver('border')(props)};
+  border-color: \${({ theme }) => colorResolver('border')({ theme })};
+  border-color: \${({ ...props }) => colorResolver('border')({ ...props })};
+  border-color: \${(props) => colorResolver('border')({ ...props })};
+  border-color: \${(props) => {
+    const { color } = props;
+    if (!color)
+      return colorResolver('text')(props) || colorResolver('text')(props);
+    if (typeof color === 'function') return color(props);
+    return color;
+  }};
+  border-color: \${({ color }) => color || colorResolver('border')};
+  border-color: \${(props) => props.color || colorResolver('border')};
+  border-color: \${function test({ color }) {
+    return color || colorResolver('border');
+  }};
+  border-color: \${({ color, theme }) =>
+    color || colorResolver('border')({ theme })};
+  padding: \${SPACING.L2};
+  color: \${COLORS.GRAY.L6};
+  background-color: \${BASE.GRAY.L6};
+  margin: \${SPACING.L2} 0;
+  \${typography('L1')};
+  \${typography('L1')()};
+  \${typography('L1', 'L2', 'L3')()};
+  \${(props) => {
+    return typography(props.level, 'L1')().fieldValue;
+  }};
+  \${TYPOGRAPHY.EX};
+
+  z-index: \${Z_INDICES.topnav};
+  height: \${FIELD_HEIGHTS.SMALL};
+\`;
+
+const EP = <EventPreview>Test</EventPreview>;
+"
+`;
+
+exports[`tablekit-utils-3 should convert tablekitTheme10_2.ts 1`] = `
+"import { color, COLORS } from '@tablekit/theme';
+
+const t1 = (props) => css\`
+  color: \${color('secondary')(props)};
+\`;
+
+const t2 = (props) => {
+  return css\`
+    color: \${color('secondary')(props)};
+  \`;
+};
+
+function getColor(props) {
+  let borderColor = 'blue';
+  if (props.isInvalid) {
+    borderColor = color('danger')(props);
+  }
+  return borderColor;
+}
+
+export const alertClassicTheme = {
+  [ALERT_APPEARANCES.INFO]: {
+    iconColor: color('iconFill')
+  },
+  actionBtnColor: color('primary'),
+  boxShadowColor: COLORS.GRAY_TRANSLUCENT.L1,
+  closeButton: {
+    color: color('iconFill')
+  }
+};
+
+export const LoadingIndicator = () => {
+  const theme = useTheme();
+  return <Spinner color={color('secondary')({ theme })} />;
+};
+
+const result = {
+  colors: {
+    danger: color('danger')(safeTheme)
+  }
+};
+
+type PropsType1 = {
+  color?: string | Function;
+};
+
+interface PropsType2 {
+  color?: string | Function;
+}
+"
+`;
+
+exports[`tablekit-utils-3 should convert tablekitTypescript2020.tsx 1`] = `
+"import Button, { BUTTON_APPEARANCES } from '@tablekit/button';
+
+const PrimaryButton = <Button appearance={BUTTON_APPEARANCES.PRIMARY} />;
+"
+`;
+
+exports[`tablekit-utils-3 should convert tablekitUtils3.ts 1`] = `
+"import { Spacing } from '@tablekit/theme';
+import { MediaQuery, variant } from \\"@tablekit/utils\\";
+import { css } from '@emotion/react';
+import '@emotion/react';
+
+function someUtil() {
+  return () => 12;
+}
+
+type t2 = MediaQuery;
+
+const staticStyles = css\`
+  color: blue;
+  margin: 12px;
+  padding: \${Spacing.L1};
+\`;
+
+const staticStyles2 = css\`
+  color: blue;
+  margin: 12px;
+  padding: \${Spacing.L1};
+\`;
+
+export const transition = (props) => css\`
+  transition: 120ms ease-in-out;
+  \${(props => {
+    return '';
+  })(props)}
+\`;
+
+const interpolatedStyles = (props) => css\`
+  color: \${props.theme.colors.primary};
+  color: \${props.theme.colors.primary};
+  color: \${true ? '12px' : '0px'};
+  background-color: \${someUtil()(props)};
+  \${variant({ prop: 'test', variants: {} })(props)};
+  \${//TODO non string prop values are no longer supported.
+variant({ prop: () => 'test', variants: {} })(props)};
+  \${//TODO non string prop values are no longer supported.
+variant({
+    prop: () => ({
+      'min-width: 1200px': 'test'
+    }),
+    variants: {}
+  })(props)};\${//TODO non string prop values are no longer supported.
+variant({
+  prop: {
+    'min-width: 1200px': 'test'
+  },
+  variants: {}
+})(props)};
+  margin: 12px;
+  padding: \${Spacing.L1};
+\`;
+
+const testC = ({ theme, ...props }) => {
+  const styles = css\`
+    color: \${theme.colors.primary};
+  \`;
+  const test = theme.emotionCss.other;
+  return styles;
+};
+
+function test({ theme, ...props }) {
+  const styles = css\`
+    color: \${theme.colors.primary};
+  \`;
+  const test = theme.emotionCss.other;
+  return styles;
+}
+
+function test2(props) {
+  const styles = css\`
+    color: \${props.theme.colors.primary};
+    color: \${props.isTrue ? props.theme.colors.primary : 'blue'};
+      color: rgb(\${props.red}, \${props.blue}, \${props.green});
+      color: \${'rgb(' + props.red + ', ' + props.blue + ', ' + props.green + ')'};
+    margin: \${(({ spacing, isSmall, other }) => {
+      if (isSmall) return 0;
+      switch (spacing) {
+        case 'small':
+          return 6;
+        case 'regular':
+          return 12;
+      }
+      return 18;
+    })(props)};
+  \`;
+  const test = props.theme.emotionCss.other;
+  return styles;
+}
+
+function test3({ isTrue, theme, red, blue, green, spacing, isSmall }) {
+  const styles = css\`
+  color: \${isTrue ? theme.colors.primary : 'blue'};
+    color: rgb(\${red}, \${blue}, \${green});
+    margin: \${(({ spacing, isSmall }) => {
+    if (isSmall) return 0;
+    switch (spacing) {
+      case 'small':
+        return 6;
+      case 'regular':
+        return 12;
+    }
+    return 18;
+  })({
+  spacing,
+  isSmall
+})};
+\`;
+  const test = theme.emotionCss.other;
+  return styles;
+}
+
+function test4({ theme, ...props }) {
+  const styles = css\`
+    color: \${theme.colors.primary};
+  \`;
+  const test = props.theme.emotionCss.other;
+  return styles;
+}
+
+const test5 = ({ spacingMax, isSmall, ...props }) =>
+  css\`
+    margin: \${(({ spacing, isSmall, other }) => {
+      if (isSmall) return 0;
+      switch (spacing) {
+        case 'small':
+          return 6;
+        case 'regular':
+          return 12;
+      }
+      return 18;
+    })({
+    \\"spacing\\": spacingMax,
+    isSmall,
+    ...props
+  })};
+  \`;
+"
+`;
+
+exports[`tablekit-utils-3 should convert typescript2020.tsx 1`] = `
+"import React, {
+  Node,
+  Node as OtherNode,
+  Fragment,
+  Fragment as Frag,
+  Component,
+  StatelessFunctionalComponent,
+  useState
+} from 'react';
+import React2 from 'react';
+import { GenericNode } from 'some-import';
+import { GenericNode2 } from 'some-other-import';
+
+import { OccasionSelectType } from './types';
+
+function a(arg1: Node) {}
+
+type t2 = OtherNode;
+type Comp1 = StatelessFunctionalComponent;
+const Comp2: StatelessFunctionalComponent;
+
+const t3 = React2;
+const t4 = React;
+
+class Test extends Component {}
+
+const test = <Fragment>Some Content</Fragment>;
+const test2 = <Frag key={'test'}>Some Content</Frag>;
+
+export const Requests = () => {
+  const [occasion, setOccasion] = useState<OccasionSelectType>(null);
+  return null;
+};
+
+arg.reduce<GenericNode[]>(() => {}, {});
+arg.reduce<{ a: { b: { c: GenericNode2 }[] } }>(() => {}, {});
+"
+`;

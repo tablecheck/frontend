@@ -1,0 +1,32 @@
+const { produce } = require('immer');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const baseConfig = require('./spa');
+const paths = require('../config/paths');
+const { getArgv } = require('../scripts/utils/argv');
+
+const appPackage = require(paths.appPackageJson);
+
+const argv = getArgv({
+  boolean: ['standalone'],
+  alias: {
+    standalone: 's'
+  },
+  default: {
+    // If true will use `client.standalone.tsx` as the main entry point, otherwise uses `client.tsx`
+    // though razzle actually ignores the file type in the name
+    standalone: false
+  }
+});
+
+module.exports = baseConfig.extend({
+  modifyWebpackConfig({ webpackConfig }) {
+    return produce((webpackConfigDraft) => {
+      webpackConfigDraft.output = webpackConfigDraft.output || {};
+      if (!argv.standalone) {
+        webpackConfigDraft.output.library = appPackage.name;
+        webpackConfigDraft.output.libraryTarget = 'amd';
+      }
+      webpackConfigDraft.plugins.push(new WebpackManifestPlugin());
+    })(webpackConfig);
+  }
+});

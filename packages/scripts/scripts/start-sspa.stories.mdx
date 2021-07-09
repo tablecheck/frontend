@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/start-sspa" />
+
+## start-sspa
+
+This command is used to start a "child" [Single SPA](https://single-spa.js.org/) node.
+
+For a "parent" SSPA, use the `spa` config and commands.
+
+The main export file should conform to the [Parcels API](https://single-spa.js.org/docs/parcels-api),
+usually for us that means using [single-spa-react](https://single-spa.js.org/docs/ecosystem-react/) as the projects main `index.jsx` file.
+
+### Deprecated
+
+Use `razzle start` directly instead, this command aliases the razzle one but doesn't pass any arguments.
+
+If you haven't setup the razzle config using the init command, create one of the following `razzle.config.js` file in the root of your folder.
+
+```js static
+module.exports = require('@tablecheck/scripts/razzle/sspa');
+```
+
+## Upgrade Notes
+
+The old `PUBLIC_URL` variable needs to be renamed to `PUBLIC_PATH` to continue working correctly.

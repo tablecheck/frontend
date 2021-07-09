@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+## Introduction
+
+This repository contains all the scripts and settings required for use by our react projects.
+It is largely inspired (and copied) from Facebook's [`create-react-app`](https://github.com/facebook/create-react-app) system but doesn't support the "eject" functionality.
+This way we can keep the same scripts across all our projects without having to copy paste settings and scripts from one to the other.
+
+See the table of contents for more details on each package.
+
+### Local dev suggestions
+
+- If you need to update any of the packages in this repository, you can test those changes first in the `/node_modules/package/src/file` folder of the app. For example, if you need to change styleguidist in Tablekit, you would do those changes first in `tablekit/node_modules/@tablecheck/styleguidist/src/file`. Once everything looks good, you can copy those changes into this codebase

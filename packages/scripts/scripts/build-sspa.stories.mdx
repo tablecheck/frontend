@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/build-sspa" />
+
+## build-sspa
+
+### Deprecated
+
+Use `razzle build` directly instead, this command aliases the razzle one but doesn't pass any arguments.
+
+This script builds a "child" SSPA project into the 'project/build' folder. See [start-sspa](#section-start-sspa)
+
+## Upgrade Notes
+
+The old `PUBLIC_URL` variable needs to be renamed to `PUBLIC_PATH` to continue working correctly.

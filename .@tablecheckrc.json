@@ -1,0 +1,15 @@
+{
+  "lintFolderOverrides": {
+    "scripts": [
+      "bin",
+      "config",
+      "razzle",
+      "scripts",
+      "templates",
+      "tests",
+      "tsconfig"
+    ],
+    "eslint-config": ["overrides", "rules"],
+    "codemods": ["bin", "scripts", "utils"]
+  }
+}

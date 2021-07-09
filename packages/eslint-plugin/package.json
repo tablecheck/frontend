@@ -1,0 +1,24 @@
+{
+  "name": "@tablecheck/eslint-plugin",
+  "description": "eslint plugin for TableCheck's eslint config",
+  "license": "BSD-3-Clause",
+  "author": "TableCheck Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tablecheck/tablecheck-react-system.git"
+  },
+  "version": "0.0.0",
+  "main": "index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "../../node_modules/.bin/jest"
+  },
+  "peerDependencies": {
+    "eslint": ">=7.12.0 <8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@tablecheck/codemods",
+  "description": "Codemods for all systems",
+  "license": "BSD-3-Clause",
+  "author": "TableCheck Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tablecheck/tablecheck-react-system.git"
+  },
+  "version": "0.0.0",
+  "bin": {
+    "tablecheck-codemod": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    "scripts",
+    "utils"
+  ],
+  "scripts": {
+    "test": "JEST_JUNIT_OUTPUT_DIR=../../junit JEST_JUNIT_OUTPUT_NAME=codemods.xml jest --reporters=default --reporters=jest-junit",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "execa": "^5.0.0",
+    "fs-extra": "^10.0.0",
+    "glob": "^7.1.6",
+    "inquirer": "^8.0.0",
+    "jscodeshift": "^0.11.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.5",
+    "prettier": "^2.3.2"
+  },
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
