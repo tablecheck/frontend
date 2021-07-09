@@ -1,0 +1,14 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "noEmit": false,
+    "jsx": "preserve"
+  },
+  "exclude": ["node_modules"]
+}

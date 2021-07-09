@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="eslint-config/rules/namingConvention" />
+
+## namingConvention
+
+# Testing and Development notes for naming convention rules
+
+This file should eventually be replaced with actual tests in the future
+
+### Enums are pascal case and not plural
+
+For testing the regex use the following list in a regex checker (and update it)
+
+```
+// non-matching
+focus
+axis
+radius
+status
+stylus
+torus
+series
+nexus
+news
+debris
+alias
+bias
+aegis
+canvas
+lens
+photo
+size
+// matching
+statuses
+places
+Persons
+trays
+cats
+potatoes
+photos
+ladies
+parties
+sizes
+cities
+people
+men
+women
+children
+```

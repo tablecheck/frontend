@@ -1,0 +1,8 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/coverage-summary" />
+
+## coverage-summary
+
+This script is used to output a format compatible with [GitLab runners coverage summary](https://docs.gitlab.com/ee/ci/pipelines/settings.html#test-coverage-parsing) from the output of the [test](#section-test) script.
+It expects the jest generated (from istanbul) `./coverage/coverage-summary.json` file to exist.

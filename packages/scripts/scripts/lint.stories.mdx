@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/lint" />
+
+## lint
+
+This command will check all code for formatting and convention errors.
+Internally it uses typescript, eslint, checks prettier format and finally validates that the package.json file doesn't have any loose dependencies.
+For eslint rules see the eslint-config package. Can be overriden by normal config files but generally should not be.
+
+### Command Options
+
+The following extra commands are available;
+
+- **`--fix`:** Automatically fix all correctable issues including prettier, configs and packages.json
+- **`--skip-typescript`:** Skip typescript checking
+- **`--package`:** Provide a package for running only one package in a lerna monorepo, only applies to typescript and eslint checks
+- **`sequential`:** Run eslint on each package sequentially, this is mostly useful for when a particular projects types crash eslint.

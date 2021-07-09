@@ -1,0 +1,12 @@
+package-lock.json
+.eslintignore
+lerna-debug.log
+coverage
+build
+lib
+.DS_Store
+.gitignore
+.nvmrc
+.prettierignore
+styleguide
+CHANGELOG.md

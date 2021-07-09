@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/auditjs" />
+
+## auditjs
+
+## Auditjs
+
+### Getting started
+
+1. Install [AuditJS package](https://github.com/sonatype-nexus-community/auditjs) (make sure that version matches listed in peer-dependencies)
+2. Add `auditjs.json` file to the root of the project with the following content:
+   ```json
+   {
+     "ignore": []
+   }
+   ```
+3. Add the following script definitions to your package.json
+   ```json
+   {
+     "audit": "tablecheck-scripts auditjs",
+     "audit:ci": "tablecheck-scripts auditjs --ci"
+   }
+   ```
+4. Run `npm run update-audit` and follow the instructions in console
+
+### Using OSS Index Token
+
+To use an OSS Index token locally, run `npx auditjs config` and follow the instructions.
+To use an OSS Index token in the CI, simply add the following two environment variables using the instructions in the [auditjs docs](https://www.npmjs.com/package/auditjs#user-content-oss-index-credentials).
+
+- `process.env.OSSI_USERNAME`
+- `process.env.OSSI_TOKEN`

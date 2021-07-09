@@ -1,0 +1,122 @@
+{
+  "ignore": [
+    {
+      "id": "b7740d41-fc85-4d22-8af5-5a3159e114ea"
+    },
+    {
+      "id": "7ccaaed0-205b-4382-a963-8a30a0b151b1"
+    },
+    {
+      "id": "92bbcbaf-097a-43f9-855e-2052e38930db"
+    },
+    {
+      "id": "e3f310ed-219c-4087-aa58-8425b13c3ec5"
+    },
+    {
+      "id": "1f6dccfd-74f4-464f-a800-e5d1c4efb67e"
+    }
+  ],
+  "affected": [
+    {
+      "coordinates": "pkg:npm/yargs-parser@10.1.0",
+      "description": "the mighty option parser used by yargs",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/yargs-parser@10.1.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.18",
+      "vulnerabilities": [
+        {
+          "id": "b7740d41-fc85-4d22-8af5-5a3159e114ea",
+          "title": "[CVE-2020-7608] yargs-parser could be tricked into adding or modifying properties of Object.prot...",
+          "description": "yargs-parser could be tricked into adding or modifying properties of Object.prototype using a \"__proto__\" payload.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+          "cve": "CVE-2020-7608",
+          "reference": "https://ossindex.sonatype.org/vuln/b7740d41-fc85-4d22-8af5-5a3159e114ea?component-type=npm&component-name=yargs-parser&utm_source=auditjs&utm_medium=integration&utm_content=4.0.18"
+        },
+        {
+          "id": "7ccaaed0-205b-4382-a963-8a30a0b151b1",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vuln/7ccaaed0-205b-4382-a963-8a30a0b151b1?component-type=npm&component-name=yargs-parser&utm_source=auditjs&utm_medium=integration&utm_content=4.0.18"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/ssri@6.0.1",
+      "description": "Standard Subresource Integrity library -- parses, serializes, generates, and verifies integrity metadata according to the SRI spec.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/ssri@6.0.1?utm_source=auditjs&utm_medium=integration&utm_content=4.0.25",
+      "vulnerabilities": [
+        {
+          "id": "92bbcbaf-097a-43f9-855e-2052e38930db",
+          "title": "[CVE-2021-27290] ssri 5.2.2-8.0.0, fixed in 8.0.1, processes SRIs using a regular expression whic...",
+          "description": "ssri 5.2.2-8.0.0, fixed in 8.0.1, processes SRIs using a regular expression which is vulnerable to a denial of service. Malicious SRIs could take an extremely long time to process, leading to denial of service. This issue only affects consumers using the strict option.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2021-27290",
+          "reference": "https://ossindex.sonatype.org/vulnerability/92bbcbaf-097a-43f9-855e-2052e38930db?component-type=npm&component-name=ssri&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/ssri@7.1.0",
+      "description": "Standard Subresource Integrity library -- parses, serializes, generates, and verifies integrity metadata according to the SRI spec.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/ssri@7.1.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.25",
+      "vulnerabilities": [
+        {
+          "id": "92bbcbaf-097a-43f9-855e-2052e38930db",
+          "title": "[CVE-2021-27290] ssri 5.2.2-8.0.0, fixed in 8.0.1, processes SRIs using a regular expression whic...",
+          "description": "ssri 5.2.2-8.0.0, fixed in 8.0.1, processes SRIs using a regular expression which is vulnerable to a denial of service. Malicious SRIs could take an extremely long time to process, leading to denial of service. This issue only affects consumers using the strict option.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2021-27290",
+          "reference": "https://ossindex.sonatype.org/vulnerability/92bbcbaf-097a-43f9-855e-2052e38930db?component-type=npm&component-name=ssri&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/postcss@7.0.35",
+      "description": "Tool for transforming styles with JS plugins",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/postcss@7.0.35?utm_source=auditjs&utm_medium=integration&utm_content=4.0.25",
+      "vulnerabilities": [
+        {
+          "id": "e3f310ed-219c-4087-aa58-8425b13c3ec5",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/e3f310ed-219c-4087-aa58-8425b13c3ec5?component-type=npm&component-name=postcss&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/postcss@8.2.4",
+      "description": "Tool for transforming styles with JS plugins",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/postcss@8.2.4?utm_source=auditjs&utm_medium=integration&utm_content=4.0.25",
+      "vulnerabilities": [
+        {
+          "id": "e3f310ed-219c-4087-aa58-8425b13c3ec5",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/e3f310ed-219c-4087-aa58-8425b13c3ec5?component-type=npm&component-name=postcss&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/trim@0.0.1",
+      "description": "Trim string whitespace",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/trim@0.0.1?utm_source=auditjs&utm_medium=integration&utm_content=4.0.25",
+      "vulnerabilities": [
+        {
+          "id": "1f6dccfd-74f4-464f-a800-e5d1c4efb67e",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/1f6dccfd-74f4-464f-a800-e5d1c4efb67e?component-type=npm&component-name=trim&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    }
+  ]
+}

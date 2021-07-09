@@ -1,0 +1,10 @@
+coverage
+lib
+build
+dist
+node_modules
+packages/scripts/tsconfig/definitions.d.ts
+packages/scripts/tsconfig/defaultDefinitions.d.ts
+packages/scripts/scripts/rollup/fixtures/*
+packages/scripts/templates/*
+packages/codemods/testFiles/*

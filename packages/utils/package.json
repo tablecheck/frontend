@@ -1,0 +1,19 @@
+{
+  "name": "@tablecheck/scripts-utils",
+  "description": "Generic utils shared inside @tablecheck packages",
+  "license": "BSD-3-Clause",
+  "author": "TableCheck Inc.",
+  "version": "0.0.0",
+  "files": [
+    "userConfig.js"
+  ],
+  "dependencies": {
+    "cosmiconfig": "^7.0.0"
+  },
+  "engines": {
+    "node": ">= 10.18.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

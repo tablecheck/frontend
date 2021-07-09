@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/razzle" />
+
+# Razzle
+
+## Basic Usage
+
+```js
+// razzle.config.js
+// use one of the following as appropriate
+module.exports = require('@tablecheck/scripts/razzle/sspa');
+module.exports = require('@tablecheck/scripts/razzle/spa');
+module.exports = require('@tablecheck/scripts/razzle/ssr');
+```
+
+## SPA and SSPA options/arguments
+
+There are two CLI arguments that can be used when extending the `sspa` or `spa` razzle configs.
+
+| Command             | Description                                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `--standalone` `-s` | This command will use `/src/client.standalone.tsx` as the entry instead of `/src/client.tsx`. Mostly used in SSPA child applications. |
+| `--staticJsEntry`   | This option will remove the hash/fingerprint on the main client.js file when building for production.                                 |
+
+`--staticJsEntry` can also be provided in the razzle config by extending the spa/sspa configs.
+
+```js
+const baseConfig = require('@tablecheck/scripts/razzle/sspa');
+
+module.exports = baseConfig.extend({
+  options: {
+    staticJsEntry: true
+  }
+});
+```
+
+## Bundled Plugins
+
+The following plugins are enabled and running by default when extending any of the razzle setup files.
+
+- moment-locales-webpack-plugin, see https://momentjs.com/docs/#/use-it/webpack/ for how to load secondary languages
+- react-dev-tools for safari, https://github.com/facebook/react/issues/20095
+- with `BUNDLE_ANALYZER=true` or on builds, a bundle analysis output is generated
+
+## Extending configs
+
+There are two recommended ways to extend razzle functionality.
+
+### Setup Files
+
+For modifying the webpack config use setup files. In a project root `/razzle` folder, create as many files as you want using the following template.
+
+```js
+module.exports = function modifyWebpackConfig(...) {
+  // for arguments and usage see https://razzlejs.org/docs/customization#extending-webpack
+  // this function can be used identically to the official one
+}
+```
+
+### Extending Configs
+
+We also support dynamically extending any of the bundled configs at the top. This is the least recommended way as it's the most likely to cause issues.
+For examples of this see the config files in this folder.

@@ -1,0 +1,13 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="scripts/commands/precommit" />
+
+## precommit
+
+This will run three processes on all _staged_ .js files. (there are issues that prevent us running this on json and md files)
+
+If you do not want to run check-config then pass `--no-config` along with the command. Like used in this package.
+
+1.  Run prettier to auto format code.
+2.  Run eslint to check other code points are fixed.
+3.  check-config, this will check the setup of your config files to ensure that keys are setup correctly across each environment.
