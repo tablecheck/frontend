@@ -9,6 +9,7 @@ module.exports = {
     'no-console': 'off',
     'import/no-default-export': 'off',
     'react-hooks/rules-of-hooks': 'off',
-    'react-hooks/exhaustive-deps': 'off'
+    'react-hooks/exhaustive-deps': 'off',
+    '@tablecheck/max-mixed-css': 'off'
   }
 };
