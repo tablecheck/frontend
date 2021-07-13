@@ -3,7 +3,7 @@
   "description": "Generic utils shared inside @tablecheck packages",
   "license": "BSD-3-Clause",
   "author": "TableCheck Inc.",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "files": [
     "userConfig.js"
   ],
