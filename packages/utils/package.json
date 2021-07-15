@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/scripts-utils",
   "description": "Generic utils shared inside @tablecheck packages",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "version": "1.0.0",
   "files": [

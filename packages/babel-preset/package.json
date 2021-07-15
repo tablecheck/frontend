@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/babel-preset",
   "description": "",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",

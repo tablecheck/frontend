@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/codemods",
   "description": "Codemods for all systems",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",
