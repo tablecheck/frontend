@@ -1,3 +1,16 @@
+# (Thu Jul 15 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@1.1.0`, `@tablecheck/eslint-plugin@1.1.0`
+  - feat(eslint-plugin): add rule for limiting mixed css and jsx files [#2](https://github.com/tablecheck/tablecheck-react-system/pull/2) (simeon@tablecheck.com)
+
+#### Authors: 1
+
+- Simeon Cheeseman (simeon@tablecheck.com)
+
+---
+
 # (Tue Jul 13 2021)
 
 :tada: This release contains work from a new contributor! :tada:
