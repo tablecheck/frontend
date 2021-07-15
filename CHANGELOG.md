@@ -1,5 +1,20 @@
 # (Thu Jul 15 2021)
 
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.1.1`
+  - fix(scripts): make the tablekit/icon mock only override necessary exports [#8](https://github.com/tablecheck/tablecheck-react-system/pull/8) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/babel-preset@1.0.1`, `@tablecheck/codemods@1.0.1`, `@tablecheck/commitlint-config@1.0.1`, `@tablecheck/eslint-config@1.1.1`, `@tablecheck/eslint-plugin@1.1.1`, `@tablecheck/scripts@1.1.1`, `@tablecheck/semantic-release-config@1.0.1`, `@tablecheck/scripts-utils@1.0.1`
+  - docs: update licenses and add Code Of Conduct [skip-ci] [#7](https://github.com/tablecheck/tablecheck-react-system/pull/7) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Thu Jul 15 2021)
+
 #### 🚀 Enhancement
 
 - `@tablecheck/eslint-config@1.1.0`, `@tablecheck/eslint-plugin@1.1.0`

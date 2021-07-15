@@ -1,3 +1,15 @@
+# v1.1.1 (Thu Jul 15 2021)
+
+#### 🐛 Bug Fix
+
+- docs: update licenses and add Code Of Conduct [skip-ci] [#7](https://github.com/tablecheck/tablecheck-react-system/pull/7) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
