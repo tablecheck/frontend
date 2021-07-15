@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/eslint-plugin",
   "description": "eslint plugin for TableCheck's eslint config",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",

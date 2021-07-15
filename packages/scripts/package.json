@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/scripts",
   "description": "Configuration and scripts forked from Create React App.",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "version": "1.1.0",
   "typings": "./tsconfig/definitions.d.ts",

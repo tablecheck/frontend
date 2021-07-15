@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/commitlint-config",
   "description": "Commitlint rules for consistent commit messages",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",

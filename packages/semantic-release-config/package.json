@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/semantic-release-config",
   "description": "Configuration for creating gitlab releases for TableCheck applications in a sensible format",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",

@@ -1,7 +1,7 @@
 {
   "name": "@tablecheck/eslint-config",
   "description": "eslint config file for Tablesolution's React Projects",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",
