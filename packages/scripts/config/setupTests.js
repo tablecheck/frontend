@@ -141,6 +141,7 @@ if (
 ) {
   // Global mock reduces potential problems in snapshot testing
   jest.mock('@tablekit/icon', () => ({
+    ...jest.requireActual('@tablekit/icon'),
     Icon: ({ icon }) =>
       icon && icon.iconName ? `icon-${icon.iconName}` : 'icon-UNKNOWN'
   }));
