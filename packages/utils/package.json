@@ -3,7 +3,7 @@
   "description": "Generic utils shared inside @tablecheck packages",
   "license": "MIT",
   "author": "TableCheck Inc.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "userConfig.js"
   ],

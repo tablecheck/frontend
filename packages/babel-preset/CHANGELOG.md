@@ -1,19 +1,15 @@
-# v1.0.1 (Thu Jul 15 2021)
-
-#### 🐛 Bug Fix
-
-- docs: update licenses and add Code Of Conduct [skip-ci] [#7](https://github.com/tablecheck/tablecheck-react-system/pull/7) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.0.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/babel-preset@1.0.0...@tablecheck/babel-preset@1.0.1) (2021-07-15)
+
+**Note:** Version bump only for package @tablecheck/babel-preset
+
+
+
+
 
 # 1.0.0 (2021-07-13)
 
