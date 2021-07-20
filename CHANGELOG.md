@@ -1,3 +1,21 @@
+# (Tue Jul 20 2021)
+
+#### 🐛 Bug Fix
+
+- ci: add missing secret to release [#9](https://github.com/tablecheck/tablecheck-react-system/pull/9) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/scripts@1.1.2`
+  - fix(scripts): extendConfig incorrect modify return value [#10](https://github.com/tablecheck/tablecheck-react-system/pull/10) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🏠 Internal
+
+- ci: upgrade workflow [#11](https://github.com/tablecheck/tablecheck-react-system/pull/11) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Jul 15 2021)
 
 #### 🐛 Bug Fix

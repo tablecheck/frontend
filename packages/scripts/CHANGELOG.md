@@ -1,3 +1,15 @@
+# v1.1.2 (Tue Jul 20 2021)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): extendConfig incorrect modify return value [#10](https://github.com/tablecheck/tablecheck-react-system/pull/10) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
