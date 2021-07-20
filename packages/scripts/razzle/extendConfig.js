@@ -4,37 +4,46 @@ const merge = require('lodash/merge');
 
 setAutoFreeze(false);
 
+function composeProduceResult(targetKey, result) {
+  if (
+    targetKey === 'modifyWebpackOptions' &&
+    result.options &&
+    result.options.webpackOptions
+  )
+    return result.options.webpackOptions;
+
+  if (targetKey === 'modifyWebpackConfig' && result.webpackConfig)
+    return result.webpackConfig;
+
+  // if we get to this point it means that the produce returned the modified object
+  // and didn't mutate via immer
+  return result;
+}
+
 function extendModify(key, baseModifyFunc, extendModifyFunc) {
+  if (!baseModifyFunc && !extendModifyFunc)
+    return (options) => composeProduceResult(key, options);
   return (options) => {
-    const targetKey = key.replace(
-      /^modify([A-Z])(.+)/gi,
-      (substring, firstLetter, remaining) =>
-        `${firstLetter.toLowerCase()}${remaining}`
-    );
     const baseProduce = (draft) => baseModifyFunc(draft);
     const extendProduce = (draft) => extendModifyFunc(draft);
     if (!extendModifyFunc) {
-      return produce(baseProduce)(options);
+      return composeProduceResult(key, produce(baseProduce)(options));
     }
     if (!baseModifyFunc) {
-      return produce(extendProduce)(options);
+      return composeProduceResult(key, produce(extendProduce)(options));
     }
-    const modifyTarget = produce(baseProduce)(options);
-    return produce((draftTarget) => {
-      if (targetKey === 'webpackOptions') {
-        return extendProduce({
-          ...options,
-          options: {
-            ...options.options,
-            webpackOptions: draftTarget
-          }
-        });
+    const baseResult = composeProduceResult(key, produce(baseProduce)(options));
+    const extendOptions = produce((optionsDraft) => {
+      if (key === 'modifyWebpackOptions') {
+        optionsDraft.options = optionsDraft.options || {};
+        optionsDraft.options.webpackOptions = baseResult;
       }
-      return extendProduce({
-        ...options,
-        [targetKey]: draftTarget
-      });
-    })(modifyTarget);
+      if (key === 'modifyWebpackConfig') {
+        optionsDraft.webpackConfig = baseResult;
+      }
+    })(options);
+    const extended = produce(extendProduce)(extendOptions);
+    return composeProduceResult(key, extended);
   };
 }
 
