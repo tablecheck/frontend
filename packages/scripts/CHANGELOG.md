@@ -1,19 +1,18 @@
-# v1.1.2 (Tue Jul 20 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): extendConfig incorrect modify return value [#10](https://github.com/tablecheck/tablecheck-react-system/pull/10) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.1...@tablecheck/scripts@1.1.2) (2021-07-20)
+
+
+### Bug Fixes
+
+* **scripts:** extendConfig incorrect modify return value ([2cfb5eb](https://github.com/tablecheck/tablecheck-react-system/commit/2cfb5eba447111332c7ded77348aa7aae2086ce0))
+
+
+
+
 
 ## [1.1.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.0...@tablecheck/scripts@1.1.1) (2021-07-15)
 
