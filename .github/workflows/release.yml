@@ -1,6 +1,8 @@
 name: Auto Release
 
 on:
+  workflow_dispatch:
+    # this allows us to manually run the release on other branches for canary and pre-releases
   push:
     branches:
       - main
