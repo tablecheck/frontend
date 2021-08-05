@@ -1,0 +1,20 @@
+{
+  "ignore": {
+    "escape-string-regexp": {
+      "versions": ">=5",
+      "reason": "Versions greater than 5 use pure ESM builds, this would need webpack 5"
+    },
+    "html-webpack-plugin": {
+      "versions": "^5",
+      "reason": "Webpack 5 required"
+    },
+    "is-root": {
+      "versions": "^3",
+      "reason": "Webpack 5 and ESM configs required"
+    },
+    "mini-css-extract-plugin": {
+      "versions": "^2",
+      "reason": "Webpack 5 required"
+    }
+  }
+}

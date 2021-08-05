@@ -243,7 +243,7 @@ async function initProject() {
     return;
   }
 
-  console.log(chalk.blue.bold('Preinstalling prettier and husy...'));
+  console.log(chalk.blue.bold('Preinstalling prettier and husky...'));
 
   fs.copyFileSync(
     path.join(templatesDirectory, '.prettierrc.json'),
@@ -279,7 +279,7 @@ async function initProject() {
     path.join(paths.cwd, '.gitignore')
   );
 
-  await execa('npx', ['husky-init'], execaOptions);
+  await execa('npx', ['husky', 'install'], execaOptions);
 
   fs.copyFileSync(
     path.join(templatesDirectory, 'commit-msg'),

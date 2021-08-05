@@ -200,13 +200,10 @@ module.exports = {
       if (!writeTsConfig(esmConfigPath, packageConfig)) {
         throw new Error('This project is not written in typescript');
       }
-      hasTypescript = true;
-      libConfig.references.push({
-        path: esmConfigPath
-      });
       if (shouldCleanLibs) {
         fs.emptyDirSync(path.join(paths.cwd, 'lib'));
       }
+      return esmConfigPath;
     }
     if (!hasTypescript) return runnerConfigPath;
     writeTsConfig(runnerConfigPath, libConfig, true);
