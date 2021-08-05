@@ -33,14 +33,18 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 
   let success = true;
   try {
-    logTaskStart('Running Rollup');
     const { references } = fs.readJsonSync(runnerConfigPath);
-    for (let i = 0; i < references.length; i += 1) {
-      // needs to be async or subsequent projects don't build
-      // eslint-disable-next-line no-await-in-loop
-      await buildPackage(references[i].path, runnerConfigPath);
+    if (references) {
+      logTaskStart('Running Rollup');
+      for (let i = 0; i < references.length; i += 1) {
+        // needs to be async or subsequent projects don't build
+        // eslint-disable-next-line no-await-in-loop
+        await buildPackage(references[i].path, runnerConfigPath);
+      }
+      logTaskEnd(true);
+    } else {
+      await buildPackage(runnerConfigPath, runnerConfigPath);
     }
-    logTaskEnd(true);
   } catch (e) {
     logTaskEnd(false);
     // error is already output inside buildPackage function
@@ -56,13 +60,13 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
     await processAllPackages((packageContent, packagePath) => {
       let { main, module, types } = packageContent;
       const folderPath = path.dirname(packagePath);
-      if (!fs.existsSync(path.resolve(folderPath, main))) {
+      if (!main || !fs.existsSync(path.resolve(folderPath, main))) {
         main = './lib/es5/index.js';
       }
-      if (!fs.existsSync(path.resolve(folderPath, module))) {
+      if (!module || !fs.existsSync(path.resolve(folderPath, module))) {
         module = './lib/esm/index.js';
       }
-      if (!fs.existsSync(path.resolve(folderPath, types))) {
+      if (!types || !fs.existsSync(path.resolve(folderPath, types))) {
         types = './lib/esm/index.d.ts';
       }
       return {

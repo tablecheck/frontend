@@ -5,5 +5,6 @@ import '../App';
 declare global {
   interface Window {
     // TODO fill in any extra undefined props here
+    value: never;
   }
 }

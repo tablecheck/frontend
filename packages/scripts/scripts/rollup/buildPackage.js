@@ -73,9 +73,16 @@ function getBabelPlugin(isEsm = false) {
 async function buildPackage(libConfigPath, rootConfigPath) {
   const packageDirectory = path.dirname(libConfigPath);
   const rootPackageDirectory = path.dirname(rootConfigPath);
+  const packagePath = path.join(packageDirectory, 'package.json');
 
   if (isLibTypeDefinitions(packageDirectory)) return;
-  logTaskStart(`Build ${path.relative(paths.cwd, packageDirectory)}`);
+  logTaskStart(
+    `Build ${
+      require(packagePath).name ||
+      path.relative(paths.cwd, packageDirectory).trim() ||
+      'library'
+    }`
+  );
 
   const packageTsconfig = fs.readJsonSync(libConfigPath);
   if (
@@ -92,7 +99,7 @@ async function buildPackage(libConfigPath, rootConfigPath) {
   try {
     const rollupExternalsConfig = {
       packagePath: [
-        path.join(packageDirectory, 'package.json'),
+        packagePath,
         path.join(rootPackageDirectory, 'package.json')
       ],
       deps: true

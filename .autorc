@@ -9,7 +9,8 @@
       "slack",
       {
         "auth": "app",
-        "channels": ["bot-frontend"]
+        "channels": ["bot-frontend"],
+        "atTarget": "frontend-team"
       }
     ]
   ]
