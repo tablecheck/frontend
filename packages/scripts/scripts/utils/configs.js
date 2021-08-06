@@ -59,7 +59,7 @@ function configCheck() {
     console.log(chalk.green(`${icons.check} Configs match up`));
   } else {
     console.log(
-      chalk.yellow(`${icons.warning} There is no configs for this project`)
+      chalk.yellow(`${icons.warning} There are no configs for this project`)
     );
   }
 }
