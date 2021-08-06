@@ -134,7 +134,7 @@ module.exports = {
         rootDir: 'src'
       }
     };
-    const libConfig = {
+    let libConfig = {
       extends: '@tablecheck/scripts/tsconfig/lib.json',
       include: [],
       references: []
@@ -143,13 +143,12 @@ module.exports = {
     const lernaPaths = await getSortedLernaPaths();
 
     let hasTypescript = false;
-    const typescriptPackages = systemSettings.additionalRoots || [];
+    const eslintRoots = systemSettings.additionalRoots || [];
     if (fs.existsSync(paths.storybook)) {
-      typescriptPackages.push('.storybook');
-      packageConfig.include.push('.storybook');
+      eslintRoots.push('.storybook');
     }
     if (fs.existsSync(paths.cypress)) {
-      typescriptPackages.push('cypress');
+      eslintRoots.push('cypress');
     }
     if (lernaPaths.length) {
       lernaPaths.forEach((localPath) => {
@@ -159,7 +158,7 @@ module.exports = {
         const esmConfigPath = path.join(localPath, `tsconfig.json`);
         if (!writeTsConfig(esmConfigPath, packageConfig)) return;
         hasTypescript = true;
-        typescriptPackages.push(localPath);
+        eslintRoots.push(localPath);
         libConfig.references.push({
           path: esmConfigPath
         });
@@ -178,24 +177,7 @@ module.exports = {
           fs.emptyDirSync(path.join(refPath, 'lib'));
         });
       }
-      if (hasTypescript) {
-        // lerna monorepos tsc setup and eslint do not play well
-        // see https://github.com/typescript-eslint/typescript-eslint/issues/1192
-        writeTsConfig(
-          path.join(paths.cwd, 'tsconfig.eslint.json'),
-          {
-            extends: '@tablecheck/scripts/tsconfig/lib.json',
-            exclude: ['node_modules'],
-            files,
-            include: typescriptPackages,
-            compilerOptions: {
-              noEmit: true
-            }
-          },
-          true
-        );
-      }
-    } else {
+    } else if (eslintRoots.length === 0) {
       const esmConfigPath = path.join(paths.cwd, `tsconfig.json`);
       if (!writeTsConfig(esmConfigPath, packageConfig)) {
         throw new Error('This project is not written in typescript');
@@ -204,9 +186,30 @@ module.exports = {
         fs.emptyDirSync(path.join(paths.cwd, 'lib'));
       }
       return esmConfigPath;
+    } else {
+      eslintRoots.push('src');
+      libConfig = packageConfig;
+      hasTypescript = true; // probably...
     }
     if (!hasTypescript) return runnerConfigPath;
-    writeTsConfig(runnerConfigPath, libConfig, true);
+    // lerna monorepos tsc setup and eslint do not play well
+    // see https://github.com/typescript-eslint/typescript-eslint/issues/1192
+    writeTsConfig(
+      path.join(paths.cwd, 'tsconfig.eslint.json'),
+      {
+        extends: '@tablecheck/scripts/tsconfig/lib.json',
+        exclude: ['node_modules'],
+        files,
+        include: eslintRoots,
+        compilerOptions: {
+          noEmit: true
+        }
+      },
+      true
+    );
+    if (!writeTsConfig(runnerConfigPath, libConfig, true)) {
+      throw new Error('This project is not written in typescript');
+    }
 
     return runnerConfigPath;
   },
