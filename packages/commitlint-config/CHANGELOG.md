@@ -1,3 +1,15 @@
+# v1.0.2 (Fri Aug 06 2021)
+
+#### 🐛 Bug Fix
+
+- feat(scripts): update init script and dependencies [#13](https://github.com/tablecheck/tablecheck-react-system/pull/13) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

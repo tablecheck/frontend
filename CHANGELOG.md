@@ -1,3 +1,16 @@
+# (Fri Aug 06 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/babel-preset@1.0.2`, `@tablecheck/codemods@1.0.2`, `@tablecheck/commitlint-config@1.0.2`, `@tablecheck/eslint-config@1.1.2`, `@tablecheck/scripts@1.1.3`, `@tablecheck/semantic-release-config@1.0.2`
+  - feat(scripts): update init script and dependencies [#13](https://github.com/tablecheck/tablecheck-react-system/pull/13) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Jul 20 2021)
 
 #### 🐛 Bug Fix
