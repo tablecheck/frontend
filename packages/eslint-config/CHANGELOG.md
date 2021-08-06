@@ -1,19 +1,18 @@
-# v1.1.2 (Fri Aug 06 2021)
-
-#### 🐛 Bug Fix
-
-- feat(scripts): update init script and dependencies [#13](https://github.com/tablecheck/tablecheck-react-system/pull/13) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.1.1...@tablecheck/eslint-config@1.1.2) (2021-08-06)
+
+
+### Features
+
+* **scripts:** update init script and dependencies ([62f3c6b](https://github.com/tablecheck/tablecheck-react-system/commit/62f3c6b087b3a7f58e7894ff106dba73ef0ae499)), closes [#4](https://github.com/tablecheck/tablecheck-react-system/issues/4)
+
+
+
+
 
 ## [1.1.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.1.0...@tablecheck/eslint-config@1.1.1) (2021-07-15)
 
