@@ -1,19 +1,18 @@
-# v1.1.4 (Tue Aug 10 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): correctly build standalone libraries [#14](https://github.com/tablecheck/tablecheck-react-system/pull/14) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.4](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.3...@tablecheck/scripts@1.1.4) (2021-08-10)
+
+
+### Bug Fixes
+
+* **scripts:** correctly build standalone libraries ([6ba4513](https://github.com/tablecheck/tablecheck-react-system/commit/6ba45135b85ed54023a8bc51f0bcdd861f08e69c))
+
+
+
+
 
 ## [1.1.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.2...@tablecheck/scripts@1.1.3) (2021-08-06)
 
