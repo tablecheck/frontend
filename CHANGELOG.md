@@ -1,3 +1,16 @@
+# (Tue Aug 10 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.1.4`
+  - fix(scripts): correctly build standalone libraries [#14](https://github.com/tablecheck/tablecheck-react-system/pull/14) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Aug 06 2021)
 
 #### 🐛 Bug Fix
