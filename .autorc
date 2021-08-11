@@ -1,7 +1,18 @@
 {
   "plugins": [
     "npm",
-    "all-contributors",
+    [
+      "all-contributors",
+      {
+        "types": {
+          "doc": ["**/*.mdx", "**/*.md"],
+          "example": ["**/*.stories.*", "**/*.story.*", "**/.storybook/**/*"],
+          "infra": ["**/.github/**/*"],
+          "test": ["**/*.test.*", "**/*.spec.*", "cypress/**/*"],
+          "code": ["**/src/**/*"]
+        }
+      }
+    ],
     "conventional-commits",
     "first-time-contributor",
     "released",
