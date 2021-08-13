@@ -149,6 +149,23 @@ module.exports = {
     }
     if (fs.existsSync(paths.cypress)) {
       eslintRoots.push('cypress');
+      writeTsConfig(
+        path.join(paths.cypress, 'tsconfig.json'),
+        {
+          ...packageConfig,
+          extends: '@tablecheck/scripts/tsconfig/base.json',
+          include: ['**/*.ts'],
+          compilerOptions: {
+            baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
+            lib: ['dom', 'dom.iterable', 'esnext'],
+            module: 'esnext',
+            target: 'es5',
+            noEmit: true,
+            isolatedModules: false
+          }
+        },
+        true
+      );
     }
     if (lernaPaths.length) {
       lernaPaths.forEach((localPath) => {
