@@ -40,7 +40,7 @@ module.exports = function validateEslintrc() {
         )
       );
       fs.copyFileSync(
-        require.resolve(`../templates/${eslintRcFile}`),
+        require.resolve(`../../templates/${eslintRcFile}`),
         eslintRcPath
       );
     }
