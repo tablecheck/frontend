@@ -1,19 +1,18 @@
-# v1.1.5 (Fri Aug 13 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): correctly init tsconfig for cypress in lib projects [#17](https://github.com/tablecheck/tablecheck-react-system/pull/17) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.5](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.4...@tablecheck/scripts@1.1.5) (2021-08-13)
+
+
+### Bug Fixes
+
+* **scripts:** correctly init tsconfig for cypress in lib projects ([9d8563f](https://github.com/tablecheck/tablecheck-react-system/commit/9d8563fae0f14b96338a0cc5a4dc0f44ae1ec61f))
+
+
+
+
 
 ## [1.1.4](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.3...@tablecheck/scripts@1.1.4) (2021-08-10)
 
