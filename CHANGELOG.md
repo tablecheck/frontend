@@ -1,3 +1,20 @@
+# (Fri Aug 13 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.1.5`
+  - fix(scripts): correctly init tsconfig for cypress in lib projects [#17](https://github.com/tablecheck/tablecheck-react-system/pull/17) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🏠 Internal
+
+- chore: fix all contributors setup [skip-ci] [#15](https://github.com/tablecheck/tablecheck-react-system/pull/15) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Aug 10 2021)
 
 #### 🐛 Bug Fix
