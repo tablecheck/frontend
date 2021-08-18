@@ -106,7 +106,9 @@ const promptChoices = [
 const cypressScripts = {
   'build:test': 'PORT=8089 NODE_CONFIG_ENV=test razzle build --standalone',
   'cypress:open': 'cypress open',
+  'cypress:open-component': 'cypress open-ct',
   'cypress:run': 'cypress run',
+  'cypress:run-component': 'cypress run-ct',
   'start:build':
     'http-server ./build/public -p 8089 --proxy http://localhost:8089? --silent',
   'start:test': 'PORT=8089 NODE_CONFIG_ENV=test razzle start --standalone',
@@ -117,7 +119,7 @@ const cypressScripts = {
   'test:integration:dev':
     'start-server-and-test start:test http://localhost:8089/ cypress:open'
 };
-const cypressDevDependencies = ['cypress@^6.4.0', '@types/cypress@^1.1.3'];
+const cypressDevDependencies = ['cypress@^8.3.0'];
 
 const storybookScripts = {
   'build:storybook': 'build-storybook -o docs',

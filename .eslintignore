@@ -6,5 +6,6 @@ node_modules
 packages/scripts/tsconfig/definitions.d.ts
 packages/scripts/tsconfig/defaultDefinitions.d.ts
 packages/scripts/scripts/rollup/fixtures/*
+packages/scripts/cypressComponentTesting.d.ts
 packages/scripts/templates/*
 packages/codemods/testFiles/*

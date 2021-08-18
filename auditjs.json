@@ -23,6 +23,9 @@
     },
     {
       "id": "7b682dd5-ef07-459c-be11-50ec76c9eba2"
+    },
+    {
+      "id": "64cd5f21-8af4-4eae-ac7d-a53241ea693a"
     }
   ],
   "affected": [
@@ -171,6 +174,36 @@
           "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
           "cve": "CVE-2021-32640",
           "reference": "https://ossindex.sonatype.org/vulnerability/7b682dd5-ef07-459c-be11-50ec76c9eba2?component-type=npm&component-name=ws&utm_source=auditjs&utm_medium=integration&utm_content=4.0.25"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/glob-parent@2.0.0",
+      "description": "Extract the non-magic parent path from a glob string.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/glob-parent@2.0.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.28",
+      "vulnerabilities": [
+        {
+          "id": "64cd5f21-8af4-4eae-ac7d-a53241ea693a",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/64cd5f21-8af4-4eae-ac7d-a53241ea693a?component-type=npm&component-name=glob-parent&utm_source=auditjs&utm_medium=integration&utm_content=4.0.28"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/glob-parent@3.1.0",
+      "description": "Extract the non-magic parent path from a glob string.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/glob-parent@3.1.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.28",
+      "vulnerabilities": [
+        {
+          "id": "64cd5f21-8af4-4eae-ac7d-a53241ea693a",
+          "title": "CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/64cd5f21-8af4-4eae-ac7d-a53241ea693a?component-type=npm&component-name=glob-parent&utm_source=auditjs&utm_medium=integration&utm_content=4.0.28"
         }
       ]
     }
