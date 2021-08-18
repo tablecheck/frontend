@@ -1,8 +1,13 @@
 {
   "baseUrl": "http://localhost:3000",
   "env": {},
+  "testFiles": "**/*.spec.ts",
   "reporter": "junit",
   "reporterOptions": {
     "mochaFile": "junit/cypress-[hash].xml"
+  },
+  "component": {
+    "testFiles": "**/*.cypress.{ts,tsx}",
+    "componentFolder": "src"
   }
 }

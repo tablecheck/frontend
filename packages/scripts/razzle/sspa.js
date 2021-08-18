@@ -1,5 +1,6 @@
 const { produce } = require('immer');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const config = require('config');
 const baseConfig = require('./spa');
 const paths = require('../config/paths');
 const { getArgv } = require('../scripts/utils/argv');
@@ -26,7 +27,15 @@ module.exports = baseConfig.extend({
         webpackConfigDraft.output.library = appPackage.name;
         webpackConfigDraft.output.libraryTarget = 'amd';
       }
-      webpackConfigDraft.plugins.push(new WebpackManifestPlugin());
+      webpackConfigDraft.plugins.push(
+        new WebpackManifestPlugin({
+          seed: {
+            // seed the manifest with the appVersion so that the parent app can report
+            // the version of each child app
+            appVersion: config.appVersion
+          }
+        })
+      );
     })(webpackConfig);
   }
 });

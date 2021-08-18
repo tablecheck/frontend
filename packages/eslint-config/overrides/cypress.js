@@ -16,7 +16,7 @@ const jestOverrides = Object.keys(jestPlugin.configs.all.rules).reduce(
 );
 
 module.exports = merge(require('./typescript'), {
-  files: ['**/cypress/**/*'],
+  files: ['**/cypress/**/*', '**/*.cypress.ts', '**/*.cypress.tsx'],
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
@@ -31,6 +31,7 @@ module.exports = merge(require('./typescript'), {
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/naming-convention': [].concat(
       namingConfig['@typescript-eslint/naming-convention'],
       [

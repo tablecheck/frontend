@@ -12,6 +12,8 @@
   "files": [
     "bin",
     "config",
+    "cypressComponentTesting.d.ts",
+    "cypressComponentTesting.js",
     "razzle",
     "scripts",
     "templates",
