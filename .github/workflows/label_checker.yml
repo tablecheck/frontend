@@ -23,6 +23,6 @@ jobs:
     steps:
       - uses: agilepathway/label-checker@v1.0.91
         with:
-          one_of: major,minor,patch,internal
+          one_of: major,minor,patch,skip-release,internal,documentation,tests,dependencies,performance
           none_of: invalid,wontfix,duplicate,question
           repo_token: ${{ secrets.GITHUB_TOKEN }}
