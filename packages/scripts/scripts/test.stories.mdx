@@ -37,3 +37,14 @@ Or in GitHub actions by using the following step definitions.
   with:
     files: junit/**/*.xml
 ```
+
+## Configuration
+
+It is not recommended to opt-out of the provided jest config, but to opt-out you can add `jest.config.js` in the project root
+```js
+// jest.config.js
+module.exports = (baseJestConfig) => ({
+  ...baseJestConfig
+  // modify it
+})
+```
