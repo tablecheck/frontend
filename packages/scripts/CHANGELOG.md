@@ -1,19 +1,18 @@
-# v1.2.0 (Fri Aug 20 2021)
-
-#### 🚀 Enhancement
-
-- feat(scripts): cypress component testing + razzle config [#18](https://github.com/tablecheck/tablecheck-react-system/pull/18) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.5...@tablecheck/scripts@1.2.0) (2021-08-20)
+
+
+### Features
+
+* **scripts:** cypress component testing + razzle config ([26d96bc](https://github.com/tablecheck/tablecheck-react-system/commit/26d96bc198c03ce22911b37d3032a24e1d3a5154))
+
+
+
+
 
 ## [1.1.5](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.4...@tablecheck/scripts@1.1.5) (2021-08-13)
 
