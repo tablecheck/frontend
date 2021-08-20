@@ -1,3 +1,18 @@
+# (Fri Aug 20 2021)
+
+#### 🚀 Enhancement
+
+- deps: fix package-lock [#21](https://github.com/tablecheck/tablecheck-react-system/pull/21) ([@SimeonC](https://github.com/SimeonC))
+- fix: release process [#20](https://github.com/tablecheck/tablecheck-react-system/pull/20) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@1.2.0`, `@tablecheck/scripts@1.2.0`
+  - feat(scripts): cypress component testing + razzle config [#18](https://github.com/tablecheck/tablecheck-react-system/pull/18) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Aug 13 2021)
 
 #### 🐛 Bug Fix
