@@ -1,3 +1,20 @@
+# (Mon Aug 23 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@1.3.0`
+  - feat(eslint-config): add past tense boolean prefixes [#23](https://github.com/tablecheck/tablecheck-react-system/pull/23) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🐛 Bug Fix
+
+- ci: use correct token for releases [#22](https://github.com/tablecheck/tablecheck-react-system/pull/22) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Aug 20 2021)
 
 #### 🚀 Enhancement

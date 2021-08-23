@@ -1,3 +1,15 @@
+# v1.3.0 (Mon Aug 23 2021)
+
+#### 🚀 Enhancement
+
+- feat(eslint-config): add past tense boolean prefixes [#23](https://github.com/tablecheck/tablecheck-react-system/pull/23) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
