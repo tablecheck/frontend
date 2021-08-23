@@ -30,7 +30,17 @@ module.exports = {
       selector: 'variable',
       types: ['boolean'],
       format: ['PascalCase'],
-      prefix: ['is', 'should', 'has', 'can', 'did', 'will', 'allow']
+      prefix: [
+        'is',
+        'was',
+        'should',
+        'has',
+        'had',
+        'can',
+        'did',
+        'will',
+        'allow'
+      ]
     },
     {
       selector: 'variable',
