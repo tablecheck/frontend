@@ -1,19 +1,18 @@
-# v1.3.0 (Mon Aug 23 2021)
-
-#### 🚀 Enhancement
-
-- feat(eslint-config): add past tense boolean prefixes [#23](https://github.com/tablecheck/tablecheck-react-system/pull/23) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.3.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.2.0...@tablecheck/eslint-config@1.3.0) (2021-08-23)
+
+
+### Features
+
+* **eslint-config:** add past tense boolean prefixes ([53f8f00](https://github.com/tablecheck/tablecheck-react-system/commit/53f8f00bce1f4be3fcbdaa46d3a5592794fe557b))
+
+
+
+
 
 # [1.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.1.2...@tablecheck/eslint-config@1.2.0) (2021-08-20)
 

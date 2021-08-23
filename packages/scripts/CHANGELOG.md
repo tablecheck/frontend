@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.2.0...@tablecheck/scripts@1.3.0) (2021-08-23)
+
+**Note:** Version bump only for package @tablecheck/scripts
+
+
+
+
+
 # [1.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.1.5...@tablecheck/scripts@1.2.0) (2021-08-20)
 
 
