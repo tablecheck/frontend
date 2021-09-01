@@ -1,3 +1,16 @@
+# (Wed Sep 01 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@1.4.0`, `@tablecheck/scripts@1.4.0`
+  - deps: update typescript [#25](https://github.com/tablecheck/tablecheck-react-system/pull/25) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Aug 23 2021)
 
 #### 🚀 Enhancement
