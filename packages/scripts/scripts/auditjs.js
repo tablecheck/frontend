@@ -19,7 +19,7 @@ const argv = getArgv({
   }
 });
 
-const auditjsArgs = ['ossi', '--dev', '--quiet'];
+const auditjsArgs = ['ossi', '--dev', '--quiet', '--cache=cache/audit'];
 if (process.env.OSSI_USERNAME && process.env.OSSI_TOKEN) {
   auditjsArgs.push(`-u=${process.env.OSSI_USERNAME}`);
   auditjsArgs.push(`-p=${process.env.OSSI_TOKEN}`);
