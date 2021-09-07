@@ -1,19 +1,18 @@
-# v1.5.0 (Tue Sep 07 2021)
-
-#### 🚀 Enhancement
-
-- fix(scripts): add audit cli cache option [#26](https://github.com/tablecheck/tablecheck-react-system/pull/26) (stanislav@external.tablecheck.com)
-
-#### Authors: 1
-
-- Stanislav (stanislav@external.tablecheck.com)
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.5.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.4.0...@tablecheck/scripts@1.5.0) (2021-09-07)
+
+
+### Bug Fixes
+
+* **scripts:** add audit cli cache option ([347f660](https://github.com/tablecheck/tablecheck-react-system/commit/347f6607ecde8654f4eaa2ec1d2ebfefdb5f041e))
+
+
+
+
 
 # [1.4.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.3.0...@tablecheck/scripts@1.4.0) (2021-09-01)
 
