@@ -1,3 +1,16 @@
+# (Tue Sep 07 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.5.0`
+  - fix(scripts): add audit cli cache option [#26](https://github.com/tablecheck/tablecheck-react-system/pull/26) (stanislav@external.tablecheck.com)
+
+#### Authors: 1
+
+- Stanislav (stanislav@external.tablecheck.com)
+
+---
+
 # (Wed Sep 01 2021)
 
 #### 🚀 Enhancement
