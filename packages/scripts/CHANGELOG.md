@@ -1,19 +1,18 @@
-# v1.5.1 (Fri Sep 17 2021)
-
-#### 🐛 Bug Fix
-
-- fix: add cypress types for odd edge cases [#27](https://github.com/tablecheck/tablecheck-react-system/pull/27) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.5.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.5.0...@tablecheck/scripts@1.5.1) (2021-09-17)
+
+
+### Bug Fixes
+
+* add cypress types for odd edge cases ([3900df4](https://github.com/tablecheck/tablecheck-react-system/commit/3900df404d0088c8dc045e4ae2a57e4c58aa0f1e))
+
+
+
+
 
 # [1.5.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.4.0...@tablecheck/scripts@1.5.0) (2021-09-07)
 
