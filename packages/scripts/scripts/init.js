@@ -258,7 +258,7 @@ async function initProject() {
 
   await execa(
     'npm',
-    ['install', '--save-dev', '--save-exact', 'prettier@^2', 'husky@7'],
+    ['install', '--save-dev', '--save-exact', 'prettier@2', 'husky@7'],
     execaOptions
   );
 
@@ -292,11 +292,15 @@ async function initProject() {
     path.join(paths.cwd, '.husky', 'pre-commit')
   );
 
-  const { peerDependencies, optionalDependencies } = require(require.resolve(
-    '../package.json'
-  ));
+  const {
+    peerDependencies,
+    optionalDependencies,
+    dependencies
+  } = require(require.resolve('../package.json'));
   const devDependencies = [
-    `babel-preset-razzle@${optionalDependencies.razzle}`
+    `babel-preset-razzle@${optionalDependencies.razzle}`,
+    // technically this isn't necessary but a lot of other apps use this dependency inside package.json as a typescript check
+    `typescript@${dependencies.typescript}`
   ].concat(
     Object.keys(peerDependencies).map(
       (key) => `${key}@${peerDependencies[key]}`
@@ -306,7 +310,7 @@ async function initProject() {
     (key) => `${key}@${optionalDependencies[key]}`
   );
 
-  devDependencies.push('@tablecheck/scripts', '@commitlint/cli@11');
+  devDependencies.push('@tablecheck/scripts', '@commitlint/cli');
 
   appDependencies.push(
     'concurrently',
@@ -356,7 +360,7 @@ async function initProject() {
   let packageScripts = { ...basePackageScripts };
 
   if (scriptType === SCRIPTS.LERNA) {
-    devDependencies.push('@commitlint/config-lerna-scopes@11');
+    devDependencies.push('@commitlint/config-lerna-scopes');
     fs.copyFileSync(
       path.join(templatesDirectory, 'commitlint.lerna.config.js'),
       path.join(paths.cwd, 'commitlint.config.js')
