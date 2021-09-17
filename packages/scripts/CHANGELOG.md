@@ -1,3 +1,15 @@
+# v1.5.1 (Fri Sep 17 2021)
+
+#### 🐛 Bug Fix
+
+- fix: add cypress types for odd edge cases [#27](https://github.com/tablecheck/tablecheck-react-system/pull/27) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
