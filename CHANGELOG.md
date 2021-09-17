@@ -1,5 +1,18 @@
 # (Fri Sep 17 2021)
 
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@1.5.0`
+  - fix(scripts): turn off prop types rule [#28](https://github.com/tablecheck/tablecheck-react-system/pull/28) (stanislav@external.tablecheck.com)
+
+#### Authors: 1
+
+- Stanislav (stanislav@external.tablecheck.com)
+
+---
+
+# (Fri Sep 17 2021)
+
 #### 🐛 Bug Fix
 
 - `@tablecheck/scripts@1.5.1`

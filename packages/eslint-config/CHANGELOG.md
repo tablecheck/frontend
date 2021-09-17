@@ -1,3 +1,15 @@
+# v1.5.0 (Fri Sep 17 2021)
+
+#### 🚀 Enhancement
+
+- fix(scripts): turn off prop types rule [#28](https://github.com/tablecheck/tablecheck-react-system/pull/28) (stanislav@external.tablecheck.com)
+
+#### Authors: 1
+
+- Stanislav (stanislav@external.tablecheck.com)
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
