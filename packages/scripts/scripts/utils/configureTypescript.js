@@ -277,7 +277,8 @@ module.exports = {
             ...config.compilerOptions,
             baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
             isolatedModules: false,
-            noEmit: true
+            noEmit: true,
+            types: ['cypress', 'node']
           }
         },
         true
