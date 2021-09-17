@@ -8,6 +8,7 @@ module.exports = {
   'react/jsx-filename-extension': 'off',
   // irritating, TS handles this better
   'react/static-property-placement': 'off',
+  'react/prop-types': 'off',
 
   // These cause typing conflicts
   'react/require-default-props': ['off'],
