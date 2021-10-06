@@ -20,7 +20,8 @@ module.exports = merge(require('./typescript'), {
   parserOptions: {
     ecmaVersion: 9,
     sourceType: 'module',
-    project: ['./cypress/tsconfig.json']
+    // defining both of these to prevent a bug in precommit staged linter from failing in some cases
+    project: ['./cypress/tsconfig.json', './tsconfig.json']
   },
   env: {
     'cypress/globals': true
