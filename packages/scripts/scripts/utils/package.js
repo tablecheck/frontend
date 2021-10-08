@@ -49,6 +49,7 @@ const prettyFormatOptions = {
     /**
      * Configuration
      */
+    'entry',
     'main',
     'module',
     'browser',

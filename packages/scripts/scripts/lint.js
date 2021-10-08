@@ -112,8 +112,9 @@ const argv = getArgv({
   }
 
   const isLib =
-    fs.existsSync(path.join(paths.cwd, 'lerna.json')) ||
-    fs.existsSync(path.join(paths.cwd, 'lib'));
+    !systemSettings.isAppWithExports &&
+    (fs.existsSync(path.join(paths.cwd, 'lerna.json')) ||
+      fs.existsSync(path.join(paths.cwd, 'lib')));
   let spawnedTypescript = Promise.resolve('skipped');
   let spawnedCypressTypescript = Promise.resolve('skipped');
   if (isLib) {

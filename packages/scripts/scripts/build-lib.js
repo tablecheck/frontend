@@ -12,11 +12,15 @@ process.on('unhandledRejection', (err) => {
 
 const path = require('path');
 
+const systemSettings = require('@tablecheck/scripts-utils/userConfig');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 
 const { buildPackage } = require('./rollup/buildPackage');
-const { configureLibTypescript } = require('./utils/configureTypescript');
+const {
+  configureLibTypescript,
+  configureAppTypescript
+} = require('./utils/configureTypescript');
 const { processAllPackages } = require('./utils/package');
 const icons = require('./utils/unicodeEmoji');
 const verifyPackageTree = require('./utils/verifyPackageTree');
@@ -52,7 +56,11 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   }
 
   logTaskStart('Re-configuring typescript for development');
-  await configureLibTypescript(false, false, true);
+  if (systemSettings.isAppWithExports) {
+    configureAppTypescript(false);
+  } else {
+    await configureLibTypescript(false, false, true);
+  }
   logTaskEnd(true);
 
   if (success) {
