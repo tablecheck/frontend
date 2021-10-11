@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.6.0...@tablecheck/scripts@1.7.0) (2021-10-11)
+
+
+### Features
+
+* support exporting a bundle as a lib from an app ([4030b06](https://github.com/tablecheck/tablecheck-react-system/commit/4030b06d66a856f8be3db8a355768d7c3d47a0dd))
+
+
+
+
+
 # [1.6.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.5.1...@tablecheck/scripts@1.6.0) (2021-09-17)
 
 **Note:** Version bump only for package @tablecheck/scripts

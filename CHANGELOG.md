@@ -1,3 +1,16 @@
+# (Mon Oct 11 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.7.0`
+  - feat: support exporting a bundle as a lib from an app [#30](https://github.com/tablecheck/tablecheck-react-system/pull/30) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Sep 17 2021)
 
 #### 🚀 Enhancement

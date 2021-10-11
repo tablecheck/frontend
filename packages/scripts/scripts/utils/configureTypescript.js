@@ -131,7 +131,8 @@ module.exports = {
         declarationDir: 'lib/esm',
         declarationMap: false,
         noEmit: !isBuild,
-        rootDir: 'src'
+        rootDir: 'src',
+        baseUrl: 'src'
       }
     };
     let libConfig = {

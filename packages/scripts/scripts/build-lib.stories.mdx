@@ -5,3 +5,21 @@ import { Meta } from '@storybook/addon-docs/blocks';
 ## build-lib
 
 These uses babel to build the contents of the src into `project/lib`. Note that libs are not processed with webpack.
+
+### Exporting files from an application
+
+We can use build-lib to export part of an application for usage as a preview in a settings application via npm package publishing.
+
+To enable this, add a `./.tablecheckrc.json` file with the following;
+
+```json
+{
+  "isAppWithExports": true
+}
+```
+
+Then in your `package.json` file add as entry key pointing to your exports file, eg `"entry": "./src/exports.ts"`.
+
+With this setup running `npx tablecheck-scripts build-lib` will create a lib folder targeting the exports file.
+
+Note that a restriction of the rollup process is that static assets (svg, png, etc) cannot be built into the package export.
