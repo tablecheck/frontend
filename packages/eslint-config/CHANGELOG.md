@@ -1,3 +1,15 @@
+# v1.5.1 (Mon Oct 11 2021)
+
+#### 🐛 Bug Fix
+
+- fix: eslint plugin can't find tsconfig in precommit [#29](https://github.com/tablecheck/tablecheck-react-system/pull/29) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
