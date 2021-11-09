@@ -3,14 +3,14 @@
 A [semantic-release](https://semantic-release.gitbook.io/semantic-release/) config, used with our commitlint settings and does the following steps.
 
 1. Increments the version according to conventional-commits.
-2. Publishes a "GitLab Release" with correctly linked JIRA tickets
+2. Publishes a "GitHub Release" with correctly linked JIRA tickets
 3. Publishes a message to a slack webhook.
 
 ## Required CI Variables
 
 | Variable      | Usage                                                                   | Where to get it from                                                                                                                                      |
 | ------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GITLAB_TOKEN  | API Token Used for parsing previous releases and publishing the new one | To please contact a GitLab admin or copy from another project. Should be generated from the `TableCheck Gitlab Bot`                                       |
+| GITHUB_TOKEN  | API Token Used for parsing previous releases and publishing the new one | Available in semaphoreci `github-releases` secret or see https://github.com/semantic-release/github#github-authentication                                 |
 | SLACK_WEBHOOK | Used for posting slack updates                                          | Go to the `Semantic Release` App and generate a new webhook for the channel you wish to post to. https://api.slack.com/apps/A021U4J1CQ4/incoming-webhooks |
 
 ## Usage

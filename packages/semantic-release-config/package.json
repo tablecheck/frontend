@@ -14,7 +14,6 @@
   ],
   "dependencies": {
     "@semantic-release/commit-analyzer": "^8.0.1",
-    "@semantic-release/gitlab": "^6.2.2",
     "@semantic-release/release-notes-generator": "^9.0.3",
     "semantic-release-slack-bot": "^2.1.1"
   },
