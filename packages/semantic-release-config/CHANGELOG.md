@@ -1,19 +1,18 @@
-# v2.0.0 (Mon Nov 15 2021)
-
-#### 💥 Breaking Change
-
-- feat(semantic-release-config): change gitlab to github [#31](https://github.com/tablecheck/tablecheck-react-system/pull/31) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.0.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@1.0.2...@tablecheck/semantic-release-config@2.0.0) (2021-11-15)
+
+
+### Features
+
+* **semantic-release-config:** change gitlab to github ([7299bde](https://github.com/tablecheck/tablecheck-react-system/commit/7299bde21f712064804ba3d88e389c67ff56bc3d))
+
+
+
+
 
 ## [1.0.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@1.0.1...@tablecheck/semantic-release-config@1.0.2) (2021-08-06)
 
