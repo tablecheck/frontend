@@ -10,10 +10,10 @@
   "version": "1.0.2",
   "main": "index.js",
   "dependencies": {
-    "@commitlint/config-conventional": "^13.1.0"
+    "@commitlint/config-conventional": "^13.1.0 || ^14.1.0"
   },
   "peerDependencies": {
-    "@commitlint/cli": "^13"
+    "@commitlint/cli": "^13 || ^14"
   },
   "engines": {
     "node": ">= 10.18.0"
