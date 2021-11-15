@@ -1,3 +1,16 @@
+# (Mon Nov 15 2021)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/semantic-release-config@2.0.0`
+  - feat(semantic-release-config): change gitlab to github [#31](https://github.com/tablecheck/tablecheck-react-system/pull/31) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Oct 11 2021)
 
 #### 🐛 Bug Fix
