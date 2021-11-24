@@ -150,19 +150,30 @@ module.exports = {
     }
     if (fs.existsSync(paths.cypress)) {
       eslintRoots.push('cypress');
+      packageConfig.exclude.push('src/**/*.cypress.tsx', 'src/**/*.cypress.ts');
+      const compilerPaths = {
+        // this let's us import cypress files from an absolute path in our component tests
+        '#cypress/*': ['../cypress/*']
+      };
+      packageConfig.compilerOptions.paths = compilerPaths;
       writeTsConfig(
         path.join(paths.cypress, 'tsconfig.json'),
         {
           ...packageConfig,
           extends: '@tablecheck/scripts/tsconfig/base.json',
-          include: ['**/*.ts'],
+          include: [
+            '**/*.ts',
+            '../src/**/*.cypress.tsx',
+            '../src/**/*.cypress.ts'
+          ],
           compilerOptions: {
             baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
             lib: ['dom', 'dom.iterable', 'esnext'],
             module: 'esnext',
             target: 'es5',
             noEmit: true,
-            isolatedModules: false
+            isolatedModules: false,
+            paths: compilerPaths
           }
         },
         true
@@ -253,11 +264,16 @@ module.exports = {
       }
     };
     const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
-    writeTsConfig(runnerConfigPath, config, true);
 
     if (fs.existsSync(paths.cypress)) {
+      config.exclude.push('src/**/*.cypress.tsx', 'src/**/*.cypress.ts');
+      const compilerPaths = {
+        // this let's us import cypress files from an absolute path in our component tests
+        '#cypress/*': ['../cypress/*']
+      };
+      config.compilerOptions.paths = compilerPaths;
       writeTsConfig(
-        path.join(paths.cwd, 'tsconfig.eslint.json'),
+        path.join(compilerPaths.cwd, 'tsconfig.eslint.json'),
         {
           ...config,
           include: include.concat(systemSettings.additionalRoots || []),
@@ -270,13 +286,20 @@ module.exports = {
         true
       );
       writeTsConfig(
-        path.join(paths.cypress, 'tsconfig.json'),
+        path.join(compilerPaths.cypress, 'tsconfig.json'),
         {
           ...config,
-          include: ['**/*.ts'],
+          include: [
+            '**/*.ts',
+            '../src/**/*.cypress.tsx',
+            '../src/**/*.cypress.ts'
+          ],
           compilerOptions: {
             ...config.compilerOptions,
-            baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
+            baseUrl: path.relative(
+              compilerPaths.cypress,
+              path.join(compilerPaths.cwd, 'src')
+            ),
             isolatedModules: false,
             noEmit: true,
             types: ['cypress', 'node']
@@ -285,6 +308,7 @@ module.exports = {
         true
       );
     }
+    writeTsConfig(runnerConfigPath, config, true);
 
     return runnerConfigPath;
   },
