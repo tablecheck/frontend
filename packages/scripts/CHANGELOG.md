@@ -1,19 +1,18 @@
-# v1.8.1 (Thu Nov 25 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): revert bad variable rename [#34](https://github.com/tablecheck/tablecheck-react-system/pull/34) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.8.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.0...@tablecheck/scripts@1.8.1) (2021-11-25)
+
+
+### Bug Fixes
+
+* **scripts:** revert bad variable rename ([0be728b](https://github.com/tablecheck/tablecheck-react-system/commit/0be728bf7c425357bda9a50238910f20d1e87b79))
+
+
+
+
 
 # [1.8.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.7.1...@tablecheck/scripts@1.8.0) (2021-11-25)
 
