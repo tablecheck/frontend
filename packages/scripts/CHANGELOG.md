@@ -1,19 +1,18 @@
-# v1.8.0 (Thu Nov 25 2021)
-
-#### 🚀 Enhancement
-
-- feat(scripts): support absolute path for cypress folder [#33](https://github.com/tablecheck/tablecheck-react-system/pull/33) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.8.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.7.1...@tablecheck/scripts@1.8.0) (2021-11-25)
+
+
+### Features
+
+* **scripts:** support absolute path for cypress folder ([40311b7](https://github.com/tablecheck/tablecheck-react-system/commit/40311b73f18e4c0ac33236bd19bfe9e1eeeac677))
+
+
+
+
 
 ## [1.7.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.7.0...@tablecheck/scripts@1.7.1) (2021-10-11)
 
