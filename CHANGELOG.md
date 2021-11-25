@@ -1,3 +1,16 @@
+# (Thu Nov 25 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.8.0`
+  - feat(scripts): support absolute path for cypress folder [#33](https://github.com/tablecheck/tablecheck-react-system/pull/33) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Nov 15 2021)
 
 #### 💥 Breaking Change
