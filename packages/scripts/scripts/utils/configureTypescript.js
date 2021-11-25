@@ -273,7 +273,7 @@ module.exports = {
       };
       config.compilerOptions.paths = compilerPaths;
       writeTsConfig(
-        path.join(compilerPaths.cwd, 'tsconfig.eslint.json'),
+        path.join(paths.cwd, 'tsconfig.eslint.json'),
         {
           ...config,
           include: include.concat(systemSettings.additionalRoots || []),
@@ -286,7 +286,7 @@ module.exports = {
         true
       );
       writeTsConfig(
-        path.join(compilerPaths.cypress, 'tsconfig.json'),
+        path.join(paths.cypress, 'tsconfig.json'),
         {
           ...config,
           include: [
@@ -296,10 +296,7 @@ module.exports = {
           ],
           compilerOptions: {
             ...config.compilerOptions,
-            baseUrl: path.relative(
-              compilerPaths.cypress,
-              path.join(compilerPaths.cwd, 'src')
-            ),
+            baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
             isolatedModules: false,
             noEmit: true,
             types: ['cypress', 'node']
