@@ -1,5 +1,18 @@
 # (Thu Nov 25 2021)
 
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.8.1`
+  - fix(scripts): revert bad variable rename [#34](https://github.com/tablecheck/tablecheck-react-system/pull/34) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Thu Nov 25 2021)
+
 #### 🚀 Enhancement
 
 - `@tablecheck/scripts@1.8.0`
