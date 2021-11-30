@@ -161,10 +161,12 @@ module.exports = {
         {
           ...packageConfig,
           extends: '@tablecheck/scripts/tsconfig/base.json',
+          exclude: ['node_modules'],
           include: [
             '**/*.ts',
             '../src/**/*.cypress.tsx',
-            '../src/**/*.cypress.ts'
+            '../src/**/*.cypress.ts',
+            '../src/definitions/**/*.ts'
           ],
           compilerOptions: {
             baseUrl: path.relative(paths.cypress, path.join(paths.cwd, 'src')),
@@ -289,10 +291,12 @@ module.exports = {
         path.join(paths.cypress, 'tsconfig.json'),
         {
           ...config,
+          exclude: ['node_modules'],
           include: [
             '**/*.ts',
             '../src/**/*.cypress.tsx',
-            '../src/**/*.cypress.ts'
+            '../src/**/*.cypress.ts',
+            '../src/definitions/**/*.ts'
           ],
           compilerOptions: {
             ...config.compilerOptions,
