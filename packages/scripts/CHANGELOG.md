@@ -1,3 +1,15 @@
+# v1.8.2 (Thu Dec 02 2021)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): typescript config for cypress [#35](https://github.com/tablecheck/tablecheck-react-system/pull/35) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
