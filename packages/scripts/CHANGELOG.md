@@ -1,19 +1,18 @@
-# v1.8.2 (Thu Dec 02 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): typescript config for cypress [#35](https://github.com/tablecheck/tablecheck-react-system/pull/35) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.8.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.1...@tablecheck/scripts@1.8.2) (2021-12-02)
+
+
+### Bug Fixes
+
+* **scripts:** typescript config for cypress ([82f450d](https://github.com/tablecheck/tablecheck-react-system/commit/82f450dc62610783030fd8dc2d9e911c3a3972c8))
+
+
+
+
 
 ## [1.8.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.0...@tablecheck/scripts@1.8.1) (2021-11-25)
 
