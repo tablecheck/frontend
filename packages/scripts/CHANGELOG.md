@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.1...@tablecheck/scripts@1.8.2) (2021-12-02)
+
+
+### Bug Fixes
+
+* **scripts:** typescript config for cypress ([82f450d](https://github.com/tablecheck/tablecheck-react-system/commit/82f450dc62610783030fd8dc2d9e911c3a3972c8))
+
+
+
+
+
+## [1.8.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.0...@tablecheck/scripts@1.8.1) (2021-11-25)
+
+
+### Bug Fixes
+
+* **scripts:** revert bad variable rename ([0be728b](https://github.com/tablecheck/tablecheck-react-system/commit/0be728bf7c425357bda9a50238910f20d1e87b79))
+
+
+
+
+
+# [1.8.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.7.1...@tablecheck/scripts@1.8.0) (2021-11-25)
+
+
+### Features
+
+* **scripts:** support absolute path for cypress folder ([40311b7](https://github.com/tablecheck/tablecheck-react-system/commit/40311b73f18e4c0ac33236bd19bfe9e1eeeac677))
+
+
+
+
+
 ## [1.7.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.7.0...@tablecheck/scripts@1.7.1) (2021-10-11)
 
 **Note:** Version bump only for package @tablecheck/scripts

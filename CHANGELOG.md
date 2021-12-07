@@ -1,3 +1,55 @@
+# (Thu Dec 02 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.8.2`
+  - fix(scripts): typescript config for cypress [#35](https://github.com/tablecheck/tablecheck-react-system/pull/35) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Thu Nov 25 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.8.1`
+  - fix(scripts): revert bad variable rename [#34](https://github.com/tablecheck/tablecheck-react-system/pull/34) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Thu Nov 25 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.8.0`
+  - feat(scripts): support absolute path for cypress folder [#33](https://github.com/tablecheck/tablecheck-react-system/pull/33) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Mon Nov 15 2021)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/semantic-release-config@2.0.0`
+  - feat(semantic-release-config): change gitlab to github [#31](https://github.com/tablecheck/tablecheck-react-system/pull/31) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Oct 11 2021)
 
 #### 🐛 Bug Fix

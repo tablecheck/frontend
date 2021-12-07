@@ -82,7 +82,7 @@ module.exports = {
         }
       }
     ],
-    '@semantic-release/gitlab',
+    '@semantic-release/github',
     [
       'semantic-release-slack-bot',
       // make sure that SLACK_WEBHOOK env var is set in CI config
