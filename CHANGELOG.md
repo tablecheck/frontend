@@ -1,3 +1,17 @@
+# (Tue Dec 07 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/commitlint-config@1.0.3`
+  - feat: bump commitlint to 15 [#32](https://github.com/tablecheck/tablecheck-react-system/pull/32) ([@SimeonC](https://github.com/SimeonC))
+  - fix(commitlint-config): support commitlint 14 [#32](https://github.com/tablecheck/tablecheck-react-system/pull/32) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Dec 02 2021)
 
 #### 🐛 Bug Fix
