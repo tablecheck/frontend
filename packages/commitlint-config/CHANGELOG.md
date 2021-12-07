@@ -1,20 +1,23 @@
-# v1.0.3 (Tue Dec 07 2021)
-
-#### 🐛 Bug Fix
-
-- feat: bump commitlint to 15 [#32](https://github.com/tablecheck/tablecheck-react-system/pull/32) ([@SimeonC](https://github.com/SimeonC))
-- fix(commitlint-config): support commitlint 14 [#32](https://github.com/tablecheck/tablecheck-react-system/pull/32) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.0.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/commitlint-config@1.0.2...@tablecheck/commitlint-config@1.0.3) (2021-12-07)
+
+
+### Bug Fixes
+
+* **commitlint-config:** support commitlint 14 ([97677fd](https://github.com/tablecheck/tablecheck-react-system/commit/97677fd8d49dab755b65a6bdc6f378a898378246))
+
+
+### Features
+
+* bump commitlint to 15 ([90c0701](https://github.com/tablecheck/tablecheck-react-system/commit/90c0701ceadf8aed7d1a9e8209910c2a420938cf))
+
+
+
+
 
 ## [1.0.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/commitlint-config@1.0.1...@tablecheck/commitlint-config@1.0.2) (2021-08-06)
 
