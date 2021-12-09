@@ -1,7 +1,3 @@
-module.exports = {
-  extends: ['@tablecheck/eslint-config']
-};
-
 // this project is NOT typescript compatible - make sure this matches the eslint-config setup
 // basically nothing this requires actually has types or they make no sense
 // this is the only project that should not be in typescript.

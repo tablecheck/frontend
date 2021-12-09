@@ -23,6 +23,7 @@ const { lintAllPackages, format: formatPackages } = require('./utils/package');
 const icons = require('./utils/unicodeEmoji');
 const validateEslintrc = require('./utils/validateEslintrc');
 const verifyPackageTree = require('./utils/verifyPackageTree');
+const { runEslint } = require('./utils/runEslint');
 
 // Do the preflight check
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
@@ -153,15 +154,6 @@ const argv = getArgv({
   console.log(
     chalk.blue(`Checking${argv.fix ? ' and fixing' : ''} eslint rules...\n`)
   );
-  const eslintArgs = [
-    '--no-eslintrc',
-    '--no-error-on-unmatched-pattern',
-    '--format',
-    require.resolve('../config/eslintFormatter.js'),
-    '--config',
-    `./${eslintRcFile}`,
-    argv.fix ? '--fix' : ''
-  ].filter((arg) => !!arg);
   const eslintPaths = globPaths
     .map((globPath) => `${globPath}.{js,jsx,ts,tsx}`)
     .filter(
@@ -169,11 +161,7 @@ const argv = getArgv({
         glob.sync(globPath, { cwd: paths.cwd, silent: true }).length > 0
     )
     .map((globPath) => path.relative(paths.cwd, globPath));
-  const spawnedEslint = execa(
-    'eslint',
-    [].concat(eslintArgs, eslintPaths),
-    execaOptions
-  );
+  const spawnedEslint = runEslint(eslintRcFile, eslintPaths, argv.fix);
 
   const spawnedPrettier = spawnedEslint
     .catch(() => {})

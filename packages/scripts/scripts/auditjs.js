@@ -3,23 +3,31 @@ const path = require('path');
 
 const CVSS = require('@turingpointde/cvss.js');
 const { findMetric } = require('@turingpointde/cvss.js/lib/util');
+const execa = require('execa');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const inquirer = require('inquirer');
 const treeify = require('treeify');
-const { execa, execaOptions } = require('./utils/execa');
+const { execaOptions } = require('./utils/execa');
 const { getArgv } = require('./utils/argv');
+const paths = require('../config/paths');
 
 const auditjsConfig = path.resolve(process.cwd(), 'auditjs.json');
 
 const argv = getArgv({
-  boolean: ['ci'],
+  boolean: ['ci', 'junit'],
   default: {
-    ci: false
+    ci: false,
+    junit: false
   }
 });
 
-const auditjsArgs = ['ossi', '--dev', '--quiet', '--cache=cache/audit'];
+const auditjsArgs = [
+  'ossi',
+  argv.junit ? '--xml' : '--dev',
+  '--quiet',
+  '--cache=cache/audit'
+];
 if (process.env.OSSI_USERNAME && process.env.OSSI_TOKEN) {
   auditjsArgs.push(`-u=${process.env.OSSI_USERNAME}`);
   auditjsArgs.push(`-p=${process.env.OSSI_TOKEN}`);
@@ -215,9 +223,24 @@ async function updateWhitelist() {
 }
 
 (async () => {
-  if (argv.ci) {
+  if (argv.ci || argv.junit) {
     console.log(chalk.blue.bold('Scanning dependencies...'));
-    await execa('auditjs', auditjsArgs, execaOptions);
+    const ciResult = await execa(
+      'auditjs',
+      auditjsArgs,
+      argv.junit
+        ? {
+            cwd: paths.cwd,
+            preferLocal: true,
+            reject: false
+          }
+        : execaOptions
+    );
+    if (argv.junit) {
+      const junitFilePath = path.join(paths.cwd, 'junit', 'auditjs.xml');
+      fs.outputFileSync(junitFilePath, ciResult.stdout);
+      console.log(chalk.blue.bold(`Report written to ${junitFilePath}`));
+    }
     return;
   }
   console.log(
