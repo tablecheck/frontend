@@ -1,3 +1,16 @@
+# (Fri Dec 10 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.9.0`
+  - feat(scripts): add junit output to eslint and auditjs [#36](https://github.com/tablecheck/tablecheck-react-system/pull/36) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Dec 07 2021)
 
 #### 🐛 Bug Fix
