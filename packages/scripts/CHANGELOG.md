@@ -1,19 +1,18 @@
-# v1.9.0 (Fri Dec 10 2021)
-
-#### 🚀 Enhancement
-
-- feat(scripts): add junit output to eslint and auditjs [#36](https://github.com/tablecheck/tablecheck-react-system/pull/36) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.9.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.2...@tablecheck/scripts@1.9.0) (2021-12-10)
+
+
+### Features
+
+* **scripts:** add junit output to eslint and auditjs ([a96ac80](https://github.com/tablecheck/tablecheck-react-system/commit/a96ac80645fa343054c6862e12044a8e8c1cffe7))
+
+
+
+
 
 ## [1.8.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.1...@tablecheck/scripts@1.8.2) (2021-12-02)
 
