@@ -1,3 +1,16 @@
+# (Tue Dec 14 2021)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/semantic-release-config@2.1.0`
+  - feat(semantic-release-config): add CI utility output file [#37](https://github.com/tablecheck/tablecheck-react-system/pull/37) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Dec 10 2021)
 
 #### 🚀 Enhancement
