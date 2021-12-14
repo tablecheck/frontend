@@ -91,6 +91,14 @@ module.exports = {
         notifyOnFail: false,
         markdownReleaseNotes: true
       }
+    ],
+    [
+      '@semantic-release/exec',
+      {
+        successCmd:
+          // eslint-disable-next-line no-template-curly-in-string
+          'echo "${nextRelease.name}" > version.txt'
+      }
     ]
   ]
 };
