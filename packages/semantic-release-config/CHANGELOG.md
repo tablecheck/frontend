@@ -1,19 +1,18 @@
-# v2.1.0 (Tue Dec 14 2021)
-
-#### 🚀 Enhancement
-
-- feat(semantic-release-config): add CI utility output file [#37](https://github.com/tablecheck/tablecheck-react-system/pull/37) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.1.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.0.0...@tablecheck/semantic-release-config@2.1.0) (2021-12-14)
+
+
+### Features
+
+* **semantic-release-config:** add CI utility output file ([5b8bf5e](https://github.com/tablecheck/tablecheck-react-system/commit/5b8bf5edfa12528288ed45c7a788766a616b24b5))
+
+
+
+
 
 # [2.0.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@1.0.2...@tablecheck/semantic-release-config@2.0.0) (2021-11-15)
 
