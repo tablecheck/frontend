@@ -87,14 +87,6 @@ describe('lintPackageVersions', () => {
       ]
     ],
     [
-      'handles special dependency for tc-react-system',
-      'tc-react-system',
-      {
-        '@tablecheck/eslint-config': '*'
-      },
-      []
-    ],
-    [
       'handles lerna mono repo packages',
       '@lerna-repo/package',
       {

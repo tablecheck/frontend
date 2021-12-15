@@ -96,6 +96,8 @@ const argv = getArgv({
   }
 
   const eslintRcFile = validateEslintrc();
+  const isThisRepo =
+    fs.readJsonSync(paths.appPackageJson).name === 'tablecheck-react-system';
 
   console.log(
     chalk.blue(`\nChecking${argv.fix ? ' and fixing' : ''} files matching:`)
@@ -107,7 +109,7 @@ const argv = getArgv({
   if (argv.fix) {
     await formatPackages();
     console.log('');
-  } else if (!(await lintAllPackages())) {
+  } else if (!isThisRepo && !(await lintAllPackages())) {
     process.exit(1);
     return;
   }
@@ -163,7 +165,7 @@ const argv = getArgv({
     .map((globPath) => path.relative(paths.cwd, globPath));
   const spawnedEslint = runEslint(eslintRcFile, eslintPaths, argv.fix);
 
-  const spawnedPrettier = spawnedEslint
+  const spawnedPrettier = (argv.fix ? spawnedEslint : Promise.resolve())
     .catch(() => {})
     .then(() => {
       const prettierArgs = ['--ignore-unknown'];
