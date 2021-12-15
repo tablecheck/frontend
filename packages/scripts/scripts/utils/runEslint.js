@@ -5,6 +5,7 @@ const { ESLint } = require('eslint');
 const paths = require('../../config/paths');
 
 async function runEslint(eslintRcFile, eslintPaths, shouldAutoFix) {
+  let results = [];
   try {
     const overrideConfigFile =
       require(paths.appPackageJson).name === 'tablecheck-react-system'
@@ -17,7 +18,7 @@ async function runEslint(eslintRcFile, eslintPaths, shouldAutoFix) {
       useEslintrc: false,
       errorOnUnmatchedPattern: false
     });
-    const results = await eslint.lintFiles(eslintPaths);
+    results = await eslint.lintFiles(eslintPaths);
     const cliFormatter = await eslint.loadFormatter(
       require.resolve('../../config/eslintStylishFormatter.js')
     );
@@ -32,6 +33,13 @@ async function runEslint(eslintRcFile, eslintPaths, shouldAutoFix) {
     );
   } catch (e) {
     console.error('eslint error', e);
+    throw e;
+  }
+  for (let i = 0; i < results.length; i += 1) {
+    const result = results[i];
+    if (result.errorCount || result.fatalErrorCount) {
+      throw new Error('Eslint detected errors');
+    }
   }
 }
 

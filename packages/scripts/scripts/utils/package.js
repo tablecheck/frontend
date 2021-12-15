@@ -88,8 +88,6 @@ const prettyFormatOptions = {
 };
 
 async function evaluatePackage({ dependencies, devDependencies, name }) {
-  // special exception for this repository
-  if (name.match(/(^|@)tc-react-system/gi)) return [];
   // package.json version keys check
   const invalidVersionValues = [];
   const lernaPaths = await getLernaPaths();
