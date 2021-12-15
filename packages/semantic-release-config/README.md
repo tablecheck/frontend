@@ -3,8 +3,9 @@
 A [semantic-release](https://semantic-release.gitbook.io/semantic-release/) config, used with our commitlint settings and does the following steps.
 
 1. Increments the version according to conventional-commits.
-2. Publishes a "GitHub Release" with correctly linked JIRA tickets
+2. Publishes a "GitHub Release" with correctly linked JIRA tickets.
 3. Publishes a message to a slack webhook.
+4. Outputs the new version to `version.txt` for ease of use in other reports.
 
 ## Required CI Variables
 
