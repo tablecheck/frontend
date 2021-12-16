@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:tablecheck/tablecheck-react-system.git"
   },
-  "version": "2.1.1",
+  "version": "2.2.0",
   "main": "index.js",
   "files": [
     "index.js"
