@@ -16,10 +16,10 @@
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^6.0.2",
     "@semantic-release/release-notes-generator": "^9.0.3",
-    "semantic-release-slack-bot": "^2.1.1"
+    "semantic-release-slack-bot": "^3.1.0"
   },
   "peerDependencies": {
-    "semantic-release": "^17"
+    "semantic-release": "^18"
   },
   "publishConfig": {
     "access": "public"
