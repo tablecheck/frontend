@@ -1,3 +1,15 @@
+# v2.1.1 (Thu Dec 16 2021)
+
+#### 📝 Documentation
+
+- docs: update semantic-release-config readme [#39](https://github.com/tablecheck/tablecheck-react-system/pull/39) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

@@ -1,3 +1,21 @@
+# (Thu Dec 16 2021)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.9.1`
+  - fix(scripts): correctly fail runLint when errors are present [#38](https://github.com/tablecheck/tablecheck-react-system/pull/38) ([@SimeonC](https://github.com/SimeonC))
+
+#### 📝 Documentation
+
+- `@tablecheck/semantic-release-config@2.1.1`
+  - docs: update semantic-release-config readme [#39](https://github.com/tablecheck/tablecheck-react-system/pull/39) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Dec 14 2021)
 
 #### 🚀 Enhancement

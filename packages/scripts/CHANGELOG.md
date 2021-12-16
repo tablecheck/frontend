@@ -1,3 +1,15 @@
+# v1.9.1 (Thu Dec 16 2021)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): correctly fail runLint when errors are present [#38](https://github.com/tablecheck/tablecheck-react-system/pull/38) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
