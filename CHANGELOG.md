@@ -1,5 +1,18 @@
 # (Thu Dec 16 2021)
 
+#### 🚀 Enhancement
+
+- `@tablecheck/semantic-release-config@2.2.0`
+  - fix(semantic-release-config): update internal versions [#40](https://github.com/tablecheck/tablecheck-react-system/pull/40) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Thu Dec 16 2021)
+
 #### 🐛 Bug Fix
 
 - `@tablecheck/scripts@1.9.1`
