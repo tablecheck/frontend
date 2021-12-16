@@ -1,19 +1,15 @@
-# v2.1.1 (Thu Dec 16 2021)
-
-#### 📝 Documentation
-
-- docs: update semantic-release-config readme [#39](https://github.com/tablecheck/tablecheck-react-system/pull/39) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.1.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.1.0...@tablecheck/semantic-release-config@2.1.1) (2021-12-16)
+
+**Note:** Version bump only for package @tablecheck/semantic-release-config
+
+
+
+
 
 # [2.1.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.0.0...@tablecheck/semantic-release-config@2.1.0) (2021-12-14)
 

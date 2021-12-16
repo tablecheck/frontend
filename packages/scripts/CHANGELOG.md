@@ -1,19 +1,18 @@
-# v1.9.1 (Thu Dec 16 2021)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): correctly fail runLint when errors are present [#38](https://github.com/tablecheck/tablecheck-react-system/pull/38) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.9.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.9.0...@tablecheck/scripts@1.9.1) (2021-12-16)
+
+
+### Bug Fixes
+
+* **scripts:** correctly fail runLint when errors are present ([7e92015](https://github.com/tablecheck/tablecheck-react-system/commit/7e92015e8cc8acdbb8746846431db113811cf1e3))
+
+
+
+
 
 # [1.9.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.8.2...@tablecheck/scripts@1.9.0) (2021-12-10)
 
