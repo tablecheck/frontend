@@ -15,8 +15,8 @@ const path = require('path');
 const systemSettings = require('@tablecheck/scripts-utils/userConfig');
 const chalk = require('chalk');
 const fs = require('fs-extra');
+const { spawn, Pool, Worker } = require('threads');
 
-const { buildPackage } = require('./rollup/buildPackage');
 const {
   configureLibTypescript,
   configureAppTypescript
@@ -24,47 +24,109 @@ const {
 const { processAllPackages } = require('./utils/package');
 const icons = require('./utils/unicodeEmoji');
 const verifyPackageTree = require('./utils/verifyPackageTree');
-const { logTaskEnd, logTaskStart } = require('./utils/taskLogFormatter');
+const { execa } = require('./utils/execa');
+const { spinners } = require('./utils/taskLogFormatter');
 
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
 }
 
 (async () => {
-  logTaskStart('Configuring typescript for build');
-  const runnerConfigPath = await configureLibTypescript(true, true);
-  logTaskEnd(true);
+  spinners.add('config', {
+    text: 'Configuring typescript and worker for build'
+  });
+  const [runnerConfigPath, pool] = await Promise.all([
+    configureLibTypescript(true, true),
+    Pool(() => spawn(new Worker('./rollup/buildPackage')))
+  ]);
+  spinners.succeed('config');
 
+  let finalAwait;
   let success = true;
   try {
     const { references } = fs.readJsonSync(runnerConfigPath);
     if (references) {
-      logTaskStart('Running Rollup');
-      for (let i = 0; i < references.length; i += 1) {
-        // needs to be async or subsequent projects don't build
-        // eslint-disable-next-line no-await-in-loop
-        await buildPackage(references[i].path, runnerConfigPath);
-      }
-      logTaskEnd(true);
+      spinners.add('lerna', { text: 'Building lerna dependency graph' });
+      const lernaGraphExec = await execa('lerna', [
+        'list',
+        '--graph',
+        '--toposort',
+        '--all'
+      ]);
+      const lernaGraph = JSON.parse(lernaGraphExec.stdout);
+      const referencesWithPackageName = references.map((ref) => ({
+        path: ref.path,
+        packageName: fs.readJsonSync(
+          path.join(path.dirname(ref.path), 'package.json')
+        ).name
+      }));
+      const packageNames = referencesWithPackageName.map(
+        ({ packageName }) => packageName
+      );
+      packageNames.forEach((packageName) => {
+        lernaGraph[packageName] = lernaGraph[packageName].filter((name) =>
+          packageNames.includes(name)
+        );
+      });
+      spinners.succeed('lerna');
+      const builtPackageNames = [];
+      const buildingPackages = [];
+      const recursiveBuild = async () => {
+        const buildablePackages = packageNames.filter((packageName) => {
+          if ([...builtPackageNames, ...buildingPackages].includes(packageName))
+            return false;
+          const remainingDeps = lernaGraph[packageName].filter(
+            (depName) => !builtPackageNames.includes(depName)
+          );
+          return remainingDeps.length === 0;
+        });
+        await Promise.all(
+          buildablePackages.map(async (packageName) => {
+            buildingPackages.push(packageName);
+            const packageReference = referencesWithPackageName.find(
+              (ref) => ref.packageName === packageName
+            );
+            spinners.add(packageName, { text: `Building ${packageName}` });
+            await pool.queue((buildPackage) =>
+              buildPackage(packageReference.path, runnerConfigPath)
+            );
+            spinners.succeed(packageName);
+            builtPackageNames.push(packageName);
+            await recursiveBuild(packageName);
+          })
+        );
+      };
+      spinners.add('build', { text: 'Building packages...' });
+      await recursiveBuild();
+      spinners.succeed('build', { text: 'Packages build complete!' });
     } else {
-      await buildPackage(runnerConfigPath, runnerConfigPath);
+      spinners.add('library', { text: `Building library` });
+      await pool.queue((buildPackage) =>
+        buildPackage(runnerConfigPath, runnerConfigPath)
+      );
+      spinners.succeed('library', { text: `Building library` });
     }
   } catch (e) {
-    logTaskEnd(false);
-    // error is already output inside buildPackage function
+    console.error(e);
     success = false;
+  } finally {
+    finalAwait = pool.terminate();
   }
 
-  logTaskStart('Re-configuring typescript for development');
+  spinners.add('cleanup', {
+    text: 'Re-configuring typescript for development'
+  });
   if (systemSettings.isAppWithExports) {
     configureAppTypescript(false);
   } else {
     await configureLibTypescript(false, false, true);
   }
-  logTaskEnd(true);
+  spinners.succeed('cleanup');
 
   if (success) {
-    logTaskStart('Checking package.json configuration');
+    spinners.add('check-package', {
+      text: 'Checking package.json configuration'
+    });
     await processAllPackages((packageContent, packagePath) => {
       let { main, module, types } = packageContent;
       const folderPath = path.dirname(packagePath);
@@ -84,7 +146,7 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
         types
       };
     });
-    logTaskEnd(true);
+    spinners.succeed('check-package');
     console.log(
       chalk.cyan(
         `
@@ -99,5 +161,6 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
       chalk.red(`${icons.error} Build Errored, please see above messages.`)
     );
   }
+  await finalAwait;
   process.exit(success ? 0 : 1);
 })();

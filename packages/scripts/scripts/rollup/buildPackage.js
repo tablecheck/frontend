@@ -10,11 +10,11 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const externals = require('rollup-plugin-node-externals');
+const { expose } = require('threads/worker');
 
 const paths = require('../../config/paths');
 const { getArgv } = require('../utils/argv');
 const { isLibTypeDefinitions } = require('../utils/configureTypescript');
-const { logTaskEnd, logTaskStart } = require('../utils/taskLogFormatter');
 
 const { jsxPlugin } = require('./jsxPlugin');
 
@@ -76,13 +76,6 @@ async function buildPackage(libConfigPath, rootConfigPath) {
   const packagePath = path.join(packageDirectory, 'package.json');
 
   if (isLibTypeDefinitions(packageDirectory)) return;
-  logTaskStart(
-    `Build ${
-      require(packagePath).name ||
-      path.relative(paths.cwd, packageDirectory).trim() ||
-      'library'
-    }`
-  );
 
   const packageTsconfig = fs.readJsonSync(libConfigPath);
   if (
@@ -256,11 +249,11 @@ async function buildPackage(libConfigPath, rootConfigPath) {
           `Build ${path.relative(paths.cwd, packageDirectory)}: clean Success`
         )
       );
+      if (rollupWarnings) {
+        console.log('Warnings: ', rollupWarnings);
+      }
     }
-
-    logTaskEnd(argv.verbose ? rollupWarnings : true);
   } catch (e) {
-    logTaskEnd(false);
     if (e.frame && e.loc) {
       console.error(
         `\nRollup error: ./${path.relative(paths.cwd, e.loc.file)}@${
@@ -280,6 +273,4 @@ async function buildPackage(libConfigPath, rootConfigPath) {
   }
 }
 
-module.exports = {
-  buildPackage
-};
+expose(buildPackage);
