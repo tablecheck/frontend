@@ -126,13 +126,13 @@ const storybookScripts = {
   'start:storybook': 'start-storybook -p 6006'
 };
 const storybookDevDependencies = [
-  '@storybook/addon-a11y@^6.3.1',
-  '@storybook/addon-actions@^6.3.1',
-  '@storybook/addon-essentials@^6.3.1',
-  '@storybook/addon-links@^6.3.1',
-  '@storybook/addons@^6.3.1',
-  '@storybook/react@^6.3.1',
-  'storybook@^6.3.1'
+  '@storybook/addon-a11y@^6.4.10',
+  '@storybook/addon-actions@^6.4.10',
+  '@storybook/addon-essentials@^6.4.10',
+  '@storybook/addon-links@^6.4.10',
+  '@storybook/addons@^6.4.10',
+  '@storybook/react@^6.4.10',
+  'storybook@^6.4.10'
 ];
 
 function copyCypressAppFiles(templatesDirectory) {
