@@ -1,19 +1,18 @@
-# v2.3.0 (Wed Jan 12 2022)
-
-#### 🚀 Enhancement
-
-- fix(semantic-release-config): switch master to main branch [#44](https://github.com/tablecheck/tablecheck-react-system/pull/44) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.3.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.2.0...@tablecheck/semantic-release-config@2.3.0) (2022-01-12)
+
+
+### Bug Fixes
+
+* **semantic-release-config:** switch master to main branch ([e4fa5be](https://github.com/tablecheck/tablecheck-react-system/commit/e4fa5be6eedb61767468f6c9cd33337d1a1b70f2))
+
+
+
+
 
 # [2.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.1.1...@tablecheck/semantic-release-config@2.2.0) (2021-12-16)
 
