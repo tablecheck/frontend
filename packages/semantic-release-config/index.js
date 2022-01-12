@@ -1,4 +1,12 @@
 module.exports = {
+  branches: [
+    '+([0-9])?(.{+([0-9]),x}).x',
+    'main', // modified to follow the github new standard of "main" rather than "master"
+    'next',
+    'next-major',
+    { name: 'beta', prerelease: true },
+    { name: 'alpha', prerelease: true }
+  ],
   plugins: [
     [
       '@semantic-release/commit-analyzer',
