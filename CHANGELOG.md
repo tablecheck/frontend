@@ -1,3 +1,16 @@
+# (Wed Jan 12 2022)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/semantic-release-config@2.3.0`
+  - fix(semantic-release-config): switch master to main branch [#44](https://github.com/tablecheck/tablecheck-react-system/pull/44) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Dec 16 2021)
 
 #### 🚀 Enhancement
