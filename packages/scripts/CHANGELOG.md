@@ -1,23 +1,15 @@
-# v1.10.0 (Fri Jan 14 2022)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, Daniel Lizik ([@daniellizik](https://github.com/daniellizik)), for all your work!
-
-#### 🔩 Dependency Updates
-
-- security: update dependencies [#42](https://github.com/tablecheck/tablecheck-react-system/pull/42) ([@daniellizik](https://github.com/daniellizik))
-
-#### Authors: 1
-
-- Daniel Lizik ([@daniellizik](https://github.com/daniellizik))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.10.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.9.1...@tablecheck/scripts@1.10.0) (2022-01-14)
+
+**Note:** Version bump only for package @tablecheck/scripts
+
+
+
+
 
 ## [1.9.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.9.0...@tablecheck/scripts@1.9.1) (2021-12-16)
 
