@@ -1,3 +1,15 @@
+# v1.6.0 (Fri Jan 14 2022)
+
+#### 🚀 Enhancement
+
+- feat(eslint-config): remove consistent-return for typescript [#45](https://github.com/tablecheck/tablecheck-react-system/pull/45) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

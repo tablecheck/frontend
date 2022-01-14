@@ -1,3 +1,26 @@
+# (Fri Jan 14 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Daniel Lizik ([@daniellizik](https://github.com/daniellizik)), for all your work!
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@1.6.0`
+  - feat(eslint-config): remove consistent-return for typescript [#45](https://github.com/tablecheck/tablecheck-react-system/pull/45) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🔩 Dependency Updates
+
+- `@tablecheck/scripts@1.10.0`
+  - security: update dependencies [#42](https://github.com/tablecheck/tablecheck-react-system/pull/42) ([@daniellizik](https://github.com/daniellizik))
+
+#### Authors: 2
+
+- Daniel Lizik ([@daniellizik](https://github.com/daniellizik))
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Jan 12 2022)
 
 #### 🚀 Enhancement
