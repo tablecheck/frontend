@@ -12,9 +12,11 @@ module.exports = merge(require('./typescript'), baseTests, {
   ],
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/naming-convention': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off'
+    '@typescript-eslint/ban-ts-comment': 'off',
+    // here we use the more lenient consistent-return to help prevent weird errors
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'consistent-return': 'error'
   },
   env: {
     jest: true,

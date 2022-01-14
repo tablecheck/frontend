@@ -5,6 +5,5 @@ module.exports = buildBaseTypescript(['**/*.ts', '**/*.tsx'], {
   ...require('../rules/react'),
   ...require('../rules/promise'),
   ...require('../rules/emotion'),
-  ...require('../rules/typescript'),
   ...require('../rules/namingConvention')
 });
