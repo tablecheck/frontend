@@ -20,9 +20,18 @@ Setup the configuration file of semantic-release as follows. For more details on
 
 To run a release, simply run `npx semantic-release` (`semantic-release` is a required peer-dependency)
 
-```
+```js
 // release.config.js
 module.exports = {
   extends: '@tablecheck/semantic-release-config'
+};
+```
+
+If your release also needs to publish an npm package, use the following config. Refer to the [@semantic-release/npm](https://github.com/semantic-release/npm) docs for required environment variables and setup.
+
+```js
+// release.config.js
+module.exports = {
+  extends: '@tablecheck/semantic-release-config/with-npm-publish'
 };
 ```
