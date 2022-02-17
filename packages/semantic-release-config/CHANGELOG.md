@@ -1,19 +1,18 @@
-# v2.4.0 (Thu Feb 17 2022)
-
-#### 🚀 Enhancement
-
-- feat: add semantic-release config including npm publish [#46](https://github.com/tablecheck/tablecheck-react-system/pull/46) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.4.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.3.0...@tablecheck/semantic-release-config@2.4.0) (2022-02-17)
+
+
+### Features
+
+* add semantic-release config including npm publish ([de888fd](https://github.com/tablecheck/tablecheck-react-system/commit/de888fd9523bf187d16b7f5aa1776181ec6808c2))
+
+
+
+
 
 # [2.3.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.2.0...@tablecheck/semantic-release-config@2.3.0) (2022-01-12)
 
