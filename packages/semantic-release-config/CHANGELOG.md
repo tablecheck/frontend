@@ -1,3 +1,15 @@
+# v2.4.0 (Thu Feb 17 2022)
+
+#### 🚀 Enhancement
+
+- feat: add semantic-release config including npm publish [#46](https://github.com/tablecheck/tablecheck-react-system/pull/46) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
