@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "lint-staged": {
+      "versions": ">=12",
+      "reason": "ESM only"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "ignore": {
+    "execa": {
+      "versions": ">=6",
+      "reason": "ESM only releases"
+    }
+  }
+}

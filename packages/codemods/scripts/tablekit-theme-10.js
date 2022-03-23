@@ -101,7 +101,7 @@ module.exports = function tablekitTheme10Transform(file, api) {
       color = path.parent.value.original.arguments[0].value;
     } else if (path.parent.value.type === 'ObjectProperty') {
       color = path.parent.value.original.value.arguments[0].value;
-      // eslint-disable-next-line no-param-reassign
+
       path.parent.value.value = j.template
         .expression`({ theme }) => theme.colors.${color}`;
       return;

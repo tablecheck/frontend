@@ -18,7 +18,7 @@ function verifyPackageTree() {
     'webpack',
     'webpack-dev-server'
   ];
-  // eslint-disable-next-line global-require
+
   const ownPackageJson = require('../../package.json');
   const expectedVersionsByDep = {};
   // Gather wanted deps

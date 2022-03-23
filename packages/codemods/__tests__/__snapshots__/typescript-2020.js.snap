@@ -298,7 +298,7 @@ function a(arg1: Node) {}
 
 type t2 = OtherNode;
 type Comp1 = FC;
-const Comp2: FC;
+let Comp2: FC;
 
 const t3 = React;
 const t4 = React;

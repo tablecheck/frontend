@@ -15,34 +15,35 @@
     "utils"
   ],
   "dependencies": {
-    "@emotion/eslint-plugin": "^11.2.0",
+    "@emotion/eslint-plugin": "^11.7.0",
     "@tablecheck/babel-preset": "file:../babel-preset",
     "@tablecheck/eslint-plugin": "file:../eslint-plugin",
-    "@typescript-eslint/eslint-plugin": "^4.29.0",
-    "@typescript-eslint/parser": "^4.29.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-config-prettier": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.4",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-formatter-pretty": "^4.1.0",
     "eslint-import-resolver-babel-module": "^5.3.1",
-    "eslint-import-resolver-typescript": "^2.4.0",
-    "eslint-plugin-cypress": "^2.11.3",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "fs-extra": "^10.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "fs-extra": "^10.0.1",
     "queue-microtask": "^1.2.3"
   },
   "peerDependencies": {
-    "eslint": ">=7.12.0 <8",
-    "react": ">=16.4 <18",
+    "eslint": "^8",
+    "react": "^17",
     "typescript": "4.x"
   },
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^8"
   },
   "engines": {
     "node": ">= 10.18.0"

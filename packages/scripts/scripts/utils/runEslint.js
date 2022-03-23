@@ -16,9 +16,13 @@ async function runEslint(eslintRcFile, eslintPaths, shouldAutoFix) {
       fix: shouldAutoFix,
       overrideConfigFile,
       useEslintrc: false,
-      errorOnUnmatchedPattern: false
+      errorOnUnmatchedPattern: false,
+      reportUnusedDisableDirectives: 'error'
     });
     results = await eslint.lintFiles(eslintPaths);
+    if (shouldAutoFix) {
+      await ESLint.outputFixes(results);
+    }
     const cliFormatter = await eslint.loadFormatter(
       require.resolve('../../config/eslintStylishFormatter.js')
     );

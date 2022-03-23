@@ -10,7 +10,6 @@ const path = require('path');
 function xmlEscape(s) {
   // eslint-disable-next-line no-control-regex
   return `${s}`.replace(/[<>&"'\x00-\x1F\x7F\u0080-\uFFFF]/gu, (c) => {
-    // eslint-disable-line no-control-regex -- Converting controls to entities
     switch (c) {
       case '<':
         return '&lt;';

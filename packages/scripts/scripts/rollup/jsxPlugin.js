@@ -6,7 +6,6 @@ module.exports = {
     options(inputOptions) {
       const acornPlugins =
         inputOptions.acornInjectPlugins ||
-        // eslint-disable-next-line no-param-reassign
         (inputOptions.acornInjectPlugins = []);
       acornPlugins.push(jsx());
     },

@@ -26,6 +26,17 @@ module.exports = {
   // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
   'import/prefer-default-export': 'off',
   'import/no-default-export': 'error',
+  'import/no-import-module-exports': [
+    'error',
+    {
+      exceptions: [
+        '**/*/client.standalone.tsx',
+        '**/*/client.standalone.ts',
+        '**/*/client.standalone.js',
+        '**/*/client.standalone.jsx'
+      ]
+    }
+  ],
 
   'no-restricted-syntax': [
     'error',

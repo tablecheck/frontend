@@ -22,23 +22,10 @@ if (
   project = ['./tsconfig.json'];
 }
 
-const srcPath = path.resolve(path.join(process.cwd(), 'src'));
-let internalRegex;
-if (fs.existsSync(srcPath)) {
-  const internalRoots = fs.readdirSync(srcPath);
-  internalRegex = `^(${internalRoots
-    .map((name) =>
-      name.lastIndexOf('.') === -1
-        ? `${name}(\\/|$)`
-        : `${name.substring(0, name.lastIndexOf('.'))}(\\.|$)`
-    )
-    .filter((name) => !!name)
-    .join('|')})`;
-}
-
 const config = {
   root: true,
   extends: [
+    'airbnb',
     'plugin:eslint-comments/recommended',
     'plugin:jest/recommended',
     'prettier',
@@ -77,8 +64,7 @@ const config = {
     },
     react: {
       version: '17'
-    },
-    'import/internal-regex': internalRegex
+    }
   },
 
   overrides: [

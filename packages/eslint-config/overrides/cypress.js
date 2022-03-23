@@ -31,6 +31,7 @@ module.exports = merge(require('./typescript'), {
     ...testOverrides,
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
+    'import/no-import-module-exports': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-namespace': 'off',
     '@typescript-eslint/naming-convention': [].concat(

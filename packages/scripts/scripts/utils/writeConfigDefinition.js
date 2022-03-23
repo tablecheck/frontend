@@ -149,7 +149,6 @@ function writeConfigDefinition() {
       .find(j.TSInterfaceDeclaration, { id: { name: 'Config' } })
       .at(0)
       .forEach((nodePath) => {
-        // eslint-disable-next-line no-param-reassign
         nodePath.node.body.body = buildTypes(j, configJson);
       });
 
