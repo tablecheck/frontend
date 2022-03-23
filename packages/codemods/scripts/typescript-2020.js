@@ -31,7 +31,6 @@ module.exports = function typescript2020(file, api) {
           ) {
             hasFragmentsWithArgs = true;
           } else {
-            // eslint-disable-next-line no-param-reassign
             varPath.node.name = '';
           }
         });

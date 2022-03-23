@@ -134,7 +134,6 @@ async function lintPackage(appPackage, packagePath) {
   if (invalidVersionValues.length) {
     console.error(chalk.red(`${icons.error} Invalid Package: ${displayPath}`));
     console.log(
-      // eslint-disable-next-line max-len
       'Dependencies in package.json must be absolute. The only exception are sibling lerna monorepo packages, which may use `^`.'
     );
     console.log(

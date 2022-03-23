@@ -173,7 +173,7 @@ async function updateWhitelist() {
             if (displayName === dependencyVersion) {
               displayName = chalk.bgWhiteBright.cyan(` ${displayName} `);
             }
-            // eslint-disable-next-line no-param-reassign
+
             tree[displayName] = buildDependencies(childDeps);
             return tree;
           }, {});

@@ -14,5 +14,5 @@ const average =
     (sum, key) => sum + coverage.total[key].pct,
     0
   ) / 4.0;
-// eslint-disable-next-line no-console
+
 console.log('Coverage', average);

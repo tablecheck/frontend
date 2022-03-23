@@ -8,7 +8,7 @@
     "userConfig.js"
   ],
   "dependencies": {
-    "cosmiconfig": "^7.0.0"
+    "cosmiconfig": "^7.0.1"
   },
   "engines": {
     "node": ">= 10.18.0"

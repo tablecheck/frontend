@@ -17,9 +17,8 @@ module.exports = {
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'error',
-    'jest/prefer-to-be-null': 'error',
-    'jest/prefer-to-be-undefined': 'error',
-    'jest/valid-describe': 'error',
+    'jest/prefer-to-be': 'error',
+    'jest/valid-describe-callback': 'error',
     'jest/valid-expect': 'error',
     // technically this is in the recommended that we extend, but we need to turn it off for tc-react-system
     'jest/no-jest-import': 'error',

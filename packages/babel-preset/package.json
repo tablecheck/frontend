@@ -10,8 +10,8 @@
   "version": "1.0.2",
   "main": "./index.js",
   "dependencies": {
-    "@babel/plugin-transform-react-constant-elements": "^7.14.5",
-    "@emotion/babel-plugin": "^11.3.0"
+    "@babel/plugin-transform-react-constant-elements": "^7.17.6",
+    "@emotion/babel-plugin": "^11.7.2"
   },
   "peerDependencies": {
     "babel-preset-razzle": "^4"

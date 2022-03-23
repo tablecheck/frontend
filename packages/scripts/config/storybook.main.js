@@ -1,4 +1,5 @@
-const ConfigWebpack = require('config-webpack');
+const nodeConfig = require('config');
+const webpack = require('webpack');
 const paths = require('./paths');
 
 module.exports = {
@@ -10,7 +11,11 @@ module.exports = {
     plugins: [...options.plugins, '@emotion/babel-plugin']
   }),
   webpackFinal: async (config) => {
-    config.plugins.push(new ConfigWebpack());
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        CONFIG: JSON.stringify(nodeConfig)
+      })
+    );
 
     return {
       ...config,

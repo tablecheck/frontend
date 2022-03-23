@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies, import/no-unresolved */
 require('jest-enzyme');
 const { matchers } = require('@emotion/jest');
 const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
@@ -8,7 +7,6 @@ const { createSerializer } = require('enzyme-to-json');
 const isObject = require('lodash/isObject');
 const systemSettings = require('@tablecheck/scripts-utils/userConfig');
 const prettier = require('prettier');
-/* eslint-enable */
 
 // needed for replaceRaf below
 global.performance = require('perf_hooks').performance;

@@ -1,7 +1,8 @@
 const path = require('path');
 
 const systemSettings = require('@tablecheck/scripts-utils/userConfig');
-const ConfigWebpackPlugin = require('config-webpack');
+const config = require('config');
+const webpack = require('webpack');
 const { produce } = require('immer');
 const fs = require('fs-extra');
 
@@ -85,7 +86,11 @@ module.exports = extendConfig(
           }
         });
 
-        webpackConfigDraft.plugins.push(new ConfigWebpackPlugin());
+        webpackConfigDraft.plugins.push(
+          new webpack.DefinePlugin({
+            CONFIG: JSON.stringify(config)
+          })
+        );
         if (userPackage.dependencies && userPackage.dependencies.moment) {
           // this needs to be conditionally required as just requiring it errors if
           // moment is not a dependency of the project

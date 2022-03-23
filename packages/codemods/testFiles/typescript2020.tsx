@@ -17,7 +17,7 @@ function a(arg1: Node) {}
 
 type t2 = OtherNode;
 type Comp1 = StatelessFunctionalComponent;
-const Comp2: StatelessFunctionalComponent;
+let Comp2: StatelessFunctionalComponent;
 
 const t3 = React2;
 const t4 = React;
