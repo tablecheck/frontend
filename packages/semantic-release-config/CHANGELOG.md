@@ -1,19 +1,18 @@
-# v2.5.0 (Thu Mar 24 2022)
-
-#### 🚀 Enhancement
-
-- feat: upgrade all dependencies and add new consistent react import rule [#47](https://github.com/tablecheck/tablecheck-react-system/pull/47) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.5.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.4.0...@tablecheck/semantic-release-config@2.5.0) (2022-03-24)
+
+
+### Features
+
+* upgrade all dependencies and add new consistent react import rule ([5e6c277](https://github.com/tablecheck/tablecheck-react-system/commit/5e6c277cc49fe7bb95aa266dc06894afa2e53d58))
+
+
+
+
 
 # [2.4.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/semantic-release-config@2.3.0...@tablecheck/semantic-release-config@2.4.0) (2022-02-17)
 
