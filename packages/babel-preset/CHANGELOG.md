@@ -1,3 +1,15 @@
+# v1.1.0 (Thu Mar 24 2022)
+
+#### 🚀 Enhancement
+
+- feat: upgrade all dependencies and add new consistent react import rule [#47](https://github.com/tablecheck/tablecheck-react-system/pull/47) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

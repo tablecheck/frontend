@@ -1,3 +1,16 @@
+# (Thu Mar 24 2022)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/babel-preset@1.1.0`, `@tablecheck/codemods@1.1.0`, `@tablecheck/commitlint-config@1.1.0`, `@tablecheck/eslint-config@1.7.0`, `@tablecheck/eslint-plugin@1.2.0`, `@tablecheck/scripts@1.11.0`, `@tablecheck/semantic-release-config@2.5.0`, `@tablecheck/scripts-utils@1.1.0`
+  - feat: upgrade all dependencies and add new consistent react import rule [#47](https://github.com/tablecheck/tablecheck-react-system/pull/47) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Feb 17 2022)
 
 #### 🚀 Enhancement
