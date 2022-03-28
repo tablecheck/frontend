@@ -41,6 +41,7 @@ module.exports = {
     { ignoreClassFields: true }
   ],
   'react/no-find-dom-node': 'error',
+  'react/jsx-fragments': 'error',
   'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
   '@tablecheck/consistent-react-import': 'error'
 };

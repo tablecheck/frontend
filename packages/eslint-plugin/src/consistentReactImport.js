@@ -17,8 +17,12 @@ module.exports = {
   supportsAutofix: true,
   create: (context) => {
     const importNodes = [];
+    const jsxElements = [];
     let existingReactNamespace;
     return {
+      JSXElement(node) {
+        jsxElements.push(node);
+      },
       ImportDeclaration(node) {
         const importName = node.source.value || '';
         if (importName !== 'react') return;
@@ -50,6 +54,13 @@ module.exports = {
                   );
                   if (variableDefinition)
                     variableDefinition.references.forEach((reference) => {
+                      if (
+                        jsxElements.find(
+                          (element) =>
+                            element.openingElement.name === reference.identifier
+                        )
+                      )
+                        return;
                       replacements.push(
                         fixer.replaceTextRange(
                           reference.identifier.range,
@@ -80,6 +91,22 @@ module.exports = {
                     localName,
                     importedName
                   );
+                  jsxElements.forEach((jsxNode) => {
+                    if (jsxNode.openingElement.name.name === localName) {
+                      replacements.push(
+                        fixer.replaceText(
+                          jsxNode.openingElement.name,
+                          `${reactNamespace}.${importedName}`
+                        )
+                      );
+                      replacements.push(
+                        fixer.replaceText(
+                          jsxNode.closingElement.name,
+                          `${reactNamespace}.${importedName}`
+                        )
+                      );
+                    }
+                  });
                 }
               });
               const sourcecode = context.getSourceCode();
