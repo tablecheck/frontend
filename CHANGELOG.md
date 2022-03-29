@@ -1,3 +1,16 @@
+# (Tue Mar 29 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@1.7.1`, `@tablecheck/eslint-plugin@1.2.1`
+  - fix(eslint-plugin): correctly handle jsx fragments [#50](https://github.com/tablecheck/tablecheck-react-system/pull/50) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Mar 24 2022)
 
 #### 🚀 Enhancement
