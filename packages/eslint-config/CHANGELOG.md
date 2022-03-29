@@ -1,19 +1,18 @@
-# v1.7.1 (Tue Mar 29 2022)
-
-#### 🐛 Bug Fix
-
-- fix(eslint-plugin): correctly handle jsx fragments [#50](https://github.com/tablecheck/tablecheck-react-system/pull/50) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.7.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.7.0...@tablecheck/eslint-config@1.7.1) (2022-03-29)
+
+
+### Bug Fixes
+
+* **eslint-plugin:** correctly handle jsx fragments ([2b8205c](https://github.com/tablecheck/tablecheck-react-system/commit/2b8205c25e323cdbf7f4c7e5e86f5b5280100a80)), closes [#49](https://github.com/tablecheck/tablecheck-react-system/issues/49)
+
+
+
+
 
 # [1.7.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.6.0...@tablecheck/eslint-config@1.7.0) (2022-03-24)
 
