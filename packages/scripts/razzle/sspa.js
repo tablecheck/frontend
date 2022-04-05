@@ -1,6 +1,7 @@
 const { produce } = require('immer');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const config = require('config');
+const webpack = require('webpack');
 const baseConfig = require('./spa');
 const paths = require('../config/paths');
 const { getArgv } = require('../scripts/utils/argv');
@@ -20,7 +21,7 @@ const argv = getArgv({
 });
 
 module.exports = baseConfig.extend({
-  modifyWebpackConfig({ webpackConfig }) {
+  modifyWebpackConfig({ webpackConfig, env: { dev } }) {
     return produce((webpackConfigDraft) => {
       webpackConfigDraft.output = webpackConfigDraft.output || {};
       if (!argv.standalone) {
@@ -36,6 +37,15 @@ module.exports = baseConfig.extend({
           }
         })
       );
+      if (!dev) {
+        webpackConfigDraft.devtool = false;
+        webpackConfigDraft.plugins.push(
+          new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map',
+            publicPath: process.env.PUBLIC_PATH
+          })
+        );
+      }
     })(webpackConfig);
   }
 });
