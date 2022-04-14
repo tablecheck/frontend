@@ -17,6 +17,8 @@ const {
 
 const excludeWithTests = [
   'node_modules',
+  '**/*.cypress.ts',
+  '**/*.cypress.tsx',
   '**/*.test.ts',
   '**/*.test.tsx',
   '**/__tests__/**/*',
@@ -150,7 +152,6 @@ module.exports = {
     }
     if (fs.existsSync(paths.cypress)) {
       eslintRoots.push('cypress');
-      packageConfig.exclude.push('src/**/*.cypress.tsx', 'src/**/*.cypress.ts');
       const compilerPaths = {
         // this let's us import cypress files from an absolute path in our component tests
         '#cypress/*': ['../cypress/*']
@@ -233,7 +234,10 @@ module.exports = {
         files,
         include: eslintRoots,
         compilerOptions: {
-          noEmit: true
+          noEmit: true,
+          types: eslintRoots.include('cypress')
+            ? ['cypress', 'node']
+            : undefined
         }
       },
       true
@@ -268,7 +272,6 @@ module.exports = {
     const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
 
     if (fs.existsSync(paths.cypress)) {
-      config.exclude.push('src/**/*.cypress.tsx', 'src/**/*.cypress.ts');
       const compilerPaths = {
         // this let's us import cypress files from an absolute path in our component tests
         '#cypress/*': ['../cypress/*']
@@ -278,11 +281,15 @@ module.exports = {
         path.join(paths.cwd, 'tsconfig.eslint.json'),
         {
           ...config,
-          include: include.concat(systemSettings.additionalRoots || []),
+          include: include.concat(
+            ['cypress'],
+            systemSettings.additionalRoots || []
+          ),
           compilerOptions: {
             ...config.compilerOptions,
             isolatedModules: false,
-            noEmit: true
+            noEmit: true,
+            types: ['cypress', 'node']
           }
         },
         true
