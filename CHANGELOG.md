@@ -1,3 +1,16 @@
+# (Thu Apr 14 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.11.2`
+  - fix(scripts): eslint and typescript work correctly in cypress files [#52](https://github.com/tablecheck/tablecheck-react-system/pull/52) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Mar 29 2022)
 
 #### 🐛 Bug Fix
