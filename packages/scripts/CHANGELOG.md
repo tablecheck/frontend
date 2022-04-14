@@ -1,19 +1,18 @@
-# v1.11.2 (Thu Apr 14 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): eslint and typescript work correctly in cypress files [#52](https://github.com/tablecheck/tablecheck-react-system/pull/52) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.11.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.11.1...@tablecheck/scripts@1.11.2) (2022-04-14)
+
+
+### Bug Fixes
+
+* **scripts:** eslint and typescript work correctly in cypress files ([68369c5](https://github.com/tablecheck/tablecheck-react-system/commit/68369c5bf7bf899fdc89be9bbffc79e3167872be))
+
+
+
+
 
 ## [1.11.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.11.0...@tablecheck/scripts@1.11.1) (2022-03-29)
 
