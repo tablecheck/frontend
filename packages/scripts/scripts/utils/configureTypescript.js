@@ -109,7 +109,8 @@ module.exports = {
   configureLibTypescript: async (
     isBuild,
     shouldCleanLibs,
-    shouldIgnorePackageArg = false
+    shouldIgnorePackageArg = false,
+    mode = 'esm'
   ) => {
     const packageFilter = shouldIgnorePackageArg ? '*' : argv.package;
     writeConfigDefinition();
@@ -129,10 +130,10 @@ module.exports = {
       files,
       compilerOptions: {
         composite: true,
-        outDir: 'lib/esm',
-        declarationDir: 'lib/esm',
+        outDir: `lib/${mode}`,
+        declarationDir: mode === 'esm' ? 'lib/esm' : undefined,
         declarationMap: false,
-        noEmit: !isBuild,
+        noEmit: !isBuild || mode === 'es5',
         rootDir: 'src',
         baseUrl: 'src'
       }
@@ -215,6 +216,9 @@ module.exports = {
         throw new Error('This project is not written in typescript');
       }
       if (shouldCleanLibs) {
+        if (argv.verbose) {
+          console.log(chalk.gray('\nCleaning `lib` folders:'));
+        }
         fs.emptyDirSync(path.join(paths.cwd, 'lib'));
       }
       return esmConfigPath;
