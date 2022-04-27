@@ -37,3 +37,10 @@ Or in GitHub actions by using the following step definitions.
   with:
     files: junit/**/*.xml
 ```
+
+### Integration with IDE extensions
+
+This command has been tested with the following extensions;
+
+- [VSCode Jest](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest)
+  - `jest.jestCommandLine` value should be `npx tablecheck-scripts test --env=jsdom`

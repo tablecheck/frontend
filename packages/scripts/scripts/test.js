@@ -32,6 +32,7 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 (async () => {
   const argv = getArgv({
     boolean: ['coverage', 'watchAll', 'watch'],
+    string: ['outputFile'],
     default: {
       coverage: false,
       watchAll: false,
@@ -40,7 +41,7 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   });
 
   // Watch unless on CI, in coverage mode, or explicitly running all tests
-  if (!process.env.CI && !argv.coverage && !argv.watchAll) {
+  if (!process.env.CI && !argv.outputFile && !argv.coverage && !argv.watchAll) {
     argv.watch = true;
   }
 
@@ -77,9 +78,9 @@ if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
 
   const { _args: args } = argv;
 
-  ['watch', 'coverage', 'watchAll'].forEach((key) => {
+  ['watch', 'coverage', 'watchAll', 'outputFile'].forEach((key) => {
     if (argv[key]) {
-      args.push(`--${key}`);
+      args.push(`--${key}${argv[key] ? `=${argv[key]}` : ''}`);
     }
   });
 
