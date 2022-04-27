@@ -119,15 +119,15 @@ function getArgv(customArgs) {
     verbose: false
   };
   const unknownArgs = [];
-  args.unknown = args.unknown || ((arg) => unknownArgs.push(arg) || true);
+  args.unknown = args.unknown || ((arg) => unknownArgs.push(arg) && false);
   const argv = minimist(process.argv.slice(2), args);
   if (shouldIgnorePackageArg) {
     argv.package = '*';
   }
+  argv._args = unknownArgs;
   if (argv.verbose) {
     console.log(chalk.gray(`argv:\n${JSON.stringify(argv, undefined, 2)}`));
   }
-  argv._args = unknownArgs;
   return argv;
 }
 
