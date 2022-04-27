@@ -18,6 +18,48 @@ npm ci --legacy-peer-deps
 npm start
 ```
 
+#### Setting up VSCode Jest runner
+
+To use this project with the [VSCode Jest Extension](https://marketplace.visualstudio.com/items?itemName=Orta.vscode-jest) follow the instructions below.
+In your Workspace Settings, setup the folders to be the following;
+
+```json
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "name": "@tablecheck/scripts",
+      "path": "./packages/scripts"
+    },
+    {
+      "name": "@tablecheck/codemods",
+      "path": "./packages/codemods"
+    },
+    {
+      "name": "@tablecheck/eslint-plugin",
+      "path": "./packages/eslint-plugin"
+    }
+  ],
+```
+
+In each of the `packages/*` folders mentioned above, create a `.vscode/settings.json` file with the following content;
+
+```json
+{
+  "jest.jestCommandLine": "npm test --"
+}
+```
+
+At the root of this project add a `.vscode/settings.json` file with the following content to disable the top level test.
+
+```json
+{
+  "jest.jestCommandLine": "echo ''"
+}
+```
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
