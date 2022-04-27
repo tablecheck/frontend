@@ -1,3 +1,16 @@
+# v1.11.3 (Wed Apr 27 2022)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): compitibility with 3rd party jest tools [#53](https://github.com/tablecheck/tablecheck-react-system/pull/53) ([@SimeonC](https://github.com/SimeonC))
+- fix(scripts): the output of app based lib exports should correctly be calculated [#53](https://github.com/tablecheck/tablecheck-react-system/pull/53) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
