@@ -32,6 +32,10 @@ module.exports = (resolve, rootDir, srcRoots, moduleDirectories) => {
       '**/__tests__/*.{ts,tsx,js,jsx}',
       '**/?(*.)(spec|test).{ts,tsx,js,jsx}'
     ],
+    watchPlugins: [
+      'jest-watch-typeahead/filename',
+      'jest-watch-typeahead/testname'
+    ],
     // where to search for files/tests
     roots: srcRoots.map(toRelRootDir),
     testEnvironment: 'node',
