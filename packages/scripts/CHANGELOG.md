@@ -1,23 +1,18 @@
-# v1.12.0 (Fri Apr 29 2022)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, null[@irmir](https://github.com/irmir), for all your work!
-
-#### 🚀 Enhancement
-
-- feat(scripts): added jest-watch-typeahead to for better development experience and ease of use [#56](https://github.com/tablecheck/tablecheck-react-system/pull/56) ([@irmir](https://github.com/irmir))
-
-#### Authors: 1
-
-- [@irmir](https://github.com/irmir)
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.12.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.11.3...@tablecheck/scripts@1.12.0) (2022-04-29)
+
+
+### Features
+
+* **scripts:** added jest-watch-typeahead to for better development experience and ease of use ([04b272c](https://github.com/tablecheck/tablecheck-react-system/commit/04b272c9cf5f39e53127dfee30bfbbcf0d92b5ba)), closes [#5](https://github.com/tablecheck/tablecheck-react-system/issues/5)
+
+
+
+
 
 ## [1.11.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.11.2...@tablecheck/scripts@1.11.3) (2022-04-27)
 
