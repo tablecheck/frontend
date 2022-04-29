@@ -1,3 +1,19 @@
+# v1.12.0 (Fri Apr 29 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, null[@irmir](https://github.com/irmir), for all your work!
+
+#### 🚀 Enhancement
+
+- feat(scripts): added jest-watch-typeahead to for better development experience and ease of use [#56](https://github.com/tablecheck/tablecheck-react-system/pull/56) ([@irmir](https://github.com/irmir))
+
+#### Authors: 1
+
+- [@irmir](https://github.com/irmir)
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

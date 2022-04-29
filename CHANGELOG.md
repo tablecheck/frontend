@@ -1,3 +1,20 @@
+# (Fri Apr 29 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, null[@irmir](https://github.com/irmir), for all your work!
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@1.12.0`
+  - feat(scripts): added jest-watch-typeahead to for better development experience and ease of use [#56](https://github.com/tablecheck/tablecheck-react-system/pull/56) ([@irmir](https://github.com/irmir))
+
+#### Authors: 1
+
+- [@irmir](https://github.com/irmir)
+
+---
+
 # (Wed Apr 27 2022)
 
 #### 🐛 Bug Fix
