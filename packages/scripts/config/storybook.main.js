@@ -8,6 +8,11 @@ module.exports = {
   // our babel-plugin doesn't play nice with storybook, the only extra thing we need though is this plugin
   babel: (options) => ({
     ...options,
+    presets: options.presets.map((arg) =>
+      Array.isArray(arg) && /\/@babel\/preset-react\//gi.test(arg[0])
+        ? [arg[0], { runtime: 'automatic', importSource: '@emotion/react' }]
+        : arg
+    ),
     plugins: [...options.plugins, '@emotion/babel-plugin']
   }),
   webpackFinal: async (config) => {
