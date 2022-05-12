@@ -1,3 +1,15 @@
+# v1.12.1 (Thu May 12 2022)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): fix compatibilty issues with latest storybook [#59](https://github.com/tablecheck/tablecheck-react-system/pull/59) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
