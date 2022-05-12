@@ -1,19 +1,18 @@
-# v1.12.1 (Thu May 12 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): fix compatibilty issues with latest storybook [#59](https://github.com/tablecheck/tablecheck-react-system/pull/59) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.12.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.0...@tablecheck/scripts@1.12.1) (2022-05-12)
+
+
+### Bug Fixes
+
+* **scripts:** fix compatibilty issues with latest storybook ([c1b7e59](https://github.com/tablecheck/tablecheck-react-system/commit/c1b7e59b23dda4ce8d1542e4e193570202915e61))
+
+
+
+
 
 # [1.12.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.11.3...@tablecheck/scripts@1.12.0) (2022-04-29)
 
