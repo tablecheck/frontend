@@ -75,7 +75,8 @@ const config = {
     require('./overrides/typescriptDefinitions'),
     require('./overrides/typescriptDocumentation'),
     require('./overrides/scripts'),
-    require('./overrides/documentation')
+    require('./overrides/documentation'),
+    require('./overrides/maxLines')
   ],
 
   rules: {
