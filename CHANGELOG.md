@@ -1,3 +1,16 @@
+# (Mon May 16 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@1.7.2`
+  - fix(eslint-config): override max lines for certain files [#60](https://github.com/tablecheck/tablecheck-react-system/pull/60) ([@daniellizik](https://github.com/daniellizik))
+
+#### Authors: 1
+
+- Daniel Lizik ([@daniellizik](https://github.com/daniellizik))
+
+---
+
 # (Thu May 12 2022)
 
 #### 🐛 Bug Fix
