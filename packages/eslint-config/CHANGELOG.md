@@ -1,19 +1,18 @@
-# v1.7.2 (Mon May 16 2022)
-
-#### 🐛 Bug Fix
-
-- fix(eslint-config): override max lines for certain files [#60](https://github.com/tablecheck/tablecheck-react-system/pull/60) ([@daniellizik](https://github.com/daniellizik))
-
-#### Authors: 1
-
-- Daniel Lizik ([@daniellizik](https://github.com/daniellizik))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.7.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.7.1...@tablecheck/eslint-config@1.7.2) (2022-05-16)
+
+
+### Bug Fixes
+
+* **eslint-config:** override max lines for certain files ([b096107](https://github.com/tablecheck/tablecheck-react-system/commit/b0961073078aee1c6b0aef7117ba699f7a8fb6d5)), closes [#58](https://github.com/tablecheck/tablecheck-react-system/issues/58)
+
+
+
+
 
 ## [1.7.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.7.0...@tablecheck/eslint-config@1.7.1) (2022-03-29)
 
