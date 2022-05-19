@@ -1,19 +1,18 @@
-# v1.12.3 (Thu May 19 2022)
-
-#### 🐛 Bug Fix
-
-- fix: typo in “include” [#61](https://github.com/tablecheck/tablecheck-react-system/pull/61) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.12.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.2...@tablecheck/scripts@1.12.3) (2022-05-19)
+
+
+### Bug Fixes
+
+* typo in “include” ([fde8229](https://github.com/tablecheck/tablecheck-react-system/commit/fde82295285a2ce4ca7e4cb6dc80ea3ca740e367))
+
+
+
+
 
 ## [1.12.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.1...@tablecheck/scripts@1.12.2) (2022-05-16)
 
