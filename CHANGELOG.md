@@ -1,3 +1,16 @@
+# (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@1.12.3`
+  - fix: typo in “include” [#61](https://github.com/tablecheck/tablecheck-react-system/pull/61) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon May 16 2022)
 
 #### 🐛 Bug Fix

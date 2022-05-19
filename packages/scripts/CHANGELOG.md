@@ -1,3 +1,15 @@
+# v1.12.3 (Thu May 19 2022)
+
+#### 🐛 Bug Fix
+
+- fix: typo in “include” [#61](https://github.com/tablecheck/tablecheck-react-system/pull/61) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
