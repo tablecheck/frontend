@@ -30,6 +30,7 @@ module.exports = {
     'error',
     {
       exceptions: [
+        '**/*/client.tsx',
         '**/*/client.standalone.tsx',
         '**/*/client.standalone.ts',
         '**/*/client.standalone.js',
