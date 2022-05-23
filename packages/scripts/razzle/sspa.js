@@ -25,7 +25,7 @@ module.exports = baseConfig.extend({
       webpackConfigDraft.output = webpackConfigDraft.output || {};
       if (!argv.standalone) {
         webpackConfigDraft.output.library = appPackage.name;
-        webpackConfigDraft.output.libraryTarget = 'amd';
+        webpackConfigDraft.output.libraryTarget = 'window';
       }
       webpackConfigDraft.plugins.push(
         new WebpackManifestPlugin({
