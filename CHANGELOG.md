@@ -1,3 +1,16 @@
+# (Mon May 23 2022)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/scripts@2.0.0`
+  - fix(scripts): switch sspa library output to window [#63](https://github.com/tablecheck/tablecheck-react-system/pull/63) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu May 19 2022)
 
 #### 🐛 Bug Fix
