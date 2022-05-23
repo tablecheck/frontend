@@ -239,7 +239,7 @@ module.exports = {
         include: eslintRoots,
         compilerOptions: {
           noEmit: true,
-          types: eslintRoots.include('cypress')
+          types: eslintRoots.includes('cypress')
             ? ['cypress', 'node']
             : undefined
         }
