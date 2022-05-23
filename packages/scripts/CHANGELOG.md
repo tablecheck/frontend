@@ -1,19 +1,18 @@
-# v2.0.0 (Mon May 23 2022)
-
-#### 💥 Breaking Change
-
-- fix(scripts): switch sspa library output to window [#63](https://github.com/tablecheck/tablecheck-react-system/pull/63) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.0.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.3...@tablecheck/scripts@2.0.0) (2022-05-23)
+
+
+### Bug Fixes
+
+* **scripts:** switch sspa library output to window ([c99d6eb](https://github.com/tablecheck/tablecheck-react-system/commit/c99d6eb21edae3b40d46669a9c77e60bb9851ccf))
+
+
+
+
 
 ## [1.12.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.2...@tablecheck/scripts@1.12.3) (2022-05-19)
 
