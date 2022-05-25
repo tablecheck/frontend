@@ -122,31 +122,33 @@ async function updateWhitelist() {
         const scoreString = colouredByScore(cvssScore);
         console.log(chalk`{bold CVSS Score:} ${scoreString}`);
         try {
-          const vector = CVSS(cvssVector).getDetailedVectorObject();
-          console.log(chalk.bold(`CVSS Vector Details v${vector.CVSS}:`));
-          console.group();
-          let scopeKey = 'changed';
-          if (vector.metrics.S && vector.metrics.S.value) {
-            scopeKey = vector.metrics.S.value.toLowerCase();
-          }
-          Object.keys(vector.metrics).forEach((metricKey) => {
-            const { fullName, value, abbr, valueAbbr } =
-              vector.metrics[metricKey];
-            const metricDefinition = findMetric(abbr);
-            const valueDefinition = metricDefinition.metrics.find(
-              (def) => def.abbr === valueAbbr
-            );
-            let score = valueDefinition.numerical;
-            if (typeof score === 'object') {
-              score = score[scopeKey] * 10;
-            } else {
-              score *= 10;
+          if (cvssVector) {
+            const vector = CVSS(cvssVector).getDetailedVectorObject();
+            console.log(chalk.bold(`CVSS Vector Details v${vector.CVSS}:`));
+            console.group();
+            let scopeKey = 'changed';
+            if (vector.metrics.S && vector.metrics.S.value) {
+              scopeKey = vector.metrics.S.value.toLowerCase();
             }
-            console.log(
-              colouredByScore(score, chalk`{bold ${fullName}:} ${value}`)
-            );
-          });
-          console.groupEnd();
+            Object.keys(vector.metrics).forEach((metricKey) => {
+              const { fullName, value, abbr, valueAbbr } =
+                vector.metrics[metricKey];
+              const metricDefinition = findMetric(abbr);
+              const valueDefinition = metricDefinition.metrics.find(
+                (def) => def.abbr === valueAbbr
+              );
+              let score = valueDefinition.numerical;
+              if (typeof score === 'object') {
+                score = score[scopeKey] * 10;
+              } else {
+                score *= 10;
+              }
+              console.log(
+                colouredByScore(score, chalk`{bold ${fullName}:} ${value}`)
+              );
+            });
+            console.groupEnd();
+          }
         } catch (e) {
           // ignore errors
           console.error(e);
