@@ -45,7 +45,7 @@
     "@tablecheck/scripts-utils": "file:packages/utils",
     "@tablecheck/semantic-release-config": "file:packages/semantic-release-config",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.6",
-    "auditjs": "4.0.36",
+    "auditjs": "4.0.37",
     "auto": "10.36.5",
     "babel-preset-razzle": "4.2.16",
     "config": "^3.3.7",

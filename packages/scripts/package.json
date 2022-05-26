@@ -120,7 +120,7 @@
     "webpack-node-externals": "^3.0.0"
   },
   "peerDependencies": {
-    "auditjs": "~4.0.36"
+    "auditjs": "~4.0.37"
   },
   "engines": {
     "node": ">= 10.18.0"
