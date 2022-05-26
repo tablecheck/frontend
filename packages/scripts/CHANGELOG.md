@@ -1,20 +1,18 @@
-# v2.0.1 (Thu May 26 2022)
-
-#### 🐛 Bug Fix
-
-- chore: update audit.json [#64](https://github.com/tablecheck/tablecheck-react-system/pull/64) ([@staevs](https://github.com/staevs))
-- fix: do not throw on non-CVE vulnerability [#64](https://github.com/tablecheck/tablecheck-react-system/pull/64) ([@staevs](https://github.com/staevs))
-
-#### Authors: 1
-
-- Stanislav ([@staevs](https://github.com/staevs))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.0.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.0.0...@tablecheck/scripts@2.0.1) (2022-05-26)
+
+
+### Bug Fixes
+
+* do not throw on non-CVE vulnerability ([ca06a28](https://github.com/tablecheck/tablecheck-react-system/commit/ca06a284aea3642cf5c3f8bdd0a6b4e7bdd5b112))
+
+
+
+
 
 # [2.0.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@1.12.3...@tablecheck/scripts@2.0.0) (2022-05-23)
 
