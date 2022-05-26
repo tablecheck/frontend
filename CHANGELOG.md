@@ -1,3 +1,17 @@
+# (Thu May 26 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.0.1`
+  - chore: update audit.json [#64](https://github.com/tablecheck/tablecheck-react-system/pull/64) ([@staevs](https://github.com/staevs))
+  - fix: do not throw on non-CVE vulnerability [#64](https://github.com/tablecheck/tablecheck-react-system/pull/64) ([@staevs](https://github.com/staevs))
+
+#### Authors: 1
+
+- Stanislav ([@staevs](https://github.com/staevs))
+
+---
+
 # (Mon May 23 2022)
 
 #### 💥 Breaking Change
