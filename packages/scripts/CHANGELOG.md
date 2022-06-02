@@ -1,19 +1,18 @@
-# v2.1.0 (Thu Jun 02 2022)
-
-#### 🚀 Enhancement
-
-- feat(scripts): add a all-inclusive es5 bundle build [#65](https://github.com/tablecheck/tablecheck-react-system/pull/65) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.1.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.0.1...@tablecheck/scripts@2.1.0) (2022-06-02)
+
+
+### Features
+
+* **scripts:** add a all-inclusive es5 bundle build ([f12ccb8](https://github.com/tablecheck/tablecheck-react-system/commit/f12ccb89fbe0f55c717e9771df872c7d66d0c2b6))
+
+
+
+
 
 ## [2.0.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.0.0...@tablecheck/scripts@2.0.1) (2022-05-26)
 
