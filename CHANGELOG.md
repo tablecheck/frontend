@@ -1,3 +1,16 @@
+# (Thu Jun 02 2022)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@2.1.0`
+  - feat(scripts): add a all-inclusive es5 bundle build [#65](https://github.com/tablecheck/tablecheck-react-system/pull/65) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu May 26 2022)
 
 #### 🐛 Bug Fix

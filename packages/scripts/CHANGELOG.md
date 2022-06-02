@@ -1,3 +1,15 @@
+# v2.1.0 (Thu Jun 02 2022)
+
+#### 🚀 Enhancement
+
+- feat(scripts): add a all-inclusive es5 bundle build [#65](https://github.com/tablecheck/tablecheck-react-system/pull/65) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
