@@ -12,6 +12,9 @@ const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const json = require('@rollup/plugin-json');
 const { externals } = require('rollup-plugin-node-externals');
+const {
+  outputBundledDepsBuild
+} = require('@tablecheck/scripts-utils/userConfig');
 
 const paths = require('../../config/paths');
 const { getArgv } = require('../utils/argv');
@@ -82,7 +85,8 @@ function loadRollupConfig(
   rootPackageDirectory,
   packageDirectory,
   bundleEntries,
-  rollupWarnings
+  rollupWarnings,
+  shouldBundleDependencies = false
 ) {
   const rollupExternalsConfig = {
     packagePath: [packagePath, path.join(rootPackageDirectory, 'package.json')],
@@ -96,8 +100,8 @@ function loadRollupConfig(
   };
   const rollupConfig = {
     input: bundleEntries,
-    preserveModules: true,
-    treeshake: false,
+    preserveModules: !shouldBundleDependencies,
+    treeshake: shouldBundleDependencies,
     onwarn: (warning) => {
       // https://github.com/rollup/rollup/blob/0fa9758cb7b1976537ae0875d085669e3a21e918/src/utils/error.ts#L324
       if (warning.code === 'UNRESOLVED_IMPORT') {
@@ -130,7 +134,7 @@ function loadRollupConfig(
           return null;
         }
       },
-      externals(rollupExternalsConfig),
+      shouldBundleDependencies ? undefined : externals(rollupExternalsConfig),
       typescriptPlugin(rollupTypescriptConfig),
       nodeResolve({
         mainFields: ['module', 'jsnext', 'main'],
@@ -146,7 +150,7 @@ function loadRollupConfig(
       }),
       json(),
       jsxPlugin()
-    ]
+    ].filter((v) => !!v)
   };
   if (argv.verbose) {
     console.log(
@@ -330,6 +334,42 @@ async function buildPackage(libConfigPath, rootConfigPath) {
     }
 
     logTaskEnd(true);
+
+    if (outputBundledDepsBuild) {
+      logTaskStart('Building es5 bundle with bundled dependencies');
+
+      await configureLibTypescript(true, false, undefined, 'es5');
+      const bundleEs5WithDeps = await rollup.rollup(
+        loadRollupConfig(
+          packagePath,
+          rootPackageDirectory,
+          packageDirectory,
+          bundleEntries,
+          rollupWarnings,
+          true
+        )
+      );
+
+      await bundleEs5WithDeps.write({
+        file: path.join(packageDirectory, 'lib/bundle.es5.js'),
+        format: 'esm',
+        globals: {
+          config: 'CONFIG'
+        },
+        plugins: [getBabelPlugin(false)]
+      });
+
+      if (argv.verbose) {
+        console.log(
+          chalk.gray(
+            `Build ${path.relative(paths.cwd, packageDirectory)}: es5 Success`
+          )
+        );
+      }
+
+      logTaskEnd(true);
+    }
+
     logTaskStart('Compiling d.ts types');
 
     const { paths: tsPaths, baseUrl } = packageTsconfig.compilerOptions;
