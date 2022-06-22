@@ -14,6 +14,10 @@ const {
   writeConfigDefinition,
   systemDefinitionFilePath
 } = require('./writeConfigDefinition');
+const {
+  writeCarbonIconTypes,
+  carbonIconTypesFilePath
+} = require('./writeCarbonIconTypes');
 
 const excludeWithTests = [
   'node_modules',
@@ -31,7 +35,8 @@ function writeTsConfig(filePath, configArg, forceConfig = false) {
   let sourceFiles = [];
   const config = {
     ...configArg,
-    include: configArg.include ? [...configArg.include] : undefined
+    include: configArg.include ? [...configArg.include] : undefined,
+    files: configArg.files.filter((filepath) => fs.existsSync(filepath))
   };
   if (config.include) {
     if (argv.verbose) {
@@ -114,6 +119,7 @@ module.exports = {
   ) => {
     const packageFilter = shouldIgnorePackageArg ? '*' : argv.package;
     writeConfigDefinition();
+    writeCarbonIconTypes();
     // this is gonna seem pretty weird, but here we are going to MODIFY the json tsconfig files
 
     // first we see if we are in a lerna repo
@@ -122,7 +128,7 @@ module.exports = {
     // https://github.com/microsoft/TypeScript/issues/27098
     const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
     // this needs to be in every package or the CONFIG var isn't resolved
-    const files = [systemDefinitionFilePath];
+    const files = [systemDefinitionFilePath, carbonIconTypesFilePath];
     const packageConfig = {
       extends: '@tablecheck/scripts/tsconfig/lib.json',
       exclude: isBuild ? excludeWithTests : ['node_modules'],
@@ -254,6 +260,7 @@ module.exports = {
   },
   configureAppTypescript: (isBuild) => {
     writeConfigDefinition();
+    writeCarbonIconTypes();
 
     const include = ['src'];
     if (fs.existsSync(paths.storybook)) {
@@ -263,7 +270,7 @@ module.exports = {
     const config = {
       extends: '@tablecheck/scripts/tsconfig/base.json',
       exclude: isBuild ? excludeWithTests : ['node_modules'],
-      files: [systemDefinitionFilePath],
+      files: [systemDefinitionFilePath, carbonIconTypesFilePath],
       include,
       compilerOptions: {
         lib: ['dom', 'dom.iterable', 'esnext'],

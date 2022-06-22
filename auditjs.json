@@ -650,6 +650,37 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/sonatype-2021-0749?component-type=npm&component-name=request&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/nwsapi@2.2.0",
+      "description": "Fast CSS Selectors API Engine",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/nwsapi@2.2.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.36",
+      "vulnerabilities": [
+        {
+          "id": "sonatype-2022-3565",
+          "title": "[sonatype-2022-3565] CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "nwsapi - Denial of Service (DoS)\n\nThe software does not properly restrict the size or amount of resources that are requested or influenced by an actor, which can be used to consume more resources than intended.",
+          "cvssScore": 6.2,
+          "cvssVector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "reference": "https://ossindex.sonatype.org/vulnerability/sonatype-2022-3565?component-type=npm&component-name=nwsapi&utm_source=auditjs&utm_medium=integration&utm_content=4.0.36"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/got@9.6.0",
+      "description": "Human-friendly and powerful HTTP request library for Node.js",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/got@9.6.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.36",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-33987",
+          "title": "[CVE-2022-33987] CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+          "description": "The got package before 12.1.0 for Node.js allows a redirect to a UNIX socket.",
+          "cvssScore": 6.1,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cve": "CVE-2022-33987",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-33987?component-type=npm&component-name=got&utm_source=auditjs&utm_medium=integration&utm_content=4.0.36"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -778,6 +809,12 @@
     },
     {
       "id": "sonatype-2021-0749"
+    },
+    {
+      "id": "sonatype-2022-3565"
+    },
+    {
+      "id": "CVE-2022-33987"
     }
   ]
 }
