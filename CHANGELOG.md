@@ -1,3 +1,16 @@
+# (Fri Jun 24 2022)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/scripts@2.2.0`
+  - feat(scripts): add carbon icon types generation [#66](https://github.com/tablecheck/tablecheck-react-system/pull/66) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Jun 02 2022)
 
 #### 🚀 Enhancement
