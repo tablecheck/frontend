@@ -1,5 +1,18 @@
 # (Fri Jun 24 2022)
 
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.2.1`
+  - fix(scripts): change jest-watch-typeahead to be fixed to v1.0.0 [#67](https://github.com/tablecheck/tablecheck-react-system/pull/67) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Fri Jun 24 2022)
+
 #### 🚀 Enhancement
 
 - `@tablecheck/scripts@2.2.0`
