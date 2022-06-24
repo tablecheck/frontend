@@ -87,7 +87,7 @@
     "jest-enzyme": "^7.1.2",
     "jest-junit": "^13.0.0",
     "jest-transform-graphql": "^2.1.0",
-    "jest-watch-typeahead": "^1.1.0",
+    "jest-watch-typeahead": "1.0.0",
     "jscodeshift": "^0.13.1",
     "lint-staged": "^11.2.6",
     "lodash": "^4.17.21",
