@@ -1,19 +1,18 @@
-# v2.2.0 (Fri Jun 24 2022)
-
-#### 🚀 Enhancement
-
-- feat(scripts): add carbon icon types generation [#66](https://github.com/tablecheck/tablecheck-react-system/pull/66) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.1.0...@tablecheck/scripts@2.2.0) (2022-06-24)
+
+
+### Features
+
+* **scripts:** add carbon icon types generation ([1805264](https://github.com/tablecheck/tablecheck-react-system/commit/1805264b2db6b833bd2a04f4d9d1706eff5c3c40))
+
+
+
+
 
 # [2.1.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.0.1...@tablecheck/scripts@2.1.0) (2022-06-02)
 
