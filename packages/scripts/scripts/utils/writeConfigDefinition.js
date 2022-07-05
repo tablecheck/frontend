@@ -26,8 +26,8 @@ const systemDefinitionFilePath = path.join(
   'definitions.d.ts'
 );
 const systemDefaultDefinitionFilePath = path.join(
-  paths.cwd,
-  './node_modules/@tablecheck/scripts/tsconfig/defaultDefinitions.d.ts'
+  paths.systemDir,
+  './tsconfig/defaultDefinitions.d.ts'
 );
 
 function getTypeAnnotation(j, value) {

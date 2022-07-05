@@ -681,6 +681,93 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-33987?component-type=npm&component-name=got&utm_source=auditjs&utm_medium=integration&utm_content=4.0.36"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/parse-url@6.0.2",
+      "description": "An advanced url parser supporting git urls too.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/parse-url@6.0.2?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-2217",
+          "title": "[CVE-2022-2217] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Cross-site Scripting (XSS) - Generic in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
+          "cvssScore": 6.1,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cve": "CVE-2022-2217",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-2217?component-type=npm&component-name=parse-url&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/parse-path@4.0.4",
+      "description": "Parse paths (local paths, urls: ssh/git/etc)",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/parse-path@4.0.4?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-0624",
+          "title": "[CVE-2022-0624] CWE-639: Authorization Bypass Through User-Controlled Key",
+          "description": "Authorization Bypass Through User-Controlled Key in GitHub repository ionicabizau/parse-path prior to 5.0.0.",
+          "cvssScore": 6.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:N",
+          "cve": "CVE-2022-0624",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-0624?component-type=npm&component-name=parse-path&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        },
+        {
+          "id": "CVE-2022-2218",
+          "title": "[CVE-2022-2218] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Cross-site Scripting (XSS) - Stored in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
+          "cvssScore": 6.1,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cve": "CVE-2022-2218",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-2218?component-type=npm&component-name=parse-path&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/trim-newlines@1.0.0",
+      "description": "Trim newlines from the start and/or end of a string",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/trim-newlines@1.0.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2021-33623",
+          "title": "[CVE-2021-33623] CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "The trim-newlines package before 3.0.1 and 4.x before 4.0.1 for Node.js has an issue related to regular expression denial-of-service (ReDoS) for the .end() method.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2021-33623",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2021-33623?component-type=npm&component-name=trim-newlines&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/git-up@4.0.5",
+      "description": "A low level git url parser.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/git-up@4.0.5?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "sonatype-2022-3750",
+          "title": "[sonatype-2022-3750] CWE-601: URL Redirection to Untrusted Site ('Open Redirect')",
+          "description": "git-up - Open Redirect\n\nA web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a Redirect. This simplifies phishing attacks.",
+          "cvssScore": 5.4,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+          "reference": "https://ossindex.sonatype.org/vulnerability/sonatype-2022-3750?component-type=npm&component-name=git-up&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/node-fetch@2.6.7",
+      "description": "A light-weight module that brings window.fetch to node.js",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/node-fetch@2.6.7?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "sonatype-2022-3677",
+          "title": "[sonatype-2022-3677] CWE-200: Information Exposure",
+          "description": "node-fetch - Exposure of Sensitive Information to an Unauthorized Actor\n\nAn information exposure is the intentional or unintentional disclosure of information to an actor that is not explicitly authorized to have access to that information.",
+          "cvssScore": 4.2,
+          "cvssVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N",
+          "reference": "https://ossindex.sonatype.org/vulnerability/sonatype-2022-3677?component-type=npm&component-name=node-fetch&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -815,6 +902,24 @@
     },
     {
       "id": "CVE-2022-33987"
+    },
+    {
+      "id": "CVE-2022-2217"
+    },
+    {
+      "id": "CVE-2022-0624"
+    },
+    {
+      "id": "CVE-2022-2218"
+    },
+    {
+      "id": "CVE-2021-33623"
+    },
+    {
+      "id": "sonatype-2022-3750"
+    },
+    {
+      "id": "sonatype-2022-3677"
     }
   ]
 }

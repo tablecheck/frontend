@@ -19,7 +19,11 @@ const {
 } = require('./utils/configureTypescript');
 const { execa, execaOptions } = require('./utils/execa');
 const { getLernaPaths } = require('./utils/lerna');
-const { lintAllPackages, format: formatPackages } = require('./utils/package');
+const {
+  lintAllPackages,
+  format: formatPackages,
+  validateLernaDeps
+} = require('./utils/package');
 const icons = require('./utils/unicodeEmoji');
 const validateEslintrc = require('./utils/validateEslintrc');
 const verifyPackageTree = require('./utils/verifyPackageTree');
@@ -39,8 +43,11 @@ const argv = getArgv({
 });
 
 (async () => {
+  const lernaPaths = await getLernaPaths();
+
   console.log(chalk.blue.bold('Running code quality and formatting checks...'));
   configCheck();
+  if (lernaPaths.length) await validateLernaDeps();
   console.log();
 
   const shouldSkipTypescript = argv['skip-typescript'];
@@ -70,8 +77,6 @@ const argv = getArgv({
     });
   }
 
-  const lernaPaths = await getLernaPaths();
-
   if (lernaPaths.length) {
     lernaPaths.forEach((lernaPath) => {
       const globPackage = lernaPath.split('/').slice(-1)[0];
@@ -95,7 +100,7 @@ const argv = getArgv({
     });
   }
 
-  const eslintRcFile = validateEslintrc();
+  validateEslintrc();
   const isThisRepo =
     fs.readJsonSync(paths.appPackageJson).name === 'tablecheck-react-system';
 
@@ -163,7 +168,7 @@ const argv = getArgv({
         glob.sync(globPath, { cwd: paths.cwd, silent: true }).length > 0
     )
     .map((globPath) => path.relative(paths.cwd, globPath));
-  const spawnedEslint = runEslint(eslintRcFile, eslintPaths, argv.fix);
+  const spawnedEslint = runEslint(eslintPaths, argv.fix);
 
   const spawnedPrettier = (argv.fix ? spawnedEslint : Promise.resolve())
     .catch(() => {})

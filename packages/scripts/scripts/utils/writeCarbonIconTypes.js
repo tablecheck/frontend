@@ -26,18 +26,27 @@ const carbonIconTypesFilePath = path.join(
 );
 
 const carbonPackageName = '@carbon/icons-react';
-
+const isRunningInLerna =
+  path.join(paths.cwd, 'node_modules/@tablecheck/scripts') !== paths.systemDir;
 function writeCarbonIconTypes() {
-  const carbonPackageJsonPath = path.join(
-    paths.cwd,
-    'node_modules',
-    carbonPackageName,
-    'package.json'
-  );
+  const carbonPackageJsonPaths = [
+    path.join(paths.cwd, 'node_modules', carbonPackageName, 'package.json')
+  ];
+  if (isRunningInLerna)
+    carbonPackageJsonPaths.push(
+      path.join(paths.systemDir, '../..', carbonPackageName, 'package.json')
+    );
+  const carbonPackageJsonPath = carbonPackageJsonPaths.filter((filepath) =>
+    fs.existsSync(filepath)
+  )[0];
   if (!fs.existsSync(carbonPackageJsonPath)) {
     if (argv.verbose) {
       console.log(
-        chalk.gray(`Carbon Icons not detected at '${carbonPackageJsonPath}'`)
+        chalk.gray(
+          `Carbon Icons not detected at '${carbonPackageJsonPaths.join(
+            "', '"
+          )}'`
+        )
       );
     }
     return;
@@ -67,8 +76,8 @@ function writeCarbonIconTypes() {
   if (
     fs.existsSync(
       path.join(
-        paths.cwd,
-        'node_modules/@types/carbon__icons-react/package.json'
+        carbonPackageJsonPath,
+        '../../../@types/carbon__icons-react/package.json'
       )
     )
   ) {
@@ -78,7 +87,7 @@ function writeCarbonIconTypes() {
       )
     );
   }
-  const carbonIcons = require(carbonPackageName);
+  const carbonIcons = require(path.join(carbonPackageJsonPath, '..'));
   const fileContent = `${Object.keys(carbonIcons).reduce(
     (result, iconName) =>
       `${result}  declare export const ${iconName}: CarbonIcon;\n`,

@@ -45,7 +45,7 @@ const config = {
     CONFIG: true
   },
   parserOptions: {
-    ecmaVersion: 9,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     project
   },

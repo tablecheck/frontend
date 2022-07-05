@@ -10,6 +10,7 @@ const {
   configureLibTypescript
 } = require('./utils/configureTypescript');
 const validateEslintrc = require('./utils/validateEslintrc');
+const { validateLernaDeps } = require('./utils/package');
 
 const argv = minimist(process.argv.slice(2), {
   boolean: ['verbose'],
@@ -23,20 +24,20 @@ async function runPrecommit() {
   validateEslintrc();
 
   let configPath;
-  if (
-    fs.existsSync(path.join(process.cwd(), 'lerna.json')) ||
-    fs.existsSync(path.join(process.cwd(), 'lib'))
-  ) {
+  const isLerna = fs.existsSync(path.join(process.cwd(), 'lerna.json'));
+  if (isLerna || fs.existsSync(path.join(process.cwd(), 'lib'))) {
     configPath = await configureLibTypescript(false, false, true);
   } else {
     configPath = configureAppTypescript(false);
   }
 
+  if (isLerna) await validateLernaDeps();
+
   const lintStagedConfig = {
     '**/*.{ts,tsx,js,jsx}': [
       // eslint fix first, otherwise eslint fix may unprettify files
       // also inherently checks typescript
-      'eslint --fix --no-eslintrc --config ./.eslintrc.js',
+      'eslint --fix --config ./.eslintrc.js',
       'prettier --write'
     ],
     '**/!(*.ts|*.tsx|*.js|*.jsx|package-json.json)': 'prettier --write -u',

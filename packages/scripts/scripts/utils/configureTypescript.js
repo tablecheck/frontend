@@ -36,7 +36,10 @@ function writeTsConfig(filePath, configArg, forceConfig = false) {
   const config = {
     ...configArg,
     include: configArg.include ? [...configArg.include] : undefined,
-    files: configArg.files.filter((filepath) => fs.existsSync(filepath))
+    // this needs to be in every package or the CONFIG var isn't resolved
+    files: [systemDefinitionFilePath, carbonIconTypesFilePath].filter(
+      (filepath) => fs.existsSync(filepath)
+    )
   };
   if (config.include) {
     if (argv.verbose) {
@@ -127,13 +130,10 @@ module.exports = {
     // we need to use the base tsconfig.json as `references` is not inherited via extends
     // https://github.com/microsoft/TypeScript/issues/27098
     const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
-    // this needs to be in every package or the CONFIG var isn't resolved
-    const files = [systemDefinitionFilePath, carbonIconTypesFilePath];
     const packageConfig = {
       extends: '@tablecheck/scripts/tsconfig/lib.json',
       exclude: isBuild ? excludeWithTests : ['node_modules'],
       include: ['src'],
-      files,
       compilerOptions: {
         composite: true,
         outDir: `lib/${mode}`,
@@ -241,7 +241,6 @@ module.exports = {
       {
         extends: '@tablecheck/scripts/tsconfig/lib.json',
         exclude: ['node_modules'],
-        files,
         include: eslintRoots,
         compilerOptions: {
           noEmit: true,
@@ -270,7 +269,6 @@ module.exports = {
     const config = {
       extends: '@tablecheck/scripts/tsconfig/base.json',
       exclude: isBuild ? excludeWithTests : ['node_modules'],
-      files: [systemDefinitionFilePath, carbonIconTypesFilePath],
       include,
       compilerOptions: {
         lib: ['dom', 'dom.iterable', 'esnext'],
