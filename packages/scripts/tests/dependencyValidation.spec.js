@@ -32,7 +32,8 @@ jest.mock('../scripts/utils/lerna', () => ({
 jest.mock('fs-extra', () => ({
   readJsonSync: (packagePath) => ({
     name: `@lerna-repo/${mockPath.parse(packagePath).name}`
-  })
+  }),
+  existsSync: () => false
 }));
 
 describe('lintPackageVersions', () => {

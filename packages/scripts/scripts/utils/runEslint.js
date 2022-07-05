@@ -4,18 +4,19 @@ const { ESLint } = require('eslint');
 
 const paths = require('../../config/paths');
 
-async function runEslint(eslintRcFile, eslintPaths, shouldAutoFix) {
+async function runEslint(eslintPaths, shouldAutoFix) {
   let results = [];
   try {
-    const overrideConfigFile =
-      require(paths.appPackageJson).name === 'tablecheck-react-system'
-        ? path.join(paths.cwd, '.eslintrc.js')
-        : `./${eslintRcFile}`;
+    const isThisMonorepo =
+      require(paths.appPackageJson).name === 'tablecheck-react-system';
+    const overrideConfigFile = isThisMonorepo
+      ? path.join(paths.cwd, '.eslintrc.js')
+      : undefined;
     const eslint = new ESLint({
       cwd: paths.cwd,
       fix: shouldAutoFix,
       overrideConfigFile,
-      useEslintrc: false,
+      useEslintrc: isThisMonorepo ? false : undefined,
       errorOnUnmatchedPattern: false,
       reportUnusedDisableDirectives: 'error'
     });

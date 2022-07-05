@@ -2,6 +2,7 @@ const path = require('path');
 
 const chalk = require('chalk');
 const fs = require('fs-extra');
+const { uniqBy } = require('lodash');
 const {
   format: prettyFormatPackage,
   check: checkPackageFormat
@@ -13,6 +14,7 @@ const { getArgv } = require('./argv');
 const { execaSync } = require('./execa');
 const { getLernaPaths } = require('./lerna');
 const icons = require('./unicodeEmoji');
+const { logTaskStart, logTaskEnd } = require('./taskLogFormatter');
 
 const argv = getArgv();
 
@@ -228,9 +230,116 @@ async function lintAllPackages() {
   return success;
 }
 
+async function validateLernaDeps() {
+  logTaskStart('Checking lerna package versions');
+  const lernaPaths = await getLernaPaths();
+  const rootPackage = fs.readJSONSync(path.join(process.cwd(), 'package.json'));
+  const childPackages = await Promise.all(
+    lernaPaths.map(async (p) => [
+      p,
+      await fs.readJSON(path.join(p, 'package.json'))
+    ])
+  );
+  const rootDependencies = {
+    ...(rootPackage.dependencies || {}),
+    ...(rootPackage.devDependencies || {}),
+    ...(rootPackage.optionalDependencies || {})
+  };
+  const childDependencies = {};
+  const messages = [];
+  childPackages.forEach(([childPath, packageJson]) => {
+    const invalidEntries = Object.entries(packageJson.dependencies || {})
+      .map((tuple) => ['dependencies', ...tuple])
+      .concat(
+        Object.entries(packageJson.devDependencies || {}).map((tuple) => [
+          'devDependencies',
+          ...tuple
+        ])
+      )
+      .concat(
+        Object.entries(packageJson.optionalDependencies || {})
+          .filter(
+            ([packageName]) =>
+              !(packageJson.devDependencies || {})[packageName] &&
+              !(packageJson.dependencies || {})[packageName]
+          )
+          .map((tuple) => ['optionalDependencies', ...tuple])
+      )
+      .filter(([depType, packageName, version]) => {
+        if (childDependencies[packageName]) {
+          childDependencies[packageName].push([depType, childPath, version]);
+        } else {
+          childDependencies[packageName] = [[depType, childPath, version]];
+        }
+        if (version.match(/^file:/gi)) {
+          if (!rootDependencies[packageName].match(/^file:/gi)) return false;
+          const rootDepFilePath = rootDependencies[packageName].split(':')[1];
+          const childDepFilePath = version.split(':')[1];
+          return (
+            path.join(process.cwd(), rootDepFilePath) !==
+            path.join(childPath, childDepFilePath)
+          );
+        }
+        return (
+          rootDependencies[packageName] &&
+          rootDependencies[packageName] !== version
+        );
+      });
+    if (invalidEntries.length > 0) {
+      const title = chalk.red.bold(
+        `Invalid dependencies in ${path.relative(process.cwd(), childPath)}`
+      );
+      const childMessages = [];
+      invalidEntries.forEach(([depType, packageName, version]) => {
+        if (!rootDependencies[packageName]) return;
+        childMessages.push(
+          `  - ${chalk.yellow(
+            `${depType} "${packageName}": "${version}"`
+          )} should be ${chalk.green(
+            `"${packageName}": "${rootDependencies[packageName]}"`
+          )}`
+        );
+      });
+      messages.push([title, childMessages, childPath]);
+    }
+  });
+  const invalidChildDependencies = Object.entries(childDependencies).filter(
+    ([, dependencies]) => uniqBy(dependencies, 2).length > 1
+  );
+  const hasErrors = messages.length || invalidChildDependencies.length;
+  logTaskEnd(!hasErrors);
+  if (invalidChildDependencies.length) {
+    console.log(
+      chalk.yellow.bold(
+        'The following packages have different versions in sibling packages.'
+      )
+    );
+    invalidChildDependencies.forEach(([packageName, dependencies]) => {
+      console.log(chalk.yellow`  - Package "${packageName}"`);
+      dependencies.forEach(([depType, childDepPath, version]) => {
+        console.log(
+          `    ${path.relative(process.cwd(), childDepPath)} has ${chalk.yellow(
+            `${depType} "${version}"`
+          )}`
+        );
+      });
+    });
+  }
+  if (messages.length) {
+    messages.forEach(([title, childMessages]) => {
+      console.log(title);
+      childMessages.forEach((message) => console.log(message));
+    });
+  }
+  if (hasErrors) {
+    throw new Error('Lerna child package versions do not match root versions');
+  }
+}
+
 module.exports = {
   lintAllPackages,
   processAllPackages,
   evaluatePackage,
-  format
+  format,
+  validateLernaDeps
 };
