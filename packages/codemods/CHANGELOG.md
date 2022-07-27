@@ -1,19 +1,18 @@
-# v1.2.0 (Wed Jul 27 2022)
-
-#### 🚀 Enhancement
-
-- fix: issues with configuring typescript [#68](https://github.com/tablecheck/tablecheck-react-system/pull/68) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [1.2.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/codemods@1.1.0...@tablecheck/codemods@1.2.0) (2022-07-27)
+
+
+### Bug Fixes
+
+* issues with configuring typescript ([9d90ee5](https://github.com/tablecheck/tablecheck-react-system/commit/9d90ee587802eefc1dc11b6d2b6a36605086c2d7))
+
+
+
+
 
 # [1.1.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/codemods@1.0.2...@tablecheck/codemods@1.1.0) (2022-03-24)
 
