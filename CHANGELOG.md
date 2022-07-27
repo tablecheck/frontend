@@ -1,3 +1,16 @@
+# (Wed Jul 27 2022)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/codemods@1.2.0`, `@tablecheck/commitlint-config@1.2.0`, `@tablecheck/eslint-config@1.8.0`, `@tablecheck/scripts@2.3.0`
+  - fix: issues with configuring typescript [#68](https://github.com/tablecheck/tablecheck-react-system/pull/68) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Jun 24 2022)
 
 #### 🐛 Bug Fix
