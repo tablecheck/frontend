@@ -29,6 +29,9 @@ const mockPath = path;
 jest.mock('../scripts/utils/lerna', () => ({
   getLernaPaths: () => Promise.resolve(['test-package', 'package'])
 }));
+jest.mock('../config/paths', () => ({
+  cwd: process.cwd()
+}));
 jest.mock('fs-extra', () => ({
   readJsonSync: (packagePath) => ({
     name: `@lerna-repo/${mockPath.parse(packagePath).name}`

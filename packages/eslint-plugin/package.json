@@ -13,8 +13,8 @@
     "src"
   ],
   "scripts": {
-    "test": "../../node_modules/.bin/jest",
-    "test:watch": "../../node_modules/.bin/jest --watch"
+    "test": "JEST_JUNIT_OUTPUT_DIR=../../junit JEST_JUNIT_OUTPUT_NAME=eslint-plugin.xml jest --reporters=default --reporters=jest-junit",
+    "test:watch": "jest --watch"
   },
   "peerDependencies": {
     "eslint": "^8"
