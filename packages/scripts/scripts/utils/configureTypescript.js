@@ -202,6 +202,9 @@ module.exports = {
           path: esmConfigPath
         });
       });
+      if (!isBuild && libConfig.references.length === 1) {
+        libConfig = fs.readJSONSync(libConfig.references[0].path);
+      }
       if (shouldCleanLibs) {
         if (argv.verbose) {
           console.log(chalk.gray('\nCleaning `lib` folders:'));

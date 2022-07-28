@@ -768,6 +768,54 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/sonatype-2022-3677?component-type=npm&component-name=node-fetch&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/terser@4.8.0",
+      "description": "JavaScript parser, mangler/compressor and beautifier toolkit for ES6+",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/terser@4.8.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-25858",
+          "title": "[CVE-2022-25858] The package terser before 4.8.1, from 5.0.0 and before 5.14.2 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure usage of regular expressions.",
+          "description": "The package terser before 4.8.1, from 5.0.0 and before 5.14.2 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure usage of regular expressions.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2022-25858",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-25858?component-type=npm&component-name=terser&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/terser@5.14.1",
+      "description": "JavaScript parser, mangler/compressor and beautifier toolkit for ES6+",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/terser@5.14.1?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-25858",
+          "title": "[CVE-2022-25858] The package terser before 4.8.1, from 5.0.0 and before 5.14.2 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure usage of regular expressions.",
+          "description": "The package terser before 4.8.1, from 5.0.0 and before 5.14.2 are vulnerable to Regular Expression Denial of Service (ReDoS) due to insecure usage of regular expressions.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2022-25858",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-25858?component-type=npm&component-name=terser&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/parse-path@4.0.4",
+      "description": "Parse paths (local paths, urls: ssh/git/etc)",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/parse-path@4.0.4?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-2216",
+          "title": "[CVE-2022-2216] CWE-918: Server-Side Request Forgery (SSRF)",
+          "description": "Server-Side Request Forgery (SSRF) in GitHub repository ionicabizau/parse-url prior to 7.0.0.",
+          "cvssScore": 9.8,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cve": "CVE-2022-2216",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-2216?component-type=npm&component-name=parse-path&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -920,6 +968,12 @@
     },
     {
       "id": "sonatype-2022-3677"
+    },
+    {
+      "id": "CVE-2022-25858"
+    },
+    {
+      "id": "CVE-2022-2216"
     }
   ]
 }
