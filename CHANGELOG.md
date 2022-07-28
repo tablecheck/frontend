@@ -1,3 +1,16 @@
+# (Thu Jul 28 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.3.1`
+  - fix(scripts): non build tsc would fail if there is only one project [#69](https://github.com/tablecheck/tablecheck-react-system/pull/69) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Jul 27 2022)
 
 #### 🚀 Enhancement
