@@ -1,19 +1,18 @@
-# v2.3.1 (Thu Jul 28 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): non build tsc would fail if there is only one project [#69](https://github.com/tablecheck/tablecheck-react-system/pull/69) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.0...@tablecheck/scripts@2.3.1) (2022-07-28)
+
+
+### Bug Fixes
+
+* **scripts:** non build tsc would fail if there is only one project ([d2d2588](https://github.com/tablecheck/tablecheck-react-system/commit/d2d258892b0c191e16ce42ffd482aa87d591bad1))
+
+
+
+
 
 # [2.3.0](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.2.1...@tablecheck/scripts@2.3.0) (2022-07-27)
 
