@@ -116,7 +116,8 @@ function getArgv(customArgs) {
   args.default = {
     ...(args.default || {}),
     package: '*',
-    verbose: false
+    // default to true if github debugger is turned on
+    verbose: !!process.env.ACTIONS_STEP_DEBUG
   };
   const unknownArgs = [];
   args.unknown = args.unknown || ((arg) => unknownArgs.push(arg) && false);

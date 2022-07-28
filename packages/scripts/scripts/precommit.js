@@ -2,7 +2,6 @@ const path = require('path');
 
 const fs = require('fs-extra');
 const lintStaged = require('lint-staged');
-const minimist = require('minimist');
 
 const { configCheck } = require('./utils/configs');
 const {
@@ -11,13 +10,9 @@ const {
 } = require('./utils/configureTypescript');
 const validateEslintrc = require('./utils/validateEslintrc');
 const { validateLernaDeps } = require('./utils/package');
+const { getArgv } = require('./utils/argv');
 
-const argv = minimist(process.argv.slice(2), {
-  boolean: ['verbose'],
-  default: {
-    verbose: false
-  }
-});
+const argv = getArgv();
 
 async function runPrecommit() {
   configCheck();

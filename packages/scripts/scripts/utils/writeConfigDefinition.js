@@ -4,19 +4,14 @@ const chalk = require('chalk');
 const fs = require('fs-extra');
 const jscodeshift = require('jscodeshift');
 const getCodeshiftParser = require('jscodeshift/src/getParser');
-const minimist = require('minimist');
 const prettier = require('prettier');
 
 const paths = require('../../config/paths');
 
 const { logTaskEnd, logTaskStart } = require('./taskLogFormatter');
+const { getArgv } = require('./argv');
 
-const argv = minimist(process.argv.slice(2), {
-  boolean: ['verbose'],
-  default: {
-    verbose: false
-  }
-});
+const argv = getArgv();
 
 const systemCacheFolderName = '.@tablecheck';
 const systemCacheFolderPath = path.join(paths.cwd, systemCacheFolderName);

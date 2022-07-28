@@ -20,6 +20,29 @@ else if (execLocation === './packages/scripts/bin/scripts.js')
   systemDir = path.join(process.cwd(), './packages/scripts');
 else systemDir = path.join(execLocation, '../../@tablecheck/scripts');
 
+const testFilePath = './tsconfig/defaultDefinitions.d.ts';
+if (!fs.existsSync(path.join(systemDir, testFilePath))) {
+  let currentTestDirectory = appDirectory;
+  systemDir = path.join(appDirectory, 'node_modules/@tablecheck/scripts');
+  while (
+    systemDir &&
+    systemDir !== '/' &&
+    !fs.existsSync(path.join(systemDir, testFilePath))
+  ) {
+    currentTestDirectory = path.join(currentTestDirectory, '..');
+    systemDir = path.join(
+      currentTestDirectory,
+      'node_modules/@tablecheck/scripts'
+    );
+  }
+  if (!systemDir || systemDir === '/')
+    throw new Error(
+      `Could not find system directory from process.cwd() "${process.cwd()}" or execLocation "${execLocation}" or INIT_CWD "${
+        process.env.INIT_CWD
+      }"`
+    );
+}
+
 // config after eject: we're in ./config/
 module.exports = {
   cwd: appDirectory,
