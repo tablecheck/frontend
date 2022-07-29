@@ -1,19 +1,18 @@
-# v2.3.2 (Fri Jul 29 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): github actions runner doesn’t correctly set systemDir [#70](https://github.com/tablecheck/tablecheck-react-system/pull/70) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.1...@tablecheck/scripts@2.3.2) (2022-07-29)
+
+
+### Bug Fixes
+
+* **scripts:** github actions runner doesn’t correctly set systemDir ([1c55a8a](https://github.com/tablecheck/tablecheck-react-system/commit/1c55a8aa1a6a2e241746b8ba79fc7b8b10521a29))
+
+
+
+
 
 ## [2.3.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.0...@tablecheck/scripts@2.3.1) (2022-07-28)
 
