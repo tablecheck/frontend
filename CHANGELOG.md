@@ -1,3 +1,16 @@
+# (Fri Jul 29 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-plugin@1.2.2`, `@tablecheck/scripts@2.3.2`
+  - fix(scripts): github actions runner doesn’t correctly set systemDir [#70](https://github.com/tablecheck/tablecheck-react-system/pull/70) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Jul 28 2022)
 
 #### 🐛 Bug Fix
