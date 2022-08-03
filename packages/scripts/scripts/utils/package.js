@@ -1,5 +1,6 @@
 const path = require('path');
 
+const systemSettings = require('@tablecheck/scripts-utils/userConfig');
 const chalk = require('chalk');
 const fs = require('fs-extra');
 const { uniqBy } = require('lodash');
@@ -235,10 +236,15 @@ async function validateLernaDeps() {
   const lernaPaths = await getLernaPaths();
   const rootPackage = fs.readJSONSync(path.join(process.cwd(), 'package.json'));
   const childPackages = await Promise.all(
-    lernaPaths.map(async (p) => [
-      p,
-      await fs.readJSON(path.join(p, 'package.json'))
-    ])
+    lernaPaths
+      .filter(
+        (name) =>
+          !systemSettings.independentLernaPackages ||
+          !systemSettings.independentLernaPackages.includes(
+            path.relative(process.cwd(), name)
+          )
+      )
+      .map(async (p) => [p, await fs.readJSON(path.join(p, 'package.json'))])
   );
   const rootDependencies = {
     ...(rootPackage.dependencies || {}),
