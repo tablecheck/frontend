@@ -816,6 +816,22 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-2216?component-type=npm&component-name=parse-path&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/node-fetch@2.6.7",
+      "description": "A light-weight module that brings window.fetch to node.js",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/node-fetch@2.6.7?utm_source=auditjs&utm_medium=integration&utm_content=4.0.37",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2022-2596",
+          "title": "[CVE-2022-2596] CWE-400: Uncontrolled Resource Consumption ('Resource Exhaustion')",
+          "description": "Denial of Service in GitHub repository node-fetch/node-fetch prior to 3.2.10.",
+          "cvssScore": 5.9,
+          "cvssVector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+          "cve": "CVE-2022-2596",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2022-2596?component-type=npm&component-name=node-fetch&utm_source=auditjs&utm_medium=integration&utm_content=4.0.37"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -974,6 +990,9 @@
     },
     {
       "id": "CVE-2022-2216"
+    },
+    {
+      "id": "CVE-2022-2596"
     }
   ]
 }

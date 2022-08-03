@@ -32,7 +32,7 @@ async function runPrecommit() {
     '**/*.{ts,tsx,js,jsx}': [
       // eslint fix first, otherwise eslint fix may unprettify files
       // also inherently checks typescript
-      'eslint --fix --config ./.eslintrc.js',
+      'eslint --fix',
       'prettier --write'
     ],
     '**/!(*.ts|*.tsx|*.js|*.jsx|package-json.json)': 'prettier --write -u',
