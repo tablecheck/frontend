@@ -1,3 +1,15 @@
+# v2.3.3 (Fri Aug 05 2022)
+
+#### 🐛 Bug Fix
+
+- fix(scripts): precommit should use same configs as lint [#71](https://github.com/tablecheck/tablecheck-react-system/pull/71) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
