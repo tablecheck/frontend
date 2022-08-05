@@ -1,19 +1,18 @@
-# v2.3.4 (Fri Aug 05 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): noEmit appears to no longer be supported with references [#72](https://github.com/tablecheck/tablecheck-react-system/pull/72) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.4](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.3...@tablecheck/scripts@2.3.4) (2022-08-05)
+
+
+### Bug Fixes
+
+* **scripts:** noEmit appears to no longer be supported with references ([fe111ca](https://github.com/tablecheck/tablecheck-react-system/commit/fe111caf0e94adbe1e946d0e181e08146f589669))
+
+
+
+
 
 ## [2.3.3](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.2...@tablecheck/scripts@2.3.3) (2022-08-05)
 
