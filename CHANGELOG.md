@@ -2,6 +2,19 @@
 
 #### 🐛 Bug Fix
 
+- `@tablecheck/scripts@2.3.4`
+  - fix(scripts): noEmit appears to no longer be supported with references [#72](https://github.com/tablecheck/tablecheck-react-system/pull/72) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
+# (Fri Aug 05 2022)
+
+#### 🐛 Bug Fix
+
 - `@tablecheck/scripts@2.3.3`
   - fix(scripts): precommit should use same configs as lint [#71](https://github.com/tablecheck/tablecheck-react-system/pull/71) ([@SimeonC](https://github.com/SimeonC))
 
