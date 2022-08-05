@@ -38,7 +38,7 @@
     "razzle-dev-utils": "^4.1.0",
     "react": "^17",
     "react-dom": "^17",
-    "storybook": "^6.5.9"
+    "storybook": "^6.5.10"
   },
   "dependencies": {
     "@babel/core": "^7.17.8",
