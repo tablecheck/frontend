@@ -123,12 +123,7 @@ module.exports = {
     const packageFilter = shouldIgnorePackageArg ? '*' : argv.package;
     writeConfigDefinition();
     writeCarbonIconTypes();
-    // this is gonna seem pretty weird, but here we are going to MODIFY the json tsconfig files
-
-    // first we see if we are in a lerna repo
-
-    // we need to use the base tsconfig.json as `references` is not inherited via extends
-    // https://github.com/microsoft/TypeScript/issues/27098
+    const lernaPaths = await getSortedLernaPaths();
     const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
     const packageConfig = {
       extends: '@tablecheck/scripts/tsconfig/lib.json',
@@ -139,7 +134,7 @@ module.exports = {
         outDir: `lib/${mode}`,
         declarationDir: mode === 'esm' ? 'lib/esm' : undefined,
         declarationMap: false,
-        noEmit: !isBuild || mode === 'es5',
+        noEmit: !lernaPaths.length && (!isBuild || mode === 'es5'),
         rootDir: 'src',
         baseUrl: 'src'
       }
@@ -149,8 +144,6 @@ module.exports = {
       include: [],
       references: []
     };
-
-    const lernaPaths = await getSortedLernaPaths();
 
     let hasTypescript = false;
     const eslintRoots = systemSettings.additionalRoots || [];
@@ -246,7 +239,6 @@ module.exports = {
         exclude: ['node_modules'],
         include: eslintRoots,
         compilerOptions: {
-          noEmit: true,
           types: eslintRoots.includes('cypress')
             ? ['cypress', 'node']
             : undefined
