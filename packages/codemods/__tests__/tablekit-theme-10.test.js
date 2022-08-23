@@ -1,3 +1,4 @@
+const { require, test } = require('vitest');
 const path = require('path');
 
 const fs = require('fs-extra');
@@ -19,7 +20,7 @@ function getCodeshiftResult(fileContent) {
 }
 
 describe('tablekit-theme-10', () => {
-  test.each(files)('should convert %s', (fileName) => {
+  test.each(files.map((file) => [file]))('should convert %s', (fileName) => {
     expect(
       getCodeshiftResult(
         fs.readFileSync(path.join(testFilesDirectory, fileName), {

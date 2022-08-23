@@ -1,0 +1,36 @@
+{
+  "name": "@tablecheck/scripts-audit",
+  "description": "Audit util for easy integration with auditjs",
+  "license": "MIT",
+  "author": "TableCheck Inc.",
+  "version": "0.0.0",
+  "type": "module",
+  "bin": {
+    "@tablecheck/scripts-audit": "lib/main.js",
+    "tablecheck-audit": "lib/main.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc --build && chmod +x ./lib/main.js"
+  },
+  "dependencies": {
+    "@tablecheck/scripts-utils": "1.1.0",
+    "@turingpointde/cvss.js": "^1.4.6",
+    "chalk": "^5.0.1",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^9.1.0",
+    "treeify": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "9.0.1",
+    "@types/treeify": "1.0.0"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

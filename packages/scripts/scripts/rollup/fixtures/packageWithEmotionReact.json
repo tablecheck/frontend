@@ -1,9 +1,0 @@
-{
-  "name": "package with @emotion/react",
-  "dependencies": {},
-  "peerDependencies": {
-    "@emotion/react": ">=11.4 <12",
-    "react": ">=16.8.0 <18",
-    "react-dom": ">=16.2.0 <18"
-  }
-}

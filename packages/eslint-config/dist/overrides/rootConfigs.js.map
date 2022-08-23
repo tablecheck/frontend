@@ -1,0 +1,1 @@
+{"version":3,"file":"rootConfigs.js","sourceRoot":"","sources":["../../src/overrides/rootConfigs.ts"],"names":[],"mappings":";;;AAEa,QAAA,oBAAoB,GAA0B;IACzD,KAAK,EAAE,CAAC,iBAAiB,CAAC;IAC1B,KAAK,EAAE;QACL,YAAY,EAAE,KAAK;QACnB,0BAA0B,EAAE,KAAK;KAClC;CACF,CAAC"}

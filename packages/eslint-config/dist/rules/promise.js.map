@@ -1,0 +1,1 @@
+{"version":3,"file":"promise.js","sourceRoot":"","sources":["../../src/rules/promise.ts"],"names":[],"mappings":";;;AAEa,QAAA,YAAY,GAAuB;IAC9C,uBAAuB,EAAE,KAAK;IAC9B,mBAAmB,EAAE,KAAK;IAC1B,yBAAyB,EAAE,KAAK;IAChC,mBAAmB,EAAE,KAAK;IAC1B,wBAAwB,EAAE,OAAO;IACjC,qBAAqB,EAAE,OAAO;IAC9B,oBAAoB,EAAE,MAAM;IAC5B,gCAAgC,EAAE,MAAM;IACxC,gCAAgC,EAAE,MAAM;IACxC,8BAA8B,EAAE,MAAM;CACvC,CAAC"}
