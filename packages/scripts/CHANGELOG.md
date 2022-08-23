@@ -1,19 +1,18 @@
-# v2.3.5 (Tue Aug 23 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): typescript for cypress in libraries [#73](https://github.com/tablecheck/tablecheck-react-system/pull/73) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.5](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.4...@tablecheck/scripts@2.3.5) (2022-08-23)
+
+
+### Bug Fixes
+
+* **scripts:** typescript for cypress in libraries ([fc24a92](https://github.com/tablecheck/tablecheck-react-system/commit/fc24a92ea781cc9d3cdaec7d87010dc0fbf9dda6))
+
+
+
+
 
 ## [2.3.4](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.3...@tablecheck/scripts@2.3.4) (2022-08-05)
 
