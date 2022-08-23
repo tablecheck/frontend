@@ -1,8 +1,0 @@
-{
-  "name": "package with react",
-  "dependencies": {},
-  "peerDependencies": {
-    "react": ">=16.8.0 <18",
-    "react-dom": ">=16.2.0 <18"
-  }
-}
