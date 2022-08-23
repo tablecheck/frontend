@@ -176,7 +176,8 @@ module.exports = {
             target: 'es5',
             noEmit: true,
             isolatedModules: false,
-            paths: compilerPaths
+            paths: compilerPaths,
+            types: ['cypress', 'node']
           }
         },
         true
