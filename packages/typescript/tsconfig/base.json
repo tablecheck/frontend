@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["es2017", "es7", "es6", "dom"],
+    "declaration": true,
+    "declarationMap": true,
+    "downlevelIteration": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react"
+  }
+}
