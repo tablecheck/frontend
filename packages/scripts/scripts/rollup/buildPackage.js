@@ -149,7 +149,7 @@ function loadRollupConfig(
         requireReturnsDefault: 'namespace'
       }),
       json(),
-      jsxPlugin()
+      jsxPlugin(packagePath)
     ].filter((v) => !!v)
   };
   if (argv.verbose) {

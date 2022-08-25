@@ -342,10 +342,24 @@ async function validateLernaDeps() {
   }
 }
 
+function checkEmotionReactDeps(packagePath) {
+  const { dependencies, peerDependencies } = require(packagePath);
+
+  const hasEmotionReactInDependencies = Object.keys(dependencies || {}).some(
+    (key) => key === '@emotion/react'
+  );
+  const hasEmotionReactInPeerDependencies = Object.keys(
+    peerDependencies || {}
+  ).some((key) => key === '@emotion/react');
+
+  return hasEmotionReactInDependencies || hasEmotionReactInPeerDependencies;
+}
+
 module.exports = {
   lintAllPackages,
   processAllPackages,
   evaluatePackage,
   format,
-  validateLernaDeps
+  validateLernaDeps,
+  checkEmotionReactDeps
 };
