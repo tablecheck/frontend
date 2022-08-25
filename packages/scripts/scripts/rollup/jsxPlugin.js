@@ -1,8 +1,9 @@
 const jsx = require('acorn-jsx');
 const babel = require('@babel/core');
+const { checkEmotionReactDeps } = require('../utils/package');
 
 module.exports = {
-  jsxPlugin: () => ({
+  jsxPlugin: (packagePath) => ({
     options(inputOptions) {
       const acornPlugins =
         inputOptions.acornInjectPlugins ||
@@ -18,7 +19,9 @@ module.exports = {
             presets: [
               [
                 '@babel/preset-react',
-                { runtime: 'automatic', importSource: '@emotion/react' }
+                checkEmotionReactDeps(packagePath)
+                  ? { runtime: 'automatic', importSource: '@emotion/react' }
+                  : { runtime: 'automatic' }
               ]
             ]
           },
