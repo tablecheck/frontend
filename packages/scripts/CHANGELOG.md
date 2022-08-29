@@ -1,23 +1,18 @@
-# v2.3.6 (Mon Aug 29 2022)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, Alex ([@SashaShostyr](https://github.com/SashaShostyr)), for all your work!
-
-#### 🐛 Bug Fix
-
-- fix(scripts): use correct Babel "preset-react" plugin options [#74](https://github.com/tablecheck/tablecheck-react-system/pull/74) ([@SashaShostyr](https://github.com/SashaShostyr))
-
-#### Authors: 1
-
-- Alex ([@SashaShostyr](https://github.com/SashaShostyr))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.6](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.5...@tablecheck/scripts@2.3.6) (2022-08-29)
+
+
+### Bug Fixes
+
+* **scripts:** use correct Babel "preset-react" plugin options ([f5a31a3](https://github.com/tablecheck/tablecheck-react-system/commit/f5a31a3d3d4ff1dc86cbd90b1df7e0bd9f43bab7))
+
+
+
+
 
 ## [2.3.5](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.4...@tablecheck/scripts@2.3.5) (2022-08-23)
 
