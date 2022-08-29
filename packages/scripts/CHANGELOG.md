@@ -1,3 +1,19 @@
+# v2.3.6 (Mon Aug 29 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Alex ([@SashaShostyr](https://github.com/SashaShostyr)), for all your work!
+
+#### 🐛 Bug Fix
+
+- fix(scripts): use correct Babel "preset-react" plugin options [#74](https://github.com/tablecheck/tablecheck-react-system/pull/74) ([@SashaShostyr](https://github.com/SashaShostyr))
+
+#### Authors: 1
+
+- Alex ([@SashaShostyr](https://github.com/SashaShostyr))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
