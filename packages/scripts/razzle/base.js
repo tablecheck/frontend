@@ -88,7 +88,7 @@ module.exports = extendConfig(
 
         webpackConfigDraft.plugins.push(
           new webpack.DefinePlugin({
-            CONFIG: JSON.stringify(config)
+            CONFIG: `(${JSON.stringify(config)})`
           })
         );
         if (userPackage.dependencies && userPackage.dependencies.moment) {
