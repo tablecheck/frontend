@@ -1,3 +1,20 @@
+# (Tue Sep 27 2022)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Joan Mira ([@gazpachu](https://github.com/gazpachu)), for all your work!
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.3.7`
+  - fix: config issue [#77](https://github.com/tablecheck/tablecheck-react-system/pull/77) ([@gazpachu](https://github.com/gazpachu))
+
+#### Authors: 1
+
+- Joan Mira ([@gazpachu](https://github.com/gazpachu))
+
+---
+
 # (Mon Aug 29 2022)
 
 :tada: This release contains work from a new contributor! :tada:
