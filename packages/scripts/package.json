@@ -3,7 +3,7 @@
   "description": "Configuration and scripts forked from Create React App.",
   "license": "MIT",
   "author": "TableCheck Inc.",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "typings": "./tsconfig/definitions.d.ts",
   "bin": {
     "tablecheck-scripts": "bin/scripts.js",

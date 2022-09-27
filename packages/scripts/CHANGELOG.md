@@ -1,23 +1,18 @@
-# v2.3.7 (Tue Sep 27 2022)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, Joan Mira ([@gazpachu](https://github.com/gazpachu)), for all your work!
-
-#### 🐛 Bug Fix
-
-- fix: config issue [#77](https://github.com/tablecheck/tablecheck-react-system/pull/77) ([@gazpachu](https://github.com/gazpachu))
-
-#### Authors: 1
-
-- Joan Mira ([@gazpachu](https://github.com/gazpachu))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.7](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.6...@tablecheck/scripts@2.3.7) (2022-09-27)
+
+
+### Bug Fixes
+
+* config issue ([b209207](https://github.com/tablecheck/tablecheck-react-system/commit/b2092076c15f1d8509066cc074bc0a2efb0c9058)), closes [#76](https://github.com/tablecheck/tablecheck-react-system/issues/76)
+
+
+
+
 
 ## [2.3.6](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.5...@tablecheck/scripts@2.3.6) (2022-08-29)
 
