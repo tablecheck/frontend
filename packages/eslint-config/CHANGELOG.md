@@ -1,3 +1,17 @@
+# v1.8.2 (Mon Oct 03 2022)
+
+#### 🐛 Bug Fix
+
+- chore: fix formatting [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
+- fix(eslint-config): new versions of react plugin need whitelisting of emotions css prop [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
+- fix: loosen react dependency versions [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
