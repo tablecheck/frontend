@@ -1,21 +1,19 @@
-# v1.8.2 (Mon Oct 03 2022)
-
-#### 🐛 Bug Fix
-
-- chore: fix formatting [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
-- fix(eslint-config): new versions of react plugin need whitelisting of emotions css prop [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
-- fix: loosen react dependency versions [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.8.2](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.8.1...@tablecheck/eslint-config@1.8.2) (2022-10-03)
+
+
+### Bug Fixes
+
+* **eslint-config:** new versions of react plugin need whitelisting of emotions css prop ([07e8ce9](https://github.com/tablecheck/tablecheck-react-system/commit/07e8ce941a2af80132a20e7c625ba409c7991d84)), closes [/github.com/jsx-eslint/eslint-plugin-react/issues/3384#issuecomment-1236371796](https://github.com//github.com/jsx-eslint/eslint-plugin-react/issues/3384/issues/issuecomment-1236371796)
+* loosen react dependency versions ([14ee555](https://github.com/tablecheck/tablecheck-react-system/commit/14ee5552b4620d36c6ea816c733b907426ab152f))
+
+
+
+
 
 ## [1.8.1](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/eslint-config@1.8.0...@tablecheck/eslint-config@1.8.1) (2022-07-29)
 

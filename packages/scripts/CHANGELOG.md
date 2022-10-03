@@ -1,19 +1,18 @@
-# v2.3.8 (Mon Oct 03 2022)
-
-#### 🐛 Bug Fix
-
-- fix: loosen react dependency versions [#78](https://github.com/tablecheck/tablecheck-react-system/pull/78) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.8](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.7...@tablecheck/scripts@2.3.8) (2022-10-03)
+
+
+### Bug Fixes
+
+* loosen react dependency versions ([14ee555](https://github.com/tablecheck/tablecheck-react-system/commit/14ee5552b4620d36c6ea816c733b907426ab152f))
+
+
+
+
 
 ## [2.3.7](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.6...@tablecheck/scripts@2.3.7) (2022-09-27)
 
