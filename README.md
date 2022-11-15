@@ -14,7 +14,7 @@ To setup your development environment please run these commands in order. We dev
 
 ```shell
 nvm use
-npm ci --legacy-peer-deps
+npm ci
 npm start
 ```
 
