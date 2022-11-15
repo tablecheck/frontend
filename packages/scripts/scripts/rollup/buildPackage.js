@@ -385,7 +385,7 @@ async function buildPackage(libConfigPath, rootConfigPath) {
     const pathMatchers = pathKeys.map((key) => (relativePath) => {
       if (
         !relativePath.match(
-          new RegExp(`^${key.replace(/[*/]*$/gi, '.*')}`, 'ig')
+          new RegExp(`^${key.replace(/[*/]+?$/gi, '($|/).*')}`, 'ig')
         )
       )
         return false;
