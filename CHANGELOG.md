@@ -1,3 +1,16 @@
+# (Wed Nov 16 2022)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.3.9`
+  - fix(scripts): correct path matcher regex for stripping lib types [#80](https://github.com/tablecheck/tablecheck-react-system/pull/80) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Oct 03 2022)
 
 #### 🐛 Bug Fix
