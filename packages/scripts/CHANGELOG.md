@@ -1,19 +1,18 @@
-# v2.3.9 (Wed Nov 16 2022)
-
-#### 🐛 Bug Fix
-
-- fix(scripts): correct path matcher regex for stripping lib types [#80](https://github.com/tablecheck/tablecheck-react-system/pull/80) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.9](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.8...@tablecheck/scripts@2.3.9) (2022-11-16)
+
+
+### Bug Fixes
+
+* **scripts:** correct path matcher regex for stripping lib types ([9ca09ae](https://github.com/tablecheck/tablecheck-react-system/commit/9ca09ae23bef646eaf3fbc411c63eb0fb5ed9aa4))
+
+
+
+
 
 ## [2.3.8](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.7...@tablecheck/scripts@2.3.8) (2022-10-03)
 
