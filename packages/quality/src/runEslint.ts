@@ -1,21 +1,16 @@
 import fs from 'fs-extra';
 import path from 'path';
 import { ESLint } from 'eslint';
-import { paths } from '@tablecheck/scripts-utils';
+import { paths } from '@tablecheck/frontend-utils';
 
 export async function runEslint(eslintPaths: string[], shouldAutoFix: boolean) {
   let results = [];
   try {
-    const isThisMonorepo =
-      require(paths.appPackageJson).name === 'tablecheck-react-system';
-    const overrideConfigFile = isThisMonorepo
-      ? path.join(paths.cwd, '.eslintrc.js')
-      : undefined;
     const eslint = new ESLint({
       cwd: paths.cwd,
       fix: shouldAutoFix,
-      overrideConfigFile,
-      useEslintrc: isThisMonorepo ? false : undefined,
+      overrideConfigFile: path.join(paths.cwd, '.eslintrc.js'),
+      useEslintrc: false,
       errorOnUnmatchedPattern: false,
       reportUnusedDisableDirectives: 'error'
     });
@@ -24,15 +19,16 @@ export async function runEslint(eslintPaths: string[], shouldAutoFix: boolean) {
       await ESLint.outputFixes(results);
     }
     const cliFormatter = await eslint.loadFormatter(
-      require.resolve('./eslintStylishFormatter.js')
+      new URL('./formatters/eslintStylishFormatter.js', import.meta.url)
+        .pathname
     );
     const junitFormatter = await eslint.loadFormatter(
-      require.resolve('./eslintJunitFormatter.js')
+      new URL('./formatters/eslintJunitFormatter.js', import.meta.url).pathname
     );
-    console.log(cliFormatter.format(results));
+    console.log(await cliFormatter.format(results));
     fs.outputFileSync(
       path.join(paths.cwd, 'junit', 'eslint.xml'),
-      junitFormatter.format(results),
+      await junitFormatter.format(results),
       'utf8'
     );
   } catch (e) {

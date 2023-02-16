@@ -4,9 +4,9 @@ import chalk from 'chalk';
 import flatten from 'flat';
 import fs from 'fs-extra';
 
-import { paths, unicodeEmoji as icons } from '@tablecheck/scripts-utils';
+import { paths, unicodeEmoji as icons } from '@tablecheck/frontend-utils';
 
-export function configCheck() {
+export async function configCheck() {
   const configDirPath = path.join(paths.cwd, 'config');
   if (fs.existsSync(configDirPath)) {
     const defaultConfigPath = path.join(configDirPath, 'default.json');
@@ -25,7 +25,7 @@ export function configCheck() {
       return;
     }
     const baseKeys = Object.keys(
-      flatten(require(path.join(configDirPath, 'default.json')))
+      flatten(fs.readJSONSync(path.join(configDirPath, 'default.json')))
     );
 
     let passesTest = true;
@@ -33,7 +33,7 @@ export function configCheck() {
     for (let i = 0; i < configs.length; i += 1) {
       if (configs[i] !== 'default.json') {
         const keys = Object.keys(
-          flatten(require(path.join(configDirPath, configs[i])))
+          flatten(fs.readJSONSync(path.join(configDirPath, configs[i])))
         );
         const extraKeys = keys.filter((key) => baseKeys.indexOf(key) === -1);
         if (extraKeys.length) {

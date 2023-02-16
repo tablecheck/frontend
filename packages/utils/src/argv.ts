@@ -3,9 +3,9 @@ import { execaSync } from 'execa';
 import minimist from 'minimist';
 import stringSimilarity from 'string-similarity';
 
-import { unicodeEmoji as icons } from './unicodeEmoji.js';
+import { unicodeEmoji as icons } from './unicodeEmoji';
 
-import { paths } from './paths.js';
+import { paths } from './paths';
 
 let shouldIgnorePackageArg = false;
 

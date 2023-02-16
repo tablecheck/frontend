@@ -1,6 +1,7 @@
-const baseTests = require('./tests');
-const documentation = require('./documentation');
 const merge = require('../utils/merge');
+
+const documentation = require('./documentation');
+const baseTests = require('./tests');
 
 module.exports = merge(require('./typescript'), baseTests, {
   files: [
@@ -19,7 +20,6 @@ module.exports = merge(require('./typescript'), baseTests, {
     'consistent-return': 'error'
   },
   env: {
-    jest: true,
     node: true
   }
 });

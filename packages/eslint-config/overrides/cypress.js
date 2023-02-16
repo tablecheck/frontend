@@ -1,16 +1,9 @@
-const jestPlugin = require('eslint-plugin-jest');
-
-const testConfig = require('./tests');
 const namingConfig = require('../rules/namingConvention');
-
 const merge = require('../utils/merge');
 
-const testOverrides = Object.keys(testConfig.rules).reduce(
-  (result, ruleKey) => ({ ...result, [ruleKey]: 'off' }),
-  {}
-);
+const testConfig = require('./tests');
 
-const jestOverrides = Object.keys(jestPlugin.configs.all.rules).reduce(
+const testOverrides = Object.keys(testConfig.rules).reduce(
   (result, ruleKey) => ({ ...result, [ruleKey]: 'off' }),
   {}
 );
@@ -27,7 +20,6 @@ module.exports = merge(require('./typescript'), {
     'cypress/globals': true
   },
   rules: {
-    ...jestOverrides,
     ...testOverrides,
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',

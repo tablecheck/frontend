@@ -9,15 +9,13 @@ import {
   check as checkPackageFormat
 } from 'prettier-package-json';
 
-import { paths } from './paths.js';
-import { getArgv } from './argv.js';
-import { writePrettyFile } from './prettier.js';
-import { getLernaPaths } from './lerna.js';
-import { unicodeEmoji } from './unicodeEmoji.js';
+import { paths } from './paths';
+import { getArgv } from './argv';
+import { writePrettyFile } from './prettier';
+import { getLernaPaths } from './lerna';
+import { unicodeEmoji } from './unicodeEmoji';
 
 const argv = getArgv();
-const isRunningInLerna =
-  path.join(paths.cwd, 'node_modules/@tablecheck/scripts') !== paths.systemDir;
 
 export function getPackageJson(directory = paths.cwd) {
   return fs.readJsonSync(path.join(directory, 'package.json')) as PackageJson;
@@ -30,10 +28,6 @@ export function detectInstalledVersion(
   const packageJsonPaths = [
     path.join(paths.cwd, 'node_modules', packageName, 'package.json')
   ];
-  if (isRunningInLerna)
-    packageJsonPaths.push(
-      path.join(paths.systemDir, '../..', packageName, 'package.json')
-    );
   const foundPackageJsonPath = packageJsonPaths.filter((filepath) =>
     fs.existsSync(filepath)
   )[0];
@@ -124,6 +118,7 @@ const prettyFormatOptions: Parameters<typeof checkPackageFormat>[1] = {
     /**
      * Configuration
      */
+    'exports',
     'entry',
     'entries',
     'assets',

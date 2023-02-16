@@ -1,6 +1,10 @@
 import path from 'path';
 
-import { paths, getArgv, getSortedLernaPaths } from '@tablecheck/scripts-utils';
+import {
+  paths,
+  getArgv,
+  getSortedLernaPaths
+} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import { TsConfigJson } from 'type-fest';
@@ -10,6 +14,11 @@ import { configureCypressTypescript } from './cypress.js';
 import { configureEslintTypescript } from './eslint.js';
 
 const argv = getArgv();
+
+type PartialTsConfigJson<TKeys extends keyof TsConfigJson> = Required<
+  Pick<TsConfigJson, TKeys>
+> &
+  Omit<TsConfigJson, TKeys>;
 
 export async function configureTypescript({
   isBuild = true,
@@ -25,8 +34,14 @@ export async function configureTypescript({
   const packageFilter = shouldIgnorePackageArg ? '*' : argv.package;
   const lernaPaths = await getSortedLernaPaths();
   const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
-  const packageConfig = {
-    extends: '@tablecheck/scripts/tsconfig/base.json',
+  const baseTypescriptConfigPath = path.join(
+    paths.systemDir,
+    'typescript/tsconfig/base.json'
+  );
+  const packageConfig: PartialTsConfigJson<
+    'extends' | 'include' | 'compilerOptions'
+  > = {
+    extends: baseTypescriptConfigPath,
     include: ['src', '*.ts'],
     compilerOptions: {
       rootDir: 'src',
@@ -38,9 +53,9 @@ export async function configureTypescript({
   }
   // depending on whether we are in a lerna mono-repo or not we can either use
   // the above packageConfig on it's own or use this one and reference the other
-  let libConfig: TsConfigJson = {
-    extends: '@tablecheck/scripts/tsconfig/base.json',
-    include: [],
+  let libConfig: PartialTsConfigJson<'extends' | 'include' | 'references'> = {
+    extends: baseTypescriptConfigPath,
+    include: ['*.ts'], // include config files like vite.config.ts
     references: []
   };
   const sharedWriteConfigOpts: WriteTsConfigOptions = {
@@ -48,6 +63,7 @@ export async function configureTypescript({
     definitionPaths
   };
   if (lernaPaths.length) {
+    packageConfig.compilerOptions.composite = true;
     const references = [] as NonNullable<TsConfigJson['references']>;
     lernaPaths.forEach((localPath) => {
       if (packageFilter && packageFilter !== '*') {
@@ -61,7 +77,7 @@ export async function configureTypescript({
       });
     });
     if (!isBuild && references.length === 1) {
-      libConfig = fs.readJSONSync(references[0].path) as TsConfigJson;
+      libConfig = fs.readJSONSync(references[0].path) as typeof libConfig;
     } else {
       libConfig.references = references;
     }

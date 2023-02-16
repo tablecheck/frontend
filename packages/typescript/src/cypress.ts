@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { paths } from '@tablecheck/scripts-utils';
+import { paths } from '@tablecheck/frontend-utils';
 
 import { writeTsConfig } from './writeConfig.js';
 import { addConfigAsReference } from './utils.js';

@@ -1,26 +1,10 @@
-// this project is NOT typescript compatible - make sure this matches the eslint-config setup
-// basically nothing this requires actually has types or they make no sense
-// this is the only project that should not be in typescript.
 module.exports = {
-  extends: [
-    'airbnb',
-    'plugin:eslint-comments/recommended',
-    'plugin:jest/recommended',
-    'prettier'
-  ],
-  plugins: ['eslint-comments', 'jest', 'promise'],
+  extends: ['./packages/eslint-config'],
   env: {
-    node: true,
-    jest: true
+    node: true
   },
 
-  settings: {
-    jest: {
-      version: 26
-    }
-  },
   overrides: [
-    require('@tablecheck/eslint-config/overrides/tests'),
     {
       files: ['./packages/codemods/scripts/*.js'],
       rules: {
@@ -44,8 +28,6 @@ module.exports = {
     'promise/catch-or-return': 'off',
     'promise/always-return': 'off',
     'promise/avoid-new': 'off',
-    'no-underscore-dangle': 'off',
-    // use immer.produce for safety
-    'no-param-reassign': 'off'
+    'no-underscore-dangle': 'off'
   }
 };

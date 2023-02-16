@@ -8,28 +8,12 @@ module.exports = {
     '**/*.spec.{js,jsx}'
   ],
   rules: {
-    // jest specific rules
-    'jest/consistent-test-it': [
-      'error',
-      { fn: 'test', withinDescribe: 'test' }
-    ],
-    'jest/no-disabled-tests': 'warn',
-    'jest/no-focused-tests': 'error',
-    'jest/no-identical-title': 'error',
-    'jest/prefer-to-have-length': 'error',
-    'jest/prefer-to-be': 'error',
-    'jest/valid-describe-callback': 'error',
-    'jest/valid-expect': 'error',
-    // technically this is in the recommended that we extend, but we need to turn it off for tc-react-system
-    'jest/no-jest-import': 'error',
-
     // overrides not necessary for test files
     'promise/prefer-await-to-then': 'error',
     'promise/prefer-await-to-callbacks': 'error',
     'promise/avoid-new': 'off',
     'func-names': 'off',
     'no-new': 'off',
-    'class-methods-use-this': 'off',
     'prefer-promise-reject-errors': 'off',
     'global-require': 'off',
     'react/prop-types': 'off',
@@ -68,7 +52,6 @@ module.exports = {
     camelcase: 'error'
   },
   env: {
-    jest: true,
     node: true
   }
 };

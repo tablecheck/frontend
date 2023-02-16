@@ -22,24 +22,30 @@ if (
   project = ['./tsconfig.json'];
 }
 
+let reactVersion = '17'; // set to 17 for legacy reasons or to not error if react not present - should be able to detect below
+const packageJsonPath = path.resolve(path.join(process.cwd(), 'package.json'));
+if (fs.existsSync(packageJsonPath)) {
+  const pkg = fs.readJsonSync(packageJsonPath);
+  if (pkg.dependencies && pkg.dependencies.react) {
+    const versionOnly = pkg.dependencies.react
+      .replace(/^[^0-9]+/gi, '')
+      .replace(/\..+$/gi, '');
+    if (versionOnly === '*')
+      reactVersion = '18'; // dumb hack, but using '*' is more dumb
+    else if (!isNaN(parseFloat(versionOnly))) reactVersion = versionOnly;
+  }
+}
+
 const config = {
   root: true,
   extends: [
     'airbnb',
     'plugin:eslint-comments/recommended',
-    'plugin:jest/recommended',
     'prettier',
     'plugin:react-hooks/recommended'
   ],
 
-  plugins: [
-    'eslint-comments',
-    '@emotion',
-    'promise',
-    'cypress',
-    'jest',
-    '@tablecheck'
-  ],
+  plugins: ['eslint-comments', '@emotion', 'promise', 'cypress', '@tablecheck'],
 
   globals: {
     CONFIG: true
@@ -52,18 +58,14 @@ const config = {
 
   env: {
     node: true,
-    jest: true,
     browser: true,
     commonjs: true,
     es6: true
   },
 
   settings: {
-    jest: {
-      version: 26
-    },
     react: {
-      version: '17'
+      version: reactVersion
     }
   },
 
@@ -76,7 +78,8 @@ const config = {
     require('./overrides/typescriptDocumentation'),
     require('./overrides/scripts'),
     require('./overrides/documentation'),
-    require('./overrides/maxLines')
+    ...require('./overrides/configurable'),
+    require('./overrides/rootConfigs')
   ],
 
   rules: {
