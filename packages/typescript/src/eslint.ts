@@ -4,7 +4,7 @@ import {
   getSortedLernaPaths,
   paths,
   userConfig
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import fs from 'fs-extra';
 
 import { writeTsConfig } from './writeConfig.js';

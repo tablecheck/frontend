@@ -49,6 +49,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
         'The default import "{{ importName }}" should be using a specific import'
     }
   },
+  defaultOptions: [],
   create: (context) => ({
     ImportDeclaration(node) {
       const importName = node.source.value || '';

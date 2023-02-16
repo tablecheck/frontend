@@ -1,0 +1,10 @@
+{
+  "extends": "../typescript/tsconfig/base.json",
+  "include": ["./src/**/*", "formatters.build.config.ts"],
+  "compilerOptions": {
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "outDir": "./lib"
+  },
+  "exclude": ["node_modules"]
+}

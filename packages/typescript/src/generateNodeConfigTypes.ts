@@ -7,7 +7,7 @@ import {
   getArgv,
   detectInstalledVersion,
   writePrettyFile
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import _ from 'lodash';
@@ -24,15 +24,20 @@ export function generateNodeConfigTypes(): string | undefined | void {
   logTaskStart(`Generating types for 'config' ('node-config')`);
 
   const defaultConfigFilePath = path.join(paths.cwd, 'config/default.json');
+  const devConfigFilePath = path.join(paths.cwd, 'config/development.json');
   if (!fs.existsSync(defaultConfigFilePath)) return;
 
-  const configJson = fs.readJsonSync(defaultConfigFilePath);
+  const defaultConfigJson = fs.readJsonSync(defaultConfigFilePath);
+  const devConfigJson = fs.existsSync(devConfigFilePath)
+    ? fs.readJSONSync(devConfigFilePath)
+    : {};
 
   writePrettyFile(
     nodeConfigTypesFilePath,
     `declare module '@tablecheck/scripts' {
     // this file is autobuilt inside configureTypescript, all changes here will be overwritten
-    export interface Config ${buildTypes(configJson)}
+    interface DefaultConfig ${buildTypes(defaultConfigJson)}
+    export interface Config extends DefaultConfig ${buildTypes(devConfigJson)}
   
     global {
       const CONFIG: Config;
@@ -49,20 +54,20 @@ export function generateNodeConfigTypes(): string | undefined | void {
   return nodeConfigTypesFilePath;
 }
 
-function buildTypes(value: unknown): string {
-  if (Array.isArray(value))
-    return `(${uniq(value.map((v) => buildTypes(v))).join(' | ')})[]`;
-  switch (typeof value) {
+function buildTypes(configValue: unknown): string {
+  if (Array.isArray(configValue))
+    return `(${uniq(configValue.map((v, i) => buildTypes(v))).join(' | ')})[]`;
+  switch (typeof configValue) {
     case 'object': {
-      if (Array.isArray(value))
-        return `readonly (${uniq(value.map((v) => buildTypes(v))).join(
+      if (Array.isArray(configValue))
+        return `readonly (${uniq(configValue.map((v) => buildTypes(v))).join(
           ' | '
         )})[]`;
-      return `{${Object.keys(value as Record<string, unknown>)
+      return `{${Object.keys(configValue as Record<string, unknown>)
         .map(
           (key) =>
             `readonly ${key}: ${buildTypes(
-              (value as Record<string, unknown>)[key]
+              (configValue as Record<string, unknown>)[key]
             )};`
         )
         .join('\n')}}`;
@@ -70,6 +75,6 @@ function buildTypes(value: unknown): string {
     case 'bigint':
       return 'number';
     default:
-      return typeof value;
+      return typeof configValue;
   }
 }

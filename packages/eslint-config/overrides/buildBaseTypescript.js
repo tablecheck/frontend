@@ -39,7 +39,7 @@ const eslintTypescriptRules = {
   // returning value from function
   // see https://stackoverflow.com/a/67652059/1413689
   'consistent-return': 'off',
-  '@typescript-eslint/explicit-module-boundary-types': 'error'
+  '@typescript-eslint/no-unsafe-return': 'error'
 };
 
 /**
@@ -58,7 +58,6 @@ module.exports = function buildBaseTypescript(files, rules, forcedRules) {
       'plugin:@typescript-eslint/eslint-plugin/eslint-recommended',
       'plugin:@typescript-eslint/eslint-plugin/recommended',
       'plugin:eslint-comments/recommended',
-      'plugin:jest/recommended',
       'prettier',
       'plugin:react-hooks/recommended'
     ],
@@ -68,8 +67,7 @@ module.exports = function buildBaseTypescript(files, rules, forcedRules) {
       'eslint-comments',
       '@emotion',
       'promise',
-      'cypress',
-      'jest'
+      'cypress'
     ],
     files,
     settings: {

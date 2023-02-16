@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { paths, getArgv } from '@tablecheck/scripts-utils';
+import { paths, getArgv } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import glob from 'glob';
@@ -82,6 +82,6 @@ export function writeTsConfig(
     }
     return false;
   }
-  outputTsConfig(config);
+  outputTsConfig(config, filePath);
   return true;
 }

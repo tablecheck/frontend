@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { getThemeValue } from '@tablekit/utils';
+
 import { tooltipThemeNamespace, tooltipClassicTheme } from './themes';
 
 export const TooltipPrimitive = styled.div`

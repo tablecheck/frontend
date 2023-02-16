@@ -12,8 +12,8 @@ import {
   getLernaPaths,
   unicodeEmoji as icons,
   userConfig
-} from '@tablecheck/scripts-utils';
-import { configureTypescript } from '@tablecheck/scripts-typescript';
+} from '@tablecheck/frontend-utils';
+import { configureTypescript } from '@tablecheck/frontend-typescript';
 import chalk from 'chalk';
 import { ExecaReturnValue } from 'execa';
 import fs from 'fs-extra';
@@ -30,12 +30,10 @@ import { verifyPackageTree } from './verifyPackageTree.js';
 import { runEslint } from './runEslint.js';
 
 export async function lint() {
-  console.log('[debug]', 'enter');
   // Do the preflight check
   if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
     verifyPackageTree();
   }
-  console.log('[debug]', 'gets the argv');
   const argv = getArgv({
     boolean: ['fix', 'skip-typescript'],
     default: {
@@ -47,7 +45,7 @@ export async function lint() {
   const lernaPaths = await getLernaPaths();
 
   console.log(chalk.blue.bold('Running code quality and formatting checks...'));
-  if (!configCheck()) return;
+  if (!(await configCheck())) return;
   if (lernaPaths.length) await validateLernaDeps();
   console.log();
 
@@ -85,12 +83,10 @@ export async function lint() {
         if (globPackage !== argv.package) return;
       }
       let folders = ['src'];
-      if (
-        userConfig &&
-        userConfig.lintFolderOverrides &&
-        userConfig.lintFolderOverrides[globPackage]
-      ) {
-        folders = userConfig.lintFolderOverrides[globPackage];
+      if (Array.isArray(userConfig?.quality?.folderOverrides)) {
+        folders = userConfig.quality!.folderOverrides;
+      } else if (userConfig?.quality?.folderOverrides?.[globPackage]) {
+        folders = userConfig.quality.folderOverrides[globPackage];
       }
       folders.forEach((folder) => {
         globPaths.push(path.join(lernaPath, folder, '**', '*'));
@@ -101,9 +97,9 @@ export async function lint() {
     });
   }
 
-  validateEslintrc();
+  await validateEslintrc();
   const isThisRepo =
-    fs.readJsonSync(paths.appPackageJson).name === 'tablecheck-react-system';
+    fs.readJsonSync(paths.appPackageJson).name === 'tablecheck-frontend';
 
   console.log(
     chalk.blue(`\nChecking${argv.fix ? ' and fixing' : ''} files matching:`)

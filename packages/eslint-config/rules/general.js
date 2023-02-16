@@ -1,10 +1,10 @@
 module.exports = {
-  // if your file has more than 300 lines of code (excl. whitespace and comments)
-  // it needs to be refactored into smaller files
-  'max-lines': 'error',
+  'max-lines': 'off',
+  'no-continue': 'off',
   // https://github.com/babel/babel-eslint/issues/815
   'template-curly-spacing': 'off',
   'no-underscore-dangle': 'off',
+  'class-methods-use-this': 'off',
 
   'import/no-extraneous-dependencies': [
     'error',
@@ -66,13 +66,13 @@ module.exports = {
       object: 'require',
       property: 'ensure',
       message:
-        'Please use import() instead. More info: https://github.com/facebook/create-react-app/blob/master/packages/tablecheck-scripts/template/README.md#code-splitting'
+        'Please use import() instead. More info: https://reactjs.org/docs/code-splitting.html#code-splitting'
     },
     {
       object: 'System',
       property: 'import',
       message:
-        'Please use import() instead. More info: https://github.com/facebook/create-react-app/blob/master/packages/tablecheck-scripts/template/README.md#code-splitting'
+        'Please use import() instead. More info: https://reactjs.org/docs/code-splitting.html#code-splitting'
     }
   ],
   'no-unused-vars': 'error',

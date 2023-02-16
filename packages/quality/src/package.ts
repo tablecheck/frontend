@@ -9,7 +9,7 @@ import {
   processAllPackages,
   unicodeEmoji as icons,
   userConfig
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import _ from 'lodash';
@@ -153,7 +153,7 @@ export async function validateLernaDeps() {
           childDependencies[packageName] = [[depType, childPath, version]];
         }
         if (version.match(/^file:/gi)) {
-          if (!rootDependencies[packageName].match(/^file:/gi)) return false;
+          if (!rootDependencies[packageName]?.match(/^file:/gi)) return false;
           const rootDepFilePath = rootDependencies[packageName].split(':')[1];
           const childDepFilePath = version.split(':')[1];
           return (
@@ -167,8 +167,10 @@ export async function validateLernaDeps() {
         );
       });
     if (invalidEntries.length > 0) {
-      const title = chalk.red.bold(
-        `Invalid dependencies in ${path.relative(process.cwd(), childPath)}`
+      const title = chalk.red(
+        `Invalid dependencies in ${chalk.blueBright.underline(
+          path.join(path.relative(process.cwd(), childPath), 'package.json')
+        )}`
       );
       const childMessages: string[] = [];
       invalidEntries.forEach(([depType, packageName, version]) => {
@@ -191,17 +193,20 @@ export async function validateLernaDeps() {
   logTaskEnd(!hasErrors);
   if (invalidChildDependencies.length) {
     console.log(
-      chalk.yellow.bold(
+      chalk.red.bold(
         'The following packages have different versions in sibling packages.'
       )
     );
     invalidChildDependencies.forEach(([packageName, dependencies]) => {
-      console.log(chalk.yellow`  - Package "${packageName}"`);
+      console.log(chalk.yellow(`  - Package "${packageName}"`));
       dependencies.forEach(([depType, childDepPath, version]) => {
         console.log(
-          `    ${path.relative(process.cwd(), childDepPath)} has ${chalk.yellow(
-            `${depType} "${version}"`
-          )}`
+          `    ${chalk.blueBright.underline(
+            path.join(
+              path.relative(process.cwd(), childDepPath),
+              'package.json'
+            )
+          )} has ${chalk.yellow(`${depType} "${version}"`)}`
         );
       });
     });

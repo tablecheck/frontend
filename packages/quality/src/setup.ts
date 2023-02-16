@@ -2,7 +2,7 @@ import path from 'path';
 
 import chalk from 'chalk';
 import fs from 'fs-extra';
-import { execa, isLerna, paths } from '@tablecheck/scripts-utils';
+import { execa, isLerna, paths } from '@tablecheck/frontend-utils';
 
 function safeCopyFile(sourceFileName: string, targetFilePath: string) {
   if (!fs.existsSync(targetFilePath)) {

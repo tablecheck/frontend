@@ -3,11 +3,10 @@
 process.env.BABEL_ENV = 'development';
 process.env.NODE_ENV = 'development';
 
-import { getArgv } from '@tablecheck/scripts-utils';
+import { getArgv } from '@tablecheck/frontend-utils';
 import { lint } from '../lint.js';
-console.log('[debug]', 'start');
+
 try {
-  console.log('[debug]', 'await now');
   await lint();
   process.exit(0);
 } catch (e) {

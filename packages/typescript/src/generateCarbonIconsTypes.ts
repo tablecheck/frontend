@@ -7,7 +7,7 @@ import {
   getArgv,
   detectInstalledVersion,
   writePrettyFile
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 
@@ -18,7 +18,9 @@ const carbonIconTypesFilePath = path.join(
   'carbonIcons.d.ts'
 );
 
-export function generateCarbonIconsTypes(): string | undefined | void {
+export async function generateCarbonIconsTypes(): Promise<
+  string | void | undefined
+> {
   const carbonPackageJsonPath = detectInstalledVersion(
     '@carbon/icons-react',
     '11'
@@ -39,7 +41,7 @@ export function generateCarbonIconsTypes(): string | undefined | void {
       )
     );
   }
-  const carbonIcons = require(path.join(carbonPackageJsonPath, '..'));
+  const carbonIcons = await import(path.join(carbonPackageJsonPath, '..'));
   const fileContent = `${Object.keys(carbonIcons).reduce(
     (result, iconName) =>
       `${result}  declare export const ${iconName}: CarbonIcon;\n`,

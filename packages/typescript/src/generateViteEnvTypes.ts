@@ -7,7 +7,7 @@ import {
   getArgv,
   detectInstalledVersion,
   writePrettyFile
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import dotenv from 'dotenv';

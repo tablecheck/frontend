@@ -1,7 +1,7 @@
 import path from 'path';
 
-import { configureTypescript } from '@tablecheck/scripts-typescript';
-import { getArgv, isLerna } from '@tablecheck/scripts-utils';
+import { configureTypescript } from '@tablecheck/frontend-typescript';
+import { getArgv, isLerna } from '@tablecheck/frontend-utils';
 import fs from 'fs-extra';
 import lintStaged from 'lint-staged';
 
@@ -12,8 +12,8 @@ import { configCheck } from './configs.js';
 const argv = getArgv();
 
 export async function precommit() {
-  if (!configCheck()) throw new Error('Config check failed');
-  validateEslintrc();
+  if (!(await configCheck())) throw new Error('Config check failed');
+  await validateEslintrc();
 
   const configPath = await configureTypescript({
     isBuild: false,

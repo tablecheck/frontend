@@ -3,9 +3,8 @@ import { describe, test, expect } from 'vitest';
 import { rollup } from 'rollup';
 import { jsxPlugin } from './jsxPlugin.js';
 
-function testCode(name: string, filePath: string) {
-  // eslint-disable-next-line jest/valid-title
-  test(name, async () => {
+function testCode(name: string, filePath: string, isEmotion: boolean) {
+  test(`${name} ${isEmotion ? 'with emotion' : 'vanilla react'}`, async () => {
     const resolvedFilePath = require.resolve(filePath);
     const bundle = await rollup({
       input: resolvedFilePath,
@@ -18,7 +17,7 @@ function testCode(name: string, filePath: string) {
             return { id, external: true };
           }
         },
-        jsxPlugin()
+        jsxPlugin(isEmotion)
       ]
     });
     const generated = await bundle.generate({ format: 'esm' });
@@ -27,16 +26,35 @@ function testCode(name: string, filePath: string) {
 }
 
 describe('scripts/jsxPlugin', () => {
-  testCode('should handle basic JSX elements', './fixtures/basic.jsx');
+  [true, false].forEach((useEmotion) => {
+    testCode(
+      'should handle basic JSX elements',
+      './fixtures/basic.jsx',
+      useEmotion
+    );
 
-  testCode(
-    'should handle varying import patterns',
-    './fixtures/importedComponents.jsx'
-  );
+    testCode(
+      'should handle varying import patterns',
+      './fixtures/importedComponents.jsx',
+      useEmotion
+    );
 
-  testCode('should handle name clashes', './fixtures/variableNameClashes.jsx');
+    testCode(
+      'should handle name clashes',
+      './fixtures/variableNameClashes.jsx',
+      useEmotion
+    );
 
-  testCode('should handle import alias spread', './fixtures/aliasSpread.jsx');
+    testCode(
+      'should handle import alias spread',
+      './fixtures/aliasSpread.jsx',
+      useEmotion
+    );
 
-  testCode('should handle emotion css', './fixtures/emotionCss.jsx');
+    testCode(
+      'should handle emotion css',
+      './fixtures/emotionCss.jsx',
+      useEmotion
+    );
+  });
 });

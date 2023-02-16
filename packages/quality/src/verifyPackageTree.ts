@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { getPackageJson } from '@tablecheck/scripts-utils';
+import { getPackageJson, paths } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import semver from 'semver';
@@ -15,7 +15,6 @@ export function verifyPackageTree() {
   const depsToCheck = [
     // These are packages most likely to break in practice.
     // See https://github.com/facebook/create-react-app/issues/1795 for reasons why.
-    // I have not included Babel here because plugins typically don't import Babel.
     'eslint'
   ];
 
@@ -27,7 +26,7 @@ export function verifyPackageTree() {
       expectedVersionsByDep[dep] = ownDeps[dep];
     });
   // Verify we don't have other versions up the tree
-  let currentDir = __dirname;
+  let currentDir = paths.cwd;
   // eslint-disable-next-line no-constant-condition
   while (true) {
     const previousDir = currentDir;
@@ -38,12 +37,11 @@ export function verifyPackageTree() {
     }
     const maybeNodeModules = path.resolve(currentDir, 'node_modules');
     if (!fs.existsSync(maybeNodeModules)) {
-      // eslint-disable-next-line no-continue
       continue;
     }
     const invalidPackages: {
       dep: string;
-      maybeDep: string; // TODO
+      maybeDep: string;
       expectedVersion: string;
       depPackageJson: PackageJson;
     }[] = [];
@@ -56,9 +54,7 @@ export function verifyPackageTree() {
       if (!fs.existsSync(maybeDepPackageJson)) {
         return;
       }
-      const depPackageJson = JSON.parse(
-        fs.readFileSync(maybeDepPackageJson, 'utf8')
-      );
+      const depPackageJson = fs.readJSONSync(maybeDepPackageJson, 'utf8');
       const expectedVersion = expectedVersionsByDep[dep];
       if (
         expectedVersion &&

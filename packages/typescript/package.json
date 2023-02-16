@@ -1,43 +1,55 @@
 {
-  "name": "@tablecheck/scripts-typescript",
+  "name": "@tablecheck/frontend-typescript",
   "description": "Typescript configuration setup",
   "license": "MIT",
   "author": "TableCheck Inc.",
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "@tablecheck/scripts-typescript": "lib/main.js",
-    "tablecheck-tsc-setup": "lib/main.js",
-    "tablecheck-scripts-postinstall": "lib/main.js"
+    "tablecheck-scripts-postinstall": "bin/main.js",
+    "tablecheck-tsc-setup": "bin/main.js"
   },
   "files": [
+    "bin",
     "lib",
     "tsconfig"
   ],
-  "exports": "./lib/index.js",
   "scripts": {
-    "build": "node ../../scripts/deriveExportsFromSiblings.mjs && tsc --build && chmod +x ./lib/main.js"
+    "build": "node ../../scripts/deriveExportsFromSiblings.mjs && unbuild",
+    "prepublish": "npm run build"
   },
   "dependencies": {
-    "@tablecheck/scripts-utils": "1.1.0",
-    "chalk": "5.0.1",
-    "dotenv": "16.0.1",
-    "execa": "6.1.0",
-    "find-git-root": "1.0.4",
-    "fs-extra": "10.1.0",
-    "glob": "8.0.3"
-  },
-  "devDependencies": {
-    "type-fest": "2.18.1",
-    "typescript": "4.7.4"
+    "@tablecheck/frontend-utils": "^1.1.0",
+    "chalk": "^5.2.0",
+    "dotenv": "^16.0.3",
+    "execa": "^7.0.0",
+    "find-git-root": "^1.0.4",
+    "fs-extra": "^11.1.0",
+    "glob": "^8.1.0"
   },
   "peerDependencies": {
     "typescript": "4.x"
+  },
+  "devDependencies": {
+    "type-fest": "3.5.7",
+    "typescript": "4.8.2",
+    "unbuild": "^1.1.1"
   },
   "engines": {
     "node": ">= 16.16.0"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./lib/index.d.ts"
 }
