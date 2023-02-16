@@ -1,6 +1,6 @@
-# TableCheck React System
+# TableCheck Frontend System
 
-For Documentation please see https://tablecheck.github.io/tablecheck-react-system
+For Documentation please see https://tablecheck.github.io/frontend
 
 ## Development setup
 
@@ -27,8 +27,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/SimeonC"><img src="https://avatars.githubusercontent.com/u/1085899?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simeon Cheeseman</b></sub></a><br /><a href="https://github.com/tablecheck/@tablecheck/tablecheck-react-system/commits?author=SimeonC" title="Documentation">📖</a> <a href="#infra-SimeonC" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/tablecheck/@tablecheck/tablecheck-react-system/commits?author=SimeonC" title="Tests">⚠️</a> <a href="https://github.com/tablecheck/@tablecheck/tablecheck-react-system/commits?author=SimeonC" title="Code">💻</a> <a href="#example-SimeonC" title="Examples">💡</a></td>
-    <td align="center"><a href="https://github.com/SashaShostyr"><img src="https://avatars.githubusercontent.com/u/19342294?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Alex</b></sub></a><br /><a href="https://github.com/tablecheck/@tablecheck/tablecheck-react-system/commits?author=SashaShostyr" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/SimeonC"><img src="https://avatars.githubusercontent.com/u/1085899?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Simeon Cheeseman</b></sub></a><br /><a href="https://github.com/tablecheck/@tablecheck/frontend/commits?author=SimeonC" title="Documentation">📖</a> <a href="#infra-SimeonC" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/tablecheck/@tablecheck/frontend/commits?author=SimeonC" title="Tests">⚠️</a> <a href="https://github.com/tablecheck/@tablecheck/frontend/commits?author=SimeonC" title="Code">💻</a> <a href="#example-SimeonC" title="Examples">💡</a></td>
   </tr>
 </table>
 

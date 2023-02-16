@@ -7,8 +7,8 @@ import {
   SyncOptions
 } from 'execa';
 
-import { paths } from './paths.js';
-import { getArgv } from './argv.js';
+import { paths } from './paths';
+import { getArgv } from './argv';
 
 const argv = getArgv();
 

@@ -1,56 +1,60 @@
 {
-  "name": "@tablecheck/scripts-quality",
+  "name": "@tablecheck/frontend-quality",
   "description": "Typescript, eslint and assorted linters/code quality checks",
   "license": "MIT",
   "author": "TableCheck Inc.",
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "@tablecheck/scripts-quality": "lib/bin/main.js",
-    "tablecheck-quality": "lib/bin/lint.js",
-    "quality": "lib/bin/lint.js",
-    "tablecheck-precommit": "lib/bin/precommit.js",
-    "precommit": "lib/bin/precommit.js"
+    "tablecheck-frontend-precommit": "bin/precommit.js",
+    "tablecheck-frontend-quality": "bin/lint.js"
   },
   "files": [
+    "bin",
     "lib",
     "templates"
   ],
   "scripts": {
-    "build": "node ../../scripts/deriveExportsFromSiblings.mjs && tsc --build && chmod +x ./lib/bin/*.js"
+    "build": "node ../../scripts/deriveExportsFromSiblings.mjs && npm run build:main && npm run build:formatters && node ./scripts/fixFormatters.js",
+    "build:main": "cp main.build.config.ts build.config.ts && unbuild || rm build.config.ts",
+    "build:formatters": "cp formatters.build.config.ts build.config.ts && unbuild || rm build.config.ts",
+    "prepublish": "npm run build"
   },
   "dependencies": {
-    "@babel/core": "^7.18.13",
-    "@babel/runtime": "^7.18.9",
-    "@tablecheck/babel-preset": "1.1.0",
-    "@tablecheck/eslint-config": "1.8.1",
-    "@tablecheck/scripts-typescript": "0.0.0",
-    "@tablecheck/scripts-utils": "1.1.0",
-    "@typescript-eslint/parser": "^5.34.0",
-    "chalk": "^5.0.1",
+    "@babel/core": "^7.20.12",
+    "@babel/runtime": "^7.20.13",
+    "@tablecheck/babel-preset": "^1.1.0",
+    "@tablecheck/eslint-config": "^1.8.2",
+    "@tablecheck/frontend-typescript": "^0.0.0",
+    "@tablecheck/frontend-utils": "^1.1.0",
+    "@typescript-eslint/parser": "^5.52.0",
+    "ansi-regex": "^6.0.1",
+    "chalk": "^5.2.0",
     "eslint": "^8",
-    "execa": "^6.1.0",
+    "execa": "^7.0.0",
     "find-git-root": "^1.0.4",
-    "fs-extra": "^10.1.0",
     "flat": "^5.0.2",
-    "glob": "^8.0.3",
-    "jscodeshift": "^0.13.1",
-    "lint-staged": "^13.0.3",
+    "fs-extra": "^11.1.0",
+    "glob": "^8.1.0",
+    "jscodeshift": "^0.14.0",
+    "lint-staged": "^13.1.2",
     "lodash": "^4.17.21",
-    "prettier": "^2.7.1",
-    "prettier-package-json": "^2.6.4",
+    "prettier": "^2.8.4",
+    "prettier-package-json": "^2.8.0",
     "pretty-quick": "^3.1.3",
-    "semver": "^7.3.7",
+    "semver": "^7.3.8",
     "staged-git-files": "^1.3.0",
+    "strip-ansi": "^7.0.1",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
-    "@types/eslint": "8.4.6",
+    "@types/eslint": "8.21.1",
     "@types/flat": "5.0.2",
-    "@types/semver": "7.3.12",
+    "@types/semver": "7.3.13",
     "@types/text-table": "0.2.2",
-    "typescript": "4.7.4",
-    "type-fest": "2.19.0"
+    "type-fest": "3.5.7",
+    "typescript": "4.9.5",
+    "unbuild": "^1.1.1"
   },
   "engines": {
     "node": ">= 16.16.0"

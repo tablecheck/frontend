@@ -3,7 +3,7 @@ import path from 'path';
 import { execa } from 'execa';
 import fs from 'fs-extra';
 
-import { paths } from './paths.js';
+import { paths } from './paths';
 
 async function lernaList(isToposort?: boolean) {
   const args = ['list', '--json', '--all'];

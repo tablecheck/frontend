@@ -1,11 +1,11 @@
 {
-  "name": "@tablecheck/codemods",
+  "name": "@tablecheck/frontend-codemods",
   "description": "Codemods for all systems",
   "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
     "type": "git",
-    "url": "git@github.com:tablecheck/tablecheck-react-system.git"
+    "url": "git@github.com:tablecheck/frontend.git"
   },
   "version": "1.2.0",
   "bin": {
@@ -21,14 +21,18 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "execa": "^5.1.1",
-    "fs-extra": "^10.1.0",
-    "glob": "^7.2.0",
-    "inquirer": "^8.2.1",
-    "jscodeshift": "^0.13.1",
+    "execa": "^6.1.0",
+    "fs-extra": "^11.1.0",
+    "glob": "^8.1.0",
+    "inquirer": "^9.1.1",
+    "jscodeshift": "^0.14.0",
     "lodash": "^4.17.21",
-    "minimist": "^1.2.6",
-    "prettier": "^2.7.1"
+    "minimist": "^1.2.8",
+    "prettier": "^2.8.4"
+  },
+  "devDependencies": {
+    "jest": "29.4.3",
+    "unbuild": "^1.1.1"
   },
   "engines": {
     "node": ">= 16.16.0"

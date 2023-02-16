@@ -2,22 +2,22 @@ import path from 'path';
 
 import chalk from 'chalk';
 import fs from 'fs-extra';
-import { paths } from '@tablecheck/scripts-utils';
+import { paths } from '@tablecheck/frontend-utils';
 import { ESLint } from 'eslint';
 
-export function validateEslintrc() {
+export async function validateEslintrc() {
   const eslintRcFile = '.eslintrc.js';
   const eslintRcPath = path.join(paths.cwd, eslintRcFile);
   if (!fs.existsSync(eslintRcPath)) {
     console.log(`No ${eslintRcFile} file detected, creating default`);
     fs.copyFileSync(
-      require.resolve(`../templates/${eslintRcFile}`),
+      path.join(paths.systemDir, `quality/templates/${eslintRcFile}`),
       eslintRcPath
     );
   } else {
     let eslintConfig: ESLint.ConfigData = {};
     try {
-      eslintConfig = require(eslintRcPath);
+      eslintConfig = await import(eslintRcPath);
     } catch (e) {
       // handled by variable initialisation check
     }

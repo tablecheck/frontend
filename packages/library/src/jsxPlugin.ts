@@ -2,7 +2,7 @@ import jsx from 'acorn-jsx';
 import babel from '@babel/core';
 import rollup from 'rollup';
 
-export function jsxPlugin(): rollup.Plugin {
+export function jsxPlugin(shouldUseEmotion: boolean): rollup.Plugin {
   return {
     name: '@tablecheck/scripts-library:jsx',
     options(inputOptions) {
@@ -19,7 +19,10 @@ export function jsxPlugin(): rollup.Plugin {
             presets: [
               [
                 '@babel/preset-react',
-                { runtime: 'automatic', importSource: '@emotion/react' }
+                {
+                  runtime: 'automatic',
+                  importSource: shouldUseEmotion ? '@emotion/react' : undefined
+                }
               ]
             ]
           },

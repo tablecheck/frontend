@@ -5,7 +5,7 @@ import {
   getPackageJson,
   getArgv,
   writePrettyFile
-} from '@tablecheck/scripts-utils';
+} from '@tablecheck/frontend-utils';
 import fs from 'fs-extra';
 import { TsConfigJson } from 'type-fest';
 import chalk from 'chalk';

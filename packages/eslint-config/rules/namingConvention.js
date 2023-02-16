@@ -4,6 +4,13 @@ module.exports = {
     'error',
     {
       selector: 'default',
+      format: ['PascalCase'],
+      custom: {
+        regex: '(^|[a-z0-9])Component($|[A-Z0-9])'
+      }
+    },
+    {
+      selector: 'default',
       format: ['camelCase']
     },
     // ignore all required quoted variables
@@ -29,18 +36,25 @@ module.exports = {
     {
       selector: 'variable',
       types: ['boolean'],
-      format: ['PascalCase'],
-      prefix: [
-        'is',
-        'was',
-        'should',
-        'has',
-        'had',
-        'can',
-        'did',
-        'will',
-        'allow'
-      ]
+      format: ['camelCase'],
+      custom: {
+        regex: (() => {
+          const booleanValues = [
+            'is',
+            'was',
+            'should',
+            'has',
+            'had',
+            'can',
+            'did',
+            'will',
+            'allow'
+          ];
+          return `^(${booleanValues.join('|')})|^[a-z]+(${booleanValues
+            .map((name) => `${name[0].toUpperCase()}${name.substring(1)}`)
+            .join('|')})`;
+        })()
+      }
     },
     {
       selector: 'variable',
@@ -93,12 +107,6 @@ module.exports = {
       selector: 'parameter',
       format: ['camelCase'],
       leadingUnderscore: 'allow'
-    },
-    {
-      selector: 'memberLike',
-      modifiers: ['private'],
-      format: ['camelCase'],
-      leadingUnderscore: 'require'
     }
   ]
 };

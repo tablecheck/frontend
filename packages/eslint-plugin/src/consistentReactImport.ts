@@ -16,6 +16,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
         "React should be imported with `import * as React from 'react';`"
     }
   },
+  defaultOptions: [],
   create: (context) => {
     const importNodes: TSESTree.ImportDeclaration[] = [];
     const jsxElements: TSESTree.JSXElement[] = [];

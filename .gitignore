@@ -13,8 +13,6 @@ docs
 lib
 config/local.*
 config/local-*
-tsconfig.json
-tsconfig.*.json
 *.tsbuildinfo
 storybook-static
 junit
@@ -23,3 +21,4 @@ junit
 .env.test.local
 .env.production.local
 .@tablecheck
+/Users/simeon.cheeseman/Development/tablecheck-react-system/.@tablecheck

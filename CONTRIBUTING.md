@@ -10,7 +10,7 @@ This project and everyone participating in it is governed by the [TableCheck Cod
 
 ## I don't want to read this whole thing I just have a question!!!
 
-We use [GitHub discussions](https://github.com/tablecheck/tablecheck-react-system/discussions) for questions, head over there and ask away! If you're unsure if you have a question or a bug, start with a discussion.
+We use [GitHub discussions](https://github.com/tablecheck/frontend/discussions) for questions, head over there and ask away! If you're unsure if you have a question or a bug, start with a discussion.
 
 ## What should I know before I get started?
 

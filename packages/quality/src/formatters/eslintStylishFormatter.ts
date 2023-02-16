@@ -1,11 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import chalk from 'chalk';
 import stripAnsi from 'strip-ansi';
 import table from 'text-table';
 import { ESLint } from 'eslint';
-import { paths } from '@tablecheck/scripts-utils';
+import { ChalkInstance } from 'chalk';
 
 //------------------------------------------------------------------------------
 // Helpers
@@ -25,13 +24,13 @@ function pluralize(word: string, count: number) {
 // Public Interface
 //------------------------------------------------------------------------------
 
-function stylishFormatter(results: ESLint.LintResult[]) {
+function stylishFormatter(chalk: ChalkInstance, results: ESLint.LintResult[]) {
   let output = '\n';
   let errorCount = 0;
   let warningCount = 0;
   let fixableErrorCount = 0;
   let fixableWarningCount = 0;
-  let summaryColor: keyof typeof chalk = 'yellow';
+  let summaryColor: keyof ChalkInstance = 'yellow';
 
   results.forEach((result) => {
     const { messages } = result;
@@ -131,8 +130,11 @@ function comparePaths(pathA: string, pathB: string) {
   return pathA.localeCompare(pathB);
 }
 
-export default function customStylish(results: ESLint.LintResult[]) {
+export default async function customStylish(results: ESLint.LintResult[]) {
+  const chalk = await import('chalk');
+  const { paths } = await import('@tablecheck/frontend-utils');
   return stylishFormatter(
+    chalk.default,
     results
       // sorts by output by folder first, then files
       // this should roughly mimic most IDE and file browser displays

@@ -19,8 +19,8 @@ import {
   logTaskEnd,
   logTaskStart,
   getPackageJson
-} from '@tablecheck/scripts-utils';
-import { isLibTypeDefinitions } from '@tablecheck/scripts-typescript';
+} from '@tablecheck/frontend-utils';
+import { isLibTypeDefinitions } from '@tablecheck/frontend-typescript';
 
 import { jsxPlugin } from './jsxPlugin.js';
 
@@ -86,6 +86,7 @@ function loadRollupConfig(
   rollupWarnings: (rollup.RollupWarning | string)[],
   shouldBundleDependencies = false
 ): rollup.RollupOptions {
+  const packageJson = getPackageJson(packageDirectory);
   const rollupExternalsConfig = {
     packagePath: [packagePath, path.join(rootPackageDirectory, 'package.json')],
     deps: true
@@ -104,7 +105,9 @@ function loadRollupConfig(
       // https://github.com/rollup/rollup/blob/0fa9758cb7b1976537ae0875d085669e3a21e918/src/utils/error.ts#L324
       if (warning.code === 'UNRESOLVED_IMPORT') {
         rollupWarnings.push(
-          `Failed to resolve the module ${warning.source} imported by ${warning.importer}` +
+          `Failed to resolve the module ${
+            (warning as any).source
+          } imported by ${(warning as any).importer}` +
             `\nIs the module installed? Note:` +
             `\n ↳ to inline a module into your bundle, install it to "devDependencies".` +
             `\n ↳ to depend on a module via import/require, install it to "dependencies".`
@@ -147,7 +150,12 @@ function loadRollupConfig(
         requireReturnsDefault: 'namespace'
       }),
       json(),
-      jsxPlugin(packagePath)
+      jsxPlugin(
+        !!(
+          packageJson.dependencies?.['@emotion/react'] ||
+          packageJson.peerDependencies?.['@emotion/react']
+        )
+      )
     ].filter((v) => !!v)
   };
   if (argv.verbose) {
@@ -249,7 +257,7 @@ export async function buildPackage(
   if (isLibTypeDefinitions(packageDirectory)) return;
   logTaskStart(
     `Build ${
-      require(packagePath).name ||
+      (await import(packagePath)).name ||
       path.relative(paths.cwd, packageDirectory).trim() ||
       'library'
     }`
@@ -356,14 +364,14 @@ export async function buildPackage(
       fs.readdirSync(path.join(packageDirectory, baseUrl), {
         withFileTypes: true
       }).forEach((dirent) => {
-        if (dirent.isDirectory()) pathKeys.push(`${dirent.name}/*`);
-        else pathKeys.push(dirent.name.split('.').slice(0, -1).join('.'));
+        if (!dirent.isDirectory()) return;
+        pathKeys.push(`${dirent.name}/*`);
       });
     }
     const pathMatchers = pathKeys.map((key) => (relativePath: string) => {
       if (
         !relativePath.match(
-          new RegExp(`^${key.replace(/[*/]+?$/gi, '($|/).*')}`, 'ig')
+          new RegExp(`^${key.replace(/[*/]*$/gi, '.*')}`, 'ig')
         )
       )
         return false;
