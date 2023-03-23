@@ -378,8 +378,8 @@ async function buildPackage(libConfigPath, rootConfigPath) {
       fs.readdirSync(path.join(packageDirectory, baseUrl), {
         withFileTypes: true
       }).forEach((dirent) => {
-        if (!dirent.isDirectory()) return;
-        pathKeys.push(`${dirent.name}/*`);
+        if (dirent.isDirectory()) pathKeys.push(`${dirent.name}/*`);
+        else pathKeys.push(dirent.name.split('.').slice(0, -1).join('.'));
       });
     }
     const pathMatchers = pathKeys.map((key) => (relativePath) => {
