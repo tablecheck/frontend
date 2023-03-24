@@ -1,3 +1,16 @@
+# (Fri Mar 24 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/scripts@2.3.10`
+  - fix: lib-build correctly remaps root level absolute file imports [#81](https://github.com/tablecheck/tablecheck-react-system/pull/81) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Nov 16 2022)
 
 #### 🐛 Bug Fix
