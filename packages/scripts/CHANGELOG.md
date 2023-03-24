@@ -1,19 +1,18 @@
-# v2.3.10 (Fri Mar 24 2023)
-
-#### 🐛 Bug Fix
-
-- fix: lib-build correctly remaps root level absolute file imports [#81](https://github.com/tablecheck/tablecheck-react-system/pull/81) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [2.3.10](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.9...@tablecheck/scripts@2.3.10) (2023-03-24)
+
+
+### Bug Fixes
+
+* lib-build correctly remaps root level absolute file imports ([b2e7188](https://github.com/tablecheck/tablecheck-react-system/commit/b2e7188c10208530520d0f9ce9a0b48b45f1670f))
+
+
+
+
 
 ## [2.3.9](https://github.com/tablecheck/tablecheck-react-system/compare/@tablecheck/scripts@2.3.8...@tablecheck/scripts@2.3.9) (2022-11-16)
 
