@@ -1,10 +1,14 @@
 module.exports = {
-  'max-lines': 'off',
+  'max-lines': [
+    'error',
+    { max: 500, skipBlankLines: true, skipComments: true }
+  ],
   'no-continue': 'off',
   // https://github.com/babel/babel-eslint/issues/815
   'template-curly-spacing': 'off',
   'no-underscore-dangle': 'off',
   'class-methods-use-this': 'off',
+  'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
 
   'import/no-extraneous-dependencies': [
     'error',

@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-import '../lib/bin/lint.js';
+import '../lib/lint.ts.mjs';

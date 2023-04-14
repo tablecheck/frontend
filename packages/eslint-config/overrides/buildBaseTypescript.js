@@ -56,7 +56,7 @@ module.exports = function buildBaseTypescript(files, rules, forcedRules) {
     extends: [
       require.resolve('eslint-config-airbnb-typescript'),
       'plugin:@typescript-eslint/eslint-plugin/eslint-recommended',
-      'plugin:@typescript-eslint/eslint-plugin/recommended',
+      'plugin:@typescript-eslint/eslint-plugin/recommended-requiring-type-checking',
       'plugin:eslint-comments/recommended',
       'prettier',
       'plugin:react-hooks/recommended'
