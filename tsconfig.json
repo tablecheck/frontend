@@ -1,31 +1,18 @@
 {
-  "extends": "./packages/typescript/tsconfig/base.json",
+  "extends": "/Users/simeon.cheeseman/Development/tablecheck-react-system/packages/typescript/tsconfig/base.json",
   "include": ["*.ts"],
   "references": [
-    {
-      "project": "eslint-plugin",
-      "path": "./packages/eslint-plugin/tsconfig.json"
-    },
-    {
-      "project": "utils",
-      "path": "./packages/utils/tsconfig.json"
-    },
-    {
-      "project": "audit",
-      "path": "./packages/audit/tsconfig.json"
-    },
-    {
-      "project": "typescript",
-      "path": "./packages/typescript/tsconfig.json"
-    },
-    {
-      "project": "library",
-      "path": "./packages/library/tsconfig.json"
-    },
-    {
-      "project": "quality",
-      "path": "./packages/quality/tsconfig.json"
-    }
+    { "path": "packages/babel-preset/tsconfig.json" },
+    { "path": "packages/codemods/tsconfig.json" },
+    { "path": "packages/commitlint-config/tsconfig.json" },
+    { "path": "packages/semantic-release-config/tsconfig.json" },
+    { "path": "packages/utils/tsconfig.json" },
+    { "path": "packages/audit/tsconfig.json" },
+    { "path": "packages/eslint-plugin/tsconfig.json" },
+    { "path": "packages/typescript/tsconfig.json" },
+    { "path": "packages/eslint-config/tsconfig.json" },
+    { "path": "packages/library/tsconfig.json" },
+    { "path": "packages/quality/tsconfig.json" }
   ],
   "exclude": ["node_modules"],
   "files": []

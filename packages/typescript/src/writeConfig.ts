@@ -18,7 +18,7 @@ export interface WriteTsConfigOptions {
 export function writeTsConfig(
   filePath: string,
   configArg: TsConfigJson,
-  { forceConfig, definitionPaths, excludeTests }: WriteTsConfigOptions
+  { forceConfig, definitionPaths, excludeTests }: WriteTsConfigOptions,
 ) {
   let sourceFiles: string[] = [];
   const config = {
@@ -34,15 +34,17 @@ export function writeTsConfig(
           '**/*.test.ts',
           '**/*.test.tsx',
           '**/__tests__/**/*',
-          '**/__tests__/*'
+          '**/__tests__/*',
         ]
       : ['node_modules'],
-    files: (definitionPaths || []).filter((filepath) => fs.existsSync(filepath))
+    files: (definitionPaths || [])
+      .filter((definitionPath) => fs.existsSync(definitionPath))
+      .map((definitionPath) => path.relative(filePath, definitionPath)),
   };
   if (config.include) {
     if (argv.verbose) {
       console.log(
-        chalk.gray('\nChecking for source files in following paths;')
+        chalk.gray('\nChecking for source files in following paths;'),
       );
     }
     config.include = config.include.reduce((mappedIncludes, globOrFolder) => {
@@ -52,8 +54,8 @@ export function writeTsConfig(
       ) {
         return mappedIncludes.concat(
           ['**/*.ts', '**/*.tsx', '*.ts', '*.tsx', '**/*.json', '*.json'].map(
-            (extension) => path.join(globOrFolder, extension)
-          )
+            (extension) => path.join(globOrFolder, extension),
+          ),
         );
       }
       return mappedIncludes.concat([globOrFolder]);
@@ -61,12 +63,12 @@ export function writeTsConfig(
     config.include.forEach((globOrFolder) => {
       const matchedFiles = glob.sync(globOrFolder, {
         cwd: path.resolve(filePath, '..'),
-        silent: true
+        silent: true,
       });
       sourceFiles = sourceFiles.concat(matchedFiles);
     });
     sourceFiles = sourceFiles.filter(
-      (fileFilter) => !fileFilter.match(/\/lib\//)
+      (fileFilter) => !fileFilter.match(/\/lib\//),
     );
   }
   if (!forceConfig && !sourceFiles.length) {
@@ -75,12 +77,22 @@ export function writeTsConfig(
         chalk.gray(
           `\nSkip Typescript config due to no ts, tsx files @ ${path.relative(
             paths.cwd,
-            filePath
-          )}`
-        )
+            filePath,
+          )}`,
+        ),
       );
     }
     return false;
+  }
+  if (config.extends) {
+    console.log(
+      '[debug]',
+      config.extends,
+      filePath,
+      path.relative(filePath, config.extends),
+      path.relative(config.extends, filePath),
+    );
+    config.extends = path.relative(filePath, config.extends);
   }
   outputTsConfig(config, filePath);
   return true;

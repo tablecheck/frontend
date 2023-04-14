@@ -6,7 +6,7 @@ export default definePreset({
   declaration: true,
   failOnWarn: false,
   rollup: {
-    emitCJS: false,
+    emitCJS: true,
     inlineDependencies: false,
     esbuild: {
       minify: false,

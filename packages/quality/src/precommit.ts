@@ -26,8 +26,9 @@ export async function precommit() {
   const lintStagedConfig: Record<string, string[] | string | (() => string)> = {
     '**/*.{ts,tsx,js,jsx}': [
       // eslint fix first, otherwise eslint fix may unprettify files
-      // also inherently checks typescript
-      'eslint --fix',
+      // also inherently checks typescript, using quiet here as we only want what blocks
+      // the user from committing
+      'eslint --fix --quiet',
       'prettier --write'
     ],
     '**/!(*.ts|*.tsx|*.js|*.jsx|package-json.json)': 'prettier --write -u',
