@@ -23,6 +23,7 @@ export type CosmicConfigShape = {
    * These file paths should follow the same format as the `paths` array in `lerna.json`. Any packages in these paths have been marked as specifically being allowed to ignore the lerna same package versions check in the quality scripts
    */
   independentLernaPackages: string[];
+  typescript: 'manual' | 'auto';
   /**
    * Rules used for setting up eslint and other quality checks (excluding typescript)
    */
@@ -54,8 +55,10 @@ function tryRequire(id: string, rootDir: string = process.cwd()) {
 }
 
 function getConfig(): Partial<CosmicConfigShape> {
-  const tsConfig = tryRequire('./.@tablecheckrc');
+  const tsConfig = tryRequire('./tablecheck.config.ts');
   if (tsConfig) return tsConfig as never;
+  const jsConfig = tryRequire('./tablecheck.config.js');
+  if (jsConfig) return jsConfig as never;
   return (explorer.search() || { config: {} }).config as never;
 }
 

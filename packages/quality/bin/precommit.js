@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-import '../lib/bin/precommit.js';
+import '../lib/precommit.ts.mjs';

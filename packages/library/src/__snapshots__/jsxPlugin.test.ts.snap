@@ -20,6 +20,46 @@ export { Component };
 "
 `;
 
+exports[`scripts/jsxPlugin > should handle basic JSX elements vanilla react 1`] = `
+"import { jsxs, jsx } from 'react/jsx-runtime';
+
+function Component() {
+  return /*#__PURE__*/jsxs(\\"div\\", {
+    children: [/*#__PURE__*/jsx(\\"link\\", {
+      type: \\"self closing\\"
+    }), /*#__PURE__*/jsx(\\"p\\", {
+      children: /*#__PURE__*/jsx(\\"a\\", {
+        href: \\"123\\",
+        children: \\"Link Content\\"
+      })
+    })]
+  });
+}
+
+export { Component };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle basic JSX elements with emotion 1`] = `
+"import { jsxs, jsx } from '@emotion/react/jsx-runtime';
+
+function Component() {
+  return jsxs(\\"div\\", {
+    children: [jsx(\\"link\\", {
+      type: \\"self closing\\"
+    }), jsx(\\"p\\", {
+      children: jsx(\\"a\\", {
+        href: \\"123\\",
+        children: \\"Link Content\\"
+      })
+    })]
+  });
+}
+
+export { Component };
+"
+`;
+
 exports[`scripts/jsxPlugin > should handle emotion css 1`] = `
 "import { css } from '@emotion/react';
 import { getThemeValue } from '@tablekit/utils';
@@ -53,6 +93,70 @@ export { Tooltip, TooltipPrimitive };
 "
 `;
 
+exports[`scripts/jsxPlugin > should handle emotion css vanilla react 1`] = `
+"import { css } from '@emotion/react';
+import { getThemeValue } from '@tablekit/utils';
+import { tooltipThemeNamespace, tooltipClassicTheme } from './themes';
+
+const TooltipPrimitive = styled.div\`
+  pointer-events: none;
+  position: fixed;
+\`;
+const Tooltip = styled(TooltipPrimitive)\`
+  background-color: \${getThemeValue(\`\${tooltipThemeNamespace}.backgroundColor\`, tooltipClassicTheme.backgroundColor)};
+  color: \${getThemeValue(\`\${tooltipThemeNamespace}.textColor\`, tooltipClassicTheme.textColor)};
+  top: 0;
+  left: 0;
+  line-height: 16px;
+  max-width: 240px;
+
+  \${({
+  isSelected,
+  theme
+}) => {
+  if (isSelected) {
+    return css(\\"color:white;background-color:\\", theme.colors.primary, \\";&:hover{background-color:\\", theme.colors.primary2, \\";}\\" + (process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\";label:Tooltip;\\"));
+  }
+  return '';
+}}
+\`;
+
+export { Tooltip, TooltipPrimitive };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle emotion css with emotion 1`] = `
+"import { css } from '@emotion/react';
+import { getThemeValue } from '@tablekit/utils';
+import { tooltipThemeNamespace, tooltipClassicTheme } from './themes';
+
+const TooltipPrimitive = styled.div\`
+  pointer-events: none;
+  position: fixed;
+\`;
+const Tooltip = styled(TooltipPrimitive)\`
+  background-color: \${getThemeValue(\`\${tooltipThemeNamespace}.backgroundColor\`, tooltipClassicTheme.backgroundColor)};
+  color: \${getThemeValue(\`\${tooltipThemeNamespace}.textColor\`, tooltipClassicTheme.textColor)};
+  top: 0;
+  left: 0;
+  line-height: 16px;
+  max-width: 240px;
+
+  \${({
+  isSelected,
+  theme
+}) => {
+  if (isSelected) {
+    return css(\\"color:white;background-color:\\", theme.colors.primary, \\";&:hover{background-color:\\", theme.colors.primary2, \\";}\\" + (process.env.NODE_ENV === \\"production\\" ? \\"\\" : \\";label:Tooltip;\\"));
+  }
+  return '';
+}}
+\`;
+
+export { Tooltip, TooltipPrimitive };
+"
+`;
+
 exports[`scripts/jsxPlugin > should handle import alias spread 1`] = `
 "import { components } from 'my-select';
 import { components as components$1 } from 'react-select';
@@ -78,6 +182,58 @@ export { createSelect };
 "
 `;
 
+exports[`scripts/jsxPlugin > should handle import alias spread vanilla react 1`] = `
+"import { components } from 'my-select';
+import { components as components$1 } from 'react-select';
+import { jsx } from 'react/jsx-runtime';
+
+function createSelect(props) {
+  const {
+    MyControl
+  } = components;
+  const {
+    Control
+  } = components$1;
+  return /*#__PURE__*/jsx(Control, {
+    ...props,
+    children: /*#__PURE__*/jsx(MyControl, {
+      children: /*#__PURE__*/jsx(\\"div\\", {
+        children: \\"Test\\"
+      })
+    })
+  });
+}
+
+export { createSelect };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle import alias spread with emotion 1`] = `
+"import { components } from 'my-select';
+import { components as components$1 } from 'react-select';
+import { jsx } from '@emotion/react/jsx-runtime';
+
+function createSelect(props) {
+  const {
+    MyControl
+  } = components;
+  const {
+    Control
+  } = components$1;
+  return jsx(Control, {
+    ...props,
+    children: jsx(MyControl, {
+      children: jsx(\\"div\\", {
+        children: \\"Test\\"
+      })
+    })
+  });
+}
+
+export { createSelect };
+"
+`;
+
 exports[`scripts/jsxPlugin > should handle name clashes 1`] = `
 "import { InputLabelWrapper } from './styled/label';
 
@@ -89,7 +245,77 @@ export { Label };
 "
 `;
 
+exports[`scripts/jsxPlugin > should handle name clashes vanilla react 1`] = `
+"import { InputLabelWrapper } from './styled/label';
+
+const Label = ({
+  label
+}) => InputLabelWrapper(label);
+
+export { Label };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle name clashes with emotion 1`] = `
+"import { InputLabelWrapper } from './styled/label';
+
+const Label = ({
+  label
+}) => InputLabelWrapper(label);
+
+export { Label };
+"
+`;
+
 exports[`scripts/jsxPlugin > should handle varying import patterns 1`] = `
+"import { Component } from './component';
+import { components } from './components';
+import DefaultComponent from './defaults';
+import { jsxs, jsx } from '@emotion/react/jsx-runtime';
+
+function TestComponent() {
+  return jsxs(\\"div\\", {
+    children: [jsx(Component, {
+      prop1: 12
+    }), jsx(components.SomeProp, {
+      children: \\"Children\\"
+    }), jsx(DefaultComponent, {
+      children: jsx(\\"div\\", {
+        children: \\"Excess\\"
+      })
+    })]
+  });
+}
+
+export { TestComponent as default };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle varying import patterns vanilla react 1`] = `
+"import { Component } from './component';
+import { components } from './components';
+import DefaultComponent from './defaults';
+import { jsxs, jsx } from 'react/jsx-runtime';
+
+function TestComponent() {
+  return /*#__PURE__*/jsxs(\\"div\\", {
+    children: [/*#__PURE__*/jsx(Component, {
+      prop1: 12
+    }), /*#__PURE__*/jsx(components.SomeProp, {
+      children: \\"Children\\"
+    }), /*#__PURE__*/jsx(DefaultComponent, {
+      children: /*#__PURE__*/jsx(\\"div\\", {
+        children: \\"Excess\\"
+      })
+    })]
+  });
+}
+
+export { TestComponent as default };
+"
+`;
+
+exports[`scripts/jsxPlugin > should handle varying import patterns with emotion 1`] = `
 "import { Component } from './component';
 import { components } from './components';
 import DefaultComponent from './defaults';

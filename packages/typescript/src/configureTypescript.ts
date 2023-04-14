@@ -3,7 +3,8 @@ import path from 'path';
 import {
   paths,
   getArgv,
-  getSortedLernaPaths
+  getSortedLernaPaths,
+  userConfig,
 } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import fs from 'fs-extra';
@@ -15,6 +16,8 @@ import { configureEslintTypescript } from './eslint.js';
 
 const argv = getArgv();
 
+const isManual = userConfig.typescript === 'manual';
+
 type PartialTsConfigJson<TKeys extends keyof TsConfigJson> = Required<
   Pick<TsConfigJson, TKeys>
 > &
@@ -24,7 +27,7 @@ export async function configureTypescript({
   isBuild = true,
   shouldCleanLibs = false,
   shouldIgnorePackageArg = false,
-  definitionPaths
+  definitionPaths,
 }: {
   isBuild?: boolean;
   shouldCleanLibs?: boolean;
@@ -36,7 +39,7 @@ export async function configureTypescript({
   const runnerConfigPath = path.join(paths.cwd, 'tsconfig.json');
   const baseTypescriptConfigPath = path.join(
     paths.systemDir,
-    'typescript/tsconfig/base.json'
+    'typescript/tsconfig/base.json',
   );
   const packageConfig: PartialTsConfigJson<
     'extends' | 'include' | 'compilerOptions'
@@ -44,9 +47,10 @@ export async function configureTypescript({
     extends: baseTypescriptConfigPath,
     include: ['src', '*.ts'],
     compilerOptions: {
-      rootDir: 'src',
-      baseUrl: 'src'
-    }
+      rootDir: '.',
+      baseUrl: './src',
+      composite: false,
+    },
   };
   if (fs.existsSync(paths.storybook)) {
     packageConfig.include.push('.storybook');
@@ -56,24 +60,43 @@ export async function configureTypescript({
   let libConfig: PartialTsConfigJson<'extends' | 'include' | 'references'> = {
     extends: baseTypescriptConfigPath,
     include: ['*.ts'], // include config files like vite.config.ts
-    references: []
+    references: [],
   };
   const sharedWriteConfigOpts: WriteTsConfigOptions = {
     excludeTests: isBuild,
-    definitionPaths
+    definitionPaths,
+  };
+  const eslintConfig = {
+    ...packageConfig,
+    compilerOptions: {
+      ...packageConfig.compilerOptions,
+      composite: true,
+    },
   };
   if (lernaPaths.length) {
-    packageConfig.compilerOptions.composite = true;
     const references = [] as NonNullable<TsConfigJson['references']>;
     lernaPaths.forEach((localPath) => {
       if (packageFilter && packageFilter !== '*') {
         if (localPath.split('/').slice(-1)[0] !== packageFilter) return;
       }
-      const esmConfigPath = path.join(localPath, `tsconfig.json`);
-      if (!writeTsConfig(esmConfigPath, packageConfig, sharedWriteConfigOpts))
+      const esmConfigPath = path.relative(
+        process.cwd(),
+        path.join(localPath, `tsconfig.json`),
+      );
+      const globalConfigPath = path.relative(
+        process.cwd(),
+        path.join(localPath, `tsconfig.compound.json`),
+      );
+      if (!isManual) {
+        writeTsConfig(esmConfigPath, packageConfig, sharedWriteConfigOpts);
+      }
+      if (
+        !writeTsConfig(globalConfigPath, eslintConfig, sharedWriteConfigOpts)
+      ) {
         return;
+      }
       references.push({
-        path: esmConfigPath
+        path: globalConfigPath,
       });
     });
     if (!isBuild && references.length === 1) {
@@ -95,10 +118,16 @@ export async function configureTypescript({
         fs.emptyDirSync(path.join(refPath, 'lib'));
       });
     }
+    if (isManual && !fs.existsSync(runnerConfigPath)) {
+      throw new Error(
+        `Typescript has been set to manual but there is no tsconfig.json at ${runnerConfigPath}`,
+      );
+    }
+    if (isManual) return runnerConfigPath;
     if (
       !writeTsConfig(runnerConfigPath, libConfig, {
         ...sharedWriteConfigOpts,
-        forceConfig: true
+        forceConfig: true,
       })
     ) {
       throw new Error('This project is not written in typescript');

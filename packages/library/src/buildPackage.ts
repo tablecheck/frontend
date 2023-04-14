@@ -231,16 +231,10 @@ async function writeTypes(
         if (!importedFiles.includes(absolutePath)) {
           importedFiles.push(absolutePath);
         }
-        break;
+        (n.moduleSpecifier as any).text = relativeImportPath;
+        return;
       }
     }
-    node.update(relativeImportPath, {
-      span: ts.createTextSpanFromBounds(
-        n.moduleSpecifier.getStart(),
-        n.moduleSpecifier.getEnd()
-      ),
-      newLength: relativeImportPath.length
-    });
   });
   await fs.writeFile(typeFilePath, tsPrinter.printFile(node));
   return importedFiles;
@@ -364,8 +358,8 @@ export async function buildPackage(
       fs.readdirSync(path.join(packageDirectory, baseUrl), {
         withFileTypes: true
       }).forEach((dirent) => {
-        if (!dirent.isDirectory()) return;
-        pathKeys.push(`${dirent.name}/*`);
+        if (dirent.isDirectory()) pathKeys.push(`${dirent.name}/*`);
+        else pathKeys.push(dirent.name.split('.').slice(0, -1).join('.'));
       });
     }
     const pathMatchers = pathKeys.map((key) => (relativePath: string) => {
