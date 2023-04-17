@@ -10,11 +10,11 @@ export default definePreset({
     inlineDependencies: false,
     esbuild: {
       minify: false,
-      sourceMap: true,
-      target: 'es2022'
+      sourcemap: true,
+      target: 'es2022',
     },
     dts: {
-      respectExternal: false
-    }
-  }
+      respectExternal: false,
+    },
+  },
 });

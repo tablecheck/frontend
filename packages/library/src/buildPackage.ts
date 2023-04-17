@@ -4,7 +4,7 @@ import util from 'util';
 import chalk from 'chalk';
 import fs from 'fs-extra';
 import rollup from 'rollup';
-import glob from 'glob';
+import { glob } from 'glob';
 import { default as typescriptPlugin } from '@rollup/plugin-typescript';
 import ts from 'typescript';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
@@ -18,7 +18,7 @@ import {
   getArgv,
   logTaskEnd,
   logTaskStart,
-  getPackageJson
+  getPackageJson,
 } from '@tablecheck/frontend-utils';
 import { isLibTypeDefinitions } from '@tablecheck/frontend-typescript';
 
@@ -39,7 +39,7 @@ function getBundleInput(packageDirectory: string) {
         throw new Error(
           `"${
             pkgFile.entries ? 'entries' : 'entry'
-          }" value ${input} does not refer to a valid file (${result})`
+          }" value ${input} does not refer to a valid file (${result})`,
         );
       return result;
     });
@@ -51,8 +51,8 @@ function getBundleInput(packageDirectory: string) {
   throw new Error(
     `Package entries/entry key was not set and could not find a valid "index.ts" or "index.tsx" in "${path.join(
       packageDirectory,
-      'src'
-    )}"`
+      'src',
+    )}"`,
   );
 }
 
@@ -70,11 +70,11 @@ function getBabelPlugin(isEsm = false) {
             ie: '11',
             ios: '8',
             safari: '8',
-            android: '4.4'
-          }
-        }
-      ]
-    ]
+            android: '4.4',
+          },
+        },
+      ],
+    ],
   });
 }
 
@@ -84,18 +84,18 @@ function loadRollupConfig(
   packageDirectory: string,
   bundleEntries: string[],
   rollupWarnings: (rollup.RollupWarning | string)[],
-  shouldBundleDependencies = false
+  shouldBundleDependencies = false,
 ): rollup.RollupOptions {
   const packageJson = getPackageJson(packageDirectory);
   const rollupExternalsConfig = {
     packagePath: [packagePath, path.join(rootPackageDirectory, 'package.json')],
-    deps: true
+    deps: true,
   };
   const rollupTypescriptConfig = {
     tsconfig: path.join(packageDirectory, 'tsconfig.json'),
     compilerOptions: {
-      isolatedModules: false
-    }
+      isolatedModules: false,
+    },
   };
   const rollupConfig: rollup.RollupOptions = {
     input: bundleEntries,
@@ -110,7 +110,7 @@ function loadRollupConfig(
           } imported by ${(warning as any).importer}` +
             `\nIs the module installed? Note:` +
             `\n ↳ to inline a module into your bundle, install it to "devDependencies".` +
-            `\n ↳ to depend on a module via import/require, install it to "dependencies".`
+            `\n ↳ to depend on a module via import/require, install it to "dependencies".`,
         );
         return;
       }
@@ -133,7 +133,7 @@ function loadRollupConfig(
             return { id: filePath, external: true };
           }
           return null;
-        }
+        },
       },
       shouldBundleDependencies ? undefined : externals(rollupExternalsConfig),
       typescriptPlugin(rollupTypescriptConfig),
@@ -142,39 +142,39 @@ function loadRollupConfig(
         browser: true,
         // defaults + .jsx
         extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
-        preferBuiltins: true
+        preferBuiltins: true,
       }),
       commonjs({
         // use a regex to make sure to include eventual hoisted packages
         esmExternals: true,
-        requireReturnsDefault: 'namespace'
+        requireReturnsDefault: 'namespace',
       }),
       json(),
       jsxPlugin(
         !!(
           packageJson.dependencies?.['@emotion/react'] ||
           packageJson.peerDependencies?.['@emotion/react']
-        )
-      )
-    ].filter((v) => !!v)
+        ),
+      ),
+    ].filter((v) => !!v),
   };
   if (argv.verbose) {
     console.log(
       chalk.gray(
-        `Build ${path.relative(paths.cwd, packageDirectory)}: rollup config`
-      )
+        `Build ${path.relative(paths.cwd, packageDirectory)}: rollup config`,
+      ),
     );
     console.log(
       chalk.gray(
         util.inspect(
           {
             ...rollupConfig,
-            plugins: [rollupExternalsConfig, rollupTypescriptConfig]
+            plugins: [rollupExternalsConfig, rollupTypescriptConfig],
           },
           false,
-          3
-        )
-      )
+          3,
+        ),
+      ),
     );
   }
   return rollupConfig;
@@ -184,7 +184,7 @@ async function writeTypes(
   libEsmCwd: string,
   tsDefinitionFiles: string[],
   pathMatchers: ((path: string) => false | string)[],
-  typeFilePath: string
+  typeFilePath: string,
 ) {
   const importedFiles: string[] = [];
   const foundIndex = tsDefinitionFiles.indexOf(typeFilePath);
@@ -194,7 +194,7 @@ async function writeTypes(
   const node = ts.createSourceFile(
     typeFilePath,
     fileBuffer.toString(),
-    ts.ScriptTarget.Latest
+    ts.ScriptTarget.Latest,
   );
 
   node.statements.forEach((statement) => {
@@ -224,7 +224,7 @@ async function writeTypes(
         const absolutePath = path.join(libEsmCwd, match);
         relativeImportPath = path.relative(
           path.dirname(typeFilePath),
-          absolutePath
+          absolutePath,
         );
         if (relativeImportPath[0] !== '.')
           relativeImportPath = `./${relativeImportPath}`;
@@ -242,7 +242,7 @@ async function writeTypes(
 
 export async function buildPackage(
   libConfigPath: string,
-  rootConfigPath: string
+  rootConfigPath: string,
 ) {
   const packageDirectory = path.dirname(libConfigPath);
   const rootPackageDirectory = path.dirname(rootConfigPath);
@@ -254,7 +254,7 @@ export async function buildPackage(
       (await import(packagePath)).name ||
       path.relative(paths.cwd, packageDirectory).trim() ||
       'library'
-    }`
+    }`,
   );
 
   const packageTsconfig = fs.readJsonSync(libConfigPath);
@@ -266,7 +266,7 @@ export async function buildPackage(
 
   const libCwd = path.join(
     packageDirectory,
-    packageTsconfig.compilerOptions.outDir
+    packageTsconfig.compilerOptions.outDir,
   );
   try {
     const rollupWarnings: (string | rollup.RollupWarning)[] = [];
@@ -280,17 +280,17 @@ export async function buildPackage(
         rootPackageDirectory,
         packageDirectory,
         bundleEntries,
-        rollupWarnings
-      )
+        rollupWarnings,
+      ),
     );
     if (argv.verbose) {
       console.log(
         chalk.gray(
           `Build ${path.relative(
             paths.cwd,
-            packageDirectory
-          )}: create rollup bundle Success`
-        )
+            packageDirectory,
+          )}: create rollup bundle Success`,
+        ),
       );
     }
 
@@ -298,16 +298,16 @@ export async function buildPackage(
       dir: libCwd,
       format: 'esm',
       globals: {
-        CONFIG: 'config'
+        CONFIG: 'config',
       },
-      plugins: [getBabelPlugin(true)]
+      plugins: [getBabelPlugin(true)],
     });
 
     if (argv.verbose) {
       console.log(
         chalk.gray(
-          `Build ${path.relative(paths.cwd, packageDirectory)}: esm Success`
-        )
+          `Build ${path.relative(paths.cwd, packageDirectory)}: esm Success`,
+        ),
       );
     }
 
@@ -323,17 +323,17 @@ export async function buildPackage(
           packageDirectory,
           bundleEntries,
           rollupWarnings,
-          true
-        )
+          true,
+        ),
       );
 
       await bundleEs5WithDeps.write({
         file: path.join(packageDirectory, 'lib/bundle.es5.js'),
         format: 'esm',
         globals: {
-          config: 'CONFIG'
+          config: 'CONFIG',
         },
-        plugins: [getBabelPlugin(false)]
+        plugins: [getBabelPlugin(false)],
       });
 
       if (argv.verbose) {
@@ -341,9 +341,9 @@ export async function buildPackage(
           chalk.gray(
             `Build ${path.relative(
               paths.cwd,
-              packageDirectory
-            )}: es5 bundled deps Success`
-          )
+              packageDirectory,
+            )}: es5 bundled deps Success`,
+          ),
         );
       }
 
@@ -356,7 +356,7 @@ export async function buildPackage(
     const pathKeys = Object.keys(tsPaths || {});
     if (baseUrl) {
       fs.readdirSync(path.join(packageDirectory, baseUrl), {
-        withFileTypes: true
+        withFileTypes: true,
       }).forEach((dirent) => {
         if (dirent.isDirectory()) pathKeys.push(`${dirent.name}/*`);
         else pathKeys.push(dirent.name.split('.').slice(0, -1).join('.'));
@@ -365,28 +365,28 @@ export async function buildPackage(
     const pathMatchers = pathKeys.map((key) => (relativePath: string) => {
       if (
         !relativePath.match(
-          new RegExp(`^${key.replace(/[*/]*$/gi, '.*')}`, 'ig')
+          new RegExp(`^${key.replace(/[*/]*$/gi, '.*')}`, 'ig'),
         )
       )
         return false;
       return `./${relativePath}`;
     });
-    const tsDefinitionFiles = glob.sync(path.join(libCwd, '**/*.d.ts'));
+    const tsDefinitionFiles = await glob(path.join(libCwd, '**/*.d.ts'));
 
     let transformFiles = bundleEntries.map((bundleEntry) =>
       path.join(
         libCwd,
         path
           .relative(path.join(packageDirectory, baseUrl), bundleEntry)
-          .replace(/\.tsx?$/, '.d.ts')
-      )
+          .replace(/\.tsx?$/, '.d.ts'),
+      ),
     );
     while (transformFiles.length) {
       // eslint-disable-next-line no-await-in-loop
       const imports = await Promise.all(
         transformFiles.map((filepath) =>
-          writeTypes(libCwd, tsDefinitionFiles, pathMatchers, filepath)
-        )
+          writeTypes(libCwd, tsDefinitionFiles, pathMatchers, filepath),
+        ),
       );
       transformFiles = imports
         .reduce((r, importsArray) => r.concat(importsArray), [])
@@ -397,7 +397,7 @@ export async function buildPackage(
           if (fs.existsSync(withIndex)) return withIndex;
           if (fs.existsSync(filepath)) return filepath;
           throw new Error(
-            `Cannot find file for ${filepath}, check that it is not using any private variables like CONFIG`
+            `Cannot find file for ${filepath}, check that it is not using any private variables like CONFIG`,
           );
         })
         .reduce((r, filepath) => {
@@ -426,9 +426,9 @@ export async function buildPackage(
           chalk.gray(
             `Build ${path.relative(
               paths.cwd,
-              packageDirectory
-            )}: Copied assets from folders; ${assets.join(', ')}`
-          )
+              packageDirectory,
+            )}: Copied assets from folders; ${assets.join(', ')}`,
+          ),
         );
       }
     }
@@ -438,13 +438,13 @@ export async function buildPackage(
     if (argv.verbose) {
       console.log(
         chalk.gray(
-          `Build ${path.relative(paths.cwd, packageDirectory)}: clean Success`
-        )
+          `Build ${path.relative(paths.cwd, packageDirectory)}: clean Success`,
+        ),
       );
     }
 
     logTaskEnd(
-      argv.verbose ? rollupWarnings.map((warn) => warn.toString()) : true
+      argv.verbose ? rollupWarnings.map((warn) => warn.toString()) : true,
     );
   } catch (e: any) {
     logTaskEnd(false);
@@ -452,14 +452,14 @@ export async function buildPackage(
       console.error(
         `\nRollup error: ./${path.relative(paths.cwd, e.loc.file)}@${
           e.loc.line
-        }:${e.loc.column}`
+        }:${e.loc.column}`,
       );
       console.error(chalk.red(e.message));
       console.error(e.frame);
     } else {
       console.error(
         'Rollup Error in:',
-        path.relative(paths.cwd, packageDirectory)
+        path.relative(paths.cwd, packageDirectory),
       );
       console.error(e);
     }
