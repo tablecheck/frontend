@@ -1,5 +1,5 @@
 {
-  "extends": "/Users/simeon.cheeseman/Development/tablecheck-react-system/packages/typescript/tsconfig/base.json",
+  "extends": "../typescript/tsconfig/base.json",
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",

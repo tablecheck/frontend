@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const execa = require('execa');
-const glob = require('glob');
+const { glob } = require('glob');
 const inquirer = require('inquirer');
 const startCase = require('lodash/startCase');
 const minimist = require('minimist');
@@ -17,7 +17,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 const scriptFiles = fs.readdirSync(
-  path.resolve(path.join(__dirname, '../scripts'))
+  path.resolve(path.join(__dirname, '../scripts')),
 );
 const scripts = scriptFiles.reduce((validScripts, filename) => {
   const match = /(.+)\.js$/.exec(filename);
@@ -30,11 +30,11 @@ const scripts = scriptFiles.reduce((validScripts, filename) => {
 const { _: args, d: dryRun } = minimist(process.argv.slice(2), {
   boolean: ['d', 'dry-run'],
   alias: {
-    'dry-run': 'd'
+    'dry-run': 'd',
   },
   default: {
-    d: false
-  }
+    d: false,
+  },
 });
 
 let fileGlobs = args;
@@ -45,7 +45,7 @@ if (scripts.indexOf(args[0]) > -1) {
 
 const files = fileGlobs.reduce(
   (allFiles, fileGlob) => allFiles.concat(glob.sync(fileGlob)),
-  []
+  [],
 );
 
 if (files.length === 0) {
@@ -64,9 +64,9 @@ Promise.resolve({ script: scriptArg })
           choices: scripts.map((scriptOption) => ({
             name: startCase(scriptOption),
             value: scriptOption,
-            short: scriptOption
-          }))
-        }
+            short: scriptOption,
+          })),
+        },
       ]);
     }
     return { script };
@@ -89,7 +89,7 @@ Promise.resolve({ script: scriptArg })
       // especially affects prettier api usage
       '--no-babel',
       '-t',
-      require.resolve(`../scripts/runner.js`)
+      require.resolve(`../scripts/runner.js`),
     ];
     if (dryRun) {
       execaArgs.push('-d');
@@ -99,12 +99,12 @@ Promise.resolve({ script: scriptArg })
     return execa('jscodeshift', execaArgs.concat(files), {
       stdio: 'inherit',
       reject: false,
-      preferLocal: true
+      preferLocal: true,
     }).then((result) => {
       if (result.exitCode === undefined) {
         console.error(
           result.shortMessage ||
-            `Message: ${result.originalMessage}\nCommand: ${result.command}`
+            `Message: ${result.originalMessage}\nCommand: ${result.command}`,
         );
         process.exit(1);
       } else {

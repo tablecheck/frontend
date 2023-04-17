@@ -20,13 +20,13 @@
   },
   "dependencies": {
     "@tablecheck/frontend-utils": "^1.1.0",
-    "eslint-module-utils": "2.7.4"
+    "eslint-module-utils": "2.8.0"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.52.0",
-    "@typescript-eslint/utils": "^5.52.0",
-    "typescript": "4.9.5",
-    "unbuild": "1.1.1"
+    "@typescript-eslint/parser": "^5.58.0",
+    "@typescript-eslint/utils": "^5.58.0",
+    "typescript": "5.0.4",
+    "unbuild": "1.2.1"
   },
   "publishConfig": {
     "access": "public"
