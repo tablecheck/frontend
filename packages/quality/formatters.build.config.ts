@@ -2,16 +2,16 @@ import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   clean: true,
-  outDir: 'lib/formatters',
+  outDir: 'dist/formatters',
   entries: [
     {
       input: 'src/formatters/eslintStylishFormatter.ts',
-      ext: 'js'
+      ext: 'js',
     },
     {
       input: 'src/formatters/eslintJunitFormatter.ts',
-      ext: 'js'
-    }
+      ext: 'js',
+    },
   ],
   rollup: {
     emitCJS: true,
@@ -19,10 +19,10 @@ export default defineBuildConfig({
     esbuild: {
       minify: false,
       sourceMap: true,
-      target: 'es2022'
+      target: 'es2022',
     },
     dts: {
-      respectExternal: false
-    }
-  }
+      respectExternal: false,
+    },
+  },
 });

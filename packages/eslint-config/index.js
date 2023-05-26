@@ -9,19 +9,6 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = 'development';
 }
 
-let project;
-if (
-  fs.existsSync(path.resolve(path.join(process.cwd(), 'tsconfig.eslint.json')))
-) {
-  // solution for https://github.com/typescript-eslint/typescript-eslint/issues/1192
-  // file is built in scripts/utils/configureTypescript.ts
-  project = ['./tsconfig.eslint.json'];
-} else if (
-  fs.existsSync(path.resolve(path.join(process.cwd(), 'tsconfig.json')))
-) {
-  project = ['./tsconfig.json'];
-}
-
 let reactVersion = '17'; // set to 17 for legacy reasons or to not error if react not present - should be able to detect below
 const packageJsonPath = path.resolve(path.join(process.cwd(), 'package.json'));
 if (fs.existsSync(packageJsonPath)) {
@@ -52,8 +39,7 @@ const config = {
   },
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
-    project
+    sourceType: 'module'
   },
 
   env: {

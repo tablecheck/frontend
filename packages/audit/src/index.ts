@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import path from 'path';
 
 import CVSS from '@turingpointde/cvss.js';
@@ -6,12 +5,7 @@ import chalk from 'chalk';
 import fs from 'fs-extra';
 import * as prompts from '@clack/prompts';
 import treeify from 'treeify';
-import {
-  execa,
-  execaOptions,
-  getArgv,
-  paths,
-} from '@tablecheck/frontend-utils';
+import { execa, execaOptions } from '@tablecheck/frontend-utils';
 
 const definitions = fs.readJSONSync(
   new URL(
@@ -29,25 +23,18 @@ function findMetric(abbr: string) {
   return definitions.definitions.find((def) => def.abbr === abbr);
 }
 
-const auditjsConfig = path.resolve(paths.cwd, 'auditjs.json');
-
-const argv = getArgv({
-  boolean: ['ci', 'junit'],
-  default: {
-    ci: false,
-    junit: false,
-  },
-});
-
-const auditjsArgs = [
-  'ossi',
-  argv.junit ? '--xml' : '--dev',
-  '--quiet',
-  '--cache=cache/audit',
-];
-if (process.env.OSSI_USERNAME && process.env.OSSI_TOKEN) {
-  auditjsArgs.push(`-u=${process.env.OSSI_USERNAME}`);
-  auditjsArgs.push(`-p=${process.env.OSSI_TOKEN}`);
+function getAuditjsArgs(useJunit: boolean) {
+  const auditjsArgs = [
+    'ossi',
+    useJunit ? '--xml' : '--dev',
+    '--quiet',
+    '--cache=cache/audit',
+  ];
+  if (process.env.OSSI_USERNAME && process.env.OSSI_TOKEN) {
+    auditjsArgs.push(`-u=${process.env.OSSI_USERNAME}`);
+    auditjsArgs.push(`-p=${process.env.OSSI_TOKEN}`);
+  }
+  return auditjsArgs;
 }
 
 function colouredByScore(score: number, string = `${score}`) {
@@ -66,15 +53,20 @@ function colouredByScore(score: number, string = `${score}`) {
   return chalk.green(string);
 }
 
-async function updateWhitelist() {
+async function updateWhitelist(rootPath: string) {
+  const auditjsConfig = path.resolve(rootPath, 'auditjs.json');
   prompts.intro('Running auditjs to detect and evaluate new vulnerabilities');
   const spinner = prompts.spinner();
   spinner.start('Running auditjs');
-  const auditjsExec = await execa('auditjs', [...auditjsArgs, '--json'], {
-    cwd: execaOptions.cwd,
-    preferLocal: true,
-    reject: false,
-  });
+  const auditjsExec = await execa(
+    'auditjs',
+    [...getAuditjsArgs(false), '--json'],
+    {
+      cwd: execaOptions.cwd,
+      preferLocal: true,
+      reject: false,
+    },
+  );
   type ReportDependency = {
     description: string;
     coordinates: string;
@@ -337,35 +329,26 @@ ${this.getVectorMetrics(vector)
   prompts.outro('Done.');
 }
 
-async function run() {
-  if (argv.ci || argv.junit) {
-    console.log(chalk.blue.bold('Scanning dependencies...'));
-    const ciResult = await execa(
-      'auditjs',
-      auditjsArgs,
-      argv.junit
-        ? {
-            cwd: paths.cwd,
-            preferLocal: true,
-            reject: false,
-          }
-        : execaOptions,
-    );
-    if (argv.junit) {
-      const junitFilePath = path.join(paths.cwd, 'junit', 'auditjs.xml');
-      fs.outputFileSync(junitFilePath, ciResult.stdout);
-      console.log(chalk.blue.bold(`Report written to ${junitFilePath}`));
-    }
-  } else {
-    await updateWhitelist();
+export async function run({
+  rootPath,
+  updatePrompts,
+}: {
+  rootPath: string;
+  updatePrompts?: boolean;
+}): Promise<boolean> {
+  if (updatePrompts) {
+    await updateWhitelist(rootPath);
+    return true;
   }
-}
 
-run()
-  .then(() => {
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
+  console.log(chalk.blue.bold('Scanning dependencies...'));
+  const ciResult = await execa('auditjs', getAuditjsArgs(true), {
+    cwd: rootPath,
+    preferLocal: true,
+    reject: false,
   });
+  const junitFilePath = path.join(rootPath, 'junit', 'auditjs.xml');
+  fs.outputFileSync(junitFilePath, ciResult.stdout);
+  console.log(chalk.blue.bold(`Report written to ${junitFilePath}`));
+  return !ciResult.failed;
+}

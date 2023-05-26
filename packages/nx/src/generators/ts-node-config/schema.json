@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "TsNodeConfig",
+  "title": "Generate a typescript definition file for node-config default.json",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project where the definition will be located.",
+      "x-prompt": "Which project will this definition file be located in?",
+      "x-dropdown": "projects"
+    }
+  },
+  "required": ["project"]
+}

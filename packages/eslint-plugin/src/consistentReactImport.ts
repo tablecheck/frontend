@@ -8,13 +8,13 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
     type: 'suggestion',
     docs: {
       description: 'Ensure that react is always imported and used consistently',
-      recommended: 'error'
+      recommended: 'error',
     },
     fixable: 'code',
     messages: {
       [messageId]:
-        "React should be imported with `import * as React from 'react';`"
-    }
+        "React should be imported with `import * as React from 'react';`",
+    },
   },
   defaultOptions: [],
   create: (context) => {
@@ -47,27 +47,28 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
               function recursivelyUpdateVariableUsage(
                 updateScope: typeof scope,
                 localName: string,
-                importedName: string
+                importedName: string,
               ) {
                 const { variables, childScopes } = updateScope;
                 if (updateScope.type !== 'global') {
                   const variableDefinition = variables.find(
-                    ({ name }) => name === localName
+                    ({ name }) => name === localName,
                   );
                   if (variableDefinition)
                     variableDefinition.references.forEach((reference) => {
                       if (
                         jsxElements.find(
                           (element) =>
-                            element.openingElement.name === reference.identifier
+                            element.openingElement.name ===
+                            reference.identifier,
                         )
                       )
                         return;
                       replacements.push(
                         fixer.replaceTextRange(
                           reference.identifier.range,
-                          `${reactNamespace}.${importedName}`
-                        )
+                          `${reactNamespace}.${importedName}`,
+                        ),
                       );
                     });
                   // else is an unused import
@@ -76,7 +77,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                   recursivelyUpdateVariableUsage(
                     childScopes[i],
                     localName,
-                    importedName
+                    importedName,
                   );
                 }
               }
@@ -93,7 +94,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                   recursivelyUpdateVariableUsage(
                     scope,
                     localName,
-                    importedName
+                    importedName,
                   );
                   jsxElements.forEach((jsxNode) => {
                     // @ts-expect-error
@@ -101,15 +102,14 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                       replacements.push(
                         fixer.replaceText(
                           jsxNode.openingElement.name,
-                          `${reactNamespace}.${importedName}`
-                        )
+                          `${reactNamespace}.${importedName}`,
+                        ),
                       );
                       replacements.push(
                         fixer.replaceText(
-                          // @ts-expect-error
                           jsxNode.closingElement.name,
-                          `${reactNamespace}.${importedName}`
-                        )
+                          `${reactNamespace}.${importedName}`,
+                        ),
                       );
                     }
                   });
@@ -128,14 +128,14 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                   ? fixer.replaceTextRange([rangeStart, node.range[1]], '')
                   : fixer.replaceTextRange(
                       node.range,
-                      `import * as ${reactNamespace} from 'react';`
-                    )
+                      `import * as ${reactNamespace} from 'react';`,
+                    ),
               );
               return replacements;
-            }
+            },
           });
         });
-      }
+      },
     };
-  }
+  },
 };
