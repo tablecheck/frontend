@@ -11,7 +11,7 @@
   },
   "files": [
     "bin",
-    "lib",
+    "dist",
     "templates"
   ],
   "scripts": {
@@ -24,9 +24,7 @@
     "@babel/core": "^7.21.4",
     "@babel/runtime": "^7.21.0",
     "@clack/prompts": "^0.6.3",
-    "@tablecheck/babel-preset": "^1.1.0",
     "@tablecheck/eslint-config": "^1.8.2",
-    "@tablecheck/frontend-typescript": "^0.0.0",
     "@tablecheck/frontend-utils": "^1.1.0",
     "@typescript-eslint/parser": "^5.58.0",
     "ansi-regex": "^6.0.1",

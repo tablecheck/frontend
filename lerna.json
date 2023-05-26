@@ -7,5 +7,6 @@
       "conventionalCommits": true,
       "verifyAccess": false
     }
-  }
+  },
+  "useNx": true
 }

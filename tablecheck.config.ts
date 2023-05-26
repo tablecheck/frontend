@@ -1,4 +1,4 @@
-import { buildUserConfig } from './packages/utils';
+import { buildUserConfig } from '@tablecheck/frontend-utils/config';
 
 export default buildUserConfig({
   typescript: 'manual',

@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/*.ts",
+    "src/*.tsx",
+    "src/**/*.json",
+    "src/*.json"
+  ],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {}
+  },
+  "exclude": ["node_modules", "*.spec.ts"],
+  "files": []
+}

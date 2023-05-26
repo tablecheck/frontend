@@ -2,31 +2,26 @@ import path from 'path';
 
 import chalk from 'chalk';
 import fs from 'fs-extra';
-import { execa, isLerna, paths } from '@tablecheck/frontend-utils';
+import { execa, paths } from '@tablecheck/frontend-utils';
 
 function safeCopyFile(sourceFileName: string, targetFilePath: string) {
   if (!fs.existsSync(targetFilePath)) {
     console.log(`Creating ${path.relative(paths.cwd, targetFilePath)}`);
     fs.copyFileSync(
       require.resolve(`../templates/${sourceFileName}`),
-      targetFilePath
+      targetFilePath,
     );
   }
 }
 
 export async function setup() {
   console.log(
-    chalk.bold.blue('Setting up @tablecheck/scripts-quality default files...')
+    chalk.bold.blue('Setting up @tablecheck/scripts-quality default files...'),
   );
   const installPackages = ['prettier', 'husky', 'commitlint'];
   let commitLintFile;
-  if (isLerna()) {
-    installPackages.push('@commitlint/config-lerna-scopes');
-    commitLintFile = 'commitlint.lerna.config.js';
-  } else {
-    installPackages.push('@tablecheck/commitlint-config');
-    commitLintFile = 'commitlint.config.js';
-  }
+  installPackages.push('@tablecheck/commitlint-config');
+  commitLintFile = 'commitlint.config.js';
   await execa('npm', ['install'].concat(installPackages));
   await execa('npx', ['husky', 'install']);
 

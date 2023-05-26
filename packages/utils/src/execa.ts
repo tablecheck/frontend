@@ -4,33 +4,32 @@ import {
   execaSync as coreExecaSync,
   CommonOptions,
   Options,
-  SyncOptions
+  SyncOptions,
 } from 'execa';
 
-import { paths } from './paths';
 import { getArgv } from './argv';
 
 const argv = getArgv();
 
 export const execaOptions: CommonOptions<string> = {
-  cwd: paths.cwd,
+  cwd: process.cwd(),
   stdin: 'inherit',
   stdout: 'inherit',
   stderr: 'inherit',
-  preferLocal: true
+  preferLocal: true,
 };
 
 function handleVerbose(
   command: string,
   args: readonly string[] = [],
-  options?: Options | SyncOptions
+  options?: Options | SyncOptions,
 ) {
   if (argv.verbose) {
     let env = '';
     const optionsEnv = options?.env;
     if (optionsEnv) {
       env = `${Object.keys(optionsEnv).map(
-        (key) => `${key}=${optionsEnv[key]}`
+        (key) => `${key}=${optionsEnv[key]}`,
       )} `;
     }
     console.log(chalk.gray(`\n> ${env}${command} ${args.join(' ')}\n`));
@@ -40,7 +39,7 @@ function handleVerbose(
 export async function execa(
   command: string,
   args: readonly string[] = [],
-  options?: Options
+  options?: Options,
 ) {
   handleVerbose(command, args, options);
   return await coreExeca(command, args, options);
@@ -49,7 +48,7 @@ export async function execa(
 export function execaSync(
   command: string,
   args: readonly string[] = [],
-  options?: SyncOptions
+  options?: SyncOptions,
 ) {
   handleVerbose(command, args, options);
   return coreExecaSync(command, args, options);
