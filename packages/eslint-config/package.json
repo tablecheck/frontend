@@ -16,7 +16,6 @@
   ],
   "dependencies": {
     "@emotion/eslint-plugin": "^11.10.0",
-    "@tablecheck/babel-preset": "^1.1.0",
     "@tablecheck/eslint-plugin": "^1.2.2",
     "@tablecheck/frontend-utils": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
@@ -45,8 +44,7 @@
     "react": "^17 || ^18"
   },
   "devDependencies": {
-    "eslint": "^8",
-    "unbuild": "1.2.1"
+    "eslint": "^8"
   },
   "engines": {
     "node": ">= 16.16.0"

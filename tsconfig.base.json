@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],
+      "@tablecheck/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
+      "@tablecheck/frontend-library": ["packages/library/src/index.ts"],
+      "@tablecheck/frontend-utils": ["packages/utils/src/index.ts"],
+      "@tablecheck/nx": ["packages/nx/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

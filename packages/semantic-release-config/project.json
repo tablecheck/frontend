@@ -1,0 +1,16 @@
+{
+  "name": "semantic-release-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/semantic-release-config/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/semantic-release-config/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

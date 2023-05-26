@@ -61,19 +61,19 @@ function stylishFormatter(chalk: ChalkInstance, results: ESLint.LintResult[]) {
           message.column || 0,
           messageType,
           message.message.replace(/([^ ])\.$/u, '$1'),
-          chalk.dim(message.ruleId || '')
+          chalk.dim(message.ruleId || ''),
         ];
       }),
       {
         align: ['.', 'r', 'l'],
         stringLength(str) {
           return stripAnsi(str).length;
-        }
-      }
+        },
+      },
     )
       .split('\n')
       .map((el) =>
-        el.replace(/(\d+)\s+(\d+)/u, (m, p1, p2) => chalk.dim(`${p1}:${p2}`))
+        el.replace(/(\d+)\s+(\d+)/u, (m, p1, p2) => chalk.dim(`${p1}:${p2}`)),
       )
       .join('\n')}\n\n`;
   });
@@ -92,8 +92,8 @@ function stylishFormatter(chalk: ChalkInstance, results: ESLint.LintResult[]) {
         ', ',
         warningCount,
         pluralize(' warning', warningCount),
-        ')\n'
-      ].join('')
+        ')\n',
+      ].join(''),
     );
 
     if (fixableErrorCount > 0 || fixableWarningCount > 0) {
@@ -105,8 +105,8 @@ function stylishFormatter(chalk: ChalkInstance, results: ESLint.LintResult[]) {
           ' and ',
           fixableWarningCount,
           pluralize(' warning', fixableWarningCount),
-          ' potentially fixable with the `--fix` option.\n'
-        ].join('')
+          ' potentially fixable with the `--fix` option.\n',
+        ].join(''),
       );
     }
   }
@@ -132,7 +132,6 @@ function comparePaths(pathA: string, pathB: string) {
 
 export default async function customStylish(results: ESLint.LintResult[]) {
   const chalk = await import('chalk');
-  const { paths } = await import('@tablecheck/frontend-utils');
   return stylishFormatter(
     chalk.default,
     results
@@ -145,7 +144,7 @@ export default async function customStylish(results: ESLint.LintResult[]) {
           if (aParts[i] !== bParts[i]) {
             return comparePaths(
               aParts.slice(0, i + 1).join('/'),
-              bParts.slice(0, i + 1).join('/')
+              bParts.slice(0, i + 1).join('/'),
             );
           }
         }
@@ -154,7 +153,7 @@ export default async function customStylish(results: ESLint.LintResult[]) {
       .map((result) => ({
         ...result,
         // makes the path relative to cwd instead of absolute
-        filePath: path.relative(paths.cwd, result.filePath)
-      }))
+        filePath: path.relative(process.cwd(), result.filePath),
+      })),
   );
 }

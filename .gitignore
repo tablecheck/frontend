@@ -11,6 +11,7 @@ cache
 public/static
 docs
 lib
+dist
 config/local.*
 config/local-*
 *.tsbuildinfo
@@ -22,3 +23,8 @@ junit
 .env.production.local
 .@tablecheck
 /Users/simeon.cheeseman/Development/tablecheck-react-system/.@tablecheck
+tsconfig.compound.json
+/packages/quality/build.config.ts
+/packages/utils/build.config.ts
+/tsconfig.eslint.json
+/packages/utils/config

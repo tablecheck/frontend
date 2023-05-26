@@ -1,0 +1,19 @@
+{
+  "generators": {
+    "ts-carbon-icons": {
+      "factory": "./dist/generators/ts-carbon-icons/generator",
+      "schema": "./dist/generators/ts-carbon-icons/schema.json",
+      "description": "ts-carbon-icons generator"
+    },
+    "ts-node-config": {
+      "factory": "./dist/generators/ts-node-config/generator",
+      "schema": "./dist/generators/ts-node-config/schema.json",
+      "description": "ts-node-config generator"
+    },
+    "ts-vite-env": {
+      "factory": "./dist/generators/ts-vite-env/generator",
+      "schema": "./dist/generators/ts-vite-env/schema.json",
+      "description": "ts-vite-env generator"
+    }
+  }
+}

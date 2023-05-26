@@ -1,0 +1,21 @@
+{
+  "name": "nx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/nx/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/nx/**/*.ts",
+          "packages/nx/executors.json",
+          "packages/nx/package.json",
+          "packages/nx/generators.json"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

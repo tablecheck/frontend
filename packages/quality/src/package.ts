@@ -8,19 +8,19 @@ import {
   paths,
   processAllPackages,
   unicodeEmoji as icons,
-  userConfig
+  userConfig,
 } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
-import fs from 'fs-extra';
+import * as fs from 'fs-extra';
 import _ from 'lodash';
-import { PackageJson } from 'type-fest';
+import type { PackageJson } from 'type-fest';
 
 const { uniqBy } = _;
 
 async function evaluatePackage({
   dependencies,
   devDependencies,
-  name
+  name,
 }: PackageJson) {
   // package.json version keys check
   const invalidVersionValues: string[] = [];
@@ -33,7 +33,7 @@ async function evaluatePackage({
   function validateVersion(
     key: string,
     version: string | undefined,
-    packageName: string | undefined
+    packageName: string | undefined,
   ) {
     if (!version) {
       invalidVersionValues.push(`${key}@${version}`);
@@ -56,10 +56,10 @@ async function evaluatePackage({
   }
 
   Object.keys(dependencies || {}).forEach((key) =>
-    validateVersion(key, dependencies?.[key], name)
+    validateVersion(key, dependencies?.[key], name),
   );
   Object.keys(devDependencies || {}).forEach((key) =>
-    validateVersion(key, devDependencies?.[key], name)
+    validateVersion(key, devDependencies?.[key], name),
   );
 
   return invalidVersionValues;
@@ -73,8 +73,8 @@ export async function formatPackages() {
 export async function lintAllPackages() {
   console.log(
     chalk.cyan(
-      `  ${icons.info}  We recommend using \`npm-upgrade\` to manage dependencies.\n`
-    )
+      `  ${icons.info}  We recommend using \`npm-upgrade\` to manage dependencies.\n`,
+    ),
   );
   const success = await processAllPackages(async (appPackage, packagePath) => {
     const displayPath = path.relative(paths.cwd, packagePath);
@@ -82,15 +82,15 @@ export async function lintAllPackages() {
 
     if (invalidVersionValues.length) {
       console.error(
-        chalk.red(`${icons.error} Invalid Package: ${displayPath}`)
+        chalk.red(`${icons.error} Invalid Package: ${displayPath}`),
       );
       console.log(
-        'Dependencies in package.json must be absolute. The only exception are sibling lerna monorepo packages, which may use `^`.'
+        'Dependencies in package.json must be absolute. The only exception are sibling lerna monorepo packages, which may use `^`.',
       );
       console.log(
         `The following dependencies are invalid;\n - ${invalidVersionValues.join(
-          '\n - '
-        )}`
+          '\n - ',
+        )}`,
       );
       throw new Error();
     }
@@ -113,15 +113,15 @@ export async function validateLernaDeps() {
         (name) =>
           !userConfig.independentLernaPackages ||
           !userConfig.independentLernaPackages.includes(
-            path.relative(process.cwd(), name)
-          )
+            path.relative(process.cwd(), name),
+          ),
       )
-      .map((p) => [p, getPackageJson(p)] as const)
+      .map((p) => [p, getPackageJson(p)] as const),
   );
   const rootDependencies = {
     ...(rootPackage.dependencies || {}),
     ...(rootPackage.devDependencies || {}),
-    ...(rootPackage.optionalDependencies || {})
+    ...(rootPackage.optionalDependencies || {}),
   };
   type DependencyTuple = [string, string, string];
   const childDependencies: Record<string, DependencyTuple[]> = {};
@@ -131,8 +131,8 @@ export async function validateLernaDeps() {
       .map((tuple) => ['dependencies', ...tuple] as DependencyTuple)
       .concat(
         Object.entries(packageJson.devDependencies || {}).map(
-          (tuple) => ['devDependencies', ...tuple] as DependencyTuple
-        )
+          (tuple) => ['devDependencies', ...tuple] as DependencyTuple,
+        ),
       )
       .concat(
         Object.entries(packageJson.optionalDependencies || {})
@@ -144,7 +144,9 @@ export async function validateLernaDeps() {
               !(packageJson.dependencies || {})[packageName]
             );
           })
-          .map((tuple) => ['optionalDependencies', ...tuple] as DependencyTuple)
+          .map(
+            (tuple) => ['optionalDependencies', ...tuple] as DependencyTuple,
+          ),
       )
       .filter(([depType, packageName, version]) => {
         if (childDependencies[packageName]) {
@@ -169,33 +171,33 @@ export async function validateLernaDeps() {
     if (invalidEntries.length > 0) {
       const title = chalk.red(
         `Invalid dependencies in ${chalk.blueBright.underline(
-          path.join(path.relative(process.cwd(), childPath), 'package.json')
-        )}`
+          path.join(path.relative(process.cwd(), childPath), 'package.json'),
+        )}`,
       );
       const childMessages: string[] = [];
       invalidEntries.forEach(([depType, packageName, version]) => {
         if (!rootDependencies[packageName]) return;
         childMessages.push(
           `  - ${chalk.yellow(
-            `${depType} "${packageName}": "${version}"`
+            `${depType} "${packageName}": "${version}"`,
           )} should be ${chalk.green(
-            `"${packageName}": "${rootDependencies[packageName]}"`
-          )}`
+            `"${packageName}": "${rootDependencies[packageName]}"`,
+          )}`,
         );
       });
       messages.push([title, childMessages, childPath]);
     }
   });
   const invalidChildDependencies = Object.entries(childDependencies).filter(
-    ([, dependencies]) => uniqBy(dependencies, 2).length > 1
+    ([, dependencies]) => uniqBy(dependencies, 2).length > 1,
   );
   const hasErrors = messages.length || invalidChildDependencies.length;
   logTaskEnd(!hasErrors);
   if (invalidChildDependencies.length) {
     console.log(
       chalk.red.bold(
-        'The following packages have different versions in sibling packages.'
-      )
+        'The following packages have different versions in sibling packages.',
+      ),
     );
     invalidChildDependencies.forEach(([packageName, dependencies]) => {
       console.log(chalk.yellow(`  - Package "${packageName}"`));
@@ -204,9 +206,9 @@ export async function validateLernaDeps() {
           `    ${chalk.blueBright.underline(
             path.join(
               path.relative(process.cwd(), childDepPath),
-              'package.json'
-            )
-          )} has ${chalk.yellow(`${depType} "${version}"`)}`
+              'package.json',
+            ),
+          )} has ${chalk.yellow(`${depType} "${version}"`)}`,
         );
       });
     });

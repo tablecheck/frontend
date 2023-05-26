@@ -1,0 +1,16 @@
+{
+  "name": "audit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/audit/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/audit/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

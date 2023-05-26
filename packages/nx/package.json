@@ -1,0 +1,41 @@
+{
+  "name": "@tablecheck/nx",
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p ./tsconfig.build.json",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "@tablecheck/frontend-audit": "^0.0.1",
+    "@tablecheck/frontend-utils": "^1.1.0",
+    "@tablecheck/frontend-library": "^0.0.1",
+    "fs-extra": "^11.1.1",
+    "prettier": "^2.8.7"
+  },
+  "devDependencies": {
+    "@types/prettier": "2.7.2",
+    "type-fest": "3.8.0",
+    "typescript": "5.0.4"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "executors": "./executors.json",
+  "generators": "./generators.json"
+}

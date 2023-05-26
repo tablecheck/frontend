@@ -2,7 +2,7 @@ import { defineBuildConfig } from 'unbuild';
 
 export default defineBuildConfig({
   preset: '../../build.preset',
-  outDir: 'lib',
+  outDir: 'dist',
   entries: ['src/bin/main.ts', 'src/bin/lint.ts', 'src/bin/precommit.ts'],
   rollup: {
     emitCJS: false,
@@ -10,10 +10,10 @@ export default defineBuildConfig({
     esbuild: {
       minify: false,
       sourceMap: true,
-      target: 'es2022'
+      target: 'es2022',
     },
     dts: {
-      respectExternal: false
-    }
-  }
+      respectExternal: false,
+    },
+  },
 });

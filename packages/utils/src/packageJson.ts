@@ -1,15 +1,14 @@
 import path from 'path';
 
 import chalk from 'chalk';
-import fs from 'fs-extra';
-import { PackageJson } from 'type-fest';
-import semver from 'semver';
+import * as fs from 'fs-extra';
+import type { PackageJson } from 'type-fest';
+import * as semver from 'semver';
 import {
   format as prettyFormatPackage,
-  check as checkPackageFormat
+  check as checkPackageFormat,
 } from 'prettier-package-json';
 
-import { paths } from './paths';
 import { getArgv } from './argv';
 import { writePrettyFile } from './prettier';
 import { getLernaPaths } from './lerna';
@@ -17,52 +16,41 @@ import { unicodeEmoji } from './unicodeEmoji';
 
 const argv = getArgv();
 
-export function getPackageJson(directory = paths.cwd) {
+export function getPackageJson(directory = process.cwd()) {
   return fs.readJsonSync(path.join(directory, 'package.json')) as PackageJson;
 }
 
 export function detectInstalledVersion(
+  cwd: string,
   packageName: string,
-  semverVersion = '*'
-): void | string {
-  const packageJsonPaths = [
-    path.join(paths.cwd, 'node_modules', packageName, 'package.json')
-  ];
-  const foundPackageJsonPath = packageJsonPaths.filter((filepath) =>
-    fs.existsSync(filepath)
-  )[0];
-  if (!fs.existsSync(foundPackageJsonPath)) {
-    if (argv.verbose) {
-      console.log(
-        chalk.gray(
-          `${packageName} not detected at '${packageJsonPaths.join("', '")}'`
-        )
-      );
-    }
-    return;
+  semverVersion: string,
+): string {
+  const packageJsonPath = path.join(
+    cwd,
+    'node_modules',
+    packageName,
+    'package.json',
+  );
+  if (!fs.existsSync(packageJsonPath)) {
+    throw new Error(`${packageName} not detected at '${packageJsonPath}'`);
   }
-  const packageJson = fs.readJSONSync(foundPackageJsonPath);
+  const packageJson = fs.readJSONSync(packageJsonPath);
   if (
     !packageJson.version ||
     !semver.satisfies(packageJson.version, semverVersion)
   ) {
-    if (argv.verbose) {
-      console.log(
-        chalk.gray(
-          `${packageName} does not match not version ${semverVersion}, actual version '${packageJson.version}'`
-        )
-      );
-    }
-    return;
+    throw new Error(
+      `${packageName} does not match not version ${semverVersion}, actual version '${packageJson.version}'`,
+    );
   }
   if (argv.verbose) {
     console.log(
       chalk.gray(
-        `${packageName} at version '${packageJson.version}' detected in installed dependencies!`
-      )
+        `${packageName} at version '${packageJson.version}' detected in installed dependencies!`,
+      ),
     );
   }
-  return foundPackageJsonPath;
+  return packageJsonPath;
 }
 
 declare module 'type-fest' {
@@ -154,16 +142,16 @@ const prettyFormatOptions: Parameters<typeof checkPackageFormat>[1] = {
     /**
      * Package publishing configuration
      */
-    'publishConfig'
-  ]
+    'publishConfig',
+  ],
 };
 
 export async function processAllPackages(
   packageProcessor: (
     packageContent: PackageJson,
-    filePath: string
+    filePath: string,
   ) => PackageJson | Promise<PackageJson>,
-  writeFile = true
+  writeFile = true,
 ) {
   async function processor(packagePath: string) {
     try {
@@ -172,12 +160,12 @@ export async function processAllPackages(
       if (typeof result !== 'object')
         return {
           success: true,
-          result
+          result,
         };
       if (writeFile) {
         writePrettyFile(
           packagePath,
-          prettyFormatPackage(result, prettyFormatOptions)
+          prettyFormatPackage(result, prettyFormatOptions),
         );
       } else if (!checkPackageFormat(result, prettyFormatOptions)) {
         console.error(
@@ -185,20 +173,20 @@ export async function processAllPackages(
             `${
               unicodeEmoji.error
             } Package format is invalid, run quality with --fix to correct: ${path.relative(
-              paths.cwd,
-              packagePath
-            )}`
-          )
+              process.cwd(),
+              packagePath,
+            )}`,
+          ),
         );
         return {
           success: false,
-          result
+          result,
         };
       }
 
       return {
         success: true,
-        result
+        result,
       };
     } catch (error) {
       console.error(`Error occurred in processing package ${packagePath}`);
@@ -217,14 +205,14 @@ export async function processAllPackages(
 
   if (lernaPackageFiles.length) {
     const packageChecks = await Promise.allSettled(
-      lernaPackageFiles.map((packagePath) => processor(packagePath))
+      lernaPackageFiles.map((packagePath) => processor(packagePath)),
     );
     return packageChecks.reduce(
       (allSuccessful, result) =>
         allSuccessful && result.status === 'fulfilled' && result.value.success,
-      true
+      true,
     );
   }
 
-  return processor(paths.appPackageJson);
+  return processor(path.join(process.cwd(), 'package.json'));
 }

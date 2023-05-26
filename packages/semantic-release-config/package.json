@@ -24,8 +24,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "unbuild": "1.2.1"
   }
 }

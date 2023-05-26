@@ -1,21 +1,18 @@
 {
-  "extends": "../typescript/tsconfig/base.json",
+  "extends": "../../tsconfig.base.json",
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/*.ts",
     "src/*.tsx",
     "src/**/*.json",
-    "src/*.json",
-    "*.ts",
-    ".storybook/**/*.ts",
-    ".storybook/**/*.tsx",
-    ".storybook/*.ts",
-    ".storybook/*.tsx",
-    ".storybook/**/*.json",
-    ".storybook/*.json"
+    "src/*.json"
   ],
-  "compilerOptions": { "rootDir": ".", "baseUrl": "./src", "composite": false },
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {}
+  },
   "exclude": ["node_modules"],
   "files": []
 }
