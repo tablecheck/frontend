@@ -5,10 +5,18 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/semantic-release-config/**/*.ts"]
+        "lintFilePatterns": ["packages/semantic-release-config/index.js"]
+      }
+    },
+    "lint:format": {
+      "executor": "@tablecheck/nx:quality",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/semantic-release-config/index.js"],
+        "fix": true
       }
     }
   },

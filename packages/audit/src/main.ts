@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { getArgv } from '@tablecheck/frontend-utils';
+
 import { run } from './index';
 
 const argv = getArgv({

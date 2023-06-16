@@ -5,10 +5,17 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/commitlint-config/**/*.ts"]
+        "lintFilePatterns": ["packages/commitlint-config/index.js"]
+      }
+    },
+    "lint:format": {
+      "executor": "@tablecheck/nx:quality",
+      "options": {
+        "lintFilePatterns": ["packages/commitlint-config/index.js"],
+        "fix": true
       }
     }
   },

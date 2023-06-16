@@ -1,15 +1,5 @@
 {
   "executors": {
-    "typescript": {
-      "implementation": "./dist/executors/typescript/executor",
-      "schema": "./dist/executors/typescript/schema.json",
-      "description": "typescript executor"
-    },
-    "ts-carbon-icons": {
-      "implementation": "./dist/executors/ts-carbon-icons/executor",
-      "schema": "./dist/executors/ts-carbon-icons/schema.json",
-      "description": "ts-carbon-icons executor"
-    },
     "build-lib": {
       "implementation": "./dist/executors/build-lib/executor",
       "schema": "./dist/executors/build-lib/schema.json",
@@ -20,10 +10,10 @@
       "schema": "./dist/executors/audit/schema.json",
       "description": "audit executor"
     },
-    "precommit": {
-      "implementation": "./dist/executors/precommit/executor",
-      "schema": "./dist/executors/precommit/schema.json",
-      "description": "precommit executor"
+    "quality": {
+      "implementation": "./src/executors/quality/executor",
+      "schema": "./src/executors/quality/schema.json",
+      "description": "quality executor"
     }
   }
 }

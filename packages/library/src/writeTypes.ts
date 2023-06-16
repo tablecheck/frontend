@@ -1,4 +1,4 @@
-import path from 'path';
+import * as path from 'path';
 
 import * as fs from 'fs-extra';
 import * as ts from 'typescript';
@@ -42,7 +42,7 @@ export async function writeTypes(
       return;
     }
     let relativeImportPath = importName;
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const matcher of pathMatchers) {
       const match = matcher(importName);
       if (match) {

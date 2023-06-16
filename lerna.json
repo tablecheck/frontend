@@ -8,5 +8,5 @@
       "verifyAccess": false
     }
   },
-  "useNx": true
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

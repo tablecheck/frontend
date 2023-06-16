@@ -1,8 +1,9 @@
-import { TSESLint } from '@typescript-eslint/utils';
-import { getProjectConfigFiles } from '@typescript-eslint/typescript-estree/dist/parseSettings/getProjectConfigFiles';
-import { ExpiringCache } from '@typescript-eslint/typescript-estree/dist/parseSettings/ExpiringCache';
-import * as fs from 'fs-extra';
 import * as path from 'path';
+
+import { ExpiringCache } from '@typescript-eslint/typescript-estree/dist/parseSettings/ExpiringCache';
+import { getProjectConfigFiles } from '@typescript-eslint/typescript-estree/dist/parseSettings/getProjectConfigFiles';
+import { TSESLint } from '@typescript-eslint/utils';
+import * as fs from 'fs-extra';
 
 export const messageId = 'shortestImport' as const;
 
@@ -20,7 +21,7 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
     },
   },
   defaultOptions: [],
-  create: function (context) {
+  create(context) {
     const resolvedFilePath = context.getPhysicalFilename
       ? context.getPhysicalFilename()
       : context.getFilename();
@@ -62,14 +63,15 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
           : {};
         const compilerPaths = Object.entries(
           (config.compilerOptions.paths || {}) as Record<string, string[]>,
-        ).reduce((acc, [key, [value]]) => {
-          return {
+        ).reduce(
+          (acc, [key, [value]]) => ({
             ...acc,
             [key.replace(/\/\*$/gi, '')]: value
               .replace(/\/\*$/gi, '')
               .replace(/^\.\//gi, ''),
-          };
-        }, {});
+          }),
+          {},
+        );
 
         return {
           ...acc,

@@ -11,7 +11,8 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {}
+    "paths": {},
+    "types": ["vitest"]
   },
   "exclude": ["node_modules"],
   "files": []

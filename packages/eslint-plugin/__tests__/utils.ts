@@ -1,9 +1,9 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
-import { describe, it } from 'vitest';
 import { RuleTester } from 'eslint';
+import { describe, it } from 'vitest';
 
 export function initRuleTester(
-  options: Parameters<typeof ESLintUtils.RuleTester['call']>[0]
+  options: Parameters<(typeof ESLintUtils.RuleTester)['call']>[0],
 ): ESLintUtils.RuleTester {
   const ruleTester = new RuleTester(options);
   ESLintUtils.RuleTester.it = it;

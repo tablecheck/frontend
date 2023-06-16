@@ -1,5 +1,5 @@
-import jsx from 'acorn-jsx';
 import babel from '@babel/core';
+import jsx from 'acorn-jsx';
 import rollup from 'rollup';
 
 export function jsxPlugin(shouldUseEmotion: boolean): rollup.Plugin {
@@ -21,17 +21,17 @@ export function jsxPlugin(shouldUseEmotion: boolean): rollup.Plugin {
                 '@babel/preset-react',
                 {
                   runtime: 'automatic',
-                  importSource: shouldUseEmotion ? '@emotion/react' : undefined
-                }
-              ]
-            ]
+                  importSource: shouldUseEmotion ? '@emotion/react' : undefined,
+                },
+              ],
+            ],
           },
           (error, result) => {
             if (error) reject(error);
             else resolve(result as any);
-          }
+          },
         );
       });
-    }
+    },
   };
 }

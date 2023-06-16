@@ -1,8 +1,10 @@
-import chalk from 'chalk';
-import minimist from 'minimist';
+import * as minimist from 'minimist';
 
 export function getArgv(
-  args: Omit<minimist.Opts, 'boolen'> & { boolean?: string[] } = {},
+  args: Omit<minimist.Opts, 'boolen'> & {
+    boolean?: string[];
+    string?: string[];
+  } = {},
 ) {
   if (!args.boolean || args.boolean.indexOf('verbose') === -1) {
     args.boolean = [...(args.boolean || []), 'verbose'];
@@ -24,8 +26,5 @@ export function getArgv(
     });
   const argv = minimist(process.argv.slice(2), args);
   argv._args = unknownArgs;
-  if (argv.verbose) {
-    console.log(chalk.gray(`argv:\n${JSON.stringify(argv, undefined, 2)}`));
-  }
   return argv;
 }
