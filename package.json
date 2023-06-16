@@ -49,6 +49,7 @@
     "@tablecheck/eslint-config": "^1.8.2",
     "@tablecheck/frontend-utils": "file:packages/frontend-utils",
     "@types/fs-extra": "^11.0.1",
+    "@types/node": "18.7.1",
     "@vitejs/plugin-react": "3.1.0",
     "@vitest/coverage-c8": "^0.31.0",
     "@vitest/ui": "^0.31.0",

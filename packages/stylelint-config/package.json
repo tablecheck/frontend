@@ -1,0 +1,39 @@
+{
+  "name": "@tablecheck/stylelint-config",
+  "description": "stylint config file for Tablesolution's React Projects",
+  "license": "MIT",
+  "author": "TableCheck Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tablecheck/frontend.git"
+  },
+  "version": "0.0.1",
+  "exports": {
+    ".": {
+      "main": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "files": [
+    "src"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "postcss-styled-components": "^0.2.1",
+    "stylelint-config-standard": "^33.0.0"
+  },
+  "peerDependencies": {
+    "stylelint": "^15"
+  },
+  "devDependencies": {
+    "stylelint": "^15"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

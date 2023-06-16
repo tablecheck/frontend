@@ -20,7 +20,8 @@
       "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],
       "@tablecheck/frontend-library": ["packages/library/src/index.ts"],
       "@tablecheck/frontend-utils": ["packages/utils/src/index.ts"],
-      "@tablecheck/nx": ["packages/nx/src/index.ts"]
+      "@tablecheck/nx": ["packages/nx/src/index.ts"],
+      "@tablecheck/stylelint-config": ["packages/stylelint-config/src/index.js"]
     }
   },
   "exclude": ["node_modules", "tmp"]
