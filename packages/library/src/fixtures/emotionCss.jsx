@@ -11,11 +11,11 @@ export const TooltipPrimitive = styled.div`
 export const Tooltip = styled(TooltipPrimitive)`
   background-color: ${getThemeValue(
     `${tooltipThemeNamespace}.backgroundColor`,
-    tooltipClassicTheme.backgroundColor
+    tooltipClassicTheme.backgroundColor,
   )};
   color: ${getThemeValue(
     `${tooltipThemeNamespace}.textColor`,
-    tooltipClassicTheme.textColor
+    tooltipClassicTheme.textColor,
   )};
   top: 0;
   left: 0;

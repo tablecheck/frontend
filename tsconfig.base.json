@@ -16,8 +16,8 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],
       "@tablecheck/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
+      "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],
       "@tablecheck/frontend-library": ["packages/library/src/index.ts"],
       "@tablecheck/frontend-utils": ["packages/utils/src/index.ts"],
       "@tablecheck/nx": ["packages/nx/src/index.ts"]

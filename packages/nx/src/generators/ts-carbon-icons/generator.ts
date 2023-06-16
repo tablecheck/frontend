@@ -1,8 +1,10 @@
-import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
 import * as path from 'path';
-import * as fs from 'fs-extra';
-import { TsCarbonIconsGeneratorSchema } from './schema';
+
+import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
 import { detectInstalledVersion } from '@tablecheck/frontend-utils';
+import * as fs from 'fs-extra';
+
+import { TsCarbonIconsGeneratorSchema } from './schema';
 
 export async function tsCarbonIconsGenerator(
   tree: Tree,
@@ -15,7 +17,9 @@ export async function tsCarbonIconsGenerator(
       '@carbon/icons-react',
       '11',
     );
-    const carbonIcons = await import(path.join(carbonPackageJsonPath, '..'));
+    const carbonIcons = (await import(
+      path.join(carbonPackageJsonPath, '..')
+    )) as Record<string, never>;
     const fileContent = `${Object.keys(carbonIcons).reduce(
       (result, iconName) =>
         `${result}  declare export const ${iconName}: CarbonIcon;\n`,

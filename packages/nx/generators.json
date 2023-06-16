@@ -10,10 +10,10 @@
       "schema": "./dist/generators/ts-node-config/schema.json",
       "description": "ts-node-config generator"
     },
-    "ts-vite-env": {
-      "factory": "./dist/generators/ts-vite-env/generator",
-      "schema": "./dist/generators/ts-vite-env/schema.json",
-      "description": "ts-vite-env generator"
+    "quality": {
+      "factory": "./src/generators/quality/generator",
+      "schema": "./src/generators/quality/schema.json",
+      "description": "quality generator"
     }
   }
 }

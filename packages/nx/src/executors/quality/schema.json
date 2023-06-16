@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "version": 2,
+  "title": "Quality executor",
+  "description": "",
+  "type": "object",
+
+  "properties": {
+    "checkConfig": {
+      "type": "boolean",
+      "description": "Check the configuration file for errors.",
+      "default": true
+    },
+    "eslintConfig": {
+      "type": "string",
+      "description": "The name of the ESLint configuration file.",
+      "x-completion-type": "file",
+      "x-completion-glob": ".eslintrc?(.json)",
+      "x-priority": "important"
+    },
+    "lintFilePatterns": {
+      "type": "array",
+      "description": "One or more files/dirs/globs to pass directly to ESLint's `lintFiles()` method.",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "fix": {
+      "type": "boolean",
+      "description": "Fixes linting errors (may overwrite linted files).",
+      "default": false,
+      "x-priority": "important"
+    },
+    "cache": {
+      "type": "boolean",
+      "description": "Only check changed files.",
+      "default": false
+    },
+    "cacheLocation": {
+      "type": "string",
+      "description": "Path to the cache file or directory.",
+      "x-completion-type": "directory",
+      "x-completion-glob": "tsconfig.*.json"
+    },
+    "outputFile": {
+      "type": "string",
+      "description": "File to write report to.",
+      "x-completion-type": "file"
+    },
+    "maxWarnings": {
+      "type": "number",
+      "description": "Number of warnings to trigger nonzero exit code - default: `-1`.",
+      "default": -1
+    },
+    "ignorePath": {
+      "type": "string",
+      "description": "The path of the `.eslintignore` file.",
+      "x-completion-type": "file",
+      "x-completion-glob": ".eslintignore"
+    },
+    "hasTypeAwareRules": {
+      "type": "boolean",
+      "description": "When set to `true`, the linter will invalidate its cache when any of its dependencies changes."
+    },
+    "cacheStrategy": {
+      "type": "string",
+      "description": "Strategy to use for detecting changed files in the cache.",
+      "default": "metadata",
+      "enum": ["metadata", "content"]
+    },
+    "rulesdir": {
+      "type": "array",
+      "description": "The equivalent of the `--rulesdir` flag on the ESLint CLI.",
+      "default": [],
+      "items": {
+        "type": "string",
+        "x-completion-type": "directory"
+      }
+    },
+    "resolvePluginsRelativeTo": {
+      "type": "string",
+      "description": "The equivalent of the `--resolve-plugins-relative-to` flag on the ESLint CLI.",
+      "x-completion-type": "directory"
+    }
+  },
+  "required": ["lintFilePatterns"]
+}

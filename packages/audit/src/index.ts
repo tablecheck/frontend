@@ -1,11 +1,15 @@
-import path from 'path';
+import * as path from 'path';
 
-import CVSS from '@turingpointde/cvss.js';
-import chalk from 'chalk';
-import fs from 'fs-extra';
 import * as prompts from '@clack/prompts';
+import { execaOptions } from '@tablecheck/frontend-utils';
+import CVSS, {
+  DetailedVectorObject,
+  VectorMetric,
+} from '@turingpointde/cvss.js';
+import chalk from 'chalk';
+import { execa } from 'execa';
+import * as fs from 'fs-extra';
 import treeify from 'treeify';
-import { execa, execaOptions } from '@tablecheck/frontend-utils';
 
 const definitions = fs.readJSONSync(
   new URL(
@@ -56,8 +60,8 @@ function colouredByScore(score: number, string = `${score}`) {
 async function updateWhitelist(rootPath: string) {
   const auditjsConfig = path.resolve(rootPath, 'auditjs.json');
   prompts.intro('Running auditjs to detect and evaluate new vulnerabilities');
-  const spinner = prompts.spinner();
-  spinner.start('Running auditjs');
+  const updateAuditSpinner = prompts.spinner();
+  updateAuditSpinner.start('Running auditjs');
   const auditjsExec = await execa(
     'auditjs',
     [...getAuditjsArgs(false), '--json'],
@@ -81,12 +85,19 @@ async function updateWhitelist(rootPath: string) {
   };
   const report = JSON.parse(auditjsExec.stdout) as ReportDependency[];
   const updatePackages: `${string}@${string}`[] = [];
-  let config: { affected: ReportDependency[]; ignore: { id: string }[] } = {
+  interface AuditjsConfig {
+    affected: ReportDependency[];
+    ignore: { id: string }[];
+  }
+  let config: AuditjsConfig = {
     affected: [],
     ignore: [],
   };
   try {
-    config = Object.assign(config, fs.readJsonSync(auditjsConfig));
+    config = Object.assign(
+      config,
+      fs.readJsonSync(auditjsConfig) as AuditjsConfig,
+    );
   } catch (err) {
     // ignore error, probably hasn't been run yet
   }
@@ -94,7 +105,7 @@ async function updateWhitelist(rootPath: string) {
   const foundVulnerabilities = report.length;
   let whitelistedVulnerabilities = 0;
 
-  spinner.stop(
+  updateAuditSpinner.stop(
     foundVulnerabilities === 0
       ? 'No new vulnerabilities!'
       : `Found ${foundVulnerabilities} new vulnerabilities.`,
@@ -149,7 +160,7 @@ async function updateWhitelist(rootPath: string) {
           '7.0 - 8.9 High',
           '9.0 - 10.0 Critical',
         ]
-          .map((message, index) => {
+          .map((message) => {
             const [value] = message.split(' ');
             return colouredByScore(parseFloat(value), message);
           })
@@ -166,14 +177,14 @@ async function updateWhitelist(rootPath: string) {
 
     getVulnerabilities() {
       return this.dep.vulnerabilities.map(
-        ({ title, description, cvssScore, cvssVector }) => {
-          return `  ${chalk.bold(title)}
+        ({ title, description, cvssScore, cvssVector }) => `  ${chalk.bold(
+          title,
+        )}
     ${description}
   ${chalk(
     `${chalk.bold('CVSS Score:')} ${colouredByScore(cvssScore)}`,
   )}${this.getCvssVector(cvssVector)}
-  `;
-        },
+  `,
       );
     }
 
@@ -190,34 +201,42 @@ ${this.getVectorMetrics(vector)
       }
     }
 
-    getVectorMetrics(vector: { metrics: Record<string, any> }): string[] {
+    getVectorMetrics(vector: DetailedVectorObject): string[] {
       let scopeKey = 'changed';
       if (vector.metrics.S && vector.metrics.S.value) {
         scopeKey = vector.metrics.S.value.toLowerCase();
       }
-      return Object.keys(vector.metrics).map((metricKey) => {
-        return this.getVectorMetricScore(scopeKey, vector.metrics[metricKey]);
-      });
+      return (
+        Object.keys(vector.metrics) as (keyof (typeof vector)['metrics'])[]
+      ).map((metricKey) =>
+        this.getVectorMetricScore(scopeKey, vector.metrics[metricKey]),
+      );
     }
 
     getVectorMetricScore(
       scopeKey: string,
-      { fullName, value, abbr, valueAbbr }: any,
+      { fullName, value, abbr, valueAbbr }: VectorMetric,
     ): string {
       const metricDefinition = findMetric(abbr);
-      const valueDefinition = metricDefinition!.metrics.find(
+      const valueDefinition = metricDefinition.metrics.find(
         (def) => def.abbr === valueAbbr,
       );
       if (!valueDefinition) {
-        return colouredByScore(99, `${chalk.bold(fullName + ':')} ${value}`);
+        return colouredByScore(99, `${chalk.bold(`${fullName}:`)} ${value}`);
       }
-      let score = (valueDefinition as any).numerical;
+      let score = (
+        valueDefinition as Extract<
+          (typeof metricDefinition)['metrics'][number],
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          { numerical: any }
+        >
+      ).numerical;
       if (typeof score === 'object') {
         score = score[scopeKey] * 10;
       } else {
         score *= 10;
       }
-      return colouredByScore(score, `${chalk.bold(fullName + ':')} ${value}`);
+      return colouredByScore(score, `${chalk.bold(`${fullName}:`)} ${value}`);
     }
 
     async loadDependencyDetails() {
@@ -251,7 +270,18 @@ ${this.getVectorMetrics(vector)
         dependencyVersion,
         '--json',
       ]);
-      return JSON.parse(npmListExec.stdout);
+      interface NpmDependency {
+        version: string;
+        resolved?: string;
+        overriden?: boolean;
+        dependencies?: Record<string, NpmDependency>;
+      }
+      interface NpmLsOutput {
+        version: string;
+        name: string;
+        dependencies: Record<string, NpmDependency>;
+      }
+      return JSON.parse(npmListExec.stdout) as NpmLsOutput;
     }
 
     buildDependenciesFromUsages(
@@ -272,7 +302,7 @@ ${this.getVectorMetrics(vector)
           );
         else tree[displayName] = {};
         return tree;
-      }, {} as any);
+      }, {} as treeify.TreeObject);
     }
 
     async promptWhitelist() {
@@ -313,7 +343,7 @@ ${this.getVectorMetrics(vector)
   const updateMessage = updatePackages.length
     ? `Run the following to update non-updated packages\n${chalk.cyan.bold(
         `\`npm update ${updatePackages
-          .map((s) => s.split('@')[0] + '@latest')
+          .map((s) => `${s.split('@')[0]}@latest`)
           .join(' ')}\``,
       )}\n`
     : '';

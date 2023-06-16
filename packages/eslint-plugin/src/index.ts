@@ -1,8 +1,8 @@
-import { forbiddenImports } from './forbiddenImports';
 import { consistentReactImport } from './consistentReactImport';
+import { forbiddenImports } from './forbiddenImports';
 import { shortestImport } from './shortestImport';
 
-export default {
+module.exports = {
   rules: {
     'forbidden-imports': forbiddenImports,
     'consistent-react-import': consistentReactImport,

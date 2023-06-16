@@ -1,10 +1,12 @@
 {
   "extends": ["../../.eslintrc.js"],
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": ["!**/*", "src/generators/quality/files/.eslintrc.js"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "import/no-default-export": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],
@@ -15,7 +17,12 @@
       "rules": {}
     },
     {
-      "files": ["./package.json", "./executors.json", "./generators.json"],
+      "files": [
+        "./package.json",
+        "./executors.json",
+        "./generators.json",
+        "./migrations.json"
+      ],
       "parser": "jsonc-eslint-parser",
       "rules": {
         "@nx/nx-plugin-checks": "error"

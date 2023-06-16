@@ -5,10 +5,26 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/eslint-plugin/**/*.ts"]
+      }
+    },
+    "lint:format": {
+      "executor": "@tablecheck/nx:quality",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/eslint-plugin/**/*.ts"],
+        "fix": true
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/eslint-plugin"
       }
     }
   },

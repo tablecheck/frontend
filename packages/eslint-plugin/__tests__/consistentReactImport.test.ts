@@ -1,21 +1,23 @@
+import * as path from 'path';
+
 import {
   consistentReactImport as rule,
-  messageId
+  messageId,
 } from '../src/consistentReactImport';
+
 import { initRuleTester } from './utils';
-import path from 'path';
 
 const ruleTester = initRuleTester({
   parser: path.resolve(
-    './packages/eslint-plugin/node_modules/@typescript-eslint/parser'
+    './packages/eslint-plugin/node_modules/@typescript-eslint/parser',
   ),
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
-  }
+      jsx: true,
+    },
+  },
 });
 
 const invalidTests = [
@@ -24,27 +26,27 @@ const invalidTests = [
     output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `import React, { useState as reactUseState, useCallback } from 'react';const [val, setVal] = reactUseState(true);`,
     output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `import { useState, useMemo } from 'react';function useHook() { const [val, setVal] = useState(true); return useMemo(() => val, []) }`,
     output: `import * as React from 'react';function useHook() { const [val, setVal] = React.useState(true); return React.useMemo(() => val, []) }`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `
@@ -62,9 +64,9 @@ const invalidTests = [
     }`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `
@@ -79,9 +81,9 @@ const invalidTests = [
     }`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `
@@ -96,9 +98,9 @@ const invalidTests = [
     }`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `
@@ -113,9 +115,9 @@ const invalidTests = [
     }`,
     errors: [
       {
-        messageId
-      }
-    ]
+        messageId,
+      },
+    ],
   },
   {
     code: `
@@ -130,15 +132,15 @@ const invalidTests = [
     }`,
     errors: [
       {
-        messageId
-      }
-    ]
-  }
+        messageId,
+      },
+    ],
+  },
 ];
 
 ruleTester.run('consistentReactImport', rule, {
   valid: [`import * as React from 'react';`].concat(
-    invalidTests.map((test) => test.output)
+    invalidTests.map((test) => test.output),
   ),
-  invalid: invalidTests
+  invalid: invalidTests,
 });

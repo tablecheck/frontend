@@ -5,10 +5,18 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/utils/**/*.ts"]
+      }
+    },
+    "lint:format": {
+      "executor": "@tablecheck/nx:quality",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/utils/**/*.ts"],
+        "fix": true
       }
     }
   },
