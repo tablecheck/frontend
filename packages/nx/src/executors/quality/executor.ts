@@ -1,5 +1,6 @@
 import { ExecutorContext } from '@nx/devkit';
 import lintRun from '@nx/linter/src/executors/eslint/lint.impl';
+import styleLintRun from 'nx-stylelint/src/executors/lint/executor';
 
 import { configCheck } from './configs';
 import { packageCheck } from './package';
@@ -13,7 +14,7 @@ export default async function runExecutor(
     | 'silent'
     | 'noEslintrc'
     | 'reportUnusedDisableDirectives'
-  > & { checkConfig: boolean },
+  > & { checkConfig: boolean; checkStyles: boolean },
   context: ExecutorContext,
 ) {
   const metadata = context.projectsConfigurations.projects[context.projectName];
@@ -21,7 +22,7 @@ export default async function runExecutor(
   try {
     if (options.checkConfig) configCheck(root);
     await packageCheck({ directory: root, shouldFix: options.fix });
-    return await lintRun(
+    const jsLintRun = await lintRun(
       {
         ...options,
         noEslintrc: false,
@@ -30,6 +31,24 @@ export default async function runExecutor(
         silent: false,
         force: false,
         reportUnusedDisableDirectives: 'error',
+      },
+      context,
+    );
+    if (!jsLintRun.success || !options.checkStyles) {
+      return jsLintRun;
+    }
+    return await styleLintRun(
+      {
+        ...options,
+        quiet: !!process.env.CI,
+        silent: false,
+        force: false,
+        allowEmptyInput: false,
+        formatter: process.env.CI ? 'github' : 'verbose',
+        ignoreDisables: false,
+        reportDescriptionlessDisables: false,
+        reportInvalidScopeDisables: true,
+        reportNeedlessDisables: true,
       },
       context,
     );
