@@ -1,17 +1,15 @@
-import path from 'path';
+import * as path from 'path';
 
-import chalk from 'chalk';
 import * as fs from 'fs-extra';
-import type { PackageJson } from 'type-fest';
-import * as semver from 'semver';
 import {
   format as prettyFormatPackage,
   check as checkPackageFormat,
 } from 'prettier-package-json';
+import * as semver from 'semver';
+import type { PackageJson } from 'type-fest';
 
 import { getArgv } from './argv';
 import { writePrettyFile } from './prettier';
-import { getLernaPaths } from './lerna';
 import { unicodeEmoji } from './unicodeEmoji';
 
 const argv = getArgv();
@@ -34,7 +32,7 @@ export function detectInstalledVersion(
   if (!fs.existsSync(packageJsonPath)) {
     throw new Error(`${packageName} not detected at '${packageJsonPath}'`);
   }
-  const packageJson = fs.readJSONSync(packageJsonPath);
+  const packageJson = fs.readJSONSync(packageJsonPath) as PackageJson;
   if (
     !packageJson.version ||
     !semver.satisfies(packageJson.version, semverVersion)
@@ -45,9 +43,7 @@ export function detectInstalledVersion(
   }
   if (argv.verbose) {
     console.log(
-      chalk.gray(
-        `${packageName} at version '${packageJson.version}' detected in installed dependencies!`,
-      ),
+      `${packageName} at version '${packageJson.version}' detected in installed dependencies!`,
     );
   }
   return packageJsonPath;
@@ -107,9 +103,6 @@ const prettyFormatOptions: Parameters<typeof checkPackageFormat>[1] = {
      * Configuration
      */
     'exports',
-    'entry',
-    'entries',
-    'assets',
     'main',
     'module',
     'browser',
@@ -146,73 +139,58 @@ const prettyFormatOptions: Parameters<typeof checkPackageFormat>[1] = {
   ],
 };
 
-export async function processAllPackages(
+export async function processPackage({
+  packageProcessor,
+  shouldWriteFile,
+  packageDir,
+}: {
+  packageDir: string;
   packageProcessor: (
     packageContent: PackageJson,
     filePath: string,
-  ) => PackageJson | Promise<PackageJson>,
-  writeFile = true,
-) {
-  async function processor(packagePath: string) {
-    try {
-      const packageContent = getPackageJson(path.dirname(packagePath));
-      const result = await packageProcessor(packageContent, packagePath);
-      if (typeof result !== 'object')
-        return {
-          success: true,
-          result,
-        };
-      if (writeFile) {
-        writePrettyFile(
-          packagePath,
-          prettyFormatPackage(result, prettyFormatOptions),
-        );
-      } else if (!checkPackageFormat(result, prettyFormatOptions)) {
-        console.error(
-          chalk.red(
-            `${
-              unicodeEmoji.error
-            } Package format is invalid, run quality with --fix to correct: ${path.relative(
-              process.cwd(),
-              packagePath,
-            )}`,
-          ),
-        );
-        return {
-          success: false,
-          result,
-        };
-      }
-
+  ) => Promise<PackageJson>;
+  shouldWriteFile: boolean;
+}) {
+  try {
+    const packageContent = getPackageJson(packageDir);
+    let didSucceed = true;
+    let processingError: Error | undefined;
+    const result = await packageProcessor(packageContent, packageDir).catch(
+      (error) => {
+        didSucceed = false;
+        processingError = error;
+        return packageContent;
+      },
+    );
+    if (shouldWriteFile) {
+      writePrettyFile(
+        path.join(packageDir, 'package.json'),
+        prettyFormatPackage(result, prettyFormatOptions),
+      );
+    } else if (!checkPackageFormat(result, prettyFormatOptions)) {
+      console.error(
+        `${
+          unicodeEmoji.error
+        } Package format is invalid, run quality with --fix to correct: ${path.relative(
+          process.cwd(),
+          packageDir,
+        )}/package.json`,
+      );
       return {
-        success: true,
-        result,
+        success: false,
+        error: 'Invalid package format',
       };
-    } catch (error) {
-      console.error(`Error occurred in processing package ${packagePath}`);
-      console.error(error);
-      return { success: false, error };
     }
-  }
 
-  const lernaPackageFiles = (await getLernaPaths())
-    .filter((lernaPath) => {
-      if (!argv.package || argv.package === '*') return true;
-      const packageName = lernaPath.split('/').slice(-1)[0];
-      return packageName === argv.package;
-    })
-    .map((lernaPath) => path.join(lernaPath, 'package.json'));
-
-  if (lernaPackageFiles.length) {
-    const packageChecks = await Promise.allSettled(
-      lernaPackageFiles.map((packagePath) => processor(packagePath)),
+    return {
+      success: didSucceed,
+      error: processingError,
+    };
+  } catch (error) {
+    console.error(
+      `Error occurred in processing package ${packageDir}/package.json`,
     );
-    return packageChecks.reduce(
-      (allSuccessful, result) =>
-        allSuccessful && result.status === 'fulfilled' && result.value.success,
-      true,
-    );
+    console.error(error);
+    return { success: false, error };
   }
-
-  return processor(path.join(process.cwd(), 'package.json'));
 }

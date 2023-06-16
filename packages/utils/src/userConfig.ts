@@ -1,5 +1,8 @@
+import * as path from 'path';
+
 import { cosmiconfigSync } from 'cosmiconfig';
-import jiti from 'jiti';
+
+const jiti = require('jiti');
 
 const explorer = cosmiconfigSync('@tablecheck');
 
@@ -43,12 +46,17 @@ export type CosmicConfigShape = {
 };
 
 function tryRequire(id: string, rootDir: string = process.cwd()) {
-  const _require = jiti(rootDir, { interopDefault: true, esmResolve: true });
+  // this is to workaround ESM interop issues
+  const _require = jiti(rootDir, {
+    interopDefault: true,
+    esmResolve: true,
+  });
   try {
-    return _require(id);
+    return _require(path.join(rootDir, id));
   } catch (error: any) {
     if (error.code !== 'MODULE_NOT_FOUND') {
-      console.error(`Error trying import ${id} from ${rootDir}`, error);
+      console.error(`Error trying import "${id}" from "${rootDir}"`);
+      console.error(error);
     }
     return undefined;
   }
@@ -63,7 +71,3 @@ function getConfig(): Partial<CosmicConfigShape> {
 }
 
 export const userConfig = getConfig();
-
-export function buildUserConfig(config: Partial<CosmicConfigShape>) {
-  return config;
-}

@@ -4,7 +4,7 @@ export const messageId = 'incorrectImport' as const;
 
 function isInvalidImport(importName: string) {
   return ![/^lodash$/, /^@fortawesome\/(pro|free)-[a-z]+-svg-icons$/].find(
-    (matcher) => importName.match(matcher)
+    (matcher) => importName.match(matcher),
   );
 }
 
@@ -14,7 +14,7 @@ function getSafeName(name: string, references: any[]) {
   let matchedReference = references.find((r) => r.identifier.name === safeName);
   while (matchedReference) {
     safeName = `${name}${offsetCount}`;
-    // eslint-disable-next-line no-loop-func
+
     matchedReference = references.find((r) => r.identifier.name === safeName);
     offsetCount += 1;
   }
@@ -24,7 +24,7 @@ function getSafeName(name: string, references: any[]) {
 function renameImport(
   importName: string,
   subImportName: string,
-  packageName: string
+  packageName: string,
 ) {
   if (importName !== 'lodash') {
     if (subImportName === packageName)
@@ -41,13 +41,13 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
     docs: {
       description:
         'Ensure that certain packages are using specific imports instead of using the default import',
-      recommended: 'error'
+      recommended: 'error',
     },
     fixable: 'code',
     messages: {
       [messageId]:
-        'The default import "{{ importName }}" should be using a specific import'
-    }
+        'The default import "{{ importName }}" should be using a specific import',
+    },
   },
   defaultOptions: [],
   create: (context) => ({
@@ -60,7 +60,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
         node,
         messageId,
         data: {
-          importName
+          importName,
         },
         fix(fixer) {
           const replacements = [];
@@ -87,7 +87,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
                       const memberName = parent.property.name;
                       const existingReplacement = replacementImports.find(
                         ([, replacementImportName]) =>
-                          replacementImportName === memberName
+                          replacementImportName === memberName,
                       );
 
                       const newImportName = existingReplacement
@@ -95,7 +95,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
                         : // @ts-expect-error
                           getSafeName(parent.property.name, scope.references);
                       replacements.push(
-                        fixer.replaceTextRange(parent.range, newImportName)
+                        fixer.replaceTextRange(parent.range, newImportName),
                       );
                       if (!existingReplacement)
                         replacementImports.push([newImportName, memberName]);
@@ -109,7 +109,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
                 newImports += renameImport(
                   importName,
                   subImportName,
-                  packageName
+                  packageName,
                 );
               });
             } else {
@@ -118,8 +118,8 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
           });
           replacements.push(fixer.replaceTextRange(node.range, newImports));
           return replacements;
-        }
+        },
       });
-    }
-  })
+    },
+  }),
 };

@@ -4,7 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "import/no-import-module-exports": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

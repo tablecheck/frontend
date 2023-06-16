@@ -5,15 +5,34 @@
   "projectType": "library",
   "targets": {
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "packages/nx/**/*.ts",
+          "packages/nx/sr*/*.ts",
+          "packages/nx/src/*/*.ts",
+          "packages/nx/src/*/*/*.ts",
           "packages/nx/executors.json",
           "packages/nx/package.json",
-          "packages/nx/generators.json"
+          "packages/nx/generators.json",
+          "packages/nx/migrations.json"
         ]
+      }
+    },
+    "lint:format": {
+      "executor": "@tablecheck/nx:quality",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "packages/nx/src/*.ts",
+          "packages/nx/src/*/*.ts",
+          "packages/nx/src/*/*/*.ts",
+          "packages/nx/executors.json",
+          "packages/nx/package.json",
+          "packages/nx/generators.json",
+          "packages/nx/migrations.json"
+        ],
+        "fix": true
       }
     }
   },

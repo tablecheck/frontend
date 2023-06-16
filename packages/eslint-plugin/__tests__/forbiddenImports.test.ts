@@ -1,9 +1,11 @@
 import { TSESLint } from '@typescript-eslint/utils';
-import { initRuleTester } from './utils';
+
 import { forbiddenImports as rule, messageId } from '../src/forbiddenImports';
 
+import { initRuleTester } from './utils';
+
 const ruleTester = initRuleTester({
-  parserOptions: { ecmaVersion: 2015, sourceType: 'module' }
+  parserOptions: { ecmaVersion: 2015, sourceType: 'module' },
 });
 
 ruleTester.run('forbiddenImports > lodash', rule, {
@@ -16,10 +18,10 @@ ruleTester.run('forbiddenImports > lodash', rule, {
         {
           messageId: 'incorrectImport',
           data: {
-            importName: 'lodash'
-          }
-        }
-      ]
+            importName: 'lodash',
+          },
+        },
+      ],
     },
     {
       code: `import { merge as _merge } from 'lodash';`,
@@ -28,10 +30,10 @@ ruleTester.run('forbiddenImports > lodash', rule, {
         {
           messageId: 'incorrectImport',
           data: {
-            importName: 'lodash'
-          }
-        }
-      ]
+            importName: 'lodash',
+          },
+        },
+      ],
     },
     {
       code: `import lodash from 'lodash';lodash.merge();lodash.slice();`,
@@ -40,10 +42,10 @@ ruleTester.run('forbiddenImports > lodash', rule, {
         {
           messageId: 'incorrectImport',
           data: {
-            importName: 'lodash'
-          }
-        }
-      ]
+            importName: 'lodash',
+          },
+        },
+      ],
     },
     {
       code: `import lodash from 'lodash';lodash.merge();const merge = 'test';`,
@@ -52,26 +54,26 @@ ruleTester.run('forbiddenImports > lodash', rule, {
         {
           messageId: 'incorrectImport',
           data: {
-            importName: 'lodash'
-          }
-        }
-      ]
-    }
-  ]
+            importName: 'lodash',
+          },
+        },
+      ],
+    },
+  ],
 });
 
 const testFaPackages = [
   '@fortawesome/pro-regular-svg-icons',
   '@fortawesome/pro-solid-svg-icons',
   '@fortawesome/free-regular-svg-icons',
-  '@fortawesome/free-brands-svg-icons'
+  '@fortawesome/free-brands-svg-icons',
 ];
 
 ruleTester.run('forbiddenImports > @fortawesome', rule, {
   valid: testFaPackages.reduce(
     (result, packageName) =>
       result.concat([`import { faIcon } from '${packageName}/faIcon';`]),
-    [] as string[]
+    [] as string[],
   ),
   invalid: testFaPackages.reduce(
     (result, packageName) =>
@@ -83,10 +85,10 @@ ruleTester.run('forbiddenImports > @fortawesome', rule, {
             {
               messageId: 'incorrectImport',
               data: {
-                importName: packageName
-              }
-            }
-          ]
+                importName: packageName,
+              },
+            },
+          ],
         },
         {
           code: `import { faIcon1, faIcon2, faIcon3 } from '${packageName}';`,
@@ -95,12 +97,12 @@ ruleTester.run('forbiddenImports > @fortawesome', rule, {
             {
               messageId: 'incorrectImport',
               data: {
-                importName: packageName
-              }
-            }
-          ]
-        }
+                importName: packageName,
+              },
+            },
+          ],
+        },
       ]),
-    [] as TSESLint.RunTests<typeof messageId, never>['invalid']
-  )
+    [] as TSESLint.RunTests<typeof messageId, never>['invalid'],
+  ),
 });

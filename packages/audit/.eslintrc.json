@@ -4,7 +4,9 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
+      "rules": {
+        "no-await-in-loop": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx"],

@@ -1,6 +1,6 @@
+import { rollup } from 'rollup';
 import { describe, test, expect } from 'vitest';
 
-import { rollup } from 'rollup';
 import { jsxPlugin } from './jsxPlugin.js';
 
 function testCode(name: string, filePath: string, isEmotion: boolean) {
@@ -15,10 +15,10 @@ function testCode(name: string, filePath: string, isEmotion: boolean) {
             if (id === resolvedFilePath) return null;
             // pretend all imports are external
             return { id, external: true };
-          }
+          },
         },
-        jsxPlugin(isEmotion)
-      ]
+        jsxPlugin(isEmotion),
+      ],
     });
     const generated = await bundle.generate({ format: 'esm' });
     expect(generated.output[0].code).toMatchSnapshot();
@@ -30,31 +30,31 @@ describe('scripts/jsxPlugin', () => {
     testCode(
       'should handle basic JSX elements',
       './fixtures/basic.jsx',
-      useEmotion
+      useEmotion,
     );
 
     testCode(
       'should handle varying import patterns',
       './fixtures/importedComponents.jsx',
-      useEmotion
+      useEmotion,
     );
 
     testCode(
       'should handle name clashes',
       './fixtures/variableNameClashes.jsx',
-      useEmotion
+      useEmotion,
     );
 
     testCode(
       'should handle import alias spread',
       './fixtures/aliasSpread.jsx',
-      useEmotion
+      useEmotion,
     );
 
     testCode(
       'should handle emotion css',
       './fixtures/emotionCss.jsx',
-      useEmotion
+      useEmotion,
     );
   });
 });

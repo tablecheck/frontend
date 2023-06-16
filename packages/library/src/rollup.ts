@@ -1,19 +1,16 @@
-import path from 'path';
+import * as path from 'path';
 import util from 'util';
 
-import chalk from 'chalk';
-import fs from 'fs-extra';
-import rollup from 'rollup';
-import { glob } from 'glob';
-import { default as typescriptPlugin } from '@rollup/plugin-typescript';
-import ts from 'typescript';
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { default as commonjs } from '@rollup/plugin-commonjs';
 import { default as json } from '@rollup/plugin-json';
-import { externals } from 'rollup-plugin-node-externals';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { default as typescriptPlugin } from '@rollup/plugin-typescript';
 import { getPackageJson } from '@tablecheck/frontend-utils';
-import * as prompts from '@clack/prompts';
+import chalk from 'chalk';
+import * as fs from 'fs-extra';
+import rollup from 'rollup';
+import { externals } from 'rollup-plugin-node-externals';
 
 import { jsxPlugin } from './jsxPlugin.js';
 

@@ -1,10 +1,10 @@
-import path from 'path';
+import * as path from 'path';
 
-import * as fs from 'fs-extra';
-import * as rollup from 'rollup';
-import { glob } from 'glob';
-import { getPackageJson } from '@tablecheck/frontend-utils';
 import * as prompts from '@clack/prompts';
+import { getPackageJson } from '@tablecheck/frontend-utils';
+import * as fs from 'fs-extra';
+import { glob } from 'glob';
+import * as rollup from 'rollup';
 
 import { getBabelPlugin, getBundleInput, loadRollupConfig } from './rollup';
 import { writeTypes } from './writeTypes';

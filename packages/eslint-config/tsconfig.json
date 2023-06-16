@@ -6,13 +6,13 @@
     "src/*.ts",
     "src/*.tsx",
     "src/**/*.json",
-    "src/*.json",
-    "*.ts"
+    "src/*.json"
   ],
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {}
+    "paths": {},
+    "types": ["vitest"]
   },
   "exclude": ["node_modules"],
   "files": []

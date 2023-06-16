@@ -1,7 +1,7 @@
-import path from 'path';
+import * as path from 'path';
 
-import fs from 'fs-extra';
-import glob from 'glob';
+import * as fs from 'fs-extra';
+import * as glob from 'glob';
 
 export function isLerna() {
   const lernaPath = path.resolve(path.join(process.cwd(), 'lerna.json'));
@@ -9,11 +9,15 @@ export function isLerna() {
 }
 
 function lernaList(): string[] {
-  const lernaConfig = fs.readJSONSync(path.join(process.cwd(), 'lerna.json'));
+  const lernaConfig = fs.readJSONSync(
+    path.join(process.cwd(), 'lerna.json'),
+  ) as { packages?: string[] };
   const packages = lernaConfig.packages || [];
-  return packages.reduce((acc: string[], pattern: string) => {
-    return acc.concat(glob.sync(pattern, { cwd: process.cwd() }));
-  }, [] as string[]);
+  return packages.reduce(
+    (acc: string[], pattern: string) =>
+      acc.concat(glob.sync(pattern, { cwd: process.cwd() })),
+    [] as string[],
+  );
 }
 
 let cachedLernaPaths: string[];

@@ -1,13 +1,15 @@
-import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
 import * as path from 'path';
-import * as fs from 'fs-extra';
-import { uniq } from 'lodash';
+
+import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
 import { detectInstalledVersion } from '@tablecheck/frontend-utils';
+import * as fs from 'fs-extra';
+import uniq from 'lodash/uniq';
+
 import { TsNodeConfigGeneratorSchema } from './schema';
 
 function buildTypes(configValue: unknown): string {
   if (Array.isArray(configValue))
-    return `(${uniq(configValue.map((v, i) => buildTypes(v))).join(' | ')})[]`;
+    return `(${uniq(configValue.map((v) => buildTypes(v))).join(' | ')})[]`;
   switch (typeof configValue) {
     case 'object': {
       if (Array.isArray(configValue))
@@ -42,10 +44,13 @@ export async function tsNodeConfigGenerator(
     const devConfigFilePath = path.join(projectRoot, 'config/development.json');
     if (!fs.existsSync(defaultConfigFilePath)) return;
 
-    const defaultConfigJson = fs.readJsonSync(defaultConfigFilePath);
-    const devConfigJson = fs.existsSync(devConfigFilePath)
-      ? fs.readJSONSync(devConfigFilePath)
-      : {};
+    const defaultConfigJson = fs.readJsonSync(defaultConfigFilePath) as Record<
+      string,
+      unknown
+    >;
+    const devConfigJson = (
+      fs.existsSync(devConfigFilePath) ? fs.readJSONSync(devConfigFilePath) : {}
+    ) as Record<string, unknown>;
     const fileContent = `declare module '@tablecheck/scripts' {
         // this file is autobuilt inside configureTypescript, all changes here will be overwritten
         interface DefaultConfig ${buildTypes(defaultConfigJson)}

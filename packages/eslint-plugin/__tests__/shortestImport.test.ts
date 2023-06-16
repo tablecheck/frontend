@@ -1,4 +1,5 @@
 import { ESLintUtils } from '@typescript-eslint/utils';
+
 import { shortestImport as rule, messageId } from '../src/shortestImport';
 
 const ruleTester = new ESLintUtils.RuleTester({
