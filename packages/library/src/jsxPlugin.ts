@@ -28,7 +28,7 @@ export function jsxPlugin(shouldUseEmotion: boolean): rollup.Plugin {
           },
           (error, result) => {
             if (error) reject(error);
-            else resolve(result as any);
+            else resolve(result as never);
           },
         );
       });

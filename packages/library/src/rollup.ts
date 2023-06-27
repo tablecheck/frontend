@@ -2,20 +2,23 @@ import * as path from 'path';
 import util from 'util';
 
 import { getBabelOutputPlugin } from '@rollup/plugin-babel';
-import { default as commonjs } from '@rollup/plugin-commonjs';
-import { default as json } from '@rollup/plugin-json';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { default as typescriptPlugin } from '@rollup/plugin-typescript';
+import typescriptPlugin from '@rollup/plugin-typescript';
 import { getPackageJson } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import rollup from 'rollup';
 import { externals } from 'rollup-plugin-node-externals';
+import { PackageJson } from 'type-fest';
 
 import { jsxPlugin } from './jsxPlugin.js';
 
 export function getBundleInput(cwd: string) {
-  const pkgFile = fs.readJsonSync(path.join(cwd, 'package.json'));
+  const pkgFile = fs.readJsonSync(
+    path.join(cwd, 'package.json'),
+  ) as PackageJson;
   const inputsArg = pkgFile.entries || pkgFile.entry;
   if (inputsArg) {
     const inputs = Array.isArray(inputsArg) ? inputsArg : [inputsArg];
@@ -98,12 +101,10 @@ export function loadRollupConfig({
       // https://github.com/rollup/rollup/blob/0fa9758cb7b1976537ae0875d085669e3a21e918/src/utils/error.ts#L324
       if (warning.code === 'UNRESOLVED_IMPORT') {
         rollupWarnings.push(
-          `Failed to resolve the module ${
-            (warning as any).source
-          } imported by ${(warning as any).importer}` +
-            `\nIs the module installed? Note:` +
-            `\n ↳ to inline a module into your bundle, install it to "devDependencies".` +
-            `\n ↳ to depend on a module via import/require, install it to "dependencies".`,
+          `${warning.message}
+Is the module installed? Note:
+ ↳ to inline a module into your bundle, install it to "devDependencies".
+ ↳ to depend on a module via import/require, install it to "dependencies".`,
         );
         return;
       }

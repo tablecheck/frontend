@@ -67,6 +67,10 @@ export const namingRules: Linter.RulesRecord = {
       format: ['PascalCase', 'camelCase'],
     },
     {
+      selector: ['classMethod', 'objectLiteralMethod'],
+      format: ['PascalCase', 'camelCase'],
+    },
+    {
       selector: 'variable',
       modifiers: ['global'],
       format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
@@ -74,10 +78,6 @@ export const namingRules: Linter.RulesRecord = {
     {
       selector: 'variable',
       format: ['camelCase', 'UPPER_CASE'],
-    },
-    {
-      selector: 'function',
-      format: ['PascalCase', 'camelCase'],
     },
     {
       selector: 'enum',

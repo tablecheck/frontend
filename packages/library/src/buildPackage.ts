@@ -5,6 +5,7 @@ import { getPackageJson } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
 import { glob } from 'glob';
 import * as rollup from 'rollup';
+import { PackageJson, TsConfigJson } from 'type-fest';
 
 import { getBabelPlugin, getBundleInput, loadRollupConfig } from './rollup';
 import { writeTypes } from './writeTypes';
@@ -21,10 +22,16 @@ export async function buildPackage({
   const packagePath = path.join(cwd, 'package.json');
 
   prompts.intro(
-    `Build ${(await import(packagePath)).name || cwd.trim() || 'library'}`,
+    `Build ${
+      ((await import(packagePath)) as PackageJson).name ||
+      cwd.trim() ||
+      'library'
+    }`,
   );
 
-  const packageTsconfig = fs.readJsonSync(path.join(cwd, 'tsconfig.json'));
+  const packageTsconfig = fs.readJsonSync(
+    path.join(cwd, 'tsconfig.json'),
+  ) as TsConfigJson;
   if (
     !packageTsconfig.compilerOptions ||
     !packageTsconfig.compilerOptions.outDir
@@ -169,16 +176,17 @@ export async function buildPackage({
 
     prompts.outro('Finished building package');
     return true;
-  } catch (e: any) {
-    if (e.frame && e.loc) {
+  } catch (e: unknown) {
+    const error = e as rollup.RollupError;
+    if (error.frame && error.loc) {
       prompts.note(
-        `${e.message}\n${e.frame}`,
-        `Rollup error: ./${path.relative(cwd, e.loc.file)}@${e.loc.line}:${
-          e.loc.column
-        }`,
+        `${error.message}\n${error.frame}`,
+        `Rollup error: ./${path.relative(cwd, error.loc.file)}@${
+          error.loc.line
+        }:${error.loc.column}`,
       );
     } else {
-      prompts.note(e, `Rollup Error in: ${cwd}`);
+      prompts.note(e.toString(), `Rollup Error in: ${cwd}`);
     }
     prompts.cancel('Build failed');
     return false;

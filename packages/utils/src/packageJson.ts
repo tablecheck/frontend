@@ -158,7 +158,7 @@ export async function processPackage({
     const result = await packageProcessor(packageContent, packageDir).catch(
       (error) => {
         didSucceed = false;
-        processingError = error;
+        processingError = error as Error;
         return packageContent;
       },
     );
@@ -191,6 +191,6 @@ export async function processPackage({
       `Error occurred in processing package ${packageDir}/package.json`,
     );
     console.error(error);
-    return { success: false, error };
+    return { success: false, error: error as Error };
   }
 }
