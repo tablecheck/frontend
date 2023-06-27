@@ -11,11 +11,6 @@
       "description": "Check the configuration file for errors.",
       "default": true
     },
-    "checkStyles": {
-      "type": "boolean",
-      "description": "Run stylelint on all CSS-in-JS styled-components and css/sass files",
-      "default": true
-    },
     "eslintConfig": {
       "type": "string",
       "description": "The name of the ESLint configuration file.",
