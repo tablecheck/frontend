@@ -7,8 +7,8 @@ import { glob } from 'glob';
 import * as rollup from 'rollup';
 import { PackageJson, TsConfigJson } from 'type-fest';
 
-import { getBabelPlugin, getBundleInput, loadRollupConfig } from './rollup';
-import { writeTypes } from './writeTypes';
+import { getBabelPlugin, getBundleInput, loadRollupConfig } from './rollup.js';
+import { writeTypes } from './writeTypes.js';
 
 export async function buildPackage({
   cwd,

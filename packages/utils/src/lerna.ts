@@ -21,12 +21,12 @@ function lernaList(): string[] {
 }
 
 let cachedLernaPaths: string[];
-export async function getLernaPaths() {
+export function getLernaPaths() {
   if (cachedLernaPaths) return cachedLernaPaths;
   if (!isLerna()) {
     cachedLernaPaths = [];
   } else {
-    cachedLernaPaths = await lernaList();
+    cachedLernaPaths = lernaList();
   }
   return cachedLernaPaths;
 }

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { getArgv } from '@tablecheck/frontend-utils';
 
-import { run } from './index';
+import { run } from './index.js';
 
 const argv = getArgv({
   boolean: ['ci'],

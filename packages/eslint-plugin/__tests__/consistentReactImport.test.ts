@@ -1,52 +1,32 @@
-import * as path from 'path';
+import { ESLintUtils } from '@typescript-eslint/utils';
 
 import {
   consistentReactImport as rule,
   messageId,
 } from '../src/consistentReactImport';
 
-import { initRuleTester } from './utils';
-
-const ruleTester = initRuleTester({
-  parser: path.resolve(
-    './packages/eslint-plugin/node_modules/@typescript-eslint/parser',
-  ),
+const ruleTester = new ESLintUtils.RuleTester({
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2018,
+    project: './tsconfig.test.json',
+    tsconfigRootDir: __dirname,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
 });
 
+const filename = './test_src/default.tsx';
 const invalidTests = [
   {
     code: `import { useState } from 'react';const [val, setVal] = useState(true);`,
     output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `import React, { useState as reactUseState, useCallback } from 'react';const [val, setVal] = reactUseState(true);`,
     output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `import { useState, useMemo } from 'react';function useHook() { const [val, setVal] = useState(true); return useMemo(() => val, []) }`,
     output: `import * as React from 'react';function useHook() { const [val, setVal] = React.useState(true); return React.useMemo(() => val, []) }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `
@@ -62,11 +42,6 @@ const invalidTests = [
       const [val, setVal] = ReactCustom.useState(true);
       return ReactCustom.useMemo(() => val, []);
     }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `
@@ -79,11 +54,6 @@ const invalidTests = [
     function Component() {
       return <React.Fragment>Something</React.Fragment>;
     }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `
@@ -96,11 +66,6 @@ const invalidTests = [
     function Component() {
       return <React.Fragment>Something</React.Fragment>;
     }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `
@@ -113,11 +78,6 @@ const invalidTests = [
     function Component() {
       return <React.Fragment key="one">Something</React.Fragment>;
     }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
   {
     code: `
@@ -130,17 +90,23 @@ const invalidTests = [
     function Component() {
       return <React.Fragment key="one"><div><>Inner <React.Fragment>Center</React.Fragment></> Outer</div></React.Fragment>;
     }`,
-    errors: [
-      {
-        messageId,
-      },
-    ],
   },
-];
+].map((test) => ({
+  ...test,
+  errors: [
+    {
+      messageId,
+    },
+  ],
+  filename,
+}));
 
 ruleTester.run('consistentReactImport', rule, {
-  valid: [`import * as React from 'react';`].concat(
-    invalidTests.map((test) => test.output),
-  ),
+  valid: [`import * as React from 'react';`]
+    .concat(invalidTests.map((test) => test.output))
+    .map((code) => ({
+      code,
+      filename,
+    })),
   invalid: invalidTests,
 });

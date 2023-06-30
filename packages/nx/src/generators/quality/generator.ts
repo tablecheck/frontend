@@ -8,15 +8,15 @@ import {
   addDependenciesToPackageJson,
   Tree,
 } from '@nx/devkit';
-import { execaOptions } from '@tablecheck/frontend-utils';
-import { execa } from 'execa';
 
-import { QualityGeneratorSchema } from './schema';
+import type { QualityGeneratorSchema } from './schema.js';
 
 export async function qualityGenerator(
   tree: Tree,
   options: QualityGeneratorSchema,
 ) {
+  const { execaOptions } = await import('@tablecheck/frontend-utils');
+  const { execa } = await import('execa');
   const projectRoot = `libs/${options.name}`;
   addProjectConfiguration(tree, options.name, {
     root: projectRoot,

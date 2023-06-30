@@ -1,21 +1,42 @@
+import type {
+  Node,
+  ImportDeclaration,
+  ImportSpecifier,
+  Identifier,
+} from '@typescript-eslint/types/dist/generated/ast-spec';
 import { TSESLint } from '@typescript-eslint/utils';
+import { RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
 
 export const messageId = 'incorrectImport' as const;
 
-function isInvalidImport(importName: string) {
-  return ![/^lodash$/, /^@fortawesome\/(pro|free)-[a-z]+-svg-icons$/].find(
-    (matcher) => importName.match(matcher),
-  );
+function assertForbiddenImport(node: Node): asserts node is ImportDeclaration {
+  if (node.type !== 'ImportDeclaration') throw new Error('Invalid node type');
+  const importName = node.source.value;
+  const isForbiddenImport = [
+    /^lodash$/,
+    /^@fortawesome\/(pro|free)-[a-z]+-svg-icons$/,
+  ].find((matcher) => importName.match(matcher));
+  if (!isForbiddenImport) throw new Error('Not a forbidden import');
 }
 
-function getSafeName(name: string, references: any[]) {
+function findNameInReferences(
+  name: string,
+  references: { identifier: { name: string } }[],
+) {
+  return references.find((r) => r.identifier.name === name);
+}
+
+function getSafeName(
+  name: string,
+  references: { identifier: { name: string } }[],
+) {
   let offsetCount = 1;
   let safeName = name;
-  let matchedReference = references.find((r) => r.identifier.name === safeName);
+  let matchedReference = findNameInReferences(name, references);
   while (matchedReference) {
     safeName = `${name}${offsetCount}`;
 
-    matchedReference = references.find((r) => r.identifier.name === safeName);
+    matchedReference = findNameInReferences(safeName, references);
     offsetCount += 1;
   }
   return safeName;
@@ -52,8 +73,12 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
   defaultOptions: [],
   create: (context) => ({
     ImportDeclaration(node) {
+      try {
+        assertForbiddenImport(node);
+      } catch (e) {
+        return;
+      }
       const importName = node.source.value || '';
-      if (isInvalidImport(importName)) return;
 
       const scope = context.getScope();
       context.report({
@@ -63,17 +88,18 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
           importName,
         },
         fix(fixer) {
-          const replacements = [];
+          const replacements: RuleFix[] = [];
           let newImports = '';
           node.specifiers.forEach((importSpecifier) => {
-            // @ts-expect-error
-            if (isInvalidImport(importSpecifier.parent.source.value)) return;
+            try {
+              assertForbiddenImport(importSpecifier.parent);
+            } catch (e) {
+              return;
+            }
             const localName = importSpecifier.local.name;
             let importedName = localName;
-            // @ts-expect-error
-            if (importSpecifier.imported && importSpecifier.imported.name) {
-              // @ts-expect-error
-              importedName = importSpecifier.imported.name;
+            if ((importSpecifier as ImportSpecifier).imported?.name) {
+              importedName = (importSpecifier as ImportSpecifier).imported.name;
             }
             if (importSpecifier.type === 'ImportDefaultSpecifier') {
               const replacementImports: [string, string][] = [];
@@ -83,8 +109,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
                   const { parent } = scope.references[i].identifier;
                   switch (parent?.type) {
                     case 'MemberExpression': {
-                      // @ts-expect-error
-                      const memberName = parent.property.name;
+                      const memberName = (parent.property as Identifier).name;
                       const existingReplacement = replacementImports.find(
                         ([, replacementImportName]) =>
                           replacementImportName === memberName,
@@ -92,8 +117,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
 
                       const newImportName = existingReplacement
                         ? existingReplacement[0]
-                        : // @ts-expect-error
-                          getSafeName(parent.property.name, scope.references);
+                        : getSafeName(memberName, scope.references);
                       replacements.push(
                         fixer.replaceTextRange(parent.range, newImportName),
                       );

@@ -1,8 +1,9 @@
 import * as path from 'path';
 
 import { cosmiconfigSync } from 'cosmiconfig';
+import _jiti from 'jiti';
 
-const jiti = require('jiti') as (
+const jiti = _jiti as unknown as (
   path: string,
   options: Record<string, boolean>,
 ) => <T>(importPath: string) => T;
@@ -58,8 +59,8 @@ function tryRequire(id: string, rootDir: string = process.cwd()) {
     return typescriptRequire<Partial<CosmicConfigShape>>(
       path.join(rootDir, id),
     );
-  } catch (error: any) {
-    if (error.code !== 'MODULE_NOT_FOUND') {
+  } catch (error) {
+    if ((error as { code: string }).code !== 'MODULE_NOT_FOUND') {
       console.error(`Error trying import "${id}" from "${rootDir}"`);
       console.error(error);
     }

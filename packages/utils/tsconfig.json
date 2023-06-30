@@ -11,9 +11,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {},
-    "target": "es5",
-    "module": "commonjs"
+    "paths": {}
   },
   "exclude": ["node_modules"],
   "files": []

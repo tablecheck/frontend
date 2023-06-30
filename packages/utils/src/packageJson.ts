@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import {
   format as prettyFormatPackage,
   check as checkPackageFormat,
@@ -8,9 +8,9 @@ import {
 import * as semver from 'semver';
 import type { PackageJson } from 'type-fest';
 
-import { getArgv } from './argv';
-import { writePrettyFile } from './prettier';
-import { unicodeEmoji } from './unicodeEmoji';
+import { getArgv } from './argv.js';
+import { writePrettyFile } from './prettier.js';
+import { unicodeEmoji } from './unicodeEmoji.js';
 
 const argv = getArgv();
 

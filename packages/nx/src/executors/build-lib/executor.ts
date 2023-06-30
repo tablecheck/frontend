@@ -1,7 +1,6 @@
 import { ExecutorContext } from '@nx/devkit';
-import { buildPackage } from '@tablecheck/frontend-library';
 
-import { BuildLibExecutorSchema } from './schema';
+import { BuildLibExecutorSchema } from './schema.js';
 
 export default async function runExecutor(
   options: BuildLibExecutorSchema,
@@ -9,6 +8,8 @@ export default async function runExecutor(
 ) {
   const metadata = context.projectsConfigurations.projects[context.projectName];
   return {
-    success: await buildPackage({ cwd: metadata.root, ...options }),
+    success: await import('@tablecheck/frontend-library').then(
+      ({ buildPackage }) => buildPackage({ cwd: metadata.root, ...options }),
+    ),
   };
 }
