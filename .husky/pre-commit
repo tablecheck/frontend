@@ -1,4 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "Running nx format:check - any files output below are formatted incorrectly"
+echo "To fix formatting, run: \`npx nx format:write\` or configure prettier in your IDE"
 npx nx format:check

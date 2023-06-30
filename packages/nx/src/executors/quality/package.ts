@@ -73,7 +73,7 @@ export async function packageCheck({
   const result = await processPackage({
     packageDir: directory,
     shouldWriteFile: shouldFix,
-     
+
     packageProcessor: async (appPackage, packagePath) => {
       const displayPath = path.relative(process.cwd(), packagePath);
       const invalidVersionValues = await evaluatePackage(appPackage);

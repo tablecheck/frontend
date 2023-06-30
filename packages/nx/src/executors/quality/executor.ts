@@ -23,7 +23,8 @@ export default async function runExecutor(
     if (options.checkConfig) await configCheck(root);
     await packageCheck({ directory: root, shouldFix: options.fix });
     return await import('@nx/linter/src/executors/eslint/lint.impl.js').then(
-      ({ default: { default: lintRun } }) => lintRun(
+      ({ default: { default: lintRun } }) =>
+        lintRun(
           {
             ...options,
             noEslintrc: false,
