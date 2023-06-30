@@ -9,8 +9,8 @@
   },
   "version": "0.0.0",
   "scripts": {
-    "audit": "nx affected --target=audit",
-    "audit:ci": "nx affected --target=audit:ci",
+    "audit": "tablecheck-frontend-audit && nx run-many --parallel=false --target=audit",
+    "audit:ci": "npx tablecheck-frontend-audit --ci && nx run-many --target=audit:ci",
     "lint": "nx affected --target=lint && nx format:check",
     "format": "nx affected --target=lint:format && nx format:write",
     "test": "nx affected --target=test",

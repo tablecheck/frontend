@@ -365,6 +365,12 @@ export async function run({
   rootPath: string;
   updatePrompts?: boolean;
 }): Promise<boolean> {
+  const packageLock = path.resolve(rootPath, 'package-lock.json');
+  if (!fs.existsSync(packageLock)) {
+    console.log(chalk.yellow('package-lock.json not found, no audit to run'));
+    return true;
+  }
+
   if (updatePrompts) {
     await updateWhitelist(rootPath);
     return true;
