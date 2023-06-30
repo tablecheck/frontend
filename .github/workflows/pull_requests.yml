@@ -120,6 +120,8 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
 
+      - uses: nrwl/nx-set-shas@v3
+
       - name: Read .nvmrc
         id: nvm
         run: echo ::set-output name=nvmrc::$(cat .nvmrc)
@@ -133,7 +135,10 @@ jobs:
         run: git fetch origin main
 
       - name: Install 🔧
-        run: npm ci
+        run: npm ci --ignore-scripts
+
+      - name: Build
+        run: npm run build
 
       - name: Create Canary Release ✨
         env:
