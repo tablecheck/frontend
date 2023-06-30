@@ -4,6 +4,20 @@
   "sourceRoot": "packages/utils/src",
   "projectType": "library",
   "targets": {
+    "audit": {
+      "executor": "@tablecheck/nx:audit",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "updatePrompts": true
+      }
+    },
+    "audit:ci": {
+      "executor": "@tablecheck/nx:audit",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "updatePrompts": false
+      }
+    },
     "lint": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],

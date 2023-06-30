@@ -1,4 +1,4 @@
-import * as minimist from 'minimist';
+import minimist from 'minimist';
 
 export function getArgv(
   args: Omit<minimist.Opts, 'boolen'> & {

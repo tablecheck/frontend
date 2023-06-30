@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {}
+    "paths": {},
+    "module": "CommonJS"
   },
   "exclude": ["node_modules"],
   "files": []

@@ -1,11 +1,11 @@
 import * as path from 'path';
 
 import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
-import { detectInstalledVersion } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
-import uniq from 'lodash/uniq';
+// eslint-disable-next-line @tablecheck/forbidden-imports
+import { uniq } from 'lodash';
 
-import { TsNodeConfigGeneratorSchema } from './schema';
+import type { TsNodeConfigGeneratorSchema } from './schema.js';
 
 function buildTypes(configValue: unknown): string {
   if (Array.isArray(configValue))
@@ -36,6 +36,7 @@ export async function tsNodeConfigGenerator(
   tree: Tree,
   options: TsNodeConfigGeneratorSchema,
 ) {
+  const { detectInstalledVersion } = await import('@tablecheck/frontend-utils');
   const projectRoot = readProjectConfiguration(tree, options.project).root;
   try {
     detectInstalledVersion(projectRoot, 'config', '*');

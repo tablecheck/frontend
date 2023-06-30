@@ -1,3 +1,5 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable import/no-import-module-exports */
 import { consistentReactImport } from './consistentReactImport';
 import { forbiddenImports } from './forbiddenImports';
 import { shortestImport } from './shortestImport';

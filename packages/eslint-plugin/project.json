@@ -4,6 +4,10 @@
   "sourceRoot": "packages/eslint-plugin/src",
   "projectType": "library",
   "targets": {
+    "audit": {
+      "executor": "@tablecheck/nx:audit",
+      "outputs": ["{options.outputFile}"]
+    },
     "lint": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
@@ -24,6 +28,15 @@
       "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin"],
       "options": {
         "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/eslint-plugin"
+      }
+    },
+    "test:watch": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin"],
+      "options": {
+        "passWithNoTests": true,
+        "watch": true,
         "reportsDirectory": "../../coverage/packages/eslint-plugin"
       }
     }

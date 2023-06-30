@@ -1,7 +1,6 @@
 import { ExecutorContext } from '@nx/devkit';
-import { run } from '@tablecheck/frontend-audit';
 
-import { AuditExecutorSchema } from './schema';
+import { AuditExecutorSchema } from './schema.js';
 
 export default async function runExecutor(
   { updatePrompts }: AuditExecutorSchema,
@@ -9,6 +8,8 @@ export default async function runExecutor(
 ) {
   const metadata = context.projectsConfigurations.projects[context.projectName];
   return {
-    success: await run({ rootPath: metadata.root, updatePrompts }),
+    success: await import('@tablecheck/frontend-audit').then(({ run }) =>
+      run({ rootPath: metadata.root, updatePrompts }),
+    ),
   };
 }
