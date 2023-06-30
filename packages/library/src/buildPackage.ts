@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import * as prompts from '@clack/prompts';
 import { getPackageJson } from '@tablecheck/frontend-utils';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import { glob } from 'glob';
 import * as rollup from 'rollup';
 import { PackageJson, TsConfigJson } from 'type-fest';
