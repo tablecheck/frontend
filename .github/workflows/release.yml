@@ -31,6 +31,9 @@ jobs:
           node-version: ${{ steps.nvm.outputs.nvmrc }}
           cache: npm
 
+      - name: Setup branch for NX
+        run: git branch --track main origin/main
+
       - name: Install 🔧
         run: npm ci
 
