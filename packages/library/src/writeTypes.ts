@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import * as ts from 'typescript';
 
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });

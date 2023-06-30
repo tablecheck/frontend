@@ -1,5 +1,5 @@
-import * as fs from 'fs-extra';
-import * as prettier from 'prettier';
+import fs from 'fs-extra';
+import prettier from 'prettier';
 
 export function writePrettyFile(filePath: string, fileContent: string) {
   const prettierOptions = prettier.resolveConfig.sync(process.cwd());

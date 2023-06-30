@@ -8,7 +8,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescriptPlugin from '@rollup/plugin-typescript';
 import { getPackageJson } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import rollup from 'rollup';
 import { externals } from 'rollup-plugin-node-externals';
 import { PackageJson } from 'type-fest';
