@@ -7,7 +7,7 @@ import type {
 import { ExpiringCache } from '@typescript-eslint/typescript-estree/dist/parseSettings/ExpiringCache';
 import { getProjectConfigFiles } from '@typescript-eslint/typescript-estree/dist/parseSettings/getProjectConfigFiles';
 import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import { TsConfigJson } from 'type-fest';
 
 export const messageId = 'shortestImport' as const;

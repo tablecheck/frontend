@@ -6,17 +6,11 @@ import CVSS, {
   DetailedVectorObject,
   VectorMetric,
 } from '@turingpointde/cvss.js';
+import definitions from '@turingpointde/cvss.js/lib/cvss_3_0.json' assert { type: 'json' };
 import chalk from 'chalk';
 import { execa } from 'execa';
-import * as fs from 'fs-extra';
+import fs from 'fs-extra';
 import treeify from 'treeify';
-
-const definitions = fs.readJSONSync(
-  new URL(
-    '../node_modules/@turingpointde/cvss.js/lib/cvss_3_0.json',
-    import.meta.url,
-  ),
-) as typeof import('@turingpointde/cvss.js/lib/cvss_3_0.json');
 
 /**
  * Finds the vector's metric by it's abbreviation - moved from
@@ -343,6 +337,11 @@ ${this.getVectorMetrics(vector)
   const updateMessage = updatePackages.length
     ? `Run the following to update non-updated packages\n${chalk.cyan.bold(
         `\`npm update ${updatePackages
+          .reduce((acc, s) => {
+            if (acc.includes(s)) return acc;
+            acc.push(s);
+            return acc;
+          }, [] as string[])
           .map((s) => `${s.split('@')[0]}@latest`)
           .join(' ')}\``,
       )}\n`

@@ -12,7 +12,6 @@
     },
     "./package.json": "./package.json"
   },
-  "import": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -68,5 +67,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "import": "./dist/index.js"
 }
