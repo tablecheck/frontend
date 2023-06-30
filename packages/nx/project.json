@@ -6,7 +6,17 @@
   "targets": {
     "audit": {
       "executor": "@tablecheck/nx:audit",
-      "outputs": ["{options.outputFile}"]
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "updatePrompts": true
+      }
+    },
+    "audit:ci": {
+      "executor": "@tablecheck/nx:audit",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "updatePrompts": false
+      }
     },
     "lint": {
       "executor": "@tablecheck/nx:quality",
