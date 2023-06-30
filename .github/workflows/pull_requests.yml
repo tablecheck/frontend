@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ steps.nvm.outputs.nvmrc }}
 
       - name: Setup branch for NX
-        run: git branch --track main origin/main
+        run: git fetch origin main
 
       - name: Install 🔧
         run: npm ci
@@ -48,7 +48,7 @@ jobs:
           node-version: ${{ needs.setup.outputs.nvmrc }}
 
       - name: Setup branch for NX
-        run: git branch --track main origin/main
+        run: git fetch origin main
 
       - name: Restore npm installs and Lerna setup
         run: npm ci
@@ -72,7 +72,7 @@ jobs:
           node-version: ${{ needs.setup.outputs.nvmrc }}
 
       - name: Setup branch for NX
-        run: git branch --track main origin/main
+        run: git fetch origin main
 
       - name: Restore npm installs and Lerna setup
         run: npm ci
@@ -96,7 +96,7 @@ jobs:
           node-version: ${{ needs.setup.outputs.nvmrc }}
 
       - name: Setup branch for NX
-        run: git branch --track main origin/main
+        run: git fetch origin main
 
       - name: Restore npm installs and Lerna setup
         run: npm ci
@@ -130,7 +130,7 @@ jobs:
           node-version: ${{ steps.nvm.outputs.nvmrc }}
 
       - name: Setup branch for NX
-        run: git branch --track main origin/main
+        run: git fetch origin main
 
       - name: Install 🔧
         run: npm ci

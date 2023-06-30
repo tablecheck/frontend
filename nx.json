@@ -15,7 +15,7 @@
     },
     "test": {
       "dependsOn": ["^test"],
-      "inputs": ["default", "^default"]
+      "inputs": ["default", "^default", "testConfig"]
     }
   },
   "affected": {
@@ -26,6 +26,7 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default"],
-    "baseTypescript": ["{workspaceRoot}/tsconfig.base.json"]
+    "baseTypescript": ["{workspaceRoot}/tsconfig.base.json"],
+    "testConfig": ["{projectRoot}/vite.config.ts"]
   }
 }
