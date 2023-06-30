@@ -18,8 +18,8 @@ else {
     `// Auto Generated file from <root>/scripts/deriveExportsFromSiblings.mjs - Do Not Edit
 ${files
   .map(
-    (dirrent) => `export * from './${dirrent.name.replace(/\.ts$/gi, '.js')}'`,
+    (dirrent) => `export * from './${dirrent.name.replace(/\.ts$/gi, '.js')}';`,
   )
-  .join('\n')}`,
+  .join('\n')}\n`,
   );
 }
