@@ -130,7 +130,7 @@ Is the module installed? Note:
         },
       },
       shouldBundleDependencies ? undefined : externals(rollupExternalsConfig),
-      typescriptPlugin(rollupTypescriptConfig),
+      (typescriptPlugin as never as Function)(rollupTypescriptConfig),
       nodeResolve({
         mainFields: ['module', 'jsnext', 'main'],
         browser: true,
@@ -138,12 +138,12 @@ Is the module installed? Note:
         extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
         preferBuiltins: true,
       }),
-      commonjs({
+      (commonjs as never as Function)({
         // use a regex to make sure to include eventual hoisted packages
         esmExternals: true,
         requireReturnsDefault: 'namespace',
       }),
-      json(),
+      (json as never as Function)(),
       jsxPlugin(
         !!(
           packageJson.dependencies?.['@emotion/react'] ||

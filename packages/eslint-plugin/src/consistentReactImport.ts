@@ -1,4 +1,6 @@
+import type { ImportSpecifier } from '@typescript-eslint/types/dist/generated/ast-spec';
 import { TSESLint, TSESTree } from '@typescript-eslint/utils';
+import { RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
 
 export const messageId = 'consistentReactImport' as const;
 
@@ -42,7 +44,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
             node,
             messageId,
             fix(fixer) {
-              const replacements = [];
+              const replacements: RuleFix[] = [];
 
               function recursivelyUpdateVariableUsage(
                 updateScope: typeof scope,
@@ -85,10 +87,9 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
               node.specifiers.forEach((importSpecifier) => {
                 const localName = importSpecifier.local.name;
                 let importedName = localName;
-                // @ts-expect-error
-                if (importSpecifier.imported && importSpecifier.imported.name) {
-                  // @ts-expect-error
-                  importedName = importSpecifier.imported.name;
+                if ((importSpecifier as ImportSpecifier).imported?.name) {
+                  importedName = (importSpecifier as ImportSpecifier).imported
+                    .name;
                 }
                 if (importSpecifier.type !== 'ImportDefaultSpecifier') {
                   recursivelyUpdateVariableUsage(

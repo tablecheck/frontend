@@ -1,9 +1,14 @@
 import * as path from 'path';
 
+import type {
+  ImportExpression,
+  ImportDeclaration,
+} from '@typescript-eslint/types/dist/generated/ast-spec';
 import { ExpiringCache } from '@typescript-eslint/typescript-estree/dist/parseSettings/ExpiringCache';
 import { getProjectConfigFiles } from '@typescript-eslint/typescript-estree/dist/parseSettings/getProjectConfigFiles';
-import { TSESLint } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
 import * as fs from 'fs-extra';
+import { TsConfigJson } from 'type-fest';
 
 export const messageId = 'shortestImport' as const;
 
@@ -37,7 +42,7 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
         context.parserOptions.tsconfigRootDir,
         configPath,
       );
-      return { filePath, config: fs.readJSONSync(filePath) };
+      return { filePath, config: fs.readJSONSync(filePath) as TsConfigJson };
     });
     const pathMappings: Record<string, string> = configs.reduce(
       (acc, { filePath, config }) => {
@@ -47,25 +52,25 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
               .readdirSync(path.join(path.dirname(filePath), baseUrl), {
                 withFileTypes: true,
               })
-              .reduce((acc, dirrent) => {
+              .reduce((directoryMap, dirrent) => {
                 if (dirrent.isDirectory())
                   return {
-                    ...acc,
+                    ...directoryMap,
                     [dirrent.name]: path.join(baseUrl, dirrent.name),
                   };
                 return {
-                  ...acc,
+                  ...directoryMap,
                   [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
                     .join(baseUrl, dirrent.name)
                     .replace(/^\.\//gi, ''),
                 };
-              }, {})
+              }, {} as Record<string, string>)
           : {};
         const compilerPaths = Object.entries(
-          (config.compilerOptions.paths || {}) as Record<string, string[]>,
+          config.compilerOptions.paths || {},
         ).reduce(
-          (acc, [key, [value]]) => ({
-            ...acc,
+          (compilerPathsMap, [key, [value]]) => ({
+            ...compilerPathsMap,
             [key.replace(/\/\*$/gi, '')]: value
               .replace(/\/\*$/gi, '')
               .replace(/^\.\//gi, ''),
@@ -98,7 +103,7 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
           importPath,
         );
       }
-      const matchedMapping = Object.entries(pathMappings).find(([key, value]) =>
+      const matchedMapping = Object.entries(pathMappings).find(([, value]) =>
         resolvedImportPath.includes(value),
       );
       if (!matchedMapping) return undefined;
@@ -122,10 +127,6 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
         .split('/')
         .filter((part) => part === '..')
         .join('/');
-      const absoluteParentPath = path.resolve(
-        path.dirname(resolvedFilePath),
-        parentPath,
-      );
       const absoluteImportPath = path.resolve(
         path.dirname(resolvedFilePath),
         relativePath,
@@ -148,29 +149,39 @@ export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
         return false;
       return relativeLength <= aliasLength;
     }
+
+    function checkAndFixImport(node: ImportExpression | ImportDeclaration) {
+      if (node.source.type !== AST_NODE_TYPES.Literal) return;
+      const importPath = node.source.value;
+      if (typeof importPath !== 'string') return;
+      const resolvedImport = resolveImport(importPath);
+      const relativePath = getRelativeImport(importPath, resolvedImport);
+      const aliasPath = getPathAliasImport(resolvedImport);
+      const preferredPath = shouldPreferRelative(relativePath, aliasPath)
+        ? relativePath
+        : aliasPath;
+
+      if (preferredPath === importPath) return;
+
+      context.report({
+        node,
+        messageId,
+        data: {
+          preferredPath,
+          importPath,
+        },
+        fix(fixer) {
+          return fixer.replaceText(node.source, `'${preferredPath}'`);
+        },
+      });
+    }
+
     return {
       ImportDeclaration(node) {
-        const importPath = node.source.value;
-        const resolvedImport = resolveImport(node.source.value);
-        const relativePath = getRelativeImport(importPath, resolvedImport);
-        const aliasPath = getPathAliasImport(resolvedImport);
-        const preferredPath = shouldPreferRelative(relativePath, aliasPath)
-          ? relativePath
-          : aliasPath;
-
-        if (preferredPath === importPath) return;
-
-        context.report({
-          node: node.source,
-          messageId,
-          data: {
-            preferredPath,
-            importPath,
-          },
-          fix(fixer) {
-            return fixer.replaceText(node.source, `'${preferredPath}'`);
-          },
-        });
+        checkAndFixImport(node);
+      },
+      ImportExpression(node) {
+        checkAndFixImport(node);
       },
     };
   },

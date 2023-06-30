@@ -10,7 +10,8 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default", "baseTypescript"]
     },
     "test": {
       "dependsOn": ["^test"],
@@ -24,6 +25,7 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
-    "production": ["default"]
+    "production": ["default"],
+    "baseTypescript": ["{workspaceRoot}/tsconfig.base.json"]
   }
 }

@@ -11,74 +11,139 @@ const ruleTester = new ESLintUtils.RuleTester({
   },
 });
 
+type TestResult<T extends { path: string; fixedPath?: undefined | string }> =
+  (Omit<T, 'path' | 'fixedPath'> &
+    ([undefined] extends [T['fixedPath']]
+      ? { code: string }
+      : { code: string; output: string }))[];
+
+function buildCodeCase<T extends { name?: string }>({
+  path,
+  fixedPath,
+  importType,
+  rest,
+}: {
+  path: string;
+  fixedPath: string | undefined;
+  importType: 'default' | 'dynamic';
+  rest: T;
+}) {
+  const template =
+    importType === 'default'
+      ? (importPath: string) => `import { second } from '${importPath}';`
+      : (importPath: string) => `const second = import('${importPath}');`;
+  const name = `${rest.name || template(path)}: ${importType}`;
+  if (fixedPath) {
+    return {
+      ...rest,
+      code: template(path),
+      output: template(fixedPath),
+      name,
+    };
+  }
+  return {
+    ...rest,
+    code: template(path),
+    name,
+  };
+}
+
+function convertPathCaseToCodeCase<
+  T extends {
+    name?: string;
+    path: string;
+    fixedPath?: undefined | string;
+  } & Record<string, any>,
+>(config: T[]): TestResult<T> {
+  return config.reduce((r, { path, fixedPath, ...rest }) => {
+    r.push(
+      buildCodeCase({
+        path,
+        fixedPath,
+        importType: 'default',
+        rest,
+      }) as never,
+    );
+    r.push(
+      buildCodeCase({
+        path,
+        fixedPath,
+        importType: 'dynamic',
+        rest,
+      }) as never,
+    );
+    return r;
+  }, [] as TestResult<T>);
+}
+
 ruleTester.run('shortestImport', rule, {
-  valid: [
+  valid: convertPathCaseToCodeCase([
     {
-      code: `import { second } from './second';`,
+      path: './second',
       filename: './test_src/feature1/slice1/index.ts',
     },
     {
-      code: `import { second } from '../slice2';`,
+      path: '../slice2',
       filename: './test_src/feature1/slice1/index.ts',
     },
     {
-      code: `import { second } from '../inner2';`,
+      path: '../inner2',
       filename: './test_src/feature1/slice1/inner1/index.ts',
     },
     {
-      code: `import { second } from '~/feature1/slice2/second';`,
+      path: '~/feature1/slice2/second',
       filename: './test_src/feature1/slice1/inner1/index.ts',
     },
-  ],
-  invalid: [
+  ]),
+  invalid: convertPathCaseToCodeCase([
     {
       name: 'prefer relative path over alias path',
-      code: `import { second } from '~/feature1/slice1/second';`,
-      output: `import { second } from './second';`,
+      path: '~/feature1/slice1/second',
+      fixedPath: './second',
       filename: './test_src/feature1/slice1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer relative path over alias path',
-      code: `import { second } from '~/feature1/slice1/second';`,
-      output: `import { second } from './slice1/second';`,
+      path: '~/feature1/slice1/second',
+      fixedPath: './slice1/second',
       filename: './test_src/feature1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer alias path over parent through baseUrl',
-      code: `import { a } from '../../feature2';`,
-      output: `import { a } from '~/feature2';`,
+      path: '../../feature2',
+      fixedPath: '~/feature2',
       filename: './test_src/feature1/slice1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer alias path over baseUrl resolve',
-      code: `import { a } from 'feature2';`,
-      output: `import { a } from '~/feature2';`,
+      path: 'feature2',
+      fixedPath: '~/feature2',
       filename: './test_src/feature1/slice1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer relative parent path over alias/baseUrl',
-      code: `import { a } from 'feature1/slice2';`,
-      output: `import { a } from '../slice2';`,
+      path: 'feature1/slice2',
+      fixedPath: '../slice2',
       filename: './test_src/feature1/slice1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer alias over baseUrl and relative through root',
-      code: `import { a } from '../../feature2/sliceA';`,
-      output: `import { a } from '~/feature2/sliceA';`,
+      path: '../../feature2/sliceA',
+      fixedPath: '~/feature2/sliceA',
       filename: './test_src/feature1/slice1/index.ts',
       errors: [{ messageId }],
     },
     {
       name: 'prefer alias over deep relative parent (equal length)',
-      code: `import { a } from '../../slice2/second';`,
-      output: `import { a } from '~/feature1/slice2/second';`,
+      path: '../../slice2/second',
+      fixedPath: '~/feature1/slice2/second',
       filename: './test_src/feature1/slice1/inner1/index.ts',
       errors: [{ messageId }],
     },
-  ],
+  ]),
 });

@@ -11,8 +11,8 @@
       "description": "audit executor"
     },
     "quality": {
-      "implementation": "./src/executors/quality/executor",
-      "schema": "./src/executors/quality/schema.json",
+      "implementation": "./dist/executors/quality/executor",
+      "schema": "./dist/executors/quality/schema.json",
       "description": "quality executor"
     }
   }
