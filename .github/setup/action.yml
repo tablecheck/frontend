@@ -1,0 +1,40 @@
+name: Setup git and nx
+description: Set up git and nx for the job
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Prepare repository
+      shell: bash
+      run: git fetch --unshallow --prune --tags
+
+    - name: Set shas
+      uses: nrwl/nx-set-shas@v3
+
+    - name: Unset header
+      shell: bash
+      # checkout@v2 adds a header that makes branch protection report errors ):
+      run: git config --local --unset http.https://github.com/.extraheader
+
+    - name: Read .nvmrc
+      shell: bash
+      id: nvm
+      run: echo "::set-output name=nvmrc::$(cat .nvmrc)"
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ steps.nvm.outputs.nvmrc }}
+        cache: npm
+
+    - name: Setup branch for NX
+      shell: bash
+      run: git branch --track main origin/main
+
+    - name: Install without scripts 🔧
+      shell: bash
+      run: npm ci --prefer-offline --silent --ignore-scripts
+
+    - name: Build 🔨
+      shell: bash
+      run: npm run build

@@ -11,8 +11,8 @@
   "scripts": {
     "audit": "tablecheck-frontend-audit && nx run-many --parallel=false --target=audit",
     "audit:ci": "npx tablecheck-frontend-audit --ci && nx run-many --target=audit:ci",
-    "lint": "nx affected --target=lint && nx format:check",
-    "format": "nx affected --target=lint:format && nx format:write",
+    "lint": "nx affected --target=lint && prettier -c .",
+    "format": "nx affected --target=lint:format && prettier -w .",
     "test": "nx affected --target=test",
     "test:watch": "nx run-many --target=test:watch",
     "start": "start-storybook -p 6006",
