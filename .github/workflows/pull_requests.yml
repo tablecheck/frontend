@@ -12,70 +12,26 @@ concurrency:
 jobs:
   setup:
     runs-on: ubuntu-latest
-    outputs:
-      nvmrc: ${{ steps.nvm.outputs.nvmrc }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Read .nvmrc
-        id: nvm
-        run: echo ::set-output name=nvmrc::$(cat .nvmrc)
+      - uses: ./.github/setup
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ steps.nvm.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
-
-      - name: Install 🔧
-        run: npm ci
-
-  lint:
+  checks:
     needs: [setup]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ needs.setup.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
-
-      - name: Restore npm installs and Lerna setup
-        run: npm ci
+      - uses: ./.github/setup
 
       - name: Validate all commits from PR
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
       - name: Run linter
         run: npm run lint
-
-  audit:
-    needs: [setup]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ needs.setup.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
-
-      - name: Restore npm installs and Lerna setup
-        run: npm ci
 
       - name: Audit Dependencies
         run: npm run audit:ci
@@ -90,16 +46,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ needs.setup.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
-
-      - name: Restore npm installs and Lerna setup
-        run: npm ci
+      - uses: ./.github/setup
 
       - name: Run Tests
         run: npm test
@@ -112,33 +59,13 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: [test, audit, lint]
+    needs: [test, checks]
+    if: github.head_ref != 'next'
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.ref }}
 
-      - uses: nrwl/nx-set-shas@v3
-
-      - name: Read .nvmrc
-        id: nvm
-        run: echo ::set-output name=nvmrc::$(cat .nvmrc)
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ steps.nvm.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
-
-      - name: Install 🔧
-        run: npm ci --ignore-scripts
-
-      - name: Build
-        run: npm run build
+      - uses: ./.github/setup
 
       - name: Create Canary Release ✨
         env:

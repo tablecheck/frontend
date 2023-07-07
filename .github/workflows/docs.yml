@@ -25,7 +25,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           git branch --track main origin/main
-          npm ci
+          npm ci --prefer-offline --silent
           npm run build
 
       - name: Deploy 🚀
