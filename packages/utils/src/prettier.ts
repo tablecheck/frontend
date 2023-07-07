@@ -1,11 +1,11 @@
 import fs from 'fs-extra';
 import prettier from 'prettier';
 
-export function writePrettyFile(filePath: string, fileContent: string) {
-  const prettierOptions = prettier.resolveConfig.sync(process.cwd());
+export async function writePrettyFile(filePath: string, fileContent: string) {
+  const prettierOptions = await prettier.resolveConfig(process.cwd());
   fs.outputFileSync(
     filePath,
-    prettier.format(fileContent, {
+    await prettier.format(fileContent, {
       ...prettierOptions,
       filepath: filePath,
     }),

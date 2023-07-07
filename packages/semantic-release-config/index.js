@@ -5,7 +5,7 @@ module.exports = {
     'next',
     'next-major',
     { name: 'beta', prerelease: true },
-    { name: 'alpha', prerelease: true }
+    { name: 'alpha', prerelease: true },
   ],
   plugins: [
     [
@@ -14,9 +14,9 @@ module.exports = {
         releaseRules: [
           { type: 'docs', release: 'patch' },
           { type: 'refactor', release: 'patch' },
-          { type: 'ci', release: 'patch' }
-        ]
-      }
+          { type: 'ci', release: 'patch' },
+        ],
+      },
     ],
     [
       '@semantic-release/release-notes-generator',
@@ -34,8 +34,8 @@ module.exports = {
             'resolves',
             'resolved',
             'complete',
-            'completes'
-          ]
+            'completes',
+          ],
         },
         writerOpts: {
           types: [
@@ -49,7 +49,7 @@ module.exports = {
             { type: 'refactor', section: 'Code Refactoring' },
             { type: 'test', section: 'Tests', hidden: true },
             { type: 'build', section: 'Build System' },
-            { type: 'ci', section: 'Continuous Integration' }
+            { type: 'ci', section: 'Continuous Integration' },
           ],
           commitPartial: `* {{header}}
 
@@ -86,9 +86,9 @@ module.exports = {
   {{~/each~}}
 {{~/if}}
 
-`
-        }
-      }
+`,
+        },
+      },
     ],
     '@semantic-release/github',
     [
@@ -97,16 +97,16 @@ module.exports = {
       {
         notifyOnSuccess: true,
         notifyOnFail: false,
-        markdownReleaseNotes: true
-      }
+        markdownReleaseNotes: true,
+      },
     ],
     [
       '@semantic-release/exec',
       {
         successCmd:
           // eslint-disable-next-line no-template-curly-in-string
-          'echo "${nextRelease.name}" > version.txt'
-      }
-    ]
-  ]
+          'echo "${nextRelease.name}" > version.txt',
+      },
+    ],
+  ],
 };

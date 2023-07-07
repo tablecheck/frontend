@@ -2,7 +2,7 @@ module.exports = {
   stories: [
     '../README.stories.mdx',
     '../packages/*/*.stories.mdx',
-    '../packages/*/scripts/*.stories.mdx'
+    '../packages/*/scripts/*.stories.mdx',
   ],
   addons: [
     '@storybook/addon-links',
@@ -13,8 +13,8 @@ module.exports = {
         actions: false,
         controls: false,
         viewport: false,
-        toolbars: false
-      }
-    }
-  ]
+        toolbars: false,
+      },
+    },
+  ],
 };

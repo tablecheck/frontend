@@ -1,6 +1,6 @@
 {
   "name": "@tablecheck/eslint-config",
-  "description": "eslint config file for Tablesolution's React Projects",
+  "description": "eslint config file for TableCheck's Frontend Projects",
   "license": "MIT",
   "author": "TableCheck Inc.",
   "repository": {
@@ -25,19 +25,19 @@
     "build": "tsc -p ./tsconfig.build.json"
   },
   "dependencies": {
-    "@emotion/eslint-plugin": "^11.10.0",
-    "@nx/eslint-plugin": "^16.3.2",
+    "@emotion/eslint-plugin": "^11.11.0",
+    "@nx/eslint-plugin": "^16.5.0",
     "@tablecheck/eslint-plugin": "^1.2.2",
     "@tablecheck/frontend-utils": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.58.0",
+    "@typescript-eslint/parser": "^5.61.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-formatter-pretty": "^5.0.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
     "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-cypress": "^2.13.2",
+    "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "eslint": "^8",
-    "vite": "4.3.9",
+    "vite": "4.4.1",
     "vite-tsconfig-paths": "4.2.0"
   },
   "engines": {

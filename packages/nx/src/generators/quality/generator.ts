@@ -33,6 +33,7 @@ export async function qualityGenerator(
       commitlint: 'latest',
       '@tablecheck/commitlint-config': 'latest',
       '@tablecheck/eslint-config': 'latest',
+      '@tablecheck/prettier-config': 'latest',
     },
   );
   installPackagesTask(tree, true, projectRoot, 'npm');

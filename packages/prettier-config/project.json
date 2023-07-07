@@ -1,0 +1,7 @@
+{
+  "name": "prettier-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/prettier-config",
+  "projectType": "library",
+  "tags": []
+}

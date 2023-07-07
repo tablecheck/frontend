@@ -23,7 +23,7 @@ To run a release, simply run `npx semantic-release` (`semantic-release` is a req
 ```js
 // release.config.js
 module.exports = {
-  extends: '@tablecheck/semantic-release-config'
+  extends: '@tablecheck/semantic-release-config',
 };
 ```
 
@@ -32,6 +32,6 @@ If your release also needs to publish an npm package, use the following config. 
 ```js
 // release.config.js
 module.exports = {
-  extends: '@tablecheck/semantic-release-config/with-npm-publish'
+  extends: '@tablecheck/semantic-release-config/with-npm-publish',
 };
 ```
