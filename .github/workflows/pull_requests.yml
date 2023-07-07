@@ -120,6 +120,9 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.ref }}
 
+      - name: Setup branch for NX
+        run: git fetch origin main
+
       - uses: nrwl/nx-set-shas@v3
 
       - name: Read .nvmrc
@@ -130,9 +133,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ steps.nvm.outputs.nvmrc }}
-
-      - name: Setup branch for NX
-        run: git fetch origin main
 
       - name: Install 🔧
         run: npm ci --ignore-scripts

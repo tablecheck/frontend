@@ -14,9 +14,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
 
-      - uses: nrwl/nx-set-shas@v3
       - name: Prepare repository
         run: git fetch --unshallow --prune --tags
+
+      - uses: nrwl/nx-set-shas@v3
 
       - name: Unset header
         # checkout@v2 adds a header that makes branch protection report errors ):
