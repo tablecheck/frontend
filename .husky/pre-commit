@@ -1,6 +1,12 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-echo "Running nx format:check - any files output below are formatted incorrectly"
-echo "To fix formatting, run: \`npx nx format:write\` or configure prettier in your IDE"
-npx nx format:check
+# revert this back to using nx format:check when https://github.com/nrwl/nx/issues/17990 is fixed
+# echo "Running nx format:check - any files output below are formatted incorrectly"
+# echo "To fix formatting, run: \`npx nx format:write\` or configure prettier in your IDE"
+# npx nx format:check
+
+echo "Running 'prettier --check .' - any files output below are formatted incorrectly"
+echo "To fix formatting, run: \`npx prettier --write .\` or configure prettier in your IDE"
+npx prettier -v
+npx prettier --check .

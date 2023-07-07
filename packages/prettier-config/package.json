@@ -1,0 +1,21 @@
+{
+  "name": "@tablecheck/prettier-config",
+  "description": "prettier config file for TableCheck's Projects",
+  "license": "MIT",
+  "author": "TableCheck Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tablecheck/frontend.git"
+  },
+  "version": "0.0.0",
+  "main": "./config.json",
+  "peerDependencies": {
+    "prettier": "^3"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

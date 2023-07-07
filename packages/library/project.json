@@ -40,6 +40,15 @@
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/packages/library"
       }
+    },
+    "test:watch": {
+      "executor": "@nx/vite:test",
+      "outputs": ["{workspaceRoot}/coverage/packages/library"],
+      "options": {
+        "passWithNoTests": true,
+        "watch": true,
+        "reportsDirectory": "../../coverage/packages/library"
+      }
     }
   },
   "tags": []

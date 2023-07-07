@@ -6,7 +6,7 @@ Recommended usage is;
 
 ```js static
 module.exports = {
-  extends: ['@tablecheck/eslint-config']
+  extends: ['@tablecheck/eslint-config'],
 };
 ```
 
