@@ -3,7 +3,7 @@
   "description": "Audit util for easy integration with auditjs",
   "license": "MIT",
   "author": "TableCheck Inc.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     ".": {

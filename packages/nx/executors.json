@@ -5,11 +5,6 @@
       "schema": "./dist/executors/build-lib/schema.json",
       "description": "build-lib executor"
     },
-    "audit": {
-      "implementation": "./dist/executors/audit/executor",
-      "schema": "./dist/executors/audit/schema.json",
-      "description": "audit executor"
-    },
     "quality": {
       "implementation": "./dist/executors/quality/executor",
       "schema": "./dist/executors/quality/schema.json",
