@@ -5,8 +5,6 @@ import * as fs from 'fs-extra';
 // eslint-disable-next-line @tablecheck/forbidden-imports
 import { uniq } from 'lodash';
 
-import type { TsNodeConfigGeneratorSchema } from './schema.js';
-
 function buildTypes(configValue: unknown): string {
   if (Array.isArray(configValue))
     return `(${uniq(configValue.map((v) => buildTypes(v))).join(' | ')})[]`;
@@ -32,12 +30,9 @@ function buildTypes(configValue: unknown): string {
   }
 }
 
-export async function tsNodeConfigGenerator(
-  tree: Tree,
-  options: TsNodeConfigGeneratorSchema,
-) {
+export async function tsNodeConfigGenerator(tree: Tree) {
   const { detectInstalledVersion } = await import('@tablecheck/frontend-utils');
-  const projectRoot = readProjectConfiguration(tree, options.project).root;
+  const projectRoot = tree.root;
   try {
     detectInstalledVersion(projectRoot, 'config', '*');
 

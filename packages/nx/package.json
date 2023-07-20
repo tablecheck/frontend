@@ -1,6 +1,6 @@
 {
   "name": "@tablecheck/nx",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "commonjs",
   "exports": {
     ".": {
@@ -26,8 +26,7 @@
     "@nx/devkit": "16.3.2",
     "@nx/linter": "16.3.2",
     "@tablecheck/eslint-config": "^1.8.2",
-    "@tablecheck/frontend-audit": "^0.0.1",
-    "@tablecheck/frontend-library": "^0.0.1",
+    "@tablecheck/frontend-library": "^1.0.0",
     "@tablecheck/frontend-utils": "^1.1.0",
     "chalk": "^4.1.2",
     "execa": "7.1.1",

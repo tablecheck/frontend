@@ -1,30 +1,16 @@
 import * as path from 'path';
 
 import {
-  addProjectConfiguration,
   formatFiles,
   generateFiles,
-  installPackagesTask,
   addDependenciesToPackageJson,
   Tree,
 } from '@nx/devkit';
 
-import type { QualityGeneratorSchema } from './schema.js';
-
-export async function qualityGenerator(
-  tree: Tree,
-  options: QualityGeneratorSchema,
-) {
+export async function qualityGenerator(tree: Tree) {
   const { execaOptions } = await import('@tablecheck/frontend-utils');
   const { execa } = await import('execa');
-  const projectRoot = `libs/${options.name}`;
-  addProjectConfiguration(tree, options.name, {
-    root: projectRoot,
-    projectType: 'library',
-    sourceRoot: `${projectRoot}/src`,
-    targets: {},
-  });
-  addDependenciesToPackageJson(
+  await addDependenciesToPackageJson(
     tree,
     {},
     {
@@ -35,9 +21,8 @@ export async function qualityGenerator(
       '@tablecheck/eslint-config': 'latest',
       '@tablecheck/prettier-config': 'latest',
     },
-  );
-  installPackagesTask(tree, true, projectRoot, 'npm');
-  generateFiles(tree, path.join(__dirname, 'files'), projectRoot, options);
+  )();
+  generateFiles(tree, path.join(__dirname, 'files'), tree.root, {});
   await execa('npx', ['husky', 'install'], execaOptions);
   await formatFiles(tree);
 }

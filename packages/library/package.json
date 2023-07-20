@@ -3,7 +3,7 @@
   "description": "Rollup configurations for building typescript libraries",
   "license": "MIT",
   "author": "TableCheck Inc.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "exports": {
     ".": {
