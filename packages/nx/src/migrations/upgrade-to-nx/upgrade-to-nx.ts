@@ -7,6 +7,7 @@ import {
   addDependenciesToPackageJson,
 } from '@nx/devkit';
 import * as fs from 'fs-extra';
+import { PackageJson } from 'type-fest';
 
 import generateQuality from '../../generators/quality/generator';
 import generateIcons from '../../generators/ts-carbon-icons/generator';
@@ -26,7 +27,7 @@ export default async function update(tree: Tree) {
 
   console.log('Updating dependencies');
 
-  updateJson(tree, 'package.json', (json) => {
+  updateJson(tree, 'package.json', (json: PackageJson) => {
     for (const deps of [json.dependencies, json.devDependencies]) {
       if (deps) {
         delete deps['@tablecheck/babel-preset'];
@@ -34,7 +35,7 @@ export default async function update(tree: Tree) {
         delete deps['@tablecheck/eslint-plugin'];
         delete deps['@tablecheck/scripts'];
         delete deps['babel-preset-razzle'];
-        delete deps['razzle'];
+        delete deps.razzle;
         delete deps['razzle-dev-utils'];
       }
     }

@@ -27,7 +27,7 @@
     "@nx/linter": "16.3.2",
     "@tablecheck/eslint-config": "^1.8.2",
     "@tablecheck/frontend-library": "^1.0.0",
-    "@tablecheck/frontend-utils": "^1.1.0",
+    "@tablecheck/frontend-utils": "^2.0.0",
     "chalk": "^4.1.2",
     "execa": "7.1.1",
     "flat": "5.0.2",
