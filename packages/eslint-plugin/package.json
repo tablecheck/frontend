@@ -22,7 +22,7 @@
     "build": "tsc -p ./tsconfig.build.json"
   },
   "dependencies": {
-    "@tablecheck/frontend-utils": "^1.1.0",
+    "@tablecheck/frontend-utils": "^2.0.0",
     "eslint-module-utils": "2.8.0"
   },
   "peerDependencies": {
