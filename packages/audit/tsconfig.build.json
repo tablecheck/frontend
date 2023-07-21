@@ -12,7 +12,8 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {}
+    "paths": {},
+    "module": "NodeNext"
   },
   "exclude": ["node_modules"],
   "files": []

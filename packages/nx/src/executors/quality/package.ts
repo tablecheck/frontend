@@ -1,15 +1,15 @@
 import * as path from 'path';
 
-import * as chalk from 'chalk';
+import {
+  getLernaPaths,
+  processPackage,
+  unicodeEmoji as icons,
+} from '@tablecheck/frontend-utils';
+import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import type { PackageJson } from 'type-fest';
 
-async function evaluatePackage({
-  dependencies,
-  devDependencies,
-  name,
-}: PackageJson) {
-  const { getLernaPaths } = await import('@tablecheck/frontend-utils');
+function evaluatePackage({ dependencies, devDependencies, name }: PackageJson) {
   // package.json version keys check
   const invalidVersionValues: string[] = [];
   const lernaPaths = getLernaPaths();
@@ -62,9 +62,6 @@ export async function packageCheck({
   directory: string;
   shouldFix: boolean;
 }) {
-  const { processPackage, unicodeEmoji: icons } = await import(
-    '@tablecheck/frontend-utils'
-  );
   console.log(
     chalk.cyan(
       `  ${icons.info}  We recommend using \`npm-upgrade\` to manage dependencies.\n`,
@@ -74,9 +71,9 @@ export async function packageCheck({
     packageDir: directory,
     shouldWriteFile: shouldFix,
 
-    packageProcessor: async (appPackage, packagePath) => {
+    packageProcessor: (appPackage, packagePath) => {
       const displayPath = path.relative(process.cwd(), packagePath);
-      const invalidVersionValues = await evaluatePackage(appPackage);
+      const invalidVersionValues = evaluatePackage(appPackage);
 
       if (invalidVersionValues.length) {
         console.error(
@@ -93,7 +90,7 @@ export async function packageCheck({
         throw new Error('Invalid dependencies');
       }
 
-      return appPackage;
+      return Promise.resolve(appPackage);
     },
   });
   if (result.success) {

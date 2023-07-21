@@ -4,11 +4,10 @@
   "license": "MIT",
   "author": "TableCheck Inc.",
   "version": "1.0.0",
-  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },

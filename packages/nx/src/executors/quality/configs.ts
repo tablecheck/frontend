@@ -1,11 +1,11 @@
 import * as path from 'path';
 
-import * as chalk from 'chalk';
+import { unicodeEmoji as icons } from '@tablecheck/frontend-utils';
+import chalk from 'chalk';
 import { flatten } from 'flat';
 import * as fs from 'fs-extra';
 
-export async function configCheck(cwd: string) {
-  const { unicodeEmoji: icons } = await import('@tablecheck/frontend-utils');
+export function configCheck(cwd: string) {
   const configDirPath = path.join(cwd, 'config');
   if (!fs.existsSync(configDirPath)) {
     console.log(

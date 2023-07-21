@@ -10,7 +10,7 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["prepare", "^build"],
       "inputs": ["default", "^default", "baseTypescript"]
     },
     "test": {

@@ -8,7 +8,6 @@ import {
 } from '@nx/devkit';
 
 export async function qualityGenerator(tree: Tree) {
-  const { execaOptions } = await import('@tablecheck/frontend-utils');
   const { execa } = await import('execa');
   await addDependenciesToPackageJson(
     tree,
@@ -23,7 +22,13 @@ export async function qualityGenerator(tree: Tree) {
     },
   )();
   generateFiles(tree, path.join(__dirname, 'files'), tree.root, {});
-  await execa('npx', ['husky', 'install'], execaOptions);
+  await execa('npx', ['husky', 'install'], {
+    cwd: process.cwd(),
+    stdin: 'inherit',
+    stdout: 'inherit',
+    stderr: 'inherit',
+    preferLocal: true,
+  });
   await formatFiles(tree);
 }
 

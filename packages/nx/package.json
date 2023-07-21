@@ -13,10 +13,10 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "templates",
     "executors.json",
     "generators.json",
-    "migrations.json"
+    "migrations.json",
+    "templates"
   ],
   "scripts": {
     "build": "tsc -p ./tsconfig.build.json",
