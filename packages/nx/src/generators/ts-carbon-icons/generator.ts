@@ -1,8 +1,10 @@
 import * as path from 'path';
 
-import { formatFiles, Tree } from '@nx/devkit';
-import { detectInstalledVersion } from '@tablecheck/frontend-utils';
-import * as fs from 'fs-extra';
+import { Tree } from '@nx/devkit';
+import {
+  detectInstalledVersion,
+  outputPrettyFile,
+} from '@tablecheck/frontend-utils';
 
 export async function tsCarbonIconsGenerator(tree: Tree) {
   const projectRoot = tree.root;
@@ -12,8 +14,9 @@ export async function tsCarbonIconsGenerator(tree: Tree) {
       '@carbon/icons-react',
       '11',
     );
-    const carbonIcons = (await import(
-      path.join(carbonPackageJsonPath, '..')
+    const carbonIcons = require(path.join(
+      carbonPackageJsonPath,
+      '..',
     )) as Record<string, never>;
     const fileContent = `${Object.keys(carbonIcons).reduce(
       (result, iconName) =>
@@ -28,11 +31,10 @@ export async function tsCarbonIconsGenerator(tree: Tree) {
         >;
     `,
     )}\n}`;
-    fs.outputFileSync(
+    await outputPrettyFile(
       path.join(projectRoot, 'src', 'definitions', 'carbonIcons.d.ts'),
       fileContent,
     );
-    await formatFiles(tree);
   } catch (e) {
     console.warn(e);
   }
