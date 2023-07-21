@@ -1,10 +1,10 @@
+import { execSync } from 'child_process';
 import * as path from 'path';
 
 import {
   formatFiles,
   generateFiles,
   addDependenciesToPackageJson,
-  runExecutor,
   Tree,
 } from '@nx/devkit';
 
@@ -22,20 +22,10 @@ export async function qualityGenerator(tree: Tree) {
     },
   )();
   generateFiles(tree, path.join(__dirname, 'files'), tree.root, {});
-  await runExecutor(
-    {
-      project: tree.root,
-      target: 'nx:run-commands',
-    },
-    {
-      command: 'npx husky install',
-    },
-    {
-      cwd: process.cwd(),
-      root: tree.root,
-      isVerbose: false,
-    },
-  );
+  execSync('npx husky install', {
+    cwd: process.cwd(),
+    stdio: 'inherit',
+  });
   await formatFiles(tree);
 }
 
