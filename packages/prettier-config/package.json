@@ -10,7 +10,7 @@
   "version": "1.0.0",
   "main": "./config.json",
   "peerDependencies": {
-    "prettier": "^3"
+    "prettier": "^2"
   },
   "engines": {
     "node": ">= 16.16.0"
