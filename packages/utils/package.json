@@ -31,7 +31,7 @@
     "glob": "^10.3.1",
     "jiti": "^1.18.2",
     "minimist": "^1.2.8",
-    "prettier": "^3.0.0",
+    "prettier": "^2",
     "prettier-package-json": "2.8.0"
   },
   "devDependencies": {
