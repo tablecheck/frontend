@@ -1,4 +1,4 @@
-import { ExecutorContext } from '@nx/devkit';
+import { ExecutorContext, runExecutor as nxExec } from '@nx/devkit';
 import lintRun from '@nx/linter/src/executors/eslint/lint.impl.js';
 
 import { configCheck } from './configs.js';
@@ -23,7 +23,11 @@ export default async function runExecutor(
   try {
     if (options.checkConfig) configCheck(root);
     await packageCheck({ directory: root, shouldFix: options.fix });
-    return await lintRun(
+    return await nxExec(
+      {
+        project: context.projectName,
+        target: '@nx/linter:eslint',
+      },
       {
         ...options,
         noEslintrc: false,

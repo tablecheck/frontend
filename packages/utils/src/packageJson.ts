@@ -9,7 +9,7 @@ import * as semver from 'semver';
 import type { PackageJson } from 'type-fest';
 
 import { getArgv } from './argv.js';
-import { writePrettyFile } from './prettier.js';
+import { outputPrettyFile } from './prettier.js';
 import { unicodeEmoji } from './unicodeEmoji.js';
 
 const argv = getArgv();
@@ -163,7 +163,7 @@ export async function processPackage({
       },
     );
     if (shouldWriteFile) {
-      await writePrettyFile(
+      await outputPrettyFile(
         path.join(packageDir, 'package.json'),
         prettyFormatPackage(result, prettyFormatOptions),
       );

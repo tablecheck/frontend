@@ -4,11 +4,11 @@ import {
   formatFiles,
   generateFiles,
   addDependenciesToPackageJson,
+  runExecutor,
   Tree,
 } from '@nx/devkit';
 
 export async function qualityGenerator(tree: Tree) {
-  const { execa } = await import('execa');
   await addDependenciesToPackageJson(
     tree,
     {},
@@ -22,13 +22,20 @@ export async function qualityGenerator(tree: Tree) {
     },
   )();
   generateFiles(tree, path.join(__dirname, 'files'), tree.root, {});
-  await execa('npx', ['husky', 'install'], {
-    cwd: process.cwd(),
-    stdin: 'inherit',
-    stdout: 'inherit',
-    stderr: 'inherit',
-    preferLocal: true,
-  });
+  await runExecutor(
+    {
+      project: tree.root,
+      target: 'nx:run-commands',
+    },
+    {
+      command: 'npx husky install',
+    },
+    {
+      cwd: process.cwd(),
+      root: tree.root,
+      isVerbose: false,
+    },
+  );
   await formatFiles(tree);
 }
 

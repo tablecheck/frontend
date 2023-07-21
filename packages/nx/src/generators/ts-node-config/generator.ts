@@ -1,7 +1,10 @@
 import * as path from 'path';
 
-import { formatFiles, Tree } from '@nx/devkit';
-import { detectInstalledVersion } from '@tablecheck/frontend-utils';
+import { Tree } from '@nx/devkit';
+import {
+  detectInstalledVersion,
+  outputPrettyFile,
+} from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
 // eslint-disable-next-line @tablecheck/forbidden-imports
 import { uniq } from 'lodash';
@@ -48,7 +51,7 @@ export async function tsNodeConfigGenerator(tree: Tree) {
       fs.existsSync(devConfigFilePath) ? fs.readJSONSync(devConfigFilePath) : {}
     ) as Record<string, unknown>;
     const fileContent = `declare module '@tablecheck/scripts' {
-        // this file is autobuilt inside configureTypescript, all changes here will be overwritten
+        // this file is autobuilt with \`nx generate @tablecheck/nx:ts-node-config\`, all changes here will be overwritten
         interface DefaultConfig ${buildTypes(defaultConfigJson)}
         export interface Config extends DefaultConfig ${buildTypes(
           devConfigJson,
@@ -58,11 +61,10 @@ export async function tsNodeConfigGenerator(tree: Tree) {
           const CONFIG: Config;
         }
       }`;
-    fs.outputFileSync(
+    await outputPrettyFile(
       path.join(projectRoot, 'src', 'definitions', 'nodeConfig.d.ts'),
       fileContent,
     );
-    await formatFiles(tree);
   } catch (e) {
     console.warn(e);
   }
