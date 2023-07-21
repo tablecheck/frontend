@@ -23,7 +23,7 @@ export async function buildPackage({
 
   prompts.intro(
     `Build ${
-      ((await import(packagePath)) as PackageJson).name ||
+      (fs.readJSONSync(packagePath) as PackageJson).name ||
       cwd.trim() ||
       'library'
     }`,

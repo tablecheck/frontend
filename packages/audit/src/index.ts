@@ -1,7 +1,6 @@
 import * as path from 'path';
 
 import * as prompts from '@clack/prompts';
-import { execaOptions } from '@tablecheck/frontend-utils';
 import CVSS, {
   DetailedVectorObject,
   VectorMetric,
@@ -60,7 +59,7 @@ async function updateWhitelist(rootPath: string) {
     'auditjs',
     [...getAuditjsArgs(false), '--json'],
     {
-      cwd: execaOptions.cwd,
+      cwd: process.cwd(),
       preferLocal: true,
       reject: false,
     },

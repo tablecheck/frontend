@@ -1,6 +1,7 @@
 import * as path from 'path';
 
-import { formatFiles, readProjectConfiguration, Tree } from '@nx/devkit';
+import { formatFiles, Tree } from '@nx/devkit';
+import { detectInstalledVersion } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
 // eslint-disable-next-line @tablecheck/forbidden-imports
 import { uniq } from 'lodash';
@@ -31,7 +32,6 @@ function buildTypes(configValue: unknown): string {
 }
 
 export async function tsNodeConfigGenerator(tree: Tree) {
-  const { detectInstalledVersion } = await import('@tablecheck/frontend-utils');
   const projectRoot = tree.root;
   try {
     detectInstalledVersion(projectRoot, 'config', '*');

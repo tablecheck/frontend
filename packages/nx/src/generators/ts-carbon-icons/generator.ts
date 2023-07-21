@@ -1,10 +1,10 @@
 import * as path from 'path';
 
 import { formatFiles, Tree } from '@nx/devkit';
+import { detectInstalledVersion } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
 
 export async function tsCarbonIconsGenerator(tree: Tree) {
-  const { detectInstalledVersion } = await import('@tablecheck/frontend-utils');
   const projectRoot = tree.root;
   try {
     const carbonPackageJsonPath = detectInstalledVersion(
