@@ -11,8 +11,8 @@
       "description": "ts-node-config generator"
     },
     "quality": {
-      "factory": "./src/generators/quality/generator",
-      "schema": "./src/generators/quality/schema.json",
+      "factory": "./dist/generators/quality/generator",
+      "schema": "./dist/generators/quality/schema.json",
       "description": "quality generator"
     }
   }
