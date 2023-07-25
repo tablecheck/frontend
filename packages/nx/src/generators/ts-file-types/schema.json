@@ -6,8 +6,9 @@
   "properties": {
     "svgAsComponent": {
       "type": "boolean",
-      "description": "",
-      "x-prompt": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?"
+      "description": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
+      "x-prompt": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
+      "x-priority": "important"
     }
   }
 }
