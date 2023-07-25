@@ -4,3 +4,6 @@ build
 dist
 docs
 node_modules
+*.typegen.ts
+*.gen.ts
+*.gen.d.ts

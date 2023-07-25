@@ -11,7 +11,7 @@ export async function tsFileTypesGenerator(
   generateFiles(
     tree,
     path.join(__dirname, 'files', schema.svgAsComponent ? 'srcWithSvg' : 'src'),
-    path.join(tree.root, 'src'),
+    path.relative(process.cwd(), path.join(tree.root, 'src')),
     {},
   );
   await formatFiles(tree);

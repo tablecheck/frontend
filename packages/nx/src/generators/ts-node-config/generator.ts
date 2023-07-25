@@ -53,16 +53,16 @@ export async function tsNodeConfigGenerator(tree: Tree) {
     const fileContent = `declare module '@tablecheck/scripts' {
         // this file is autobuilt with \`nx generate @tablecheck/nx:ts-node-config\`, all changes here will be overwritten
         interface DefaultConfig ${buildTypes(defaultConfigJson)}
-        export interface Config extends DefaultConfig ${buildTypes(
+        export interface DevelopmentConfig extends DefaultConfig ${buildTypes(
           devConfigJson,
         )}
       
         global {
-          const CONFIG: Config;
+          const CONFIG: DevelopmentConfig;
         }
       }`;
     await outputPrettyFile(
-      path.join(projectRoot, 'src', 'definitions', 'nodeConfig.d.ts'),
+      path.join(projectRoot, 'src', 'definitions', 'nodeConfig.gen.d.ts'),
       fileContent,
     );
   } catch (e) {
