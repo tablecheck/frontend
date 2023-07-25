@@ -55,7 +55,7 @@
   "devDependencies": {
     "@types/babel__core": "^7.20.1",
     "@types/fs-extra": "^11.0.1",
-    "type-fest": "3.12.0",
+    "type-fest": "4.0.0",
     "typescript": "5.1.6",
     "vite": "4.4.1",
     "vite-tsconfig-paths": "4.2.0",
