@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "Quality",
-  "title": "Generate Quality setup and dependencies",
+  "$id": "TsFileTypes",
+  "title": "Add typescript file types definition",
   "type": "object",
   "properties": {
     "svgAsComponent": {
