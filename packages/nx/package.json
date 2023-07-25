@@ -19,7 +19,7 @@
     "templates"
   ],
   "scripts": {
-    "build": "tsc -p ./tsconfig.build.json",
+    "build": "tsc -p ./tsconfig.build.json && node ./scripts/copyTemplateFiles.mjs",
     "prepublish": "npm run build"
   },
   "dependencies": {

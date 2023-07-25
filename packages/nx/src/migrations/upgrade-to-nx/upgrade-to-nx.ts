@@ -10,8 +10,6 @@ import * as fs from 'fs-extra';
 import { PackageJson } from 'type-fest';
 
 import generateQuality from '../../generators/quality/generator';
-import generateIcons from '../../generators/ts-carbon-icons/generator';
-import generateConfig from '../../generators/ts-node-config/generator';
 
 export default async function update(tree: Tree) {
   const src = path.join(__dirname, 'files', 'pre-commit');
@@ -59,7 +57,5 @@ export default async function update(tree: Tree) {
     },
   )();
 
-  await generateQuality(tree);
-  await generateConfig(tree);
-  await generateIcons(tree);
+  await generateQuality(tree, { svgAsComponent: true });
 }
