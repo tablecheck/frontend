@@ -32,7 +32,7 @@ export async function tsCarbonIconsGenerator(tree: Tree) {
     `,
     )}\n}`;
     await outputPrettyFile(
-      path.join(projectRoot, 'src', 'definitions', 'carbonIcons.d.ts'),
+      path.join(projectRoot, 'src', 'definitions', 'carbonIcons.gen.d.ts'),
       fileContent,
     );
   } catch (e) {

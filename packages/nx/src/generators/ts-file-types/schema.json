@@ -7,7 +7,7 @@
     "svgAsComponent": {
       "type": "boolean",
       "description": "",
-      "x-prompt": "Should `import name from 'name.svg'` result in a react component (using plugins/transforms) or a file path?"
+      "x-prompt": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?"
     }
   }
 }

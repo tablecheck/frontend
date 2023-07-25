@@ -38,7 +38,12 @@ export async function qualityGenerator(
       'nx generate @tablecheck/nx:ts-node-config';
     return json;
   });
-  generateFiles(tree, path.join(__dirname, 'files'), tree.root, {});
+  generateFiles(
+    tree,
+    path.join(__dirname, 'files'),
+    path.relative(process.cwd(), tree.root),
+    {},
+  );
   execSync('npx husky install', {
     cwd: process.cwd(),
     stdio: 'inherit',

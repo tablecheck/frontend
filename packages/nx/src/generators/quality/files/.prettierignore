@@ -7,3 +7,6 @@ styleguide
 coverage
 docs
 CHANGELOG.md
+*.typegen.ts
+*.gen.ts
+*.gen.d.ts
