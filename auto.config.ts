@@ -1,17 +1,11 @@
 import type { IAllContributorsPluginOptions } from '@auto-it/all-contributors';
-import type { INpmConfig } from '@auto-it/npm';
 import type { ISlackPluginOptions } from '@auto-it/slack';
 import type { AutoRc } from 'auto';
 
 export default function rc(): AutoRc {
   return {
     plugins: [
-      [
-        'npm',
-        {
-          forcePublish: true,
-        } satisfies INpmConfig,
-      ],
+      'npm',
       [
         'all-contributors',
         {
