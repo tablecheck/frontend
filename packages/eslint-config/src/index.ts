@@ -29,7 +29,7 @@ let reactVersion = '17'; // set to 17 for legacy reasons or to not error if reac
 const packageJsonPath = path.resolve(path.join(process.cwd(), 'package.json'));
 if (fs.existsSync(packageJsonPath)) {
   const pkg = fs.readJsonSync(packageJsonPath) as PackageJson;
-  if (pkg.dependencies && pkg.dependencies.react) {
+  if (pkg.dependencies?.react) {
     const versionOnly = pkg.dependencies.react
       .replace(/^[^0-9]+/gi, '')
       .replace(/\..+$/gi, '');

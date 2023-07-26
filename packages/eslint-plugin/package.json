@@ -29,10 +29,11 @@
     "eslint": "^8"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^5.61.0",
-    "@typescript-eslint/types": "^5.61.0",
-    "@typescript-eslint/typescript-estree": "^5.61.0",
-    "@typescript-eslint/utils": "^5.61.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "@typescript-eslint/rule-tester": "^6.2.0",
+    "@typescript-eslint/types": "^6.2.0",
+    "@typescript-eslint/typescript-estree": "^6.2.0",
+    "@typescript-eslint/utils": "^6.2.0",
     "fs-extra": "11.1.1",
     "type-fest": "4.0.0",
     "typescript": "5.1.6",

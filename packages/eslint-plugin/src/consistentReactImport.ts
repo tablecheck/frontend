@@ -10,7 +10,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
     type: 'suggestion',
     docs: {
       description: 'Ensure that react is always imported and used consistently',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     fixable: 'code',
     messages: {
@@ -30,13 +30,16 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
       ImportDeclaration(node) {
         const importName = node.source.value || '';
         if (importName !== 'react') return;
-        if (node.specifiers[0].type === 'ImportNamespaceSpecifier') {
+        if (
+          node.specifiers[0].type ===
+          TSESTree.AST_NODE_TYPES.ImportNamespaceSpecifier
+        ) {
           existingReactNamespace = node.specifiers[0].local.name;
           return;
         }
         importNodes.push(node);
       },
-      'Program:exit': function () {
+      'Program:exit': function programExit() {
         const scope = context.getScope();
         const reactNamespace = existingReactNamespace || 'React';
         importNodes.forEach((node, index) => {
@@ -52,7 +55,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                 importedName: string,
               ) {
                 const { variables, childScopes } = updateScope;
-                if (updateScope.type !== 'global') {
+                if (updateScope.type !== TSESLint.Scope.ScopeType.global) {
                   const variableDefinition = variables.find(
                     ({ name }) => name === localName,
                   );
@@ -75,9 +78,9 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                     });
                   // else is an unused import
                 }
-                for (let i = 0; i < childScopes.length; i += 1) {
+                for (const child of childScopes) {
                   recursivelyUpdateVariableUsage(
-                    childScopes[i],
+                    child,
                     localName,
                     importedName,
                   );
@@ -91,27 +94,34 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
                   importedName = (importSpecifier as ImportSpecifier).imported
                     .name;
                 }
-                if (importSpecifier.type !== 'ImportDefaultSpecifier') {
+                if (
+                  importSpecifier.type !==
+                  TSESTree.AST_NODE_TYPES.ImportDefaultSpecifier
+                ) {
                   recursivelyUpdateVariableUsage(
                     scope,
                     localName,
                     importedName,
                   );
                   jsxElements.forEach((jsxNode) => {
-                    // @ts-expect-error
-                    if (jsxNode.openingElement.name.name === localName) {
+                    if (
+                      jsxNode.openingElement.name.type ===
+                        TSESTree.AST_NODE_TYPES.JSXIdentifier &&
+                      jsxNode.openingElement.name.name === localName
+                    ) {
                       replacements.push(
                         fixer.replaceText(
                           jsxNode.openingElement.name,
                           `${reactNamespace}.${importedName}`,
                         ),
                       );
-                      replacements.push(
-                        fixer.replaceText(
-                          jsxNode.closingElement.name,
-                          `${reactNamespace}.${importedName}`,
-                        ),
-                      );
+                      if (jsxNode.closingElement)
+                        replacements.push(
+                          fixer.replaceText(
+                            jsxNode.closingElement.name,
+                            `${reactNamespace}.${importedName}`,
+                          ),
+                        );
                     }
                   });
                 }

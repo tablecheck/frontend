@@ -1,16 +1,17 @@
-import type {
-  Node,
-  ImportDeclaration,
-  ImportSpecifier,
-  Identifier,
-} from '@typescript-eslint/types/dist/generated/ast-spec';
+import { TSESTree } from '@typescript-eslint/types';
 import { TSESLint } from '@typescript-eslint/utils';
-import { RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
+import { RuleFix } from '@typescript-eslint/utils/ts-eslint';
+
+type ImportDeclaration = TSESTree.ImportDeclaration;
+type ImportSpecifier = TSESTree.ImportSpecifier;
+type Identifier = TSESTree.Identifier;
+type Node = TSESTree.Node;
 
 export const messageId = 'incorrectImport' as const;
 
 function assertForbiddenImport(node: Node): asserts node is ImportDeclaration {
-  if (node.type !== 'ImportDeclaration') throw new Error('Invalid node type');
+  if (node.type !== TSESTree.AST_NODE_TYPES.ImportDeclaration)
+    throw new Error('Invalid node type');
   const importName = node.source.value;
   const isForbiddenImport = [
     /^lodash$/,
@@ -62,7 +63,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
     docs: {
       description:
         'Ensure that certain packages are using specific imports instead of using the default import',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     fixable: 'code',
     messages: {
@@ -73,14 +74,16 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
   defaultOptions: [],
   create: (context) => ({
     ImportDeclaration(node) {
-      try {
-        assertForbiddenImport(node);
-      } catch (e) {
-        return;
-      }
       const importName = node.source.value || '';
 
       const scope = context.getScope();
+      for (const importSpecifier of node.specifiers) {
+        try {
+          assertForbiddenImport(importSpecifier.parent);
+        } catch (e) {
+          return;
+        }
+      }
       context.report({
         node,
         messageId,
@@ -91,24 +94,22 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
           const replacements: RuleFix[] = [];
           let newImports = '';
           node.specifiers.forEach((importSpecifier) => {
-            try {
-              assertForbiddenImport(importSpecifier.parent);
-            } catch (e) {
-              return;
-            }
             const localName = importSpecifier.local.name;
             let importedName = localName;
             if ((importSpecifier as ImportSpecifier).imported?.name) {
               importedName = (importSpecifier as ImportSpecifier).imported.name;
             }
-            if (importSpecifier.type === 'ImportDefaultSpecifier') {
+            if (
+              importSpecifier.type ===
+              TSESTree.AST_NODE_TYPES.ImportDefaultSpecifier
+            ) {
               const replacementImports: [string, string][] = [];
 
-              for (let i = 0; i < scope.references.length; i += 1) {
-                if (scope.references[i].identifier.name === localName) {
-                  const { parent } = scope.references[i].identifier;
+              for (const ref of scope.references) {
+                if (ref.identifier.name === localName) {
+                  const { parent } = ref.identifier;
                   switch (parent?.type) {
-                    case 'MemberExpression': {
+                    case TSESTree.AST_NODE_TYPES.MemberExpression: {
                       const memberName = (parent.property as Identifier).name;
                       const existingReplacement = replacementImports.find(
                         ([, replacementImportName]) =>

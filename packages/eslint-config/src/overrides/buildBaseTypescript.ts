@@ -43,8 +43,8 @@ export function buildBaseTypescript(
     parser: '@typescript-eslint/parser',
     extends: [
       'airbnb-typescript',
-      'plugin:@typescript-eslint/eslint-plugin/eslint-recommended',
-      'plugin:@typescript-eslint/eslint-plugin/recommended-requiring-type-checking',
+      'plugin:@typescript-eslint/recommended-type-checked',
+      'plugin:@typescript-eslint/stylistic-type-checked',
       'plugin:eslint-comments/recommended',
       'prettier',
       'plugin:react-hooks/recommended',
@@ -70,6 +70,17 @@ export function buildBaseTypescript(
       ...rules,
       ...eslintTypescriptRules,
       '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/prefer-nullish-coalescing': [
+        'error',
+        {
+          ignoreConditionalTests: true,
+          ignoreMixedLogicalExpressions: true,
+          ignorePrimitives: {
+            string: true,
+            boolean: true,
+          },
+        },
+      ],
       ...forcedRules,
     },
   };

@@ -50,6 +50,7 @@ export function detectInstalledVersion(
 }
 
 declare module 'type-fest' {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace PackageJson {
     export interface NonStandardEntryPoints {
       /**

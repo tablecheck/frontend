@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 export const configurableRuleOverrides: Linter.ConfigOverride[] = [];
 
 void import('@tablecheck/frontend-utils').then(({ userConfig }) => {
-  const projectTypes = userConfig?.quality?.projectType || 'default';
+  const projectTypes = userConfig?.quality?.projectType ?? 'default';
 
   const projectMaps =
     typeof projectTypes === 'string'

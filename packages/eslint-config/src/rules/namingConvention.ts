@@ -1,5 +1,4 @@
 import type { Linter } from 'eslint';
-import type {} from '@typescript-eslint/eslint-plugin';
 
 export const namingRules: Linter.RulesRecord = {
   camelcase: 'off',

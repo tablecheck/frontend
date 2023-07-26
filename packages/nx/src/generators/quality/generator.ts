@@ -14,6 +14,7 @@ import {
 import merge from 'lodash/merge';
 import { PackageJson } from 'type-fest';
 
+import { getLatestVersions } from '../../utils/dependencies';
 import generateIcons from '../ts-carbon-icons/generator';
 import generateFileTypes from '../ts-file-types/generator';
 import { FileTypesGeneratorSchema } from '../ts-file-types/schema';
@@ -65,23 +66,9 @@ function updateProjectConfig(tree: Tree, projectName: string) {
   }
 }
 
-function getLatestVersion(dependency: string) {
-  return execSync(`npm show ${dependency} version`).toString().trim();
-}
-
-function getLatestVersions(dependencies: string[]) {
-  return dependencies.reduce(
-    (result, dependency) => ({
-      ...result,
-      [dependency]: getLatestVersion(dependency),
-    }),
-    {},
-  );
-}
-
 export async function qualityGenerator(
   tree: Tree,
-  schema: FileTypesGeneratorSchema & { project?: string },
+  schema: FileTypesGeneratorSchema & { project: string },
 ) {
   await addDependenciesToPackageJson(
     tree,
@@ -90,17 +77,19 @@ export async function qualityGenerator(
       'prettier',
       'husky',
       'commitlint',
+      'eslint',
       '@tablecheck/commitlint-config',
       '@tablecheck/eslint-config',
       '@tablecheck/prettier-config',
     ]),
   )();
   updateJson(tree, 'package.json', (json: PackageJson) => {
+    if (!json.scripts) json.scripts = {};
     json.scripts.audit = 'tablecheck-frontend-audit';
     json.scripts['audit:ci'] = 'tablecheck-frontend-audit --ci';
     json.scripts.lint = 'nx affected --target=quality && prettier -c .';
     json.scripts.format =
-      'nx affected --target=quality:format && prettier -w .';
+      'nx affected --target=quality:format && prettier -w --loglevel warn .';
     return json;
   });
   updateProjectConfig(tree, schema.project);

@@ -7,8 +7,9 @@ export default async function runExecutor(
   options: BuildLibExecutorSchema,
   context: ExecutorContext,
 ) {
-  const metadata = context.projectsConfigurations.projects[context.projectName];
+  const metadata =
+    context.projectsConfigurations?.projects[context.projectName || '.'];
   return {
-    success: await buildPackage({ cwd: metadata.root, ...options }),
+    success: await buildPackage({ cwd: metadata!.root, ...options }),
   };
 }

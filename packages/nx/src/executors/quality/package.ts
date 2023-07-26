@@ -45,10 +45,10 @@ function evaluatePackage({ dependencies, devDependencies, name }: PackageJson) {
     }
   }
 
-  Object.keys(dependencies || {}).forEach((key) =>
+  Object.keys(dependencies ?? {}).forEach((key) =>
     validateVersion(key, dependencies?.[key], name),
   );
-  Object.keys(devDependencies || {}).forEach((key) =>
+  Object.keys(devDependencies ?? {}).forEach((key) =>
     validateVersion(key, devDependencies?.[key], name),
   );
 

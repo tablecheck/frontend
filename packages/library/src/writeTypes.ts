@@ -6,6 +6,7 @@ import * as ts from 'typescript';
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 
 class TypesTransformer {
+  // @ts-expect-error - should be set by the `read` method immediatly after the class is instantiated
   private sourceFile: ts.SourceFile;
 
   private libEsmCwd: string;
@@ -68,7 +69,12 @@ class TypesTransformer {
     }
 
     if (ts.isExportDeclaration(node)) {
-      const newPath = this.checkAndTransformPath(node);
+      if (!node.moduleSpecifier) return node;
+      const newPath = this.checkAndTransformPath(
+        node as Omit<ts.ExportDeclaration, 'moduleSpecifier'> & {
+          moduleSpecifier: ts.Expression;
+        },
+      );
       const updatedExportDeclaration = ts.factory.updateExportDeclaration(
         node,
         node.modifiers,
@@ -88,7 +94,11 @@ class TypesTransformer {
   }
 
   private checkAndTransformPath(
-    node: ts.ImportDeclaration | ts.ExportDeclaration,
+    node:
+      | ts.ImportDeclaration
+      | (Omit<ts.ExportDeclaration, 'moduleSpecifier'> & {
+          moduleSpecifier: ts.Expression;
+        }),
   ): ts.StringLiteral {
     const importPath = node.moduleSpecifier.getText(this.sourceFile);
     if (importPath.match(/^\.\/|^\.\.\//gi)) {
@@ -108,7 +118,7 @@ class TypesTransformer {
           path.dirname(this.filePath),
           absolutePath,
         );
-        if (relativeImportPath[0] !== '.')
+        if (!relativeImportPath.startsWith('.'))
           relativeImportPath = `./${relativeImportPath}`;
         if (!this.importedFiles.includes(absolutePath)) {
           this.importedFiles.push(absolutePath);
