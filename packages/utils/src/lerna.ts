@@ -12,7 +12,7 @@ function lernaList(): string[] {
   const lernaConfig = fs.readJSONSync(
     path.join(process.cwd(), 'lerna.json'),
   ) as { packages?: string[] };
-  const packages = lernaConfig.packages || [];
+  const packages = lernaConfig.packages ?? [];
   return packages.reduce(
     (acc: string[], pattern: string) =>
       acc.concat(glob.sync(pattern, { cwd: process.cwd() })),

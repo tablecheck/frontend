@@ -6,7 +6,7 @@ export function jsxPlugin(shouldUseEmotion: boolean): rollup.Plugin {
   return {
     name: '@tablecheck/scripts-library:jsx',
     options(inputOptions) {
-      let acornPlugins = inputOptions.acornInjectPlugins || [];
+      let acornPlugins = inputOptions.acornInjectPlugins ?? [];
       if (!Array.isArray(acornPlugins)) acornPlugins = [acornPlugins];
       acornPlugins.push(() => jsx());
     },

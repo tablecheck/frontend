@@ -64,7 +64,7 @@ async function updateWhitelist(rootPath: string) {
       reject: false,
     },
   );
-  type ReportDependency = {
+  interface ReportDependency {
     description: string;
     coordinates: string;
     reference: string;
@@ -75,7 +75,7 @@ async function updateWhitelist(rootPath: string) {
       cvssVector: string;
       description: string;
     }[];
-  };
+  }
   const report = JSON.parse(auditjsExec.stdout) as ReportDependency[];
   const updatePackages: `${string}@${string}`[] = [];
   interface AuditjsConfig {
@@ -195,9 +195,9 @@ ${this.getVectorMetrics(vector)
     }
 
     getVectorMetrics(vector: DetailedVectorObject): string[] {
-      let scopeKey = 'changed';
-      if (vector.metrics.S && vector.metrics.S.value) {
-        scopeKey = vector.metrics.S.value.toLowerCase();
+      let scopeKey: 'changed' | 'unchanged' = 'changed';
+      if (vector.metrics.S?.value) {
+        scopeKey = vector.metrics.S.value.toLowerCase() as typeof scopeKey;
       }
       return (
         Object.keys(vector.metrics) as (keyof (typeof vector)['metrics'])[]
@@ -207,27 +207,29 @@ ${this.getVectorMetrics(vector)
     }
 
     getVectorMetricScore(
-      scopeKey: string,
+      scopeKey: 'changed' | 'unchanged',
       { fullName, value, abbr, valueAbbr }: VectorMetric,
     ): string {
       const metricDefinition = findMetric(abbr);
-      const valueDefinition = metricDefinition.metrics.find(
+      const valueDefinition = metricDefinition?.metrics.find(
         (def) => def.abbr === valueAbbr,
       );
       if (!valueDefinition) {
         return colouredByScore(99, `${chalk.bold(`${fullName}:`)} ${value}`);
       }
-      let score = (
-        valueDefinition as Extract<
-          (typeof metricDefinition)['metrics'][number],
+      const scoreDefinition = (
+        valueDefinition as never as Extract<
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          Extract<typeof metricDefinition, { metrics: any }>['metrics'][number],
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           { numerical: any }
         >
       ).numerical;
-      if (typeof score === 'object') {
-        score = score[scopeKey] * 10;
+      let score;
+      if (typeof scoreDefinition === 'object') {
+        score = scoreDefinition[scopeKey] * 10;
       } else {
-        score *= 10;
+        score = scoreDefinition * 10;
       }
       return colouredByScore(score, `${chalk.bold(`${fullName}:`)} ${value}`);
     }

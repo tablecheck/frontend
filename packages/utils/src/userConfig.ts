@@ -12,7 +12,7 @@ const explorer = cosmiconfigSync('@tablecheck');
 
 export type ProjectType = 'default' | 'cli' | 'react-framework';
 
-export type CosmicConfigShape = {
+export interface CosmicConfigShape {
   /**
    * Set this to true to output a single es5 file bundled build of the library.
    * This can be useful when having to deal with legacy build systems.
@@ -47,7 +47,7 @@ export type CosmicConfigShape = {
      */
     projectType: ProjectType | Record<string, ProjectType>;
   }>;
-};
+}
 
 function tryRequire(id: string, rootDir: string = process.cwd()) {
   // this is to workaround ESM interop issues
@@ -73,7 +73,7 @@ function getConfig(): Partial<CosmicConfigShape> {
   if (tsConfig) return tsConfig;
   const jsConfig = tryRequire('./tablecheck.config.js');
   if (jsConfig) return jsConfig;
-  return (explorer.search() || { config: {} }).config as never;
+  return (explorer.search() ?? { config: {} }).config as never;
 }
 
 export const userConfig = getConfig();

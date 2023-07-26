@@ -23,8 +23,7 @@ export async function buildPackage({
 
   prompts.intro(
     `Build ${
-      (fs.readJSONSync(packagePath) as PackageJson).name ||
-      cwd.trim() ||
+      ((fs.readJSONSync(packagePath) as PackageJson).name ?? cwd.trim()) ||
       'library'
     }`,
   );
@@ -32,11 +31,7 @@ export async function buildPackage({
   const packageTsconfig = fs.readJsonSync(
     path.join(cwd, 'tsconfig.json'),
   ) as TsConfigJson;
-  if (
-    !packageTsconfig.compilerOptions ||
-    !packageTsconfig.compilerOptions.outDir
-  )
-    return;
+  if (!packageTsconfig.compilerOptions?.outDir) return;
 
   const libCwd = path.join(cwd, packageTsconfig.compilerOptions.outDir);
   try {
@@ -97,7 +92,7 @@ export async function buildPackage({
     dtsSpinner.start('Compiling d.ts types');
 
     const { paths: tsPaths, baseUrl } = packageTsconfig.compilerOptions;
-    const pathKeys = Object.keys(tsPaths || {});
+    const pathKeys = Object.keys(tsPaths ?? {});
     if (baseUrl) {
       fs.readdirSync(path.join(cwd, baseUrl), {
         withFileTypes: true,
@@ -121,7 +116,7 @@ export async function buildPackage({
       path.join(
         libCwd,
         path
-          .relative(path.join(cwd, baseUrl), bundleEntry)
+          .relative(baseUrl ? path.join(cwd, baseUrl) : cwd, bundleEntry)
           .replace(/\.tsx?$/, '.d.ts'),
       ),
     );
@@ -171,6 +166,7 @@ export async function buildPackage({
     }
 
     if (rollupWarnings.length) {
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       prompts.note(rollupWarnings.map((warn) => warn.toString()).join(`\n\n`));
     }
 
@@ -181,12 +177,16 @@ export async function buildPackage({
     if (error.frame && error.loc) {
       prompts.note(
         `${error.message}\n${error.frame}`,
-        `Rollup error: ./${path.relative(cwd, error.loc.file)}@${
+        `Rollup error: ./${path.relative(cwd, error.loc.file!)}@${
           error.loc.line
         }:${error.loc.column}`,
       );
     } else {
-      prompts.note(e.toString(), `Rollup Error in: ${cwd}`);
+      prompts.note(
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
+        (e as Record<string, never>).toString(),
+        `Rollup Error in: ${cwd}`,
+      );
     }
     prompts.cancel('Build failed');
     return false;

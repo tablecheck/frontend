@@ -1,91 +1,86 @@
 import * as path from 'path';
 
-import type {
-  ImportExpression,
-  ImportDeclaration,
-} from '@typescript-eslint/types/dist/generated/ast-spec';
-import { ExpiringCache } from '@typescript-eslint/typescript-estree/dist/parseSettings/ExpiringCache';
-import { getProjectConfigFiles } from '@typescript-eslint/typescript-estree/dist/parseSettings/getProjectConfigFiles';
+import type { TSESTree } from '@typescript-eslint/types';
 import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
 import fs from 'fs-extra';
-import { TsConfigJson } from 'type-fest';
+
+type ImportExpression = TSESTree.ImportDeclaration;
+type ImportDeclaration = TSESTree.ImportExpression;
 
 export const messageId = 'shortestImport' as const;
 
-export const shortestImport: TSESLint.RuleModule<typeof messageId> = {
+export const shortestImport: TSESLint.RuleModule<
+  typeof messageId | 'types-failed'
+> = {
   meta: {
     type: 'problem',
     docs: {
       description: 'Enforce the consistent use of preferred import paths',
-      recommended: false,
+      recommended: 'stylistic',
     },
     fixable: 'code',
     schema: [],
     messages: {
       [messageId]: "Prefer '{{ preferredPath }}' over '{{ importPath }}'",
+      'types-failed': 'Typescript needs to be enabled for this rule',
     },
   },
   defaultOptions: [],
   create(context) {
+    const compilerOptions = context
+      .getSourceCode()
+      .parserServices.program?.getCompilerOptions();
+    if (!compilerOptions) {
+      return {
+        Program(node) {
+          context.report({
+            node,
+            messageId: 'types-failed',
+          });
+        },
+      };
+    }
     const resolvedFilePath = context.getPhysicalFilename
       ? context.getPhysicalFilename()
       : context.getFilename();
-    const configs = getProjectConfigFiles(
-      {
-        filePath: resolvedFilePath,
-        tsconfigRootDir: context.parserOptions.tsconfigRootDir,
-        tsconfigMatchCache: new ExpiringCache<string, string>(1),
-      },
-      context.parserOptions.project || './tsconfig.json',
-    ).map((configPath) => {
-      const filePath = path.join(
-        context.parserOptions.tsconfigRootDir,
-        configPath,
-      );
-      return { filePath, config: fs.readJSONSync(filePath) as TsConfigJson };
-    });
-    const pathMappings: Record<string, string> = configs.reduce(
-      (acc, { filePath, config }) => {
-        const baseUrl = config.compilerOptions?.baseUrl;
-        const baseUrlPaths = baseUrl
-          ? fs
-              .readdirSync(path.join(path.dirname(filePath), baseUrl), {
-                withFileTypes: true,
-              })
-              .reduce((directoryMap, dirrent) => {
-                if (dirrent.isDirectory())
-                  return {
-                    ...directoryMap,
-                    [dirrent.name]: path.join(baseUrl, dirrent.name),
-                  };
-                return {
-                  ...directoryMap,
-                  [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
-                    .join(baseUrl, dirrent.name)
-                    .replace(/^\.\//gi, ''),
-                };
-              }, {} as Record<string, string>)
-          : {};
-        const compilerPaths = Object.entries(
-          config.compilerOptions.paths || {},
-        ).reduce(
-          (compilerPathsMap, [key, [value]]) => ({
-            ...compilerPathsMap,
-            [key.replace(/\/\*$/gi, '')]: value
-              .replace(/\/\*$/gi, '')
-              .replace(/^\.\//gi, ''),
-          }),
-          {},
-        );
-
-        return {
-          ...acc,
-          ...compilerPaths,
-          ...baseUrlPaths,
-        };
-      },
+    const { baseUrl, pathsBasePath } = compilerOptions;
+    const relativeBaseUrl = path.relative(
+      pathsBasePath as string,
+      baseUrl ?? '',
+    );
+    const baseUrlPaths = baseUrl
+      ? fs
+          .readdirSync(baseUrl, {
+            withFileTypes: true,
+          })
+          .reduce((directoryMap, dirrent) => {
+            if (dirrent.isDirectory())
+              return {
+                ...directoryMap,
+                [dirrent.name]: path.join(relativeBaseUrl, dirrent.name),
+              };
+            return {
+              ...directoryMap,
+              [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
+                .join(relativeBaseUrl, dirrent.name)
+                .replace(/^\.\//gi, ''),
+            };
+          }, {} as Record<string, string>)
+      : {};
+    const compilerPaths = Object.entries(compilerOptions.paths ?? {}).reduce(
+      (compilerPathsMap, [key, [value]]) => ({
+        ...compilerPathsMap,
+        [key.replace(/\/\*$/gi, '')]: value
+          .replace(/\/\*$/gi, '')
+          .replace(/^\.\//gi, ''),
+      }),
       {},
     );
+
+    const pathMappings: Record<string, string> = {
+      ...compilerPaths,
+      ...baseUrlPaths,
+    };
     function resolveImport(importPath: string) {
       const importParts = importPath.split('/');
       if (pathMappings[importParts[0]]) {

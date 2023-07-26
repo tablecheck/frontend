@@ -1,8 +1,9 @@
-import { TSESLint, ESLintUtils } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
+import { TSESLint } from '@typescript-eslint/utils';
 
 import { forbiddenImports as rule, messageId } from '../src/forbiddenImports';
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.test.json',

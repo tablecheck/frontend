@@ -19,7 +19,7 @@ export function getBundleInput(cwd: string) {
   const pkgFile = fs.readJsonSync(
     path.join(cwd, 'package.json'),
   ) as PackageJson;
-  const inputsArg = pkgFile.entries || pkgFile.entry;
+  const inputsArg = pkgFile.entries ?? pkgFile.entry;
   if (inputsArg) {
     const inputs = Array.isArray(inputsArg) ? inputsArg : [inputsArg];
     return inputs.map((input) => {
@@ -130,7 +130,7 @@ Is the module installed? Note:
         },
       },
       shouldBundleDependencies ? undefined : externals(rollupExternalsConfig),
-      (typescriptPlugin as never as Function)(rollupTypescriptConfig),
+      typescriptPlugin(rollupTypescriptConfig),
       nodeResolve({
         mainFields: ['module', 'jsnext', 'main'],
         browser: true,
@@ -138,12 +138,12 @@ Is the module installed? Note:
         extensions: ['.mjs', '.js', '.jsx', '.json', '.node'],
         preferBuiltins: true,
       }),
-      (commonjs as never as Function)({
+      commonjs({
         // use a regex to make sure to include eventual hoisted packages
         esmExternals: true,
         requireReturnsDefault: 'namespace',
       }),
-      (json as never as Function)(),
+      json(),
       jsxPlugin(
         !!(
           packageJson.dependencies?.['@emotion/react'] ||

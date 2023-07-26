@@ -18,7 +18,8 @@ export default async function runExecutor(
   > & { checkConfig: boolean; checkStyles: boolean },
   context: ExecutorContext,
 ) {
-  const metadata = context.projectsConfigurations.projects[context.projectName];
+  const metadata =
+    context.projectsConfigurations!.projects[context.projectName!];
   const root = metadata.root || context.root;
   try {
     if (options.checkConfig) configCheck(root);

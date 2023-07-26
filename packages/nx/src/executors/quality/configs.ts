@@ -39,15 +39,15 @@ export function configCheck(cwd: string) {
 
   let didPassTest = true;
 
-  for (let i = 0; i < configs.length; i += 1) {
-    if (configs[i] !== 'default.json') {
+  for (const config of configs) {
+    if (config !== 'default.json') {
       const keys = Object.keys(
-        flatten(fs.readJSONSync(path.join(configDirPath, configs[i]))),
+        flatten(fs.readJSONSync(path.join(configDirPath, config))),
       );
       const extraKeys = keys.filter((key) => baseKeys.indexOf(key) === -1);
       if (extraKeys.length) {
         console.error(
-          `${configs[i]} has the following extra keys; ${extraKeys.join(', ')}`,
+          `${config} has the following extra keys; ${extraKeys.join(', ')}`,
         );
       }
       if (extraKeys.length) {

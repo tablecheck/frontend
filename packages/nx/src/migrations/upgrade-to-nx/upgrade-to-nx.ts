@@ -10,6 +10,7 @@ import * as fs from 'fs-extra';
 import { PackageJson } from 'type-fest';
 
 import generateQuality from '../../generators/quality/generator';
+import { getLatestVersions } from '../../utils/dependencies';
 
 export default async function update(tree: Tree) {
   const src = path.join(__dirname, 'files', 'pre-commit');
@@ -25,7 +26,10 @@ export default async function update(tree: Tree) {
 
   console.log('Updating dependencies');
 
+  let projectName = '.';
+
   updateJson(tree, 'package.json', (json: PackageJson) => {
+    projectName = json.name || '.';
     for (const deps of [json.dependencies, json.devDependencies]) {
       if (deps) {
         delete deps['@tablecheck/babel-preset'];
@@ -37,6 +41,7 @@ export default async function update(tree: Tree) {
         delete deps['razzle-dev-utils'];
       }
     }
+    if (!json.scripts) json.scripts = {};
 
     json.scripts['generate:carbon-icons'] =
       'nx generate @tablecheck/nx:ts-carbon-icons';
@@ -51,11 +56,8 @@ export default async function update(tree: Tree) {
   await addDependenciesToPackageJson(
     tree,
     {},
-    {
-      '@tablecheck/audit': 'latest',
-      '@tablecheck/nx': 'latest',
-    },
+    getLatestVersions(['@tablecheck/audit', '@tablecheck/nx']),
   )();
 
-  await generateQuality(tree, { svgAsComponent: true });
+  await generateQuality(tree, { svgAsComponent: true, project: projectName });
 }

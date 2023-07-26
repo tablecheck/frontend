@@ -16,6 +16,7 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "paths": {
       "@tablecheck/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
       "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],

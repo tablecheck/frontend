@@ -14,6 +14,7 @@ export async function tsCarbonIconsGenerator(tree: Tree) {
       '@carbon/icons-react',
       '11',
     );
+    // eslint-disable-next-line @typescript-eslint/no-var-requires -- await import throws segfault errors as this is common Js
     const carbonIcons = require(path.join(
       carbonPackageJsonPath,
       '..',
