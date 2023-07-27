@@ -70,6 +70,7 @@ export function buildBaseTypescript(
       ...rules,
       ...eslintTypescriptRules,
       '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': [
         'error',
         {

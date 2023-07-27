@@ -12,7 +12,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "paths": {},
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs"
   },
   "exclude": ["node_modules", "*.spec.ts"],

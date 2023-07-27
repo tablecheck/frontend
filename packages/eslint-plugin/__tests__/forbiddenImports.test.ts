@@ -14,8 +14,12 @@ const ruleTester = new RuleTester({
 
 const filename = './test_src/default.tsx';
 
-ruleTester.run('forbiddenImports > lodash', rule, {
-  valid: [{ code: `import merge from 'lodash/merge';`, filename }],
+ruleTester.run('forbiddenImports > valid other import formats', rule, {
+  valid: [
+    { code: `import 'moment/locales/en';`, filename },
+    { code: `import something from 'moment';`, filename },
+    { code: `import { something } from 'moment';`, filename },
+  ],
   invalid: [
     {
       code: `import { merge } from 'lodash';`,
@@ -30,6 +34,12 @@ ruleTester.run('forbiddenImports > lodash', rule, {
         },
       ],
     },
+  ],
+});
+
+ruleTester.run('forbiddenImports > lodash', rule, {
+  valid: [{ code: `import merge from 'lodash/merge';`, filename }],
+  invalid: [
     {
       code: `import { merge as _merge } from 'lodash';`,
       output: `import _merge from 'lodash/merge';`,

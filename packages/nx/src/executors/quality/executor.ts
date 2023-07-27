@@ -23,8 +23,11 @@ export default async function runExecutor(
   const root = metadata.root || context.root;
   try {
     if (options.checkConfig) configCheck(root);
-    await packageCheck({ directory: root, shouldFix: options.fix });
-    return await lintRun(
+    const packageCheckResult = await packageCheck({
+      directory: root,
+      shouldFix: options.fix,
+    });
+    const lintResult = await lintRun(
       {
         ...options,
         noEslintrc: false,
@@ -36,6 +39,7 @@ export default async function runExecutor(
       },
       context,
     );
+    return { success: lintResult.success && packageCheckResult.success };
   } catch (e) {
     console.log(e as Error);
     return {
