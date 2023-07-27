@@ -74,6 +74,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
   defaultOptions: [],
   create: (context) => ({
     ImportDeclaration(node) {
+      if (node.specifiers.length === 0) return;
       const importName = node.source.value || '';
 
       const scope = context.getScope();

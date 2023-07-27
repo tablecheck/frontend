@@ -26,10 +26,10 @@ function updateProjectConfig(tree: Tree, projectName: string) {
     outputs: ['{options.outputFile}'],
     options: {
       lintFilePatterns: [
-        '{projectRoot}/src/**/*.ts',
-        '{projectRoot}/src/**/*.tsx',
-        '{projectRoot}/src/**/*.js',
-        '{projectRoot}/src/**/*.jsx',
+        'src/**/*.ts',
+        'src/**/*.tsx',
+        'src/**/*.js',
+        'src/**/*.jsx',
       ],
     },
   };
@@ -103,8 +103,8 @@ export async function qualityGenerator(
     cwd: process.cwd(),
     stdio: 'inherit',
   });
-  await generateConfig(tree);
-  await generateIcons(tree);
+  await generateConfig(tree, schema);
+  await generateIcons(tree, schema);
   await generateFileTypes(tree, schema);
   await formatFiles(tree);
 }

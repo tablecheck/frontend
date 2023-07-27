@@ -18,6 +18,10 @@ export function getPackageJson(directory = process.cwd()) {
   return fs.readJsonSync(path.join(directory, 'package.json')) as PackageJson;
 }
 
+export function hasPackageJson(directory = process.cwd()) {
+  return fs.existsSync(path.join(directory, 'package.json'));
+}
+
 export function detectInstalledVersion(
   cwd: string,
   packageName: string,
@@ -153,6 +157,9 @@ export async function processPackage({
   shouldWriteFile: boolean;
 }) {
   try {
+    if (!hasPackageJson(packageDir)) {
+      return { success: true, error: 'no-file' };
+    }
     const packageContent = getPackageJson(packageDir);
     let didSucceed = true;
     let processingError: Error | undefined;

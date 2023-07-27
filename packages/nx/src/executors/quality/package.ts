@@ -62,11 +62,6 @@ export async function packageCheck({
   directory: string;
   shouldFix: boolean;
 }) {
-  console.log(
-    chalk.cyan(
-      `  ${icons.info}  We recommend using \`npm-upgrade\` to manage dependencies.\n`,
-    ),
-  );
   const result = await processPackage({
     packageDir: directory,
     shouldWriteFile: shouldFix,
@@ -93,6 +88,14 @@ export async function packageCheck({
       return Promise.resolve(appPackage);
     },
   });
+  if (result.success && result.error === 'no-file') {
+    return result;
+  }
+  console.log(
+    chalk.cyan(
+      `  ${icons.info}  We recommend using \`npm-upgrade\` to manage dependencies.\n`,
+    ),
+  );
   if (result.success) {
     console.log(chalk.green(`${icons.check} Package dependencies validated`));
   }

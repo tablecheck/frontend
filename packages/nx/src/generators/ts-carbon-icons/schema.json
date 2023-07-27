@@ -3,5 +3,17 @@
   "$id": "TsCarbonIcons",
   "title": "Generate a typescript definition file for @carbon/icons",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "alias": "p",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-prompt": "What is the name of the project for the generator?",
+      "x-priority": "important"
+    }
+  },
+  "required": ["project"]
 }

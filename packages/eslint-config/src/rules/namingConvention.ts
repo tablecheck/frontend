@@ -66,7 +66,7 @@ export const namingRules: Linter.RulesRecord = {
       format: ['PascalCase', 'camelCase'],
     },
     {
-      selector: ['classMethod', 'objectLiteralMethod'],
+      selector: ['function', 'classMethod', 'objectLiteralMethod'],
       format: ['PascalCase', 'camelCase'],
     },
     {
