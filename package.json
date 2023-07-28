@@ -68,7 +68,7 @@
     "lodash": "^4.17.21",
     "nx": "16.5.0",
     "nx-cloud": "16.0.5",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "storybook": "^6.5.16",
     "type-fest": "4.0.0",
     "typescript": "5.1.6",
