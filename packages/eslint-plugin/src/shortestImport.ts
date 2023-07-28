@@ -53,19 +53,22 @@ export const shortestImport: TSESLint.RuleModule<
           .readdirSync(baseUrl, {
             withFileTypes: true,
           })
-          .reduce((directoryMap, dirrent) => {
-            if (dirrent.isDirectory())
+          .reduce(
+            (directoryMap, dirrent) => {
+              if (dirrent.isDirectory())
+                return {
+                  ...directoryMap,
+                  [dirrent.name]: path.join(relativeBaseUrl, dirrent.name),
+                };
               return {
                 ...directoryMap,
-                [dirrent.name]: path.join(relativeBaseUrl, dirrent.name),
+                [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
+                  .join(relativeBaseUrl, dirrent.name)
+                  .replace(/^\.\//gi, ''),
               };
-            return {
-              ...directoryMap,
-              [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
-                .join(relativeBaseUrl, dirrent.name)
-                .replace(/^\.\//gi, ''),
-            };
-          }, {} as Record<string, string>)
+            },
+            {} as Record<string, string>,
+          )
       : {};
     const compilerPaths = Object.entries(compilerOptions.paths ?? {}).reduce(
       (compilerPathsMap, [key, [value]]) => ({

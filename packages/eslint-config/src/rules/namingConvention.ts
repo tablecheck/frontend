@@ -98,7 +98,7 @@ export const namingRules: Linter.RulesRecord = {
       },
     },
     {
-      selector: ['property'],
+      selector: ['property', 'parameterProperty'],
       format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE'],
       leadingUnderscore: 'allowDouble', // double for __html
     },
@@ -109,7 +109,7 @@ export const namingRules: Linter.RulesRecord = {
     },
     {
       selector: 'parameter',
-      format: ['camelCase'],
+      format: ['camelCase', 'PascalCase'],
       leadingUnderscore: 'allow',
     },
   ],

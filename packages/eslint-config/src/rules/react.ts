@@ -13,6 +13,12 @@ export const reactRules: Linter.RulesRecord = {
   'react/prop-types': 'off',
   // see https://github.com/jsx-eslint/eslint-plugin-react/issues/3384#issuecomment-1236371796
   'react/no-unknown-property': ['error', { ignore: ['css'] }],
+  'react/no-unstable-nested-components': [
+    'error',
+    {
+      allowAsProps: true,
+    },
+  ],
 
   // These cause typing conflicts
   'react/require-default-props': ['off'],

@@ -1,3 +1,5 @@
+import { execSync } from 'child_process';
+
 import { ExecutorContext } from '@nx/devkit';
 import lintRun from '@nx/linter/src/executors/eslint/lint.impl.js';
 
@@ -39,6 +41,24 @@ export default async function runExecutor(
       },
       context,
     );
+
+    try {
+      execSync(
+        `npx prettier ${[
+          options.fix ? '-w' : '-c',
+          '--log-level warn',
+          '--no-error-on-unmatched-pattern',
+          '--ignore-unknown',
+          '--cache',
+        ].join(' ')} --log-level warn .`,
+        {
+          cwd: root,
+          stdio: 'inherit',
+        },
+      );
+    } catch (e) {
+      return { success: false };
+    }
     return { success: lintResult.success && packageCheckResult.success };
   } catch (e) {
     console.log(e as Error);
