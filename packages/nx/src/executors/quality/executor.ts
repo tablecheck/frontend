@@ -50,9 +50,9 @@ export default async function runExecutor(
           '--no-error-on-unmatched-pattern',
           '--ignore-unknown',
           '--cache',
-        ].join(' ')} --log-level warn .`,
+        ].join(' ')} --log-level warn ${root}`,
         {
-          cwd: root,
+          cwd: context.root,
           stdio: 'inherit',
         },
       );
