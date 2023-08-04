@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import { formatFiles, generateFiles, Tree } from '@nx/devkit';
+import { getNxProjectRoot } from '@tablecheck/frontend-utils';
 
 import { FileTypesGeneratorSchema } from './schema';
 
@@ -11,7 +12,7 @@ export async function tsFileTypesGenerator(
   generateFiles(
     tree,
     path.join(__dirname, 'files', schema.svgAsComponent ? 'srcWithSvg' : 'src'),
-    path.relative(process.cwd(), path.join(tree.root, 'src')),
+    getNxProjectRoot(tree, schema.project).projectSourceRoot,
     {},
   );
   await formatFiles(tree);

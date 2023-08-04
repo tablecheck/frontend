@@ -1,11 +1,8 @@
 import { ExecutorContext } from '@nx/devkit';
-import { buildPackage } from '@tablecheck/frontend-library';
 import { dynamicImport } from 'tsimportlib';
 
-import { BuildLibExecutorSchema } from './schema.js';
-
 export default async function runExecutor(
-  options: BuildLibExecutorSchema,
+  options: never,
   context: ExecutorContext,
 ) {
   if (!context.projectName) {
@@ -18,10 +15,6 @@ export default async function runExecutor(
       `Could not find project configuration for ${context.projectName}`,
     );
   }
-  const isBuildSuccessful = await buildPackage({
-    cwd: metadata.root,
-    ...options,
-  });
 
   const { publint } = (await dynamicImport(
     'publint',
@@ -38,7 +31,7 @@ export default async function runExecutor(
   });
 
   return {
-    success: isBuildSuccessful && messages.length === 0,
+    success: messages.length === 0,
     terminalOutput: messages
       .map((message) => {
         const { args, code, path, type } = message;

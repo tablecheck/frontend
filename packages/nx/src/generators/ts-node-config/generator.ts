@@ -1,9 +1,10 @@
 import * as path from 'path';
 
-import { Tree, getProjects } from '@nx/devkit';
+import { Tree } from '@nx/devkit';
 import {
   detectInstalledVersion,
   outputPrettyFile,
+  getNxProjectRoot,
 } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
 // eslint-disable-next-line @tablecheck/forbidden-imports
@@ -52,12 +53,10 @@ export async function tsNodeConfigGenerator(
   tree: Tree,
   schema: { project: string },
 ) {
-  const project = getProjects(tree).get(schema.project);
-  if (!project) {
-    console.warn(`Project ${schema.project} not found`);
-    return;
-  }
-  const projectRoot = path.join(tree.root, project.root);
+  const { projectRoot, projectSourceRoot } = getNxProjectRoot(
+    tree,
+    schema.project,
+  );
   try {
     try {
       detectInstalledVersion(projectRoot, 'config', '*');
@@ -95,11 +94,8 @@ export async function tsNodeConfigGenerator(
         const config: DevelopmentConfig;
         export default config;
       }`;
-    const definitionsPath = project.sourceRoot
-      ? path.join(project.sourceRoot, 'definitions')
-      : 'definitions';
     await outputPrettyFile(
-      path.join(projectRoot, definitionsPath, 'nodeConfig.gen.d.ts'),
+      path.join(projectSourceRoot, 'definitions', 'nodeConfig.gen.d.ts'),
       fileContent,
     );
   } catch (e) {

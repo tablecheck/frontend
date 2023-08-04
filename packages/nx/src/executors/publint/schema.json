@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
   "version": 2,
-  "title": "Build Library executor",
+  "title": "Check npm publishable package.json configuration",
   "description": "",
   "type": "object",
   "properties": {},

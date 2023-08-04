@@ -9,6 +9,17 @@
       "description": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
       "x-prompt": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
       "x-priority": "important"
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "alias": "p",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-prompt": "What is the name of the project for the generator?",
+      "x-priority": "important"
     }
-  }
+  },
+  "required": ["project"]
 }

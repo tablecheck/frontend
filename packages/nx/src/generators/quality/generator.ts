@@ -11,6 +11,7 @@ import {
   readProjectConfiguration,
   updateProjectConfiguration,
 } from '@nx/devkit';
+import { getNxProjectRoot } from '@tablecheck/frontend-utils';
 import merge from 'lodash/merge';
 import { PackageJson } from 'type-fest';
 
@@ -21,16 +22,14 @@ import { FileTypesGeneratorSchema } from '../ts-file-types/schema';
 import generateConfig from '../ts-node-config/generator';
 
 function updateProjectConfig(tree: Tree, projectName: string) {
+  const { projectSourceRoot } = getNxProjectRoot(tree, projectName);
   const lintTarget = {
     executor: '@tablecheck/nx:quality',
     outputs: ['{options.outputFile}'],
     options: {
-      lintFilePatterns: [
-        'src/**/*.ts',
-        'src/**/*.tsx',
-        'src/**/*.js',
-        'src/**/*.jsx',
-      ],
+      lintFilePatterns: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'].map(
+        (pattern) => path.join(projectSourceRoot, pattern),
+      ),
     },
   };
   const lintFormatTarget = merge({}, lintTarget, {
