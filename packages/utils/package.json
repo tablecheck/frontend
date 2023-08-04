@@ -26,6 +26,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "@nx/devkit": "^16",
     "cosmiconfig": "^8.2.0",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.3",
