@@ -1,21 +1,20 @@
 import * as path from 'path';
 
-import { Tree, getProjects } from '@nx/devkit';
+import { Tree } from '@nx/devkit';
 import {
   detectInstalledVersion,
   outputPrettyFile,
+  getNxProjectRoot,
 } from '@tablecheck/frontend-utils';
 
 export async function tsCarbonIconsGenerator(
   tree: Tree,
   schema: { project: string },
 ) {
-  const project = getProjects(tree).get(schema.project);
-  if (!project) {
-    console.warn(`Project ${schema.project} not found`);
-    return;
-  }
-  const projectRoot = path.join(tree.root, project.root);
+  const { projectRoot, projectSourceRoot } = getNxProjectRoot(
+    tree,
+    schema.project,
+  );
   try {
     let carbonPackageJsonPath: string;
     try {
@@ -49,11 +48,8 @@ export async function tsCarbonIconsGenerator(
         >;
     `,
     )}\n}`;
-    const definitionsPath = project.sourceRoot
-      ? path.join(project.sourceRoot, 'definitions')
-      : 'definitions';
     await outputPrettyFile(
-      path.join(projectRoot, definitionsPath, 'carbonIcons.gen.d.ts'),
+      path.join(projectSourceRoot, 'definitions', 'carbonIcons.gen.d.ts'),
       fileContent,
     );
   } catch (e) {

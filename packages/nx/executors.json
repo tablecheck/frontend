@@ -1,9 +1,9 @@
 {
   "executors": {
-    "build-lib": {
-      "implementation": "./dist/executors/build-lib/executor",
-      "schema": "./dist/executors/build-lib/schema.json",
-      "description": "build-lib executor"
+    "publint": {
+      "implementation": "./dist/executors/publint/executor",
+      "schema": "./dist/executors/publint/schema.json",
+      "description": "publint executor"
     },
     "quality": {
       "implementation": "./dist/executors/quality/executor",

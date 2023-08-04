@@ -22,11 +22,12 @@
     "build": "tsc -p ./tsconfig.build.json && node ./scripts/copyTemplateFiles.mjs",
     "prepublish": "npm run build"
   },
+  "peerDependencies": {
+    "@tablecheck/eslint-config": "^1.8.2"
+  },
   "dependencies": {
     "@nx/devkit": "^16",
     "@nx/linter": "^16",
-    "@tablecheck/eslint-config": "^1.8.2",
-    "@tablecheck/frontend-library": "^1.0.0",
     "@tablecheck/frontend-utils": "^2.0.0",
     "chalk": "^4.1.2",
     "flat": "5.0.2",
