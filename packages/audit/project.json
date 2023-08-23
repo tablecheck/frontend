@@ -4,14 +4,14 @@
   "sourceRoot": "packages/audit/src",
   "projectType": "library",
   "targets": {
-    "lint": {
+    "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/audit/**/*.ts"]
       }
     },
-    "lint:format": {
+    "quality:format": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {

@@ -49,10 +49,7 @@ function getConfigBasePath(root: string, projectRoot: string) {
   );
 }
 
-export async function tsNodeConfigGenerator(
-  tree: Tree,
-  schema: { project: string },
-) {
+export function tsNodeConfigGenerator(tree: Tree, schema: { project: string }) {
   const { projectRoot, projectSourceRoot } = getNxProjectRoot(
     tree,
     schema.project,
@@ -94,7 +91,7 @@ export async function tsNodeConfigGenerator(
         const config: DevelopmentConfig;
         export default config;
       }`;
-    await outputPrettyFile(
+    outputPrettyFile(
       path.join(projectSourceRoot, 'definitions', 'nodeConfig.gen.d.ts'),
       fileContent,
     );

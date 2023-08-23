@@ -4,7 +4,7 @@
   "sourceRoot": "packages/nx/src",
   "projectType": "library",
   "targets": {
-    "lint": {
+    "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
@@ -19,7 +19,7 @@
         ]
       }
     },
-    "lint:format": {
+    "quality:format": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
