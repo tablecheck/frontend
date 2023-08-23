@@ -1,13 +1,23 @@
-import fs from 'fs-extra';
-import prettier from 'prettier';
+import { execSync } from 'child_process';
 
-export async function outputPrettyFile(filePath: string, fileContent: string) {
-  const prettierOptions = await prettier.resolveConfig(process.cwd());
-  fs.outputFileSync(
-    filePath,
-    await prettier.format(fileContent, {
-      ...prettierOptions,
-      filepath: filePath,
-    }),
-  );
+import fs from 'fs-extra';
+
+export function outputPrettyFile(filePath: string, fileContent: string) {
+  fs.outputFileSync(filePath, fileContent);
+  try {
+    execSync(
+      `npx prettier ${[
+        '-w',
+        '--log-level warn',
+        '--no-error-on-unmatched-pattern',
+        '--ignore-unknown',
+        '--cache',
+      ].join(' ')} --log-level warn ${filePath}`,
+      {
+        stdio: 'inherit',
+      },
+    );
+  } catch (e) {
+    return { success: false };
+  }
 }

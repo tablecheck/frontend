@@ -7,7 +7,7 @@ import {
   getNxProjectRoot,
 } from '@tablecheck/frontend-utils';
 
-export async function tsCarbonIconsGenerator(
+export function tsCarbonIconsGenerator(
   tree: Tree,
   schema: { project: string },
 ) {
@@ -48,7 +48,7 @@ export async function tsCarbonIconsGenerator(
         >;
     `,
     )}\n}`;
-    await outputPrettyFile(
+    outputPrettyFile(
       path.join(projectSourceRoot, 'definitions', 'carbonIcons.gen.d.ts'),
       fileContent,
     );

@@ -4,14 +4,14 @@
   "sourceRoot": "packages/commitlint-config/src",
   "projectType": "library",
   "targets": {
-    "lint": {
+    "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/commitlint-config/index.js"]
       }
     },
-    "lint:format": {
+    "quality:format": {
       "executor": "@tablecheck/nx:quality",
       "options": {
         "lintFilePatterns": ["packages/commitlint-config/index.js"],

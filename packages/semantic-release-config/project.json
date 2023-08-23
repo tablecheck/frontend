@@ -4,14 +4,14 @@
   "sourceRoot": "packages/semantic-release-config/src",
   "projectType": "library",
   "targets": {
-    "lint": {
+    "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/semantic-release-config/index.js"]
       }
     },
-    "lint:format": {
+    "quality:format": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {

@@ -171,7 +171,7 @@ export async function processPackage({
       },
     );
     if (shouldWriteFile) {
-      await outputPrettyFile(
+      outputPrettyFile(
         path.join(packageDir, 'package.json'),
         prettyFormatPackage(result, prettyFormatOptions),
       );

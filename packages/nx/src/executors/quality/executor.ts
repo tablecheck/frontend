@@ -4,7 +4,7 @@ import { ExecutorContext } from '@nx/devkit';
 import lintRun from '@nx/linter/src/executors/eslint/lint.impl.js';
 
 import { configCheck } from './configs.js';
-import { packageCheck } from './package.js';
+import { enforceNpmrcIsSaveExact, packageCheck } from './package.js';
 
 export default async function runExecutor(
   options: Omit<
@@ -25,6 +25,7 @@ export default async function runExecutor(
   const root = metadata.root || context.root;
   try {
     if (options.checkConfig) configCheck(root);
+    if (options.fix) enforceNpmrcIsSaveExact(context.root);
     const packageCheckResult = await packageCheck({
       directory: root,
       shouldFix: options.fix,

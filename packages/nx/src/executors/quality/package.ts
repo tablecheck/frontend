@@ -55,6 +55,28 @@ function evaluatePackage({ dependencies, devDependencies, name }: PackageJson) {
   return invalidVersionValues;
 }
 
+export function enforceNpmrcIsSaveExact(directory: string) {
+  const npmrcPath = path.join(directory, '.npmrc');
+  if (!fs.existsSync(npmrcPath)) {
+    fs.outputFileSync(npmrcPath, 'save-exact=true\n');
+    return;
+  }
+  const lines = fs.readFileSync(npmrcPath, 'utf-8').split('\n');
+  const saveExactLine = lines.find((line) => line.includes('save-exact'));
+  if (!saveExactLine) {
+    fs.appendFileSync(npmrcPath, '\nsave-exact=true\n');
+    return;
+  }
+  if (!saveExactLine.includes('save-exact=true')) {
+    fs.writeFileSync(
+      npmrcPath,
+      lines
+        .map((line) => (line.includes('save-exact') ? 'save-exact=true' : line))
+        .join('\n'),
+    );
+  }
+}
+
 export async function packageCheck({
   directory,
   shouldFix,

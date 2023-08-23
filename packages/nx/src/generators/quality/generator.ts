@@ -102,8 +102,8 @@ export async function qualityGenerator(
     cwd: process.cwd(),
     stdio: 'inherit',
   });
-  await generateConfig(tree, schema);
-  await generateIcons(tree, schema);
+  generateConfig(tree, schema);
+  generateIcons(tree, schema);
   await generateFileTypes(tree, schema);
   await formatFiles(tree);
 }
