@@ -13,6 +13,7 @@ export default defineConfig({
 
   test: {
     globals: true,
+    outputFile: '../../coverage/packages/eslint-plugin/report.junit.xml',
     cache: {
       dir: '../../node_modules/.vitest',
     },
