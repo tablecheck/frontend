@@ -22,13 +22,17 @@ import { FileTypesGeneratorSchema } from '../ts-file-types/schema';
 import generateConfig from '../ts-node-config/generator';
 
 function updateProjectConfig(tree: Tree, projectName: string) {
-  const { projectSourceRoot } = getNxProjectRoot(tree, projectName);
+  const { projectSourceRoot, projectRoot } = getNxProjectRoot(
+    tree,
+    projectName,
+  );
   const lintTarget = {
     executor: '@tablecheck/nx:quality',
     outputs: ['{options.outputFile}'],
     options: {
       lintFilePatterns: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'].map(
-        (pattern) => path.join(projectSourceRoot, pattern),
+        (pattern) =>
+          path.relative(projectRoot, path.join(projectSourceRoot, pattern)),
       ),
     },
   };
@@ -77,6 +81,7 @@ export async function qualityGenerator(
       'husky',
       'commitlint',
       'eslint',
+      '@tablecheck/frontend-audit',
       '@tablecheck/commitlint-config',
       '@tablecheck/eslint-config',
       '@tablecheck/prettier-config',
@@ -89,6 +94,8 @@ export async function qualityGenerator(
     json.scripts.lint = 'nx affected --target=quality && prettier -c .';
     json.scripts.format =
       'nx affected --target=quality:format && prettier -w --loglevel warn .';
+    json.scripts.prepare = 'husky install';
+    json.type = 'module';
     return json;
   });
   updateProjectConfig(tree, schema.project);
