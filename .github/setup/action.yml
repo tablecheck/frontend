@@ -19,7 +19,7 @@ runs:
     - name: Read .nvmrc
       shell: bash
       id: nvm
-      run: echo "::set-output name=nvmrc::$(cat .nvmrc)"
+      run: echo "nvmrc=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
     - name: Setup Node.js
       uses: actions/setup-node@v2
@@ -27,8 +27,14 @@ runs:
         node-version: ${{ steps.nvm.outputs.nvmrc }}
         cache: npm
 
-    - name: Setup branch for NX
+    - name: Setup branch for NX (main)
       shell: bash
+      if: github.ref == 'refs/head/main'
+      run: git branch -u origin/main main
+
+    - name: Setup branch for NX (!main)
+      shell: bash
+      if: github.ref != 'refs/head/main'
       run: git branch --track main origin/main
 
     - name: Install without scripts 🔧
