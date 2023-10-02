@@ -50,6 +50,7 @@ export const namingRules: Linter.RulesRecord = {
             'had',
             'can',
             'did',
+            'does',
             'will',
             'allow',
           ];

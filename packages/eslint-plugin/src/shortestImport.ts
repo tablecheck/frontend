@@ -10,16 +10,22 @@ type ImportDeclaration = TSESTree.ImportExpression;
 export const messageId = 'shortestImport' as const;
 
 export const shortestImport: TSESLint.RuleModule<
-  typeof messageId | 'types-failed'
+  typeof messageId | 'types-failed',
+  [string[]] | never[]
 > = {
   meta: {
     type: 'problem',
     docs: {
-      description: 'Enforce the consistent use of preferred import paths',
+      description:
+        'Enforce the consistent use of preferred import paths. A list of alias paths to prefer over relative `../` paths can also be provided',
       recommended: 'stylistic',
     },
     fixable: 'code',
-    schema: [],
+    schema: [
+      {
+        type: 'array',
+      },
+    ],
     messages: {
       [messageId]: "Prefer '{{ preferredPath }}' over '{{ importPath }}'",
       'types-failed': 'Typescript needs to be enabled for this rule',
@@ -27,6 +33,7 @@ export const shortestImport: TSESLint.RuleModule<
   },
   defaultOptions: [],
   create(context) {
+    const avoidRelativeParents = context.options[0] || [];
     const compilerOptions = context
       .getSourceCode()
       .parserServices.program?.getCompilerOptions();
@@ -40,10 +47,37 @@ export const shortestImport: TSESLint.RuleModule<
         },
       };
     }
-    const resolvedFilePath = context.getPhysicalFilename
-      ? context.getPhysicalFilename()
-      : context.getFilename();
-    const { baseUrl, pathsBasePath } = compilerOptions;
+    const { baseUrl, pathsBasePath, rootDir, rootDirs } = compilerOptions;
+
+    function getResolvedFilePath() {
+      const filename = context.getPhysicalFilename
+        ? context.getPhysicalFilename()
+        : context.getFilename();
+      if (!filename.startsWith('/')) {
+        const resolvedPaths = [pathsBasePath, rootDir, ...(rootDirs ?? [])].map(
+          (potentialRoot) => {
+            if (typeof potentialRoot !== 'string') return undefined;
+            return [potentialRoot, path.resolve(potentialRoot, filename)];
+          },
+        );
+        const match = resolvedPaths.find((tuple) => {
+          if (!tuple) return false;
+          const [, resolvedPath] = tuple;
+          return fs.existsSync(resolvedPath);
+        });
+        return match ? path.relative(match[0], match[1]) : filename;
+      }
+
+      // this is because sometimes `baseUrl` is lowercase (eg `/users/someone/...`)
+      // and then filename is uppercase (eg `/Users/someone/...`)
+      // so we need to normalise them so `path.relative` works correctly
+      const pattern = `${baseUrl}/`
+        .replace(/\/+/gi, '/')
+        .replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+      return filename.replace(new RegExp(pattern, 'ig'), '');
+    }
+
+    const resolvedFilePath = getResolvedFilePath();
     const relativeBaseUrl = path.relative(
       pathsBasePath as string,
       baseUrl ?? '',
@@ -80,10 +114,16 @@ export const shortestImport: TSESLint.RuleModule<
       {},
     );
 
+    const doesCompilerPathsIncludeBaseUrl = Object.values<string>(
+      compilerPaths,
+    ).some((value) => value.startsWith(relativeBaseUrl));
+
     const pathMappings: Record<string, string> = {
       ...compilerPaths,
       ...baseUrlPaths,
     };
+    const aliasPathMappings: Record<string, string> =
+      doesCompilerPathsIncludeBaseUrl ? compilerPaths : pathMappings;
     function resolveImport(importPath: string) {
       const importParts = importPath.split('/');
       if (pathMappings[importParts[0]]) {
@@ -93,7 +133,7 @@ export const shortestImport: TSESLint.RuleModule<
       }
       return importParts.join('/');
     }
-    function getPathAliasImport(importPath: string) {
+    function getPathAliasImports(importPath: string) {
       let resolvedImportPath = importPath;
       if (importPath.startsWith('.')) {
         resolvedImportPath = path.resolve(
@@ -101,14 +141,14 @@ export const shortestImport: TSESLint.RuleModule<
           importPath,
         );
       }
-      const matchedMapping = Object.entries(pathMappings).find(([, value]) =>
-        resolvedImportPath.includes(value),
+      const matchedMappings = Object.entries(aliasPathMappings).filter(
+        ([, value]) => resolvedImportPath.includes(value),
       );
-      if (!matchedMapping) return undefined;
-      const [key, value] = matchedMapping;
-      return resolvedImportPath.replace(
-        new RegExp(`^.*?${value.replace(/\//gi, '\\/')}`),
-        key,
+      return matchedMappings.map(([key, value]) =>
+        resolvedImportPath.replace(
+          new RegExp(`^.*?${value.replace(/\//gi, '\\/')}`),
+          key,
+        ),
       );
     }
     function getRelativeImport(importPath: string, resolvedImportPath: string) {
@@ -135,21 +175,40 @@ export const shortestImport: TSESLint.RuleModule<
       );
       return resolvedPathRoot === absoluteImportPath;
     }
-    function shouldPreferRelative(
-      relativePath: string,
-      aliasPath: string | undefined,
-    ) {
-      if (!aliasPath) return true;
-      if (relativeGoesThroughBaseUrl(relativePath)) return false;
-      const relativeLength = relativePath.split('/').length;
-      const aliasLength = aliasPath.split('/').length;
-      if (relativeLength === aliasLength && relativePath.startsWith('../'))
-        return false;
-      return relativeLength <= aliasLength;
+    function getPreferredPath(relativePath: string, aliasPaths: string[]) {
+      if (!aliasPaths.length) return relativePath;
+      const parentSlugs = relativePath.split('/').filter((s) => s === '..');
+      const shouldAvoidRelative =
+        relativeGoesThroughBaseUrl(relativePath) ||
+        aliasPaths.some((aliasPath) => {
+          if (!avoidRelativeParents.length) return false;
+          const relativeRoot = aliasPath
+            .split('/')
+            .slice(0, -1 * parentSlugs.length)
+            .join('/');
+          return avoidRelativeParents.includes(relativeRoot);
+        });
+      const aliasWithLength = aliasPaths
+        .map((aliasPath) => ({
+          aliasPath,
+          length: aliasPath.split('/').length,
+        }))
+        .concat(
+          shouldAvoidRelative
+            ? []
+            : [
+                {
+                  aliasPath: relativePath,
+                  length: relativePath.split('/').length,
+                },
+              ],
+        )
+        .sort((a, b) => a.length - b.length);
+      return aliasWithLength[0]?.aliasPath;
     }
 
-    function isImportNodeModule(importPath: string) {
-      if (importPath.startsWith('@')) return true;
+    function shouldNotChangeImport(importPath: string) {
+      if (importPath.startsWith('@') || importPath === '.') return true;
       const isPathMapping = Object.keys(pathMappings).some((key) =>
         importPath.startsWith(key),
       );
@@ -160,14 +219,12 @@ export const shortestImport: TSESLint.RuleModule<
     function checkAndFixImport(node: ImportExpression | ImportDeclaration) {
       if (node.source.type !== AST_NODE_TYPES.Literal) return;
       const importPath = node.source.value;
-      if (typeof importPath !== 'string' || isImportNodeModule(importPath))
+      if (typeof importPath !== 'string' || shouldNotChangeImport(importPath))
         return;
       const resolvedImport = resolveImport(importPath);
       const relativePath = getRelativeImport(importPath, resolvedImport);
-      const aliasPath = getPathAliasImport(resolvedImport);
-      const preferredPath = shouldPreferRelative(relativePath, aliasPath)
-        ? relativePath
-        : aliasPath;
+      const aliasPaths = getPathAliasImports(resolvedImport);
+      const preferredPath = getPreferredPath(relativePath, aliasPaths);
 
       if (preferredPath === importPath) return;
 
