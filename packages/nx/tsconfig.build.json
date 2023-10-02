@@ -4,7 +4,6 @@
     "baseUrl": ".",
     "rootDir": "src",
     "outDir": "dist",
-    "paths": {},
-    "module": "CommonJS"
+    "paths": {}
   }
 }

@@ -3,9 +3,7 @@
   "projectOwner": "tablecheck",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": false,
   "commitConvention": "angular",
@@ -15,22 +13,14 @@
       "name": "Simeon Cheeseman",
       "avatar_url": "https://avatars.githubusercontent.com/u/1085899?v=4",
       "profile": "https://github.com/SimeonC",
-      "contributions": [
-        "doc",
-        "infra",
-        "test",
-        "code",
-        "example"
-      ]
+      "contributions": ["doc", "infra", "test", "code", "example"]
     },
     {
       "login": "SashaShostyr",
       "name": "Alex",
       "avatar_url": "https://avatars.githubusercontent.com/u/19342294?v=4",
       "profile": "https://github.com/SashaShostyr",
-      "contributions": [
-        "test"
-      ]
+      "contributions": ["test"]
     }
   ],
   "contributorsPerLine": 6,
