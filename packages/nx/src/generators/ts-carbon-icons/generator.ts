@@ -31,10 +31,9 @@ export function tsCarbonIconsGenerator(
       );
     }
     // eslint-disable-next-line @typescript-eslint/no-var-requires -- await import throws segfault errors as this is common Js
-    const carbonIcons = require(path.join(
-      carbonPackageJsonPath,
-      '..',
-    )) as Record<string, never>;
+    const carbonIcons = require(
+      path.join(carbonPackageJsonPath, '..'),
+    ) as Record<string, never>;
     const fileContent = `${Object.keys(carbonIcons).reduce(
       (result, iconName) =>
         `${result}  declare export const ${iconName}: CarbonIcon;\n`,

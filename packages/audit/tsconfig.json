@@ -11,8 +11,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "src",
-    "outDir": "dist",
-    "module": "NodeNext"
+    "outDir": "dist"
   },
   "exclude": ["node_modules"],
   "files": []
