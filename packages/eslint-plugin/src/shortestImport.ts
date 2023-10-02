@@ -148,10 +148,20 @@ export const shortestImport: TSESLint.RuleModule<
       return relativeLength <= aliasLength;
     }
 
+    function isImportNodeModule(importPath: string) {
+      if (importPath.startsWith('@')) return true;
+      const isPathMapping = Object.keys(pathMappings).some((key) =>
+        importPath.startsWith(key),
+      );
+      if (isPathMapping) return false;
+      return !importPath.startsWith('.') && !importPath.startsWith('/');
+    }
+
     function checkAndFixImport(node: ImportExpression | ImportDeclaration) {
       if (node.source.type !== AST_NODE_TYPES.Literal) return;
       const importPath = node.source.value;
-      if (typeof importPath !== 'string') return;
+      if (typeof importPath !== 'string' || isImportNodeModule(importPath))
+        return;
       const resolvedImport = resolveImport(importPath);
       const relativePath = getRelativeImport(importPath, resolvedImport);
       const aliasPath = getPathAliasImport(resolvedImport);

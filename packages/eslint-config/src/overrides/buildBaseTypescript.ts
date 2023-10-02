@@ -82,6 +82,7 @@ export function buildBaseTypescript(
           },
         },
       ],
+      '@tablecheck/prefer-shortest-import': 'error',
       ...forcedRules,
     },
   };

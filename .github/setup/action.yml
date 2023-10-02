@@ -29,12 +29,12 @@ runs:
 
     - name: Setup branch for NX (main)
       shell: bash
-      if: github.ref == 'refs/head/main'
+      if: github.ref == 'refs/heads/main'
       run: git branch -u origin/main main
 
     - name: Setup branch for NX (!main)
       shell: bash
-      if: github.ref != 'refs/head/main'
+      if: github.ref != 'refs/heads/main'
       run: git branch --track main origin/main
 
     - name: Install without scripts 🔧
@@ -43,4 +43,4 @@ runs:
 
     - name: Build 🔨
       shell: bash
-      run: npm run build
+      run: npm run build:ci
