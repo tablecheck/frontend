@@ -26,7 +26,7 @@ jobs:
         run: |
           git branch --track main origin/main
           npm ci --prefer-offline --silent
-          npm run build
+          npm run build:ci
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0

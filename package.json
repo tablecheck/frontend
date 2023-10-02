@@ -17,8 +17,9 @@
     "test:watch": "nx run-many --target=test:watch",
     "start": "start-storybook -p 6006",
     "build": "nx affected --target=build",
+    "build:ci": "nx run-many --target=build",
     "build:docs": "build-storybook",
-    "prepare": "husky install && npm run build",
+    "prepare": "husky install && npm run build:ci",
     "all-upgrade": "npm-upgrade && lerna exec --concurrency 1 -- npm-upgrade"
   },
   "workspaces": [
