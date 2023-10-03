@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "./tsconfig.json",
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -13,7 +13,9 @@
     "rootDir": "src",
     "outDir": "dist",
     "paths": {},
-    "module": "NodeNext"
+    "module": "NodeNext",
+
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules"],
   "files": []

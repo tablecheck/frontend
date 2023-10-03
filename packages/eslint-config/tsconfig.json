@@ -12,7 +12,9 @@
     "rootDir": "src",
     "outDir": "dist",
     "paths": {},
-    "types": ["vitest"]
+    "types": ["vitest"],
+    "module": "NodeNext",
+    "resolveJsonModule": true
   },
   "exclude": ["node_modules"],
   "files": []

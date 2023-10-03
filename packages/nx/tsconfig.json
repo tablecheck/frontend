@@ -12,7 +12,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "module": "NodeNext",
+    "resolveJsonModule": true
   },
   "exclude": [
     "node_modules",

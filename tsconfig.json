@@ -1,7 +1,4 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "module": "CommonJS"
-  },
-  "exclude": ["node_modules", "tmp"]
+  "include": ["this file is just for auto-rc to work correctly..."],
+  "exclude": ["**/*"]
 }
