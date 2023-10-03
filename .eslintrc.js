@@ -7,7 +7,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    project: './tsconfig.base.json',
+    project: './tsconfig.eslint.json',
   },
   overrides: [
     {

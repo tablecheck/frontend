@@ -20,7 +20,7 @@ export function generateEslintConfig(tree: Tree, projectName: string) {
   const { projectRoot } = getNxProjectRoot(tree, projectName);
   const projectTsConfigs =
     getConfigs(projectRoot)
-      .map((tsConfig) => path.relative(tree.root, tsConfig))
+      .map((tsConfig) => `'${path.relative(tree.root, tsConfig)}'`)
       .join(',') ||
     '/* could not detect tsconfig.json files, manually set them here */';
   const fileContent = `
