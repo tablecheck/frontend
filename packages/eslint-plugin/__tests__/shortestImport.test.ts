@@ -32,7 +32,7 @@ function buildCodeCase<T extends { name?: string }>({
     importType === 'default'
       ? (importPath: string) => `import { second } from '${importPath}';`
       : (importPath: string) => `const second = import('${importPath}');`;
-  const name = `${rest.name || template(path)}: ${importType}`;
+  const name = `${rest.name || `\`${template(path)}\``} -  ${importType}`;
   if (fixedPath) {
     return {
       ...rest,
