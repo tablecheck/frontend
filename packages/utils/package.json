@@ -3,7 +3,7 @@
   "description": "Generic utils shared inside @tablecheck packages",
   "license": "MIT",
   "author": "TableCheck Inc.",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "type": "commonjs",
   "exports": {
     ".": {

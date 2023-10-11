@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@clack/prompts": "^0.6.3",
-    "@tablecheck/frontend-utils": "^3.0.0",
+    "@tablecheck/frontend-utils": "^4.0.0",
     "@turingpointde/cvss.js": "^1.4.7",
     "chalk": "^4.1.2",
     "execa": "7.1.1",
