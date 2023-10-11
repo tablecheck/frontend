@@ -1,21 +1,21 @@
 {
-  "name": "utils",
+  "name": "config",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/utils/src",
+  "sourceRoot": "packages/config/src",
   "projectType": "library",
   "targets": {
     "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/utils/**/*.ts"]
+        "lintFilePatterns": ["packages/config/**/*.ts"]
       }
     },
     "quality:format": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["packages/utils/**/*.ts"],
+        "lintFilePatterns": ["packages/config/**/*.ts"],
         "fix": true
       }
     }

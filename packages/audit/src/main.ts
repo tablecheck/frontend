@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { getArgv } from '@tablecheck/frontend-utils';
+import minimist from 'minimist';
 
 import { run } from './index.js';
 
-const argv = getArgv({
+const argv = minimist(process.argv.slice(2), {
   boolean: ['ci'],
   default: {
     ci: false,

@@ -6,8 +6,9 @@ import {
   readProjectConfiguration,
   updateProjectConfiguration,
 } from '@nx/devkit';
-import { getNxProjectRoot } from '@tablecheck/frontend-utils';
 import merge from 'lodash/merge';
+
+import { getNxProjectRoot } from '../../utils/nx';
 
 export function updateProjectConfig(tree: Tree, projectName: string) {
   const { projectSourceRoot, projectRoot } = getNxProjectRoot(

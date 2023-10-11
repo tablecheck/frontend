@@ -1,0 +1,38 @@
+{
+  "name": "@tablecheck/frontend-config",
+  "description": "@tablecheck config for frontend projects",
+  "license": "MIT",
+  "author": "TableCheck Inc.",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "cosmiconfig": "^8.2.0",
+    "jiti": "^1.19.1"
+  },
+  "devDependencies": {
+    "type-fest": "4.4.0",
+    "typescript": "5.1.6"
+  },
+  "engines": {
+    "node": ">= 16.16.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

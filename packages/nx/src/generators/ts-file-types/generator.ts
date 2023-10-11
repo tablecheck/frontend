@@ -1,7 +1,8 @@
 import * as path from 'path';
 
 import { formatFiles, generateFiles, Tree } from '@nx/devkit';
-import { getNxProjectRoot } from '@tablecheck/frontend-utils';
+
+import { getNxProjectRoot } from '../../utils/nx';
 
 import { FileTypesGeneratorSchema } from './schema';
 

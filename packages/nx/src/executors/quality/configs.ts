@@ -1,9 +1,10 @@
 import * as path from 'path';
 
-import { unicodeEmoji as icons } from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import { flatten } from 'flat';
 import * as fs from 'fs-extra';
+
+import { unicodeEmoji as icons } from '../../utils/unicodeEmoji';
 
 export function configCheck(cwd: string) {
   const configDirPath = path.join(cwd, 'config');

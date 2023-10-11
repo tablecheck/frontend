@@ -1,11 +1,10 @@
 import * as path from 'path';
 
 import { Tree } from '@nx/devkit';
-import {
-  detectInstalledVersion,
-  outputPrettyFile,
-  getNxProjectRoot,
-} from '@tablecheck/frontend-utils';
+
+import { getNxProjectRoot } from '../../utils/nx';
+import { detectInstalledVersion } from '../../utils/packageJson';
+import { outputPrettyFile } from '../../utils/prettier';
 
 export function tsCarbonIconsGenerator(
   tree: Tree,

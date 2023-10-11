@@ -1,8 +1,10 @@
 import * as path from 'path';
 
 import { Tree } from '@nx/devkit';
-import { getNxProjectRoot, outputPrettyFile } from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
+
+import { getNxProjectRoot } from '../../utils/nx';
+import { outputPrettyFile } from '../../utils/prettier';
 
 function getConfigs(projectRoot: string) {
   const mapToPath = (filename: string) => path.join(projectRoot, filename);

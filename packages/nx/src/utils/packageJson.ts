@@ -8,11 +8,8 @@ import {
 import * as semver from 'semver';
 import type { PackageJson } from 'type-fest';
 
-import { getArgv } from './argv.js';
 import { outputPrettyFile } from './prettier.js';
 import { unicodeEmoji } from './unicodeEmoji.js';
-
-const argv = getArgv();
 
 export function getPackageJson(directory = process.cwd()) {
   return fs.readJsonSync(path.join(directory, 'package.json')) as PackageJson;
@@ -43,11 +40,6 @@ export function detectInstalledVersion(
   ) {
     throw new Error(
       `${packageName} does not match not version ${semverVersion}, actual version '${packageJson.version}'`,
-    );
-  }
-  if (argv.verbose) {
-    console.log(
-      `${packageName} at version '${packageJson.version}' detected in installed dependencies!`,
     );
   }
   return packageJsonPath;

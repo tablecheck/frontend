@@ -1,14 +1,12 @@
 import * as path from 'path';
 
 import { Tree } from '@nx/devkit';
-import {
-  detectInstalledVersion,
-  outputPrettyFile,
-  getNxProjectRoot,
-} from '@tablecheck/frontend-utils';
 import * as fs from 'fs-extra';
-// eslint-disable-next-line @tablecheck/forbidden-imports
-import { uniq } from 'lodash';
+import uniq from 'lodash/uniq';
+
+import { getNxProjectRoot } from '../../utils/nx';
+import { detectInstalledVersion } from '../../utils/packageJson';
+import { outputPrettyFile } from '../../utils/prettier';
 
 function buildTypes(configValue: unknown): string {
   if (Array.isArray(configValue))

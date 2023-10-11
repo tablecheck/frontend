@@ -1,13 +1,12 @@
 import * as path from 'path';
 
-import {
-  getLernaPaths,
-  processPackage,
-  unicodeEmoji as icons,
-} from '@tablecheck/frontend-utils';
 import chalk from 'chalk';
 import * as fs from 'fs-extra';
 import type { PackageJson } from 'type-fest';
+
+import { getLernaPaths } from '../../utils/lerna';
+import { processPackage } from '../../utils/packageJson';
+import { unicodeEmoji as icons } from '../../utils/unicodeEmoji';
 
 function evaluatePackage({ dependencies, devDependencies, name }: PackageJson) {
   // package.json version keys check
