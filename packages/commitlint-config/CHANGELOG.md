@@ -1,3 +1,38 @@
+# v6.0.0 (Wed Oct 11 2023)
+
+#### 💥 Breaking Change
+
+- fix: remove start-case restriction in scope-case [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix: prettier works with v2/v3 though v3 is preferred [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix(commitlint-config): use correct junit format via package [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat(commitlint-config): add junit formatter [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix: remove audit project and correct paths for nx schemas [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: add prettier config file and bump prettier version [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix: audit works and passes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: full build and passing lint via nx!! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: build runs and quality packages function [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: move everything except quality [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- chore: deps upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: major upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- refactor: get the ts to js build working nicely [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- feat: scripts is dead, long live scripts! WIP! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🐛 Bug Fix
+
+- fix: hack the package.json versions to be correct [#88](https://github.com/tablecheck/tablecheck-react-system/pull/88) ([@SimeonC](https://github.com/SimeonC))
+
+#### ⚠️ Pushed to `main`
+
+- fix: mangle once more… ([@SimeonC](https://github.com/SimeonC))
+- fix: mangle package versions again ([@SimeonC](https://github.com/SimeonC))
+- fix: release publish fix ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
