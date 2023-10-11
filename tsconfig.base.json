@@ -17,7 +17,6 @@
     "paths": {
       "@tablecheck/eslint-plugin": ["packages/eslint-plugin/src/index.ts"],
       "@tablecheck/frontend-audit": ["packages/audit/src/index.ts"],
-      "@tablecheck/frontend-config": ["packages/config/src/index.ts"],
       "@tablecheck/nx": ["packages/nx/src/index.ts"]
     }
   },

@@ -11,13 +11,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./packages/codemods/scripts/*.js'],
-      rules: {
-        'no-case-declarations': 'off',
-        'default-case': 'off',
-      },
-    },
-    {
       files: '*.json',
       parser: 'jsonc-eslint-parser',
       rules: {},

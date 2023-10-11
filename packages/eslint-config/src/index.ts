@@ -4,7 +4,6 @@ import type { Linter } from 'eslint';
 import * as fs from 'fs-extra';
 import type { PackageJson } from 'type-fest';
 
-import { configurableRuleOverrides } from './overrides/configurable';
 import { cypressOverrides } from './overrides/cypress';
 import { rootConfigsOverrides } from './overrides/rootConfigs';
 import { scriptsOverrides } from './overrides/scripts';
@@ -86,7 +85,6 @@ module.exports = {
     typescriptDefinitionOverrides,
     typescriptDocumentationOverrides,
     scriptsOverrides,
-    ...configurableRuleOverrides,
     rootConfigsOverrides,
   ].filter((o): o is Linter.ConfigOverride => !!o),
 
