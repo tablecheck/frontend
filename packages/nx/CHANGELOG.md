@@ -1,3 +1,63 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 6.0.0 (2023-10-11)
+
+
+### Bug Fixes
+
+* add nx meta files to bundle for detection ([8d29608](https://github.com/tablecheck/tablecheck-react-system/commit/8d29608b7e17aa492ffba51f82723f41449f086c))
+* assorted bugfixes and rule tweaks ([5382129](https://github.com/tablecheck/tablecheck-react-system/commit/5382129275d2ed5d6c619ab1863fc2b8316e3b97))
+* audit works and passes ([7332c20](https://github.com/tablecheck/tablecheck-react-system/commit/7332c2004082c17c20bd39fb3813d32a37af83d6))
+* bump package versions in deps ([3e7a058](https://github.com/tablecheck/tablecheck-react-system/commit/3e7a0584f2a4e984a47c0d2431a2f6c532c6f794))
+* bump packages and deps ([8f7d3ea](https://github.com/tablecheck/tablecheck-react-system/commit/8f7d3eade57beb24affa283690e907251a2345c1))
+* downgrade prettier to v2 ([2afd53e](https://github.com/tablecheck/tablecheck-react-system/commit/2afd53e06da958e7211daf14bf24a0053ab55dba))
+* eslint needs extra configs to resolve paths correctly ([253bb03](https://github.com/tablecheck/tablecheck-react-system/commit/253bb035111fe5031b621c7cf651ca99ffb68a15))
+* esm/cjs interop fixes ([3819043](https://github.com/tablecheck/tablecheck-react-system/commit/38190433943af513b77f5224d8d18a2e4cc74b00))
+* hack the package.json versions to be correct ([1b858ea](https://github.com/tablecheck/tablecheck-react-system/commit/1b858eab9ba0de977087116603e4c1890b6d2afe))
+* install from public npm and remove dist files ([034765e](https://github.com/tablecheck/tablecheck-react-system/commit/034765e7128a1e9e6fe5970d7dac57c207d0a221))
+* mangle once more… ([2a269ac](https://github.com/tablecheck/tablecheck-react-system/commit/2a269ac580d662e0f63b9a90e2df96bc67dcd52c))
+* mangle package versions again ([4513326](https://github.com/tablecheck/tablecheck-react-system/commit/4513326b88ed15769a35790ba0b6fea9af3648a7))
+* migrate script updates and remove dead packages ([df8be2f](https://github.com/tablecheck/tablecheck-react-system/commit/df8be2fb6b4e4bf0eac7a0adc7a3343915c35189))
+* nx quality scripts and prettier fixes ([519e6fb](https://github.com/tablecheck/tablecheck-react-system/commit/519e6fb1d857b8a8dca128c26668f5e6a661c254))
+* nx requires commonjs or weird node memory errors occur ([8085395](https://github.com/tablecheck/tablecheck-react-system/commit/808539508a5b80b7e247dfd58504470cbf221a2d))
+* **nx:** quality executor should run prettier from root cwd to correctly resolve configs and ignores ([cd50a5d](https://github.com/tablecheck/tablecheck-react-system/commit/cd50a5d1480cdd50c996a85064e5a516a14a8479))
+* **nx:** quality script should run correctly ([2d777db](https://github.com/tablecheck/tablecheck-react-system/commit/2d777db9fb0bd5c4f4d83bbacfaaa611861dd2d2))
+* pre-commit scripts and apply formatting ([f7cbd53](https://github.com/tablecheck/tablecheck-react-system/commit/f7cbd53a71e3c59ad13268ec925ed269b2a7ff02))
+* prettier works with v2/v3 though v3 is preferred ([089c36b](https://github.com/tablecheck/tablecheck-react-system/commit/089c36b1fbbfd4583ed58f6a9570ecc980139abc))
+* quality generator and migration include file-types ([461de28](https://github.com/tablecheck/tablecheck-react-system/commit/461de282474f56aba795a5ff2af8272f472f56c4))
+* quality generator bugfixes ([3424468](https://github.com/tablecheck/tablecheck-react-system/commit/34244680c8118b3bcb24087a346960c7af8d6fb9))
+* quality generator fixes and cleanups ([5c3b461](https://github.com/tablecheck/tablecheck-react-system/commit/5c3b4612ec4ff765f160b8773940dd604cfbb086))
+* refactor around package names to reset some versions ([c6486be](https://github.com/tablecheck/tablecheck-react-system/commit/c6486be9e6e0f6ff2c79c48be484f99417db39b4))
+* release publish fix ([f9e55e9](https://github.com/tablecheck/tablecheck-react-system/commit/f9e55e9cf3651cad4fd1d79d18735b9cea70396b))
+* remove audit project and correct paths for nx schemas ([de3582f](https://github.com/tablecheck/tablecheck-react-system/commit/de3582f500210a398df306866072c66e89ea9668))
+* shortest-import rule failed with .env file ([580a1a8](https://github.com/tablecheck/tablecheck-react-system/commit/580a1a8620ba6365a126a433a7809eada56c4074))
+
+
+### Features
+
+* add prettier config file and bump prettier version ([7add52b](https://github.com/tablecheck/tablecheck-react-system/commit/7add52bfa6ffdaa065df490c8320f8025579a0d6))
+* add stylelint ([c09ff1a](https://github.com/tablecheck/tablecheck-react-system/commit/c09ff1a07bda4d410ec2859be8d2a8ebc2fd80ae))
+* build runs and quality packages function ([694d732](https://github.com/tablecheck/tablecheck-react-system/commit/694d7327828f54794a5f4d9f6b56c116adb967d2))
+* bump prettier and add lib publishing checks ([a81ed57](https://github.com/tablecheck/tablecheck-react-system/commit/a81ed574359fa226ca13f824a0c46cb94e524b69))
+* full build and passing lint via nx!! ([8eb98c5](https://github.com/tablecheck/tablecheck-react-system/commit/8eb98c51c72335db82550536acb35881958eea8c))
+* move everything except quality ([a1e643e](https://github.com/tablecheck/tablecheck-react-system/commit/a1e643eb8f2299623d070b56fc85e982dd088655))
+* remove library build (use nx rollup) fixes for monorepo ([3a9d9a6](https://github.com/tablecheck/tablecheck-react-system/commit/3a9d9a625ae903dbb6e023cf8301251c433491c7))
+* remove stylelint and fix lint/ts issues ([45d668a](https://github.com/tablecheck/tablecheck-react-system/commit/45d668a3cd220a5d112f1a3fcef8c2a0ee100933))
+* scripts is dead, long live scripts! WIP! ([b248650](https://github.com/tablecheck/tablecheck-react-system/commit/b2486506f43f40ed98a602e309fe3b58dcb845d5))
+* upgrade eslint dependencies ([e60604b](https://github.com/tablecheck/tablecheck-react-system/commit/e60604bcf9e5389f51cbe0b828d95198ab78931a))
+
+
+### BREAKING CHANGES
+
+* scripts package removed
+
+
+
+
+
 # v6.0.0 (Wed Oct 11 2023)
 
 #### 💥 Breaking Change

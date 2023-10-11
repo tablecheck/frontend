@@ -1,40 +1,39 @@
-# v7.0.0 (Wed Oct 11 2023)
-
-#### 💥 Breaking Change
-
-- ci: fix builds with tsconfig dancing [#87](https://github.com/tablecheck/tablecheck-react-system/pull/87) ([@SimeonC](https://github.com/SimeonC))
-- fix: prettier works with v2/v3 though v3 is preferred [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- fix: remove audit project and correct paths for nx schemas [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: add prettier config file and bump prettier version [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- fix: audit works and passes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: full build and passing lint via nx!! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: build runs and quality packages function [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: move everything except quality [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- chore: deps upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: major upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- refactor: get the ts to js build working nicely [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-- feat: scripts is dead, long live scripts! WIP! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
-
-#### 🐛 Bug Fix
-
-- fix: hack the package.json versions to be correct [#88](https://github.com/tablecheck/tablecheck-react-system/pull/88) ([@SimeonC](https://github.com/SimeonC))
-
-#### ⚠️ Pushed to `main`
-
-- fix: mangle once more… ([@SimeonC](https://github.com/SimeonC))
-- fix: mangle package versions again ([@SimeonC](https://github.com/SimeonC))
-- fix: release publish fix ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [7.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/semantic-release-config@2.5.0...@tablecheck/semantic-release-config@7.0.0) (2023-10-11)
+
+
+### Bug Fixes
+
+* audit works and passes ([7332c20](https://github.com/tablecheck/frontend/commit/7332c2004082c17c20bd39fb3813d32a37af83d6))
+* hack the package.json versions to be correct ([1b858ea](https://github.com/tablecheck/frontend/commit/1b858eab9ba0de977087116603e4c1890b6d2afe))
+* mangle once more… ([2a269ac](https://github.com/tablecheck/frontend/commit/2a269ac580d662e0f63b9a90e2df96bc67dcd52c))
+* mangle package versions again ([4513326](https://github.com/tablecheck/frontend/commit/4513326b88ed15769a35790ba0b6fea9af3648a7))
+* prettier works with v2/v3 though v3 is preferred ([089c36b](https://github.com/tablecheck/frontend/commit/089c36b1fbbfd4583ed58f6a9570ecc980139abc))
+* release publish fix ([f9e55e9](https://github.com/tablecheck/frontend/commit/f9e55e9cf3651cad4fd1d79d18735b9cea70396b))
+* remove audit project and correct paths for nx schemas ([de3582f](https://github.com/tablecheck/frontend/commit/de3582f500210a398df306866072c66e89ea9668))
+
+
+### Features
+
+* add prettier config file and bump prettier version ([7add52b](https://github.com/tablecheck/frontend/commit/7add52bfa6ffdaa065df490c8320f8025579a0d6))
+* build runs and quality packages function ([694d732](https://github.com/tablecheck/frontend/commit/694d7327828f54794a5f4d9f6b56c116adb967d2))
+* full build and passing lint via nx!! ([8eb98c5](https://github.com/tablecheck/frontend/commit/8eb98c51c72335db82550536acb35881958eea8c))
+* major upgrade ([265f2ff](https://github.com/tablecheck/frontend/commit/265f2ffe33dd2afbd7c41ec261558a405a6eb67f))
+* move everything except quality ([a1e643e](https://github.com/tablecheck/frontend/commit/a1e643eb8f2299623d070b56fc85e982dd088655))
+* scripts is dead, long live scripts! WIP! ([b248650](https://github.com/tablecheck/frontend/commit/b2486506f43f40ed98a602e309fe3b58dcb845d5))
+
+
+### BREAKING CHANGES
+
+* scripts package removed
+
+
+
+
 
 # [2.5.0](https://github.com/tablecheck/frontend/compare/@tablecheck/semantic-release-config@2.4.0...@tablecheck/semantic-release-config@2.5.0) (2022-03-24)
 
