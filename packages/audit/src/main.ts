@@ -11,8 +11,8 @@ const argv = minimist(process.argv.slice(2), {
 });
 
 run({ rootPath: process.cwd(), updatePrompts: !argv.ci })
-  .then(() => {
-    process.exit(0);
+  .then((didPass) => {
+    process.exit(didPass ? 0 : 1);
   })
   .catch((err) => {
     console.error(err);
