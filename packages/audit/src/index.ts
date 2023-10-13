@@ -256,7 +256,9 @@ ${this.getVectorMetrics(vector)
     }
 
     getDependencyVersion() {
-      return this.dep.coordinates.substring(8) as `${string}@${string}`;
+      return this.dep.coordinates
+        .substring(8)
+        .replace(/%40/g, '@') as `${string}@${string}`;
     }
 
     async loadNpmPackages(dependencyVersion: string) {
@@ -343,7 +345,7 @@ ${this.getVectorMetrics(vector)
             acc.push(s);
             return acc;
           }, [] as string[])
-          .map((s) => `${s.split('@')[0]}@latest`)
+          .map((s) => s.split('@').slice(0, -1).join('@'))
           .join(' ')}\``,
       )}\n`
     : '';
@@ -383,6 +385,11 @@ export async function run({
     preferLocal: true,
     reject: false,
   });
+  if (ciResult.failed) {
+    console.log(chalk.red.bold('\u2718 Audit failed'));
+  } else {
+    console.log(chalk.green.bold('\u2714 Audit passed'));
+  }
   const junitFilePath = path.join(rootPath, 'junit', 'auditjs.xml');
   fs.outputFileSync(junitFilePath, ciResult.stdout);
   console.log(chalk.blue.bold(`Report written to ${junitFilePath}`));
