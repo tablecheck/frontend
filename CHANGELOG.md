@@ -1,3 +1,99 @@
+# (Fri Oct 13 2023)
+
+#### 💥 Breaking Change
+
+- ci: revert switch next to canary releases due to lerna issue [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- ci: switch next to canary releases due to lerna issue [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix: add forcePublish to npm publish to bump all packages in next [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- ci: skip husky in release actions install [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- fix: tests and github_actions [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- ci: fix github actions to have main branch for nx [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - ci: fix builds with tsconfig dancing [#87](https://github.com/tablecheck/tablecheck-react-system/pull/87) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`
+  - fix: shortest import path resolution [#87](https://github.com/tablecheck/tablecheck-react-system/pull/87) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - ci: fix release by upgrading dependencies [#87](https://github.com/tablecheck/tablecheck-react-system/pull/87) ([@SimeonC](https://github.com/SimeonC))
+  - feat: upgrade eslint dependencies [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: bump package versions in deps [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: install from public npm and remove dist files [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: eslint needs extra configs to resolve paths correctly [#86](https://github.com/tablecheck/tablecheck-react-system/pull/86) ([@SimeonC](https://github.com/SimeonC))
+  - fix: assorted bugfixes and rule tweaks [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-plugin@7.0.0`
+  - ci: fix nx branch setup [#84](https://github.com/tablecheck/tablecheck-react-system/pull/84) ([@SimeonC](https://github.com/SimeonC))
+  - feat: add shortest import eslint rule [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/nx@7.0.0`
+  - fix: quality generator fixes and cleanups [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: remove library build (use nx rollup) fixes for monorepo [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix(nx): quality executor should run prettier from root cwd to correctly resolve configs and ignores [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: quality generator bugfixes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix(nx): quality script should run correctly [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: quality generator and migration include file-types [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: nx quality scripts and prettier fixes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: esm/cjs interop fixes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: add nx meta files to bundle for detection [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - ci: fix github release action [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: pre-commit scripts and apply formatting [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/commitlint-config@7.0.0`
+  - fix: remove start-case restriction in scope-case [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix(commitlint-config): use correct junit format via package [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat(commitlint-config): add junit formatter [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - fix: prettier works with v2/v3 though v3 is preferred [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: remove audit project and correct paths for nx schemas [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - fix: audit works and passes [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: full build and passing lint via nx!! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: build runs and quality packages function [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: move everything except quality [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: scripts is dead, long live scripts! WIP! [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`
+  - feat: bump prettier and add lib publishing checks [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: bump packages and deps [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: add stylelint [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`
+  - fix: downgrade prettier to v2 [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: nx requires commonjs or weird node memory errors occur [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`
+  - fix: migrate script updates and remove dead packages [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - feat: add prettier config file and bump prettier version [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/eslint-plugin@7.0.0`
+  - fix: import esm/cjs bugs [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@9.0.0`, `@tablecheck/nx@7.0.0`
+  - feat: remove stylelint and fix lint/ts issues [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - chore: deps upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - feat: major upgrade [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+  - refactor: get the ts to js build working nicely [#83](https://github.com/tablecheck/tablecheck-react-system/pull/83) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/frontend-audit@6.0.0`
+  - fix: audit should exit based on success [#90](https://github.com/tablecheck/tablecheck-react-system/pull/90) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - fix: hack the package.json versions to be correct [#88](https://github.com/tablecheck/tablecheck-react-system/pull/88) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: shortest-import rule failed with .env file [#88](https://github.com/tablecheck/tablecheck-react-system/pull/88) ([@SimeonC](https://github.com/SimeonC))
+
+#### ⚠️ Pushed to `main`
+
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`, `@tablecheck/prettier-config@5.0.0`, `@tablecheck/semantic-release-config@8.0.0`
+  - fix: mangle once more… ([@SimeonC](https://github.com/SimeonC))
+  - fix: mangle package versions again ([@SimeonC](https://github.com/SimeonC))
+  - fix: release publish fix ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/frontend-audit@6.0.0`, `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: refactor around package names to reset some versions ([@SimeonC](https://github.com/SimeonC))
+  - chore: hack versions due to bad release ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Oct 11 2023)
 
 #### 💥 Breaking Change
