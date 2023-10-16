@@ -54,6 +54,7 @@ module.exports = {
     'cypress',
     '@tablecheck',
     '@nx',
+    'react-refresh',
   ],
 
   globals: {
