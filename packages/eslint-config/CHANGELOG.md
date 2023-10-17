@@ -1,3 +1,15 @@
+# v8.1.0 (Tue Oct 17 2023)
+
+#### 🚀 Enhancement
+
+- feat: add react-refresh eslint rules [#91](https://github.com/tablecheck/tablecheck-react-system/pull/91) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

@@ -1,3 +1,16 @@
+# (Tue Oct 17 2023)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@8.1.0`
+  - feat: add react-refresh eslint rules [#91](https://github.com/tablecheck/tablecheck-react-system/pull/91) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Oct 13 2023)
 
 #### 💥 Breaking Change
