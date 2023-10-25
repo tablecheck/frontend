@@ -19,6 +19,7 @@ export const testOverrides: Linter.ConfigOverride = {
     'prefer-promise-reject-errors': 'off',
     'global-require': 'off',
     'react/prop-types': 'off',
+    'react-refresh/only-export-components': 'off',
 
     'jsx-a11y/accessible-emoji': 'off',
     'jsx-a11y/alt-text': 'off',

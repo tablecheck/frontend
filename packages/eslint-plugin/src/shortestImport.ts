@@ -25,7 +25,7 @@ class RuleChecker {
 
   private pathMappings: Record<string, string>;
 
-  private aliasPathMappings: Record<string, string>;
+  private allPaths: Record<string, string>;
 
   get relativeBaseUrl(): string {
     return path.relative(this.pathsBasePath as string, this.baseUrl ?? '');
@@ -33,22 +33,23 @@ class RuleChecker {
 
   constructor(compilerOptions: CompilerOptions) {
     const { baseUrl, pathsBasePath, rootDir, rootDirs } = compilerOptions;
+
     this.baseUrl = baseUrl;
     this.pathsBasePath = pathsBasePath;
     this.rootDir = rootDir;
     this.rootDirs = rootDirs;
     this.compilerPaths = this.composeCompilerPaths(compilerOptions.paths);
     this.pathMappings = this.composePathMappings();
-    this.aliasPathMappings = this.composeAliasPathMappings();
+    this.allPaths = { ...this.compilerPaths, ...this.pathMappings };
   }
 
   private composeCompilerPaths(compilerPaths: CompilerOptions['paths']) {
     return Object.entries(compilerPaths ?? {}).reduce(
       (compilerPathsMap, [key, [value]]) => ({
         ...compilerPathsMap,
-        [key.replace(/\/\*$/gi, '')]: value
-          .replace(/\/\*$/gi, '')
-          .replace(/^\.\//gi, ''),
+        [key.replace(/\*$/gi, '')]: this.relativeToBaseUrl(
+          value.replace(/\/\*$/gi, '').replace(/^\.\//gi, ''),
+        ),
       }),
       {},
     );
@@ -56,10 +57,9 @@ class RuleChecker {
 
   private composePathMappings() {
     return Object.fromEntries(
-      Object.entries({
-        ...this.compilerPaths,
-        ...this.composeBaseUrlPaths(),
-      } as Record<string, string>).filter(([key]) => !!key.trim()),
+      Object.entries(this.composeBaseUrlPaths()).filter(
+        ([key]) => !!key.trim(),
+      ),
     );
   }
 
@@ -74,29 +74,21 @@ class RuleChecker {
           if (dirrent.isDirectory())
             return {
               ...directoryMap,
-              [dirrent.name]: path.join(this.relativeBaseUrl, dirrent.name),
+              [`${dirrent.name}/`]: this.relativeToBaseUrl(
+                path.join(this.relativeBaseUrl, dirrent.name),
+              ),
             };
           return {
             ...directoryMap,
-            [dirrent.name.replace(/\.[^.]+$/gi, '')]: path
-              .join(this.relativeBaseUrl, dirrent.name)
-              .replace(/^\.\//gi, ''),
+            [dirrent.name.replace(/\.[^.]+$/gi, '')]: this.relativeToBaseUrl(
+              path
+                .join(this.relativeBaseUrl, dirrent.name)
+                .replace(/^\.\//gi, ''),
+            ),
           };
         },
         {} as Record<string, string>,
       );
-  }
-
-  private composeAliasPathMappings() {
-    return this.doesCompilerPathsIncludeBaseUrl()
-      ? this.compilerPaths
-      : this.pathMappings;
-  }
-
-  private doesCompilerPathsIncludeBaseUrl() {
-    return Object.values<string>(this.compilerPaths).some((value) =>
-      value.startsWith(this.relativeBaseUrl),
-    );
   }
 
   private getImportMeta(
@@ -140,20 +132,30 @@ class RuleChecker {
   ) {
     const { importPath, resolvedImportPath, resolvedFilePath } =
       this.getImportMeta(context, node);
+
     if (!importPath) return;
     const relativePath = this.getRelativeImport({
       importPath,
       resolvedImportPath,
       resolvedFilePath,
     });
-    const aliasPaths = this.getPathAliasImports({
+    const aliasPaths = this.getPathImports({
+      mappings: this.compilerPaths,
       resolvedImportPath,
+      importPath,
+      resolvedFilePath,
+    });
+    const baseUrlPaths = this.getPathImports({
+      mappings: this.pathMappings,
+      resolvedImportPath,
+      importPath,
       resolvedFilePath,
     });
     const preferredPath = this.getPreferredPath({
       resolvedFilePath,
       relativePath,
       aliasPaths,
+      baseUrlPaths,
       avoidRelativeParents: context.options[0] || [],
     });
 
@@ -174,21 +176,36 @@ class RuleChecker {
 
   private shouldNotChangeImport(importPath: string) {
     if (importPath.startsWith('@') || importPath === '.') return true;
-    const isPathMapping = Object.keys(this.pathMappings).some((key) =>
-      importPath.startsWith(key),
+    const isPathMapping = Object.keys(this.allPaths).some(
+      (key) =>
+        importPath.startsWith(key) ||
+        importPath.startsWith(key.replace(/\/$/, '')),
     );
+
     if (isPathMapping) return false;
     return !importPath.startsWith('.') && !importPath.startsWith('/');
   }
 
   private resolveImport(importPath: string) {
-    const importParts = importPath.split('/');
-    if (this.pathMappings[importParts[0]]) {
-      return [this.pathMappings[importParts[0]]]
-        .concat(importParts.slice(1))
-        .join('/');
+    const matchedPathMappingKey = Object.keys(this.allPaths).find(
+      (key) => importPath.startsWith(key) || `${importPath}/`.startsWith(key),
+    );
+
+    if (matchedPathMappingKey) {
+      const base = this.allPaths[matchedPathMappingKey];
+      const append = importPath
+        .replace(matchedPathMappingKey.replace(/\/$/, ''), '')
+        .replace(matchedPathMappingKey, '');
+
+      return `./${path.join(base, append)}`;
     }
-    return importParts.join('/');
+    return importPath;
+  }
+
+  private relativeToBaseUrl(filepath: string) {
+    if (!this.baseUrl) return filepath;
+    const forcedImportPath = this.forceAppend(this.baseUrl, filepath);
+    return `./${path.relative(this.baseUrl, forcedImportPath)}`;
   }
 
   private getRelativeImport({
@@ -201,55 +218,71 @@ class RuleChecker {
     resolvedFilePath: string;
   }) {
     if (importPath.startsWith('.')) return importPath;
+
     const relativePath = path.relative(
       path.dirname(resolvedFilePath),
-      resolvedImportPath,
+      this.relativeToBaseUrl(resolvedImportPath),
     );
+
     if (relativePath.startsWith('.')) return relativePath;
     return `./${relativePath}`;
   }
 
-  private getPathAliasImports({
-    resolvedImportPath: importPath,
+  private getPathImports({
+    mappings,
+    importPath,
+    resolvedImportPath,
     resolvedFilePath,
   }: {
+    mappings: Record<string, string>;
+    importPath: string;
     resolvedImportPath: string;
     resolvedFilePath: string;
   }) {
-    let resolvedImportPath = importPath;
-    if (importPath.startsWith('.')) {
-      resolvedImportPath = path.resolve(
-        path.dirname(resolvedFilePath),
-        importPath,
-      );
-    }
-    const matchedMappings = Object.entries(this.aliasPathMappings).filter(
-      ([, value]) => resolvedImportPath.includes(value),
-    );
-    return matchedMappings.map(([key, value]) =>
-      resolvedImportPath.replace(
-        new RegExp(`^.*?${value.replace(/\//gi, '\\/')}`),
-        key,
-      ),
-    );
+    const rootRelativeImportPath = importPath.startsWith('.')
+      ? `./${path.relative(
+          process.cwd(),
+          path.resolve(path.dirname(resolvedFilePath), importPath),
+        )}`
+      : resolvedImportPath;
+    return Object.entries(mappings)
+      .map(([key, value]) => {
+        const keyRegexp = new RegExp(
+          `^${key
+            .replace(/\/$/g, '')
+            .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\/|$)`,
+        );
+        const hasImportMatch = importPath.match(keyRegexp);
+        const hasResolvedMatch = `./${rootRelativeImportPath}`.includes(value);
+        if (!hasImportMatch && !hasResolvedMatch) return undefined;
+        if (hasImportMatch) return importPath;
+        return rootRelativeImportPath.replace(
+          new RegExp(`^.*?${value.replace(/\//gi, '\\/')}`),
+          key,
+        );
+      })
+      .map((a) => a?.replace(/\/+/gi, '/').replace(/\/$/gi, ''))
+      .filter((a): a is string => !!a);
   }
 
   private getPreferredPath({
     resolvedFilePath,
     relativePath,
     aliasPaths,
+    baseUrlPaths,
     avoidRelativeParents,
   }: {
     resolvedFilePath: string;
     relativePath: string;
     aliasPaths: string[];
+    baseUrlPaths: string[];
     avoidRelativeParents: string[];
   }) {
-    if (!aliasPaths.length) return relativePath;
+    if (!aliasPaths.length && !baseUrlPaths.length) return relativePath;
     const parentSlugs = relativePath.split('/').filter((s) => s === '..');
     const shouldAvoidRelative =
       this.relativeGoesThroughBaseUrl(relativePath, resolvedFilePath) ||
-      aliasPaths.some((aliasPath) => {
+      [...aliasPaths, ...baseUrlPaths].some((aliasPath) => {
         if (!avoidRelativeParents.length) return false;
         const relativeRoot = aliasPath
           .split('/')
@@ -257,23 +290,46 @@ class RuleChecker {
           .join('/');
         return avoidRelativeParents.includes(relativeRoot);
       });
-    const aliasWithLength = aliasPaths
+    const allPathsWithLength = (aliasPaths.length ? aliasPaths : baseUrlPaths)
       .map((aliasPath) => ({
         aliasPath,
         length: aliasPath.split('/').length,
       }))
-      .concat(
-        shouldAvoidRelative
-          ? []
-          : [
-              {
-                aliasPath: relativePath,
-                length: relativePath.split('/').length,
-              },
-            ],
-      )
       .sort((a, b) => a.length - b.length);
-    return aliasWithLength[0]?.aliasPath;
+
+    const shortestAliasPath = allPathsWithLength[0];
+    if (shouldAvoidRelative) return shortestAliasPath?.aliasPath;
+    if (!shortestAliasPath) return relativePath;
+    return this.shouldPreferRelative(relativePath, shortestAliasPath)
+      ? relativePath
+      : shortestAliasPath.aliasPath;
+  }
+
+  private shouldPreferRelative(
+    relativePath: string,
+    shortestAliasPath: { aliasPath: string; length: number },
+  ): boolean {
+    const shortestAliasPathLength = shortestAliasPath.length;
+    const relativePathLength = relativePath.split('/').length;
+    if (relativePath.startsWith('./')) {
+      return relativePathLength - 1 < shortestAliasPathLength;
+    }
+    if (relativePath.startsWith('../../')) {
+      if (relativePathLength === shortestAliasPathLength) {
+        const pathParts = relativePath.split('/');
+        let dotsOverPaths = 0;
+        pathParts.forEach((part) => {
+          if (part === '..') dotsOverPaths += 1;
+          else dotsOverPaths -= 1;
+        });
+        return dotsOverPaths > 0;
+      }
+      return relativePathLength < shortestAliasPathLength;
+    }
+    if (relativePath.startsWith('../')) {
+      return relativePathLength <= shortestAliasPathLength;
+    }
+    return false;
   }
 
   private relativeGoesThroughBaseUrl(
@@ -292,25 +348,43 @@ class RuleChecker {
       path.dirname(resolvedFilePath),
       parentPath,
     );
+
     return resolvedPathRoot === absoluteImportPath;
+  }
+
+  private forceAppend(base: string, append: string) {
+    const baseParts = base.split('/');
+    for (let i = 0; i < baseParts.length; i += 1) {
+      const lastSegments = baseParts.slice(-1 * (i + 1)).join('/');
+      if (append.startsWith(lastSegments)) {
+        return `/${path.join(
+          ...baseParts.slice(0, -1 * (i + 1)),
+          append,
+        )}`.replace(/[/]+/, '/');
+      }
+    }
+    return path.resolve(base, append);
   }
 
   private getResolvedFilePath(filename: string) {
     if (!filename.startsWith('/')) {
-      const resolvedPaths = [
-        this.pathsBasePath,
-        this.rootDir,
-        ...(this.rootDirs ?? []),
-      ].map((potentialRoot) => {
-        if (typeof potentialRoot !== 'string') return undefined;
-        return [potentialRoot, path.resolve(potentialRoot, filename)];
-      });
-      const match = resolvedPaths.find((tuple) => {
+      const resolvedRoots = [this.rootDir, ...(this.rootDirs ?? [])].map(
+        (potentialRoot) => {
+          if (typeof potentialRoot !== 'string') return undefined;
+          return [potentialRoot, this.forceAppend(potentialRoot, filename)];
+        },
+      );
+      const match = resolvedRoots.find((tuple) => {
         if (!tuple) return false;
         const [, resolvedPath] = tuple;
         return fs.existsSync(resolvedPath);
       });
-      return match ? path.relative(match[0], match[1]) : filename;
+
+      if (!match) return filename;
+      if (this.baseUrl) {
+        return `./${path.relative(this.baseUrl, match[1])}`;
+      }
+      return `./${path.relative(match[0], match[1])}`;
     }
 
     // this is because sometimes `baseUrl` is lowercase (eg `/users/someone/...`)

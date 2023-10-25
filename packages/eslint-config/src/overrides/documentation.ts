@@ -14,5 +14,6 @@ export const documentationOverrides: Linter.ConfigOverride = {
     'react-hooks/exhaustive-deps': 'off',
     'react/function-component-definition': 'off',
     'react/jsx-no-constructed-context-values': 'off',
+    'react-refresh/only-export-components': 'off',
   },
 };

@@ -55,7 +55,7 @@ export const reactRules: Linter.RulesRecord = {
   'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
   '@tablecheck/consistent-react-import': 'error',
   'react-refresh/only-export-components': [
-    'error',
+    'warn',
     { allowConstantExport: true },
   ],
 };
