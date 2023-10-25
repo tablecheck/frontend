@@ -33,6 +33,7 @@ export default async function runExecutor(
     const lintResult = await lintRun(
       {
         ...options,
+        hasTypeAwareRules: true,
         noEslintrc: false,
         format: process.env.CI ? 'junit' : 'stylish',
         quiet: !!process.env.CI,

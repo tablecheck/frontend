@@ -6,13 +6,13 @@ import { forbiddenImports as rule, messageId } from '../src/forbiddenImports';
 const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.test.json',
+    project: './fixtures/tsconfig.test.json',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
 });
 
-const filename = './test_src/default.tsx';
+const filename = './fixtures/test_src/default.tsx';
 
 ruleTester.run('forbiddenImports > valid other import formats', rule, {
   valid: [

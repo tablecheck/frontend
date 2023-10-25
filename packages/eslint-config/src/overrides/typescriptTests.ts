@@ -20,6 +20,8 @@ export const typescriptTestsOverrides = typescriptOverrides
         // here we use the more lenient consistent-return to help prevent weird errors
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'consistent-return': 'error',
+        '@typescript-eslint/unbound-method': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
       },
       env: {
         node: true,

@@ -8,13 +8,13 @@ import {
 const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.test.json',
+    project: './fixtures/tsconfig.test.json',
     tsconfigRootDir: __dirname,
     sourceType: 'module',
   },
 });
 
-const filename = './test_src/default.tsx';
+const filename = './fixtures/test_src/default.tsx';
 const invalidTests = [
   {
     code: `import { useState } from 'react';const [val, setVal] = useState(true);`,
