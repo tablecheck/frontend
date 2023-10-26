@@ -1,3 +1,15 @@
+# v6.0.1 (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- fix: eslint rules around imports [#92](https://github.com/tablecheck/frontend/pull/92) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

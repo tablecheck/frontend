@@ -1,3 +1,16 @@
+# (Thu Oct 26 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.1.1`, `@tablecheck/eslint-plugin@6.0.1`, `@tablecheck/nx@6.0.1`
+  - fix: eslint rules around imports [#92](https://github.com/tablecheck/frontend/pull/92) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Oct 17 2023)
 
 #### 🚀 Enhancement
