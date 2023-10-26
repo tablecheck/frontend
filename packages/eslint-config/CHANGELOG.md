@@ -1,19 +1,18 @@
-# v8.1.1 (Thu Oct 26 2023)
-
-#### 🐛 Bug Fix
-
-- fix: eslint rules around imports [#92](https://github.com/tablecheck/frontend/pull/92) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.1.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.0...@tablecheck/eslint-config@8.1.1) (2023-10-26)
+
+
+### Bug Fixes
+
+* eslint rules around imports ([22b4e2a](https://github.com/tablecheck/frontend/commit/22b4e2ae1a40928545e914f8dbba99b268ffe6a1))
+
+
+
+
 
 # [8.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.0.0...@tablecheck/eslint-config@8.1.0) (2023-10-17)
 
