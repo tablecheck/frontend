@@ -22,6 +22,7 @@ export const typescriptTestsOverrides = typescriptOverrides
         'consistent-return': 'error',
         '@typescript-eslint/unbound-method': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
       },
       env: {
         node: true,
