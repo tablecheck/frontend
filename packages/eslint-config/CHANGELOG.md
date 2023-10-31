@@ -1,19 +1,18 @@
-# v8.1.2 (Tue Oct 31 2023)
-
-#### 🐛 Bug Fix
-
-- fix: disable more rules in tests [#94](https://github.com/tablecheck/frontend/pull/94) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.1.2](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.1...@tablecheck/eslint-config@8.1.2) (2023-10-31)
+
+
+### Bug Fixes
+
+* disable more rules in tests ([06da60f](https://github.com/tablecheck/frontend/commit/06da60fca8f4703151c6ba1de46693141d53f7aa))
+
+
+
+
 
 ## [8.1.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.0...@tablecheck/eslint-config@8.1.1) (2023-10-26)
 
