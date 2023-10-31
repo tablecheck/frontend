@@ -23,7 +23,9 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "@nx/cypress": "^16",
     "@nx/devkit": "^16",
+    "@nx/js": "^16",
     "@nx/linter": "^16",
     "chalk": "^4.1.2",
     "flat": "5.0.2",
