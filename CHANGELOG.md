@@ -1,3 +1,16 @@
+# (Tue Oct 31 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.1.2`
+  - fix: disable more rules in tests [#94](https://github.com/tablecheck/frontend/pull/94) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Oct 26 2023)
 
 #### 🐛 Bug Fix

@@ -1,3 +1,15 @@
+# v8.1.2 (Tue Oct 31 2023)
+
+#### 🐛 Bug Fix
+
+- fix: disable more rules in tests [#94](https://github.com/tablecheck/frontend/pull/94) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
