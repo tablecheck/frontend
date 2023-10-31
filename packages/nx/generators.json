@@ -19,6 +19,11 @@
       "factory": "./dist/generators/ts-file-types/generator",
       "schema": "./dist/generators/ts-file-types/schema.json",
       "description": "ts-file-types generator"
+    },
+    "vite-lib": {
+      "factory": "./dist/generators/vite-lib/generator",
+      "schema": "./dist/generators/vite-lib/schema.json",
+      "description": "Create a Typescript Lib for use in a vite app monorepo"
     }
   }
 }
