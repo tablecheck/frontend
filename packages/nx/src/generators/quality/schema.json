@@ -14,6 +14,50 @@
       "x-prompt": "What is the name of the project for the generator?",
       "x-priority": "important"
     },
+    "eslintType": {
+      "type": "string",
+      "description": "The eslint preset to use.",
+      "alias": "t",
+      "x-priority": "important",
+      "x-prompt": {
+        "message": "What type of eslint preset should we use?",
+        "type": "list",
+        "items": [
+          {
+            "value": "basic",
+            "label": "Vanilla Javascript"
+          },
+          {
+            "value": "typescript",
+            "label": "Vanilla Typescript"
+          },
+          {
+            "value": "react",
+            "label": "React Javascript"
+          },
+          {
+            "value": "reactTs",
+            "label": "React Typescript"
+          },
+          {
+            "value": "cypress",
+            "label": "Cypress with Vanilla Javascript"
+          },
+          {
+            "value": "cypressTs",
+            "label": "Cypress with Typescript"
+          },
+          {
+            "value": "component",
+            "label": "React Javascript with Cypress component testing"
+          },
+          {
+            "value": "componentTs",
+            "label": "React Typescript with Cypress component testing"
+          }
+        ]
+      }
+    },
     "svgAsComponent": {
       "type": "boolean",
       "description": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
@@ -21,5 +65,5 @@
       "x-priority": "important"
     }
   },
-  "required": ["project"]
+  "required": ["project", "eslintType"]
 }

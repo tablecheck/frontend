@@ -14,6 +14,36 @@
       "main": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./basic": {
+      "types": "./dist/presets/basic.d.ts",
+      "main": "./dist/presets/basic.js",
+      "default": "./dist/presets/basic.js"
+    },
+    "./typescript": {
+      "types": "./dist/presets/typescript.d.ts",
+      "main": "./dist/presets/typescript.js",
+      "default": "./dist/presets/typescript.js"
+    },
+    "./cypress": {
+      "types": "./dist/presets/cypress.d.ts",
+      "main": "./dist/presets/cypress.js",
+      "default": "./dist/presets/cypress.js"
+    },
+    "./cypress-component": {
+      "types": "./dist/presets/cypressComponent.d.ts",
+      "main": "./dist/presets/cypressComponent.js",
+      "default": "./dist/presets/cypressComponent.js"
+    },
+    "./react": {
+      "types": "./dist/presets/react.d.ts",
+      "main": "./dist/presets/react.js",
+      "default": "./dist/presets/react.js"
+    },
+    "./react-typescript": {
+      "types": "./dist/presets/reactTs.d.ts",
+      "main": "./dist/presets/reactTs.js",
+      "default": "./dist/presets/reactTs.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",

@@ -21,7 +21,7 @@ import { updateProjectConfig } from './projectConfig';
 
 export async function qualityGenerator(
   tree: Tree,
-  schema: FileTypesGeneratorSchema & { project: string },
+  schema: FileTypesGeneratorSchema & Parameters<typeof generateEslintConfig>[1],
 ) {
   await addDependenciesToPackageJson(
     tree,
@@ -57,7 +57,7 @@ export async function qualityGenerator(
     path.relative(process.cwd(), tree.root),
     {},
   );
-  generateEslintConfig(tree, schema.project);
+  generateEslintConfig(tree, schema);
   execSync('npx husky install', {
     cwd: process.cwd(),
     stdio: 'inherit',

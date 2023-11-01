@@ -18,7 +18,47 @@ function getConfigs(projectRoot: string) {
   return defaultConfigs.filter((config) => fs.existsSync(config));
 }
 
-export function generateEslintConfig(tree: Tree, projectName: string) {
+function getExtends(
+  eslintType:
+    | 'basic'
+    | 'typescript'
+    | 'react'
+    | 'reactTs'
+    | 'cypress'
+    | 'cypressTs'
+    | 'component'
+    | 'componentTs',
+) {
+  switch (eslintType) {
+    case 'basic':
+      return "'@tablecheck/eslint-config/basic'";
+    case 'typescript':
+      return "'@tablecheck/eslint-config/typescript'";
+    case 'react':
+      return "'@tablecheck/eslint-config/react'";
+    case 'reactTs':
+      return "'@tablecheck/eslint-config/react-typescript'";
+    case 'cypress':
+      return "'@tablecheck/eslint-config/basic', '@tablecheck/eslint-config/cypress'";
+    case 'cypressTs':
+      return "'@tablecheck/eslint-config/typescript', '@tablecheck/eslint-config/cypress'";
+    case 'component':
+      return "'@tablecheck/eslint-config/react', '@tablecheck/eslint-config/component'";
+    case 'componentTs':
+      return "'@tablecheck/eslint-config/react-typescript', '@tablecheck/eslint-config/component-typescript'";
+    default:
+      return "'@tablecheck/eslint-config'";
+  }
+}
+
+export function generateEslintConfig(
+  tree: Tree,
+  schema: {
+    project: string;
+    eslintType: Parameters<typeof getExtends>[0];
+  },
+) {
+  const projectName = schema.project;
   const { projectRoot } = getNxProjectRoot(tree, projectName);
   const projectTsConfigs =
     getConfigs(projectRoot)
@@ -27,7 +67,7 @@ export function generateEslintConfig(tree: Tree, projectName: string) {
     '/* could not detect tsconfig.json files, manually set them here */';
   const fileContent = `
 module.exports = {
-    extends: ['@tablecheck/eslint-config'],
+    extends: [${getExtends(schema.eslintType)}],
     parserOptions: {
         project: [${projectTsConfigs}],
     },

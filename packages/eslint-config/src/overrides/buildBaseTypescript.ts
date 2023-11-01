@@ -11,7 +11,7 @@ if (!process.env.NODE_ENV) {
  * typescript specific overrides for enabled eslint rules.
  * Make sure to keep the typescript + eslint rules paired and commented.
  */
-const eslintTypescriptRules: Linter.RulesRecord = {
+export const baseTypescriptRules: Linter.RulesRecord = {
   // unused variables
   '@typescript-eslint/no-unused-vars': 'error',
   'no-void': 'off',
@@ -25,21 +25,41 @@ const eslintTypescriptRules: Linter.RulesRecord = {
   // see https://stackoverflow.com/a/67652059/1413689
   'consistent-return': 'off',
   '@typescript-eslint/no-unsafe-return': 'error',
+
+  '@typescript-eslint/no-explicit-any': 'error',
+  '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+  '@typescript-eslint/prefer-nullish-coalescing': [
+    'error',
+    {
+      ignoreConditionalTests: true,
+      ignoreMixedLogicalExpressions: true,
+      ignorePrimitives: {
+        string: true,
+        boolean: true,
+      },
+    },
+  ],
+  '@tablecheck/prefer-shortest-import': 'error',
 };
 
-/**
- *
- * @param files - file globs
- * @param rules - here should be the basic rules
- * @param forcedRules - this is the place to override any ts rules
- * @returns eslint-config
- */
-export function buildBaseTypescript(
-  files: Linter.ConfigOverride['files'],
-  rules: Linter.RulesRecord,
-  forcedRules?: Linter.RulesRecord,
-): Linter.ConfigOverride | undefined {
+export function buildBaseTypescript<
+  T extends Linter.RulesRecord,
+  TForced extends Linter.RulesRecord,
+>({
+  files,
+  rules,
+  forcedRules,
+  ...options
+}: {
+  files: Linter.ConfigOverride['files'];
+  rules: T;
+  forcedRules?: TForced;
+} & Omit<
+  Linter.ConfigOverride,
+  'parser' | 'extends' | 'plugins' | 'settings' | 'rules' | 'files'
+>): Linter.ConfigOverride {
   return {
+    ...options,
     parser: '@typescript-eslint/parser',
     extends: [
       'airbnb-typescript',
@@ -47,7 +67,6 @@ export function buildBaseTypescript(
       'plugin:@typescript-eslint/stylistic-type-checked',
       'plugin:eslint-comments/recommended',
       'prettier',
-      'plugin:react-hooks/recommended',
     ],
 
     plugins: [
@@ -68,21 +87,7 @@ export function buildBaseTypescript(
     },
     rules: {
       ...rules,
-      ...eslintTypescriptRules,
-      '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
-      '@typescript-eslint/prefer-nullish-coalescing': [
-        'error',
-        {
-          ignoreConditionalTests: true,
-          ignoreMixedLogicalExpressions: true,
-          ignorePrimitives: {
-            string: true,
-            boolean: true,
-          },
-        },
-      ],
-      '@tablecheck/prefer-shortest-import': 'error',
+      ...baseTypescriptRules,
       ...forcedRules,
     },
   };

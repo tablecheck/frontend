@@ -3,9 +3,9 @@ import type { Linter } from 'eslint';
 export const documentationOverrides: Linter.ConfigOverride = {
   files: [
     '**/__fixtures__/**/*',
-    '**/*.fixture.{js,jsx}',
-    '**/*.{stories,story}.{js,jsx}',
-    '.storybook/**/*.{js,jsx}',
+    '**/*.fixture.{js,jsx,cjs,mjs}',
+    '**/*.{stories,story}.{js,jsx,cjs,mjs}',
+    '.storybook/**/*.{js,jsx,cjs,mjs}',
   ],
   rules: {
     'no-console': 'off',

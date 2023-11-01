@@ -6,13 +6,13 @@ import { reactRules } from '../rules/react';
 
 import { buildBaseTypescript } from './buildBaseTypescript';
 
-export const typescriptOverrides = buildBaseTypescript(
-  ['**/*.ts', '**/*.tsx'],
-  {
+export const typescriptOverrides = buildBaseTypescript({
+  files: ['**/*.ts', '**/*.tsx'],
+  rules: {
     ...generalRules,
     ...reactRules,
     ...promiseRules,
     ...emotionRules,
     ...namingRules,
   },
-);
+});
