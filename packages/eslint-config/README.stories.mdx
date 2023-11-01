@@ -5,6 +5,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 ## Introduction
 
 This package is our standard rules for eslint in the form of a eslint preset package.
+We also export sub presets for more specific use cases.
 
 Recommended usage is;
 
@@ -18,4 +19,33 @@ module.exports = {
 
 ```shell static
 eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./
+```
+
+### Presets
+
+- `@tablecheck/eslint-config` - Our standard rules for eslint, used with legacy combined repos
+
+#### Specific Presets
+
+- `@tablecheck/eslint-config/basic` - Rules for vanilla javascript only repositories.
+- `@tablecheck/eslint-config/typescript` - Rules for vanilla typescript projects
+- `@tablecheck/eslint-config/react` - Rules for react javascript project
+- `@tablecheck/eslint-config/react-typescript` - Rules for react typescript project
+
+The following cypress presets should be used with one of the above Specific Presets
+
+- `@tablecheck/eslint-config/cypress` - Rules for Cypress projects (applies to all files)
+- `@tablecheck/eslint-config/cypress-component` - Use this when adding component testing to a project, it adds an override for `*.cypress.*` and `*.cy.*` files
+
+For example, a react typescript project with cypress component testing should use the following;
+
+`.eslintrc.js`
+
+```js static
+module.exports = {
+  extends: [
+    '@tablecheck/eslint-config/react-typescript',
+    '@tablecheck/eslint-config/cypress-component',
+  ],
+};
 ```

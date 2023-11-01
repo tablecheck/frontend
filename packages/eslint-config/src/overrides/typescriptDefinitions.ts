@@ -5,15 +5,15 @@ import { reactRules } from '../rules/react';
 
 import { buildBaseTypescript } from './buildBaseTypescript';
 
-export const typescriptDefinitionOverrides = buildBaseTypescript(
-  ['**/*.d.ts'],
-  {
+export const typescriptDefinitionOverrides = buildBaseTypescript({
+  files: ['**/*.d.ts'],
+  rules: {
     ...generalRules,
     ...reactRules,
     ...promiseRules,
     ...emotionRules,
   },
-  {
+  forcedRules: {
     'import/no-default-export': 'off',
     'vars-on-top': 'off',
     'no-unused-vars': 'off',
@@ -22,4 +22,4 @@ export const typescriptDefinitionOverrides = buildBaseTypescript(
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
   },
-);
+});
