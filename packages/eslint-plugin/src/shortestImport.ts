@@ -156,7 +156,7 @@ class RuleChecker {
       relativePath,
       aliasPaths,
       baseUrlPaths,
-      avoidRelativeParents: context.options[0] || [],
+      preferredAliasPaths: context.options[0] || [],
     });
 
     if (preferredPath === importPath) return;
@@ -270,31 +270,34 @@ class RuleChecker {
     relativePath,
     aliasPaths,
     baseUrlPaths,
-    avoidRelativeParents,
+    preferredAliasPaths,
   }: {
     resolvedFilePath: string;
     relativePath: string;
     aliasPaths: string[];
     baseUrlPaths: string[];
-    avoidRelativeParents: string[];
+    preferredAliasPaths: string[];
   }) {
     if (!aliasPaths.length && !baseUrlPaths.length) return relativePath;
-    const parentSlugs = relativePath.split('/').filter((s) => s === '..');
     const shouldAvoidRelative =
       this.relativeGoesThroughBaseUrl(relativePath, resolvedFilePath) ||
       [...aliasPaths, ...baseUrlPaths].some((aliasPath) => {
-        if (!avoidRelativeParents.length) return false;
-        const relativeRoot = aliasPath
-          .split('/')
-          .slice(0, -1 * parentSlugs.length)
-          .join('/');
-        return avoidRelativeParents.includes(relativeRoot);
+        if (!preferredAliasPaths.length) return false;
+        return preferredAliasPaths.some((alias) => aliasPath.startsWith(alias));
       });
     const allPathsWithLength = (aliasPaths.length ? aliasPaths : baseUrlPaths)
-      .map((aliasPath) => ({
-        aliasPath,
-        length: aliasPath.split('/').length,
-      }))
+      .map((aliasPath) => {
+        const parts = aliasPath.split('/');
+        if (parts[0].match(/^[^a-z0-9]$/i))
+          return {
+            aliasPath,
+            length: parts.length - 1,
+          };
+        return {
+          aliasPath,
+          length: parts.length,
+        };
+      })
       .sort((a, b) => a.length - b.length);
 
     const shortestAliasPath = allPathsWithLength[0];
@@ -413,7 +416,7 @@ export const shortestImport: TSESLint.RuleModule<
     type: 'problem',
     docs: {
       description:
-        'Enforce the consistent use of preferred import paths. A list of alias paths to prefer over relative `../` paths can also be provided',
+        'Enforce the consistent use of preferred import paths. A list of alias paths to prefer over relative paths can also be provided',
       recommended: 'stylistic',
     },
     fixable: 'code',

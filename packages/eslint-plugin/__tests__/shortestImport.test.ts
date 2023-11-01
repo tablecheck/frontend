@@ -173,8 +173,17 @@ typescriptSetups.forEach((config) => {
           filename: './test_src/feature1/slice1/index.ts',
         },
         {
+          path: '~/feature2/index',
+          filename: './test_src/feature1/index.ts',
+        },
+        {
           path: '~/feature1/index',
           filename: './test_src/feature1/slice1/index.ts',
+          options: [['~/feature1', 'feature1']],
+        },
+        {
+          path: '~/feature1/slice1',
+          filename: './test_src/feature1/index.ts',
           options: [['~/feature1', 'feature1']],
         },
         {
