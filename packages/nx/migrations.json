@@ -1,12 +1,5 @@
 {
-  "generators": {
-    "upgrade-to-nx": {
-      "version": "0.0.0",
-      "description": "upgrade-to-nx",
-      "cli": "nx",
-      "implementation": "./dist/migrations/upgrade-to-nx/upgrade-to-nx"
-    }
-  },
+  "generators": {},
   "packageJsonUpdates": {
     "0.0.0": {
       "version": "0.0.0",
