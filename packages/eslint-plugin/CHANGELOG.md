@@ -1,20 +1,18 @@
-# v6.1.0 (Thu Nov 02 2023)
-
-#### 🚀 Enhancement
-
-- docs: add docs for eslint-plugin [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-- fix: shortest import should prefer alias with `~` at the start [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [6.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@6.0.1...@tablecheck/eslint-plugin@6.1.0) (2023-11-02)
+
+
+### Bug Fixes
+
+* shortest import should prefer alias with `~` at the start ([5169fb1](https://github.com/tablecheck/frontend/commit/5169fb149f70ae0be9ec299180c528b34bb3f913))
+
+
+
+
 
 ## [6.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@6.0.0...@tablecheck/eslint-plugin@6.0.1) (2023-10-26)
 

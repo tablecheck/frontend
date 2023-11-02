@@ -1,26 +1,18 @@
-# v8.2.0 (Thu Nov 02 2023)
-
-#### 🚀 Enhancement
-
-- feat: add more eslint config presets [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-
-#### 🐛 Bug Fix
-
-- Bump independent versions \[skip ci\] (runner@fv-az572-562.xfljd2mj00zetb5gvhv1u2zrtd.dx.internal.cloudapp.net)
-- Update CHANGELOG.md \[skip ci\] (runner@fv-az572-562.xfljd2mj00zetb5gvhv1u2zrtd.dx.internal.cloudapp.net)
-- fix: disable more rules in tests [#94](https://github.com/tablecheck/frontend/pull/94) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 2
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-- TableCheck Inc. (runner@fv-az572-562.xfljd2mj00zetb5gvhv1u2zrtd.dx.internal.cloudapp.net)
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [8.2.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.2...@tablecheck/eslint-config@8.2.0) (2023-11-02)
+
+
+### Features
+
+* add more eslint config presets ([c29dba9](https://github.com/tablecheck/frontend/commit/c29dba9916c407ee372f93f171b335ce44f7308f))
+
+
+
+
 
 ## [8.1.2](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.1...@tablecheck/eslint-config@8.1.2) (2023-10-31)
 

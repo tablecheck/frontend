@@ -1,21 +1,24 @@
-# v6.1.0 (Thu Nov 02 2023)
-
-#### 🚀 Enhancement
-
-- fix: drop the migration script that never worked anyway [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-- feat: add more eslint config presets [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-- feat: add a wrapper around @nx/js generator [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [6.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/nx@6.0.1...@tablecheck/nx@6.1.0) (2023-11-02)
+
+
+### Bug Fixes
+
+* drop the migration script that never worked anyway ([865a151](https://github.com/tablecheck/frontend/commit/865a151082120593a68e1f498ec65aa506ee48ec))
+
+
+### Features
+
+* add a wrapper around @nx/js generator ([979ce0e](https://github.com/tablecheck/frontend/commit/979ce0edf4db1de667027ff579159286ed15a2ac))
+* add more eslint config presets ([c29dba9](https://github.com/tablecheck/frontend/commit/c29dba9916c407ee372f93f171b335ce44f7308f))
+
+
+
+
 
 ## [6.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/nx@6.0.0...@tablecheck/nx@6.0.1) (2023-10-26)
 
