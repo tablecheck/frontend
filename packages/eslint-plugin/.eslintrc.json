@@ -1,18 +1,12 @@
 {
-  "extends": ["../../.eslintrc.js"],
   "ignorePatterns": ["!**/*"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-      "rules": {}
-    },
-    {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "rules": {}
-    }
-  ]
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "extends": ["../../.eslintrc.js", "plugin:eslint-plugin/recommended"],
+  "rules": {
+    "eslint-plugin/require-meta-docs-url": "error",
+    "eslint-plugin/require-meta-docs-description": "error",
+    "eslint-plugin/require-meta-schema": "error"
+  }
 }

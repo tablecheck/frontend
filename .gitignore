@@ -9,7 +9,7 @@ node_modules
 build
 cache
 public/static
-docs
+./docs
 lib
 dist
 config/local.*

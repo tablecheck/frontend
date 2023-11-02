@@ -64,6 +64,7 @@ export const forbiddenImports: TSESLint.RuleModule<typeof messageId> = {
       description:
         'Ensure that certain packages are using specific imports instead of using the default import',
       recommended: 'recommended',
+      url: 'https://github.com/tablecheck/frontend/tree/main/packages/eslint-plugin/docs/rules/forbidden-imports.md',
     },
     fixable: 'code',
     messages: {

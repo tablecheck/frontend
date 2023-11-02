@@ -14,6 +14,11 @@
       "inputs": ["default", "^default", "baseTypescript"],
       "outputs": ["{projectRoot}/dist"]
     },
+    "docs": {
+      "dependsOn": ["build"],
+      "inputs": ["default", "^default", "baseTypescript"],
+      "outputs": ["{projectRoot}/docs"]
+    },
     "test": {
       "dependsOn": ["^test"],
       "inputs": ["default", "^default", "testConfig"]

@@ -11,7 +11,7 @@
   "scripts": {
     "audit": "tablecheck-frontend-audit",
     "audit:ci": "npx tablecheck-frontend-audit --ci",
-    "lint": "nx affected --target=quality && prettier -c .",
+    "lint": "nx affected --target=quality && nx affected --target=quality:docs && prettier -c .",
     "format": "nx affected --target=quality:format && prettier -w --loglevel warn .",
     "test": "nx affected --target=test",
     "test:watch": "nx run-many --target=test:watch",
@@ -59,6 +59,7 @@
     "auditjs": "4.0.41",
     "auto": "11.0.4",
     "eslint": "^8",
+    "eslint-plugin-eslint-plugin": "5.1.1",
     "file-loader": "^6.2.0",
     "fs-extra": "^11.1.1",
     "husky": "8.0.3",
