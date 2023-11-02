@@ -19,6 +19,14 @@
         "fix": true
       }
     },
+    "quality:docs": {
+      "inputs": ["{projectRoot}/README.md", "{projectRoot}/docs/**/*"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx eslint-doc-generator --check",
+        "cwd": "{projectRoot}"
+      }
+    },
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{workspaceRoot}/coverage/packages/eslint-plugin"],
@@ -36,6 +44,22 @@
         "passWithNoTests": true,
         "watch": true,
         "reportsDirectory": "../../coverage/packages/eslint-plugin"
+      }
+    },
+    "docs": {
+      "outputs": ["{projectRoot}/README.md"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx eslint-doc-generator",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "docs:add": {
+      "outputs": ["{projectRoot}/README.md"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx eslint-doc-generator --init-rule-docs",
+        "cwd": "{projectRoot}"
       }
     }
   },

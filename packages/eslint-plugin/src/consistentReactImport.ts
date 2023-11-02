@@ -11,6 +11,7 @@ export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
     docs: {
       description: 'Ensure that react is always imported and used consistently',
       recommended: 'recommended',
+      url: 'https://github.com/tablecheck/frontend/tree/main/packages/eslint-plugin/docs/rules/consistent-react-import.md',
     },
     fixable: 'code',
     messages: {

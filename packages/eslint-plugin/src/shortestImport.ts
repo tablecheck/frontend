@@ -93,10 +93,7 @@ class RuleChecker {
 
   private getImportMeta(
     context: Readonly<
-      TSESLint.RuleContext<
-        'shortestImport' | 'types-failed',
-        never[] | [string[]]
-      >
+      TSESLint.RuleContext<'shortestImport' | 'types-failed', OptionsShape>
     >,
     node: ImportExpression | ImportDeclaration,
   ):
@@ -123,10 +120,7 @@ class RuleChecker {
 
   public execute(
     context: Readonly<
-      TSESLint.RuleContext<
-        'shortestImport' | 'types-failed',
-        never[] | [string[]]
-      >
+      TSESLint.RuleContext<'shortestImport' | 'types-failed', OptionsShape>
     >,
     node: ImportExpression | ImportDeclaration,
   ) {
@@ -156,7 +150,7 @@ class RuleChecker {
       relativePath,
       aliasPaths,
       baseUrlPaths,
-      preferredAliasPaths: context.options[0] || [],
+      preferredAliasPaths: context.options[0]?.preferredAlias ?? [],
     });
 
     if (preferredPath === importPath) return;
@@ -408,21 +402,40 @@ function getRuleChecker(compilerOptions: CompilerOptions): RuleChecker {
   return metaCache.get(cacheKey)!;
 }
 
+type OptionsShape = [
+  | {
+      preferredAlias: string[];
+    }
+  | undefined,
+];
+
 export const shortestImport: TSESLint.RuleModule<
   typeof messageId | 'types-failed',
-  [string[]] | never[]
+  OptionsShape
 > = {
   meta: {
     type: 'problem',
     docs: {
-      description:
-        'Enforce the consistent use of preferred import paths. A list of alias paths to prefer over relative paths can also be provided',
+      description: 'Enforce the consistent use of preferred import paths',
       recommended: 'stylistic',
+      requiresTypeChecking: true,
+      url: 'https://github.com/tablecheck/frontend/tree/main/packages/eslint-plugin/docs/rules/shortest-import.md',
     },
     fixable: 'code',
     schema: [
       {
-        type: 'array',
+        type: 'object',
+        properties: {
+          preferredAlias: {
+            type: 'array',
+            description:
+              'A list of alias paths to prefer over relative paths, for example, providing `["~/utils"]` will prefer `~/utils/useSomething` over `../useSomething` or `./useSomething`',
+            title: 'Preferred alias paths',
+            items: {
+              type: 'string',
+            },
+          },
+        },
       },
     ],
     messages: {
@@ -430,7 +443,7 @@ export const shortestImport: TSESLint.RuleModule<
       'types-failed': 'Typescript needs to be enabled for this rule',
     },
   },
-  defaultOptions: [],
+  defaultOptions: [undefined],
   create(context) {
     const compilerOptions = context
       .getSourceCode()

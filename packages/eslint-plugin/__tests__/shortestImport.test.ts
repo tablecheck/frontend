@@ -179,12 +179,12 @@ typescriptSetups.forEach((config) => {
         {
           path: '~/feature1/index',
           filename: './test_src/feature1/slice1/index.ts',
-          options: [['~/feature1', 'feature1']],
+          options: [{ preferredAlias: ['~/feature1', 'feature1'] }],
         },
         {
           path: '~/feature1/slice1',
           filename: './test_src/feature1/index.ts',
-          options: [['~/feature1', 'feature1']],
+          options: [{ preferredAlias: ['~/feature1', 'feature1'] }],
         },
         {
           path: '@node/module',
@@ -272,7 +272,7 @@ typescriptSetups.forEach((config) => {
           fixedPath: '~/feature1/index',
           filename: './test_src/feature1/slice1/index.ts',
           errors: [{ messageId }],
-          options: [['~/feature1', 'feature1']],
+          options: [{ preferredAlias: ['~/feature1', 'feature1'] }],
         },
       ]
         .filter((c) => !c.skipConfigs || !c.skipConfigs.includes(config.name))
