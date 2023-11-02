@@ -1,3 +1,16 @@
+# v6.1.0 (Thu Nov 02 2023)
+
+#### 🚀 Enhancement
+
+- docs: add docs for eslint-plugin [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+- fix: shortest import should prefer alias with `~` at the start [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

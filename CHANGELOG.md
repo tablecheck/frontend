@@ -1,3 +1,27 @@
+# (Thu Nov 02 2023)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-plugin@6.1.0`
+  - docs: add docs for eslint-plugin [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+  - fix: shortest import should prefer alias with `~` at the start [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/nx@6.1.0`
+  - fix: drop the migration script that never worked anyway [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+  - feat: add a wrapper around @nx/js generator [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@8.2.0`, `@tablecheck/nx@6.1.0`
+  - feat: add more eslint config presets [#93](https://github.com/tablecheck/frontend/pull/93) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.2.0`
+  - fix: disable more rules in tests [#94](https://github.com/tablecheck/frontend/pull/94) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Oct 31 2023)
 
 #### 🐛 Bug Fix
