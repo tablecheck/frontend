@@ -40,7 +40,7 @@
     "tsimportlib": "0.0.5"
   },
   "peerDependencies": {
-    "@tablecheck/eslint-config": ">=1.8.2"
+    "@tablecheck/eslint-config": ">=8.2.0"
   },
   "devDependencies": {
     "@types/flat": "5.0.2",
