@@ -1,3 +1,16 @@
+# (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.2.1`, `@tablecheck/nx@6.1.1`
+  - fix: loosen eslint-config dependency version [#95](https://github.com/tablecheck/frontend/pull/95) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Nov 02 2023)
 
 #### 🚀 Enhancement

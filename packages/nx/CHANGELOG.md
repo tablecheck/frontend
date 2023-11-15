@@ -1,3 +1,15 @@
+# v6.1.1 (Wed Nov 15 2023)
+
+#### 🐛 Bug Fix
+
+- fix: loosen eslint-config dependency version [#95](https://github.com/tablecheck/frontend/pull/95) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
