@@ -1,19 +1,18 @@
-# v8.2.1 (Wed Nov 15 2023)
-
-#### 🐛 Bug Fix
-
-- fix: loosen eslint-config dependency version [#95](https://github.com/tablecheck/frontend/pull/95) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.2.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.0...@tablecheck/eslint-config@8.2.1) (2023-11-15)
+
+
+### Bug Fixes
+
+* loosen eslint-config dependency version ([5f91c78](https://github.com/tablecheck/frontend/commit/5f91c783bfaa31d2888b41a7e03a509b758fcb41))
+
+
+
+
 
 # [8.2.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.1.2...@tablecheck/eslint-config@8.2.0) (2023-11-02)
 
