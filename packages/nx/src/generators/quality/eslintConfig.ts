@@ -8,8 +8,8 @@ import { outputPrettyFile } from '../../utils/prettier';
 
 function getConfigs(projectRoot: string) {
   const mapToPath = (filename: string) => path.join(projectRoot, filename);
-  const nxAppConfigs = ['tsconfig.app.json', 'tsconfig.spec.json'].map(
-    mapToPath,
+  const nxAppConfigs = ['app', 'spec', 'lib'].map((fileType) =>
+    mapToPath(`tsconfig.${fileType}.json`),
   );
   const defaultConfigs = ['tsconfig.base.json', 'tsconfig.json'].map(mapToPath);
   if (nxAppConfigs.every((config) => fs.existsSync(config))) {

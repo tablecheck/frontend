@@ -9,7 +9,7 @@ module.exports = {
   overrides: [
     {
       files: ['**/cypress/**/*', '**/*.{cy,cypress}.{js,jsx,ts,tsx}'],
-      extends: ['@tablecheck/eslint-config/preset-cypress'],
+      extends: ['@tablecheck/eslint-config/cypress'],
     },
   ],
 } satisfies Linter.Config;

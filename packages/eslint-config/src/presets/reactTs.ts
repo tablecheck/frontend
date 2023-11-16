@@ -7,7 +7,7 @@ if (!process.env.NODE_ENV) {
 
 module.exports = {
   extends: [
-    '@tablecheck/eslint-config/preset-typescript',
-    '@tablecheck/eslint-config/preset-react',
+    '@tablecheck/eslint-config/typescript',
+    '@tablecheck/eslint-config/react',
   ],
 } satisfies Linter.Config;
