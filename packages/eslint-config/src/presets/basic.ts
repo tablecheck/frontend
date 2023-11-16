@@ -2,6 +2,7 @@ import type { Linter } from 'eslint';
 
 import { rootConfigsOverrides } from '../overrides/rootConfigs';
 import { scriptsOverrides } from '../overrides/scripts';
+import { storybookOverrides } from '../overrides/storybook';
 import { testOverrides } from '../overrides/tests';
 import { emotionRules } from '../rules/emotion';
 import { generalRules } from '../rules/general';
@@ -39,29 +40,6 @@ module.exports = {
     rootConfigsOverrides,
     scriptsOverrides,
     testOverrides,
-    {
-      files: [
-        '**/__fixtures__/**/*',
-        '**/*.fixture.{ts,tsx,js,jsx,cts,mts,cjs,mjs}',
-        '**/*.{stories,story}.{ts,tsx,js,jsx}',
-        '.storybook/**/*.{ts,tsx,js,jsx}',
-      ],
-      rules: {
-        'no-console': 'off',
-        'import/no-default-export': 'off',
-        'react-hooks/rules-of-hooks': 'off',
-        'react-hooks/exhaustive-deps': 'off',
-        'react/function-component-definition': 'off',
-        'react/jsx-no-constructed-context-values': 'off',
-        'react-refresh/only-export-components': 'off',
-        '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/naming-convention': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
-        'consistent-return': 'error',
-      },
-      env: {
-        node: true,
-      },
-    },
+    storybookOverrides,
   ],
 } satisfies Linter.Config;

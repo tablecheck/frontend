@@ -1,6 +1,7 @@
 import type { Linter } from 'eslint';
 
 import { buildBaseTypescript } from '../overrides/buildBaseTypescript';
+import { storybookOverrides } from '../overrides/storybook';
 import { testOverrides } from '../overrides/tests';
 import { emotionRules } from '../rules/emotion';
 import { generalRules } from '../rules/general';
@@ -13,7 +14,7 @@ if (!process.env.NODE_ENV) {
 }
 
 module.exports = {
-  extends: ['@tablecheck/eslint-config/preset-basic'],
+  extends: ['@tablecheck/eslint-config/basic'],
   overrides: [
     buildBaseTypescript({
       files: ['**/*.{ts,tsx,cts,mts}'],
@@ -60,5 +61,6 @@ module.exports = {
         node: true,
       },
     }),
+    buildBaseTypescript(storybookOverrides as never),
   ],
 } satisfies Linter.Config;
