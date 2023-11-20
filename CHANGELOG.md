@@ -1,3 +1,16 @@
+# (Mon Nov 20 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.2.2`, `@tablecheck/nx@6.1.2`
+  - fix: eslint configs/presets and setup [#96](https://github.com/tablecheck/frontend/pull/96) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Nov 15 2023)
 
 #### 🐛 Bug Fix

@@ -1,3 +1,15 @@
+# v6.1.2 (Mon Nov 20 2023)
+
+#### 🐛 Bug Fix
+
+- fix: eslint configs/presets and setup [#96](https://github.com/tablecheck/frontend/pull/96) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
