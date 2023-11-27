@@ -1,3 +1,15 @@
+# v6.1.1 (Mon Nov 27 2023)
+
+#### ⚠️ Pushed to `main`
+
+- fix: shortest path case where relative should be preferred ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

@@ -1,3 +1,21 @@
+# (Mon Nov 27 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@8.2.3`, `@tablecheck/nx@6.1.3`
+  - fix: eslint configs/presets and setup [#96](https://github.com/tablecheck/frontend/pull/96) ([@SimeonC](https://github.com/SimeonC))
+
+#### ⚠️ Pushed to `main`
+
+- `@tablecheck/eslint-plugin@6.1.1`
+  - fix: shortest path case where relative should be preferred ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Nov 20 2023)
 
 #### 🐛 Bug Fix

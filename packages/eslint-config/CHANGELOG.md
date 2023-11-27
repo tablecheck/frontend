@@ -1,3 +1,18 @@
+# v8.2.3 (Mon Nov 27 2023)
+
+#### 🐛 Bug Fix
+
+- Bump independent versions \[skip ci\] (runner@fv-az568-978.kq21xgauaq5efpa1vyplvqtvth.dx.internal.cloudapp.net)
+- Update CHANGELOG.md \[skip ci\] (runner@fv-az568-978.kq21xgauaq5efpa1vyplvqtvth.dx.internal.cloudapp.net)
+- fix: eslint configs/presets and setup [#96](https://github.com/tablecheck/frontend/pull/96) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 2
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+- TableCheck Inc. (runner@fv-az568-978.kq21xgauaq5efpa1vyplvqtvth.dx.internal.cloudapp.net)
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
