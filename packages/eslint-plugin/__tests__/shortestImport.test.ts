@@ -165,6 +165,10 @@ typescriptSetups.forEach((config) => {
           filename: './test_src/feature1/slice1/inner1/index.ts',
         },
         {
+          path: '../../inner1/index',
+          filename: './test_src/feature1/slice1/inner2/sub/index.ts',
+        },
+        {
           path: '~/feature1/slice2/second',
           filename: './test_src/feature1/slice1/inner1/index.ts',
         },

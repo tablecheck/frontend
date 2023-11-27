@@ -273,12 +273,14 @@ class RuleChecker {
     preferredAliasPaths: string[];
   }) {
     if (!aliasPaths.length && !baseUrlPaths.length) return relativePath;
+    const arePreferredAliasPathsInvalid =
+      preferredAliasPaths.length &&
+      [...aliasPaths, ...baseUrlPaths].some((aliasPath) =>
+        preferredAliasPaths.some((alias) => aliasPath.startsWith(alias)),
+      );
     const shouldAvoidRelative =
       this.relativeGoesThroughBaseUrl(relativePath, resolvedFilePath) ||
-      [...aliasPaths, ...baseUrlPaths].some((aliasPath) => {
-        if (!preferredAliasPaths.length) return false;
-        return preferredAliasPaths.some((alias) => aliasPath.startsWith(alias));
-      });
+      arePreferredAliasPathsInvalid;
     const allPathsWithLength = (aliasPaths.length ? aliasPaths : baseUrlPaths)
       .map((aliasPath) => {
         const parts = aliasPath.split('/');
@@ -319,7 +321,7 @@ class RuleChecker {
           if (part === '..') dotsOverPaths += 1;
           else dotsOverPaths -= 1;
         });
-        return dotsOverPaths > 0;
+        return dotsOverPaths >= 0;
       }
       return relativePathLength < shortestAliasPathLength;
     }
