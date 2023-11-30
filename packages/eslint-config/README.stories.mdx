@@ -27,15 +27,16 @@ eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./
 
 #### Specific Presets
 
-- `@tablecheck/eslint-config/basic` - Rules for vanilla javascript only repositories.
+- `@tablecheck/eslint-config/basic` - Rules for vanilla javascript only repositories. (Recommend using Typescript over this)
 - `@tablecheck/eslint-config/typescript` - Rules for vanilla typescript projects
 - `@tablecheck/eslint-config/react` - Rules for react javascript project
 - `@tablecheck/eslint-config/react-typescript` - Rules for react typescript project
+- `@tablecheck/eslint-config/cypress` - Rules for Cypress projects in typescript
 
 The following cypress presets should be used with one of the above Specific Presets
 
-- `@tablecheck/eslint-config/cypress` - Rules for Cypress projects (applies to all files)
 - `@tablecheck/eslint-config/cypress-component` - Use this when adding component testing to a project, it adds an override for `*.cypress.*` and `*.cy.*` files
+- `@tablecheck/eslint-config/storybook` - This adds an override for story/stories files, use with typescript package
 
 For example, a react typescript project with cypress component testing should use the following;
 

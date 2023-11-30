@@ -42,18 +42,13 @@ export const baseTypescriptRules: Linter.RulesRecord = {
   '@tablecheck/prefer-shortest-import': 'error',
 };
 
-export function buildBaseTypescript<
-  T extends Linter.RulesRecord,
-  TForced extends Linter.RulesRecord,
->({
+export function buildBaseTypescript<T extends Linter.RulesRecord>({
   files,
   rules,
-  forcedRules,
   ...options
 }: {
   files: Linter.ConfigOverride['files'];
   rules: T;
-  forcedRules?: TForced;
 } & Omit<
   Linter.ConfigOverride,
   'parser' | 'extends' | 'plugins' | 'settings' | 'rules' | 'files'
@@ -86,9 +81,8 @@ export function buildBaseTypescript<
       },
     },
     rules: {
-      ...rules,
       ...baseTypescriptRules,
-      ...forcedRules,
+      ...rules,
     },
   };
 }

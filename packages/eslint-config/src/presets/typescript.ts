@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
 
 import { buildBaseTypescript } from '../overrides/buildBaseTypescript';
-import { storybookOverrides } from '../overrides/storybook';
 import { testOverrides } from '../overrides/tests';
 import { emotionRules } from '../rules/emotion';
 import { generalRules } from '../rules/general';
@@ -61,6 +60,5 @@ module.exports = {
         node: true,
       },
     }),
-    buildBaseTypescript(storybookOverrides as never),
   ],
 } satisfies Linter.Config;
