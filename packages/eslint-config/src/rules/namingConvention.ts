@@ -54,7 +54,9 @@ export const namingRules: Linter.RulesRecord = {
             'will',
             'allow',
           ];
-          return `^(${booleanValues.join('|')})|^[a-z]+(${booleanValues
+          return `^(disabled$|${booleanValues.join(
+            '|',
+          )})|^[a-z]+(${booleanValues
             .map((name) => `${name[0].toUpperCase()}${name.substring(1)}`)
             .join('|')})`;
         })(),
