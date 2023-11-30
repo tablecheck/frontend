@@ -12,8 +12,6 @@ export const typescriptDefinitionOverrides = buildBaseTypescript({
     ...reactRules,
     ...promiseRules,
     ...emotionRules,
-  },
-  forcedRules: {
     'import/no-default-export': 'off',
     'vars-on-top': 'off',
     'no-unused-vars': 'off',

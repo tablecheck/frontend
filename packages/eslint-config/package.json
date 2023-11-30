@@ -44,6 +44,11 @@
       "main": "./dist/presets/reactTs.js",
       "default": "./dist/presets/reactTs.js"
     },
+    "./storybook": {
+      "types": "./dist/presets/storybook.d.ts",
+      "main": "./dist/presets/storybook.js",
+      "default": "./dist/presets/storybook.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",

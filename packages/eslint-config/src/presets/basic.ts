@@ -2,7 +2,6 @@ import type { Linter } from 'eslint';
 
 import { rootConfigsOverrides } from '../overrides/rootConfigs';
 import { scriptsOverrides } from '../overrides/scripts';
-import { storybookOverrides } from '../overrides/storybook';
 import { testOverrides } from '../overrides/tests';
 import { emotionRules } from '../rules/emotion';
 import { generalRules } from '../rules/general';
@@ -36,10 +35,5 @@ module.exports = {
     ...emotionRules,
   },
 
-  overrides: [
-    rootConfigsOverrides,
-    scriptsOverrides,
-    testOverrides,
-    storybookOverrides,
-  ],
+  overrides: [rootConfigsOverrides, scriptsOverrides, testOverrides],
 } satisfies Linter.Config;
