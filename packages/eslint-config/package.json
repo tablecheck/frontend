@@ -56,9 +56,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsc -p ./tsconfig.build.json"
-  },
   "dependencies": {
     "@emotion/eslint-plugin": "^11.11.0",
     "@nx/eslint-plugin": "^16.5.0",
