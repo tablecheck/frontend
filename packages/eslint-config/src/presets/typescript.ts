@@ -22,6 +22,7 @@ module.exports = {
         ...promiseRules,
         ...emotionRules,
         ...namingRules,
+        'no-unused-vars': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
       },
     }),
@@ -30,7 +31,6 @@ module.exports = {
       rules: {
         'import/no-default-export': 'off',
         'vars-on-top': 'off',
-        'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-empty-interface': 'warn',
         '@typescript-eslint/explicit-module-boundary-types': 'off',

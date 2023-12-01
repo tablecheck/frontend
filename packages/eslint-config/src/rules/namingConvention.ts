@@ -1,16 +1,18 @@
 import type { Linter } from 'eslint';
 
+const componentRegexpMatch = {
+  regex: '(?<![gs]et)Component$',
+  match: true,
+};
+
 export const namingRules: Linter.RulesRecord = {
   camelcase: 'off',
   '@typescript-eslint/naming-convention': [
     'error',
     {
       selector: 'default',
-      format: ['PascalCase'],
-      filter: {
-        regex: '(?<![gs]et)Component($|[A-Z0-9])',
-        match: true,
-      },
+      format: ['camelCase', 'PascalCase'],
+      filter: componentRegexpMatch,
     },
     {
       selector: 'default',
@@ -80,6 +82,11 @@ export const namingRules: Linter.RulesRecord = {
       selector: 'variable',
       modifiers: ['global'],
       format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+    },
+    {
+      selector: 'variable',
+      format: ['PascalCase'],
+      filter: componentRegexpMatch,
     },
     {
       selector: 'variable',

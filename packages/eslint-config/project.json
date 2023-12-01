@@ -4,6 +4,26 @@
   "sourceRoot": "packages/eslint-config/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc -p packages/eslint-config/tsconfig.build.json"
+      }
+    },
+    "test": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "dependsOn": ["build"],
+      "options": {
+        "noEslintrc": true,
+        "eslintConfig": "packages/eslint-config/tests/.eslintrc.cjs",
+        "reportUnusedDisableDirectives": "error",
+        "lintFilePatterns": [
+          "packages/eslint-config/tests/**/*.ts",
+          "packages/eslint-config/tests/**/*.tsx"
+        ]
+      }
+    },
     "quality": {
       "executor": "@tablecheck/nx:quality",
       "outputs": ["{options.outputFile}"],

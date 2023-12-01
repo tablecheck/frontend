@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["**/*.ts", "**/*.tsx"],
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "paths": {},
+    "types": ["vitest"],
+    "module": "NodeNext",
+    "resolveJsonModule": true
+  },
+  "exclude": ["node_modules"],
+  "files": []
+}
