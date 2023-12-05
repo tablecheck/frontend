@@ -1,3 +1,17 @@
+# v8.2.4 (Tue Dec 05 2023)
+
+#### 🐛 Bug Fix
+
+- fix: naming-convention errors [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+- fix: eslint-config cypress and storybook definitions fixes [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+- fix: allow `disabled` as a boolean variable name exception [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
