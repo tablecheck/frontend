@@ -1,21 +1,20 @@
-# v8.2.4 (Tue Dec 05 2023)
-
-#### 🐛 Bug Fix
-
-- fix: naming-convention errors [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
-- fix: eslint-config cypress and storybook definitions fixes [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
-- fix: allow `disabled` as a boolean variable name exception [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.2.4](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.3...@tablecheck/eslint-config@8.2.4) (2023-12-05)
+
+
+### Bug Fixes
+
+* allow `disabled` as a boolean variable name exception ([74f4ff3](https://github.com/tablecheck/frontend/commit/74f4ff3216baa02fdc125166f423dcec40ce6ab2))
+* eslint-config cypress and storybook definitions fixes ([699d82a](https://github.com/tablecheck/frontend/commit/699d82a7fd071e1863c29492ccfcff1256ed8c1b))
+* naming-convention errors ([4821395](https://github.com/tablecheck/frontend/commit/482139567b80d2528c082860bc7847082c745bba))
+
+
+
+
 
 ## [8.2.3](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.2...@tablecheck/eslint-config@8.2.3) (2023-11-27)
 
