@@ -58,6 +58,18 @@
         ]
       }
     },
+    "includeCypressComponent": {
+      "type": "boolean",
+      "description": "Does this project use Cypress Component testing?",
+      "x-prompt": "Include Cypress Component testing rules?",
+      "x-priority": "important"
+    },
+    "includeStorybook": {
+      "type": "boolean",
+      "description": "Does this project use Storybook?",
+      "x-prompt": "Include Storybook rules?",
+      "x-priority": "important"
+    },
     "svgAsComponent": {
       "type": "boolean",
       "description": "Should `import name from 'name.svg'` import a react component (using plugins/transforms) instead of an asset URL?",
