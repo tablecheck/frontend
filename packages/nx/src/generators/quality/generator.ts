@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import * as path from 'path';
 
 import {
@@ -58,14 +57,11 @@ export async function qualityGenerator(
     {},
   );
   generateEslintConfig(tree, schema);
-  execSync('npx husky install', {
-    cwd: process.cwd(),
-    stdio: 'inherit',
-  });
   generateConfig(tree, schema);
   generateIcons(tree, schema);
   await generateFileTypes(tree, schema);
   await formatFiles(tree);
+  console.log('Run `npx husky install` to install git hooks');
 }
 
 export default qualityGenerator;
