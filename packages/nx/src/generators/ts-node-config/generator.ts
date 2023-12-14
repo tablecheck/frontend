@@ -7,6 +7,7 @@ import uniq from 'lodash/uniq';
 import { getNxProjectRoot } from '../../utils/nx';
 import { detectInstalledVersion } from '../../utils/packageJson';
 import { outputPrettyFile } from '../../utils/prettier';
+import { createTempFiles } from '../../utils/tempFiles';
 
 function buildTypes(configValue: unknown): string {
   if (Array.isArray(configValue))
@@ -66,15 +67,21 @@ export function tsNodeConfigGenerator(tree: Tree, schema: { project: string }) {
       console.info('No default config found, skipping config generation');
       return;
     }
-
-    const defaultConfigJson = fs.readJsonSync(defaultConfigFilePath) as Record<
-      string,
-      unknown
-    >;
-    const devConfigJson = (
-      fs.existsSync(devConfigFilePath) ? fs.readJSONSync(devConfigFilePath) : {}
-    ) as Record<string, unknown>;
-    const fileContent = `declare module 'config' {
+    const relativeSourcePath = path.relative(projectRoot, projectSourceRoot);
+    const generateFiles = createTempFiles({
+      tree,
+      projectRoot,
+      cacheLocation: __dirname,
+      createFiles: (templatePath) => {
+        const defaultConfigJson = fs.readJsonSync(
+          defaultConfigFilePath,
+        ) as Record<string, unknown>;
+        const devConfigJson = (
+          fs.existsSync(devConfigFilePath)
+            ? fs.readJSONSync(devConfigFilePath)
+            : {}
+        ) as Record<string, unknown>;
+        const fileContent = `declare module 'config' {
         // this file is generated with \`nx generate @tablecheck/nx:ts-node-config ${
           schema.project
         }\`
@@ -89,10 +96,19 @@ export function tsNodeConfigGenerator(tree: Tree, schema: { project: string }) {
         const config: DevelopmentConfig;
         export default config;
       }`;
-    outputPrettyFile(
-      path.join(projectSourceRoot, 'definitions', 'nodeConfig.gen.d.ts'),
-      fileContent,
-    );
+        outputPrettyFile(
+          path.join(
+            templatePath,
+            relativeSourcePath,
+            'definitions',
+            'nodeConfig.gen.d.ts',
+          ),
+          fileContent,
+        );
+      },
+    });
+
+    generateFiles({ overwriteExisting: true });
   } catch (e) {
     console.warn(e);
   }

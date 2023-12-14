@@ -4,6 +4,7 @@ import { Tree } from '@nx/devkit';
 
 import { getNxProjectRoot } from '../../utils/nx';
 import { outputPrettyFile } from '../../utils/prettier';
+import { createTempFiles } from '../../utils/tempFiles';
 
 function getExtends(
   eslintType:
@@ -58,7 +59,13 @@ export function generateEslintConfig(
   if (schema.includeStorybook) {
     ruleExtensions.push('@tablecheck/eslint-config/storybook');
   }
-  const fileContent = `
+
+  const generateFiles = createTempFiles({
+    tree,
+    projectRoot,
+    cacheLocation: __dirname,
+    createFiles: (templatePath) => {
+      const fileContent = `
 module.exports = {
     extends: [${ruleExtensions.join(',')}],
     parserOptions: {
@@ -80,5 +87,10 @@ module.exports = {
     rules: {},
 };
 `;
-  outputPrettyFile(path.join(projectRoot, '.eslintrc.cjs'), fileContent);
+      outputPrettyFile(path.join(templatePath, '.eslintrc.cjs'), fileContent);
+    },
+  });
+  generateFiles({
+    overwriteExisting: true,
+  });
 }
