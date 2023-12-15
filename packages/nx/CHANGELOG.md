@@ -1,20 +1,19 @@
-# v6.1.3 (Fri Dec 15 2023)
-
-#### 🐛 Bug Fix
-
-- fix(nx): generators correctly respect “dry-run” [#99](https://github.com/tablecheck/frontend/pull/99) ([@SimeonC](https://github.com/SimeonC))
-- fix(nx): quality generator should use more generic tsconfig definition [#98](https://github.com/tablecheck/frontend/pull/98) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [6.1.3](https://github.com/tablecheck/frontend/compare/@tablecheck/nx@6.1.2...@tablecheck/nx@6.1.3) (2023-12-15)
+
+
+### Bug Fixes
+
+* **nx:** generators correctly respect “dry-run” ([115e91e](https://github.com/tablecheck/frontend/commit/115e91e997a420cf4ed08bf901cdbf3099706943))
+* **nx:** quality generator should use more generic tsconfig definition ([8f9c849](https://github.com/tablecheck/frontend/commit/8f9c849162d2855ee31e25b3bb684c3305d980b7))
+
+
+
+
 
 ## [6.1.2](https://github.com/tablecheck/frontend/compare/@tablecheck/nx@6.1.1...@tablecheck/nx@6.1.2) (2023-11-20)
 
