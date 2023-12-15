@@ -1,3 +1,21 @@
+# (Fri Dec 15 2023)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/nx@6.1.3`
+  - fix(nx): generators correctly respect “dry-run” [#99](https://github.com/tablecheck/frontend/pull/99) ([@SimeonC](https://github.com/SimeonC))
+  - fix(nx): quality generator should use more generic tsconfig definition [#98](https://github.com/tablecheck/frontend/pull/98) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@8.2.5`
+  - fix: naming-convention errors [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+  - fix: eslint-config cypress and storybook definitions fixes [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+  - fix: allow `disabled` as a boolean variable name exception [#97](https://github.com/tablecheck/frontend/pull/97) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Dec 05 2023)
 
 #### 🐛 Bug Fix

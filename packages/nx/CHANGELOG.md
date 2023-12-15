@@ -1,3 +1,16 @@
+# v6.1.3 (Fri Dec 15 2023)
+
+#### 🐛 Bug Fix
+
+- fix(nx): generators correctly respect “dry-run” [#99](https://github.com/tablecheck/frontend/pull/99) ([@SimeonC](https://github.com/SimeonC))
+- fix(nx): quality generator should use more generic tsconfig definition [#98](https://github.com/tablecheck/frontend/pull/98) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
