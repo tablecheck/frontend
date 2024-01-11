@@ -1308,6 +1308,38 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2023-46234?component-type=npm&component-name=browserify-sign&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/vite@4.4.9",
+      "description": "[![npm][npm-img]][npm-url] [![node][node-img]][node-url] [![unix CI status][unix-ci-img]][unix-ci-url] [![windows CI status][windows-ci-img]][windows-ci-url]",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/vite@4.4.9?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2023-49293",
+          "title": "[CVE-2023-49293] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Vite is a website frontend framework. When Vite's HTML transformation is invoked manually via `server.transformIndexHtml`, the original request URL is passed in unmodified, and the `html` being transformed contains inline module scripts (`<script type=\"module\">...</script>`), it is possible to inject arbitrary HTML into the transformed output by supplying a malicious URL query string to `server.transformIndexHtml`. Only apps using `appType: 'custom'` and using the default Vite HTML middleware are affected. The HTML entry must also contain an inline script. The attack requires a user to click on a malicious URL while running the dev server. Restricted files aren't exposed to the attacker. This issue has been addressed in vite@5.0.5, vite@4.5.1, and vite@4.4.12. There are no known workarounds for this vulnerability.",
+          "cvssScore": 6.1,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cve": "CVE-2023-49293",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2023-49293?component-type=npm&component-name=vite&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/vite@4.4.1",
+      "description": "[![npm][npm-img]][npm-url] [![node][node-img]][node-url] [![unix CI status][unix-ci-img]][unix-ci-url] [![windows CI status][windows-ci-img]][windows-ci-url]",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/vite@4.4.1?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2023-49293",
+          "title": "[CVE-2023-49293] CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+          "description": "Vite is a website frontend framework. When Vite's HTML transformation is invoked manually via `server.transformIndexHtml`, the original request URL is passed in unmodified, and the `html` being transformed contains inline module scripts (`<script type=\"module\">...</script>`), it is possible to inject arbitrary HTML into the transformed output by supplying a malicious URL query string to `server.transformIndexHtml`. Only apps using `appType: 'custom'` and using the default Vite HTML middleware are affected. The HTML entry must also contain an inline script. The attack requires a user to click on a malicious URL while running the dev server. Restricted files aren't exposed to the attacker. This issue has been addressed in vite@5.0.5, vite@4.5.1, and vite@4.4.12. There are no known workarounds for this vulnerability.",
+          "cvssScore": 6.1,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+          "cve": "CVE-2023-49293",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2023-49293?component-type=npm&component-name=vite&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -1541,6 +1573,9 @@
     },
     {
       "id": "CVE-2023-46234"
+    },
+    {
+      "id": "CVE-2023-49293"
     }
   ]
 }
