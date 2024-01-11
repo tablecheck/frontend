@@ -1,3 +1,15 @@
+# v6.1.4 (Thu Jan 11 2024)
+
+#### 🐛 Bug Fix
+
+- fix(nx): eslint config generation should use relative paths [#100](https://github.com/tablecheck/frontend/pull/100) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
