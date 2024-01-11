@@ -52,6 +52,7 @@ export function generateEslintConfig(
 ) {
   const projectName = schema.project;
   const { projectRoot } = getNxProjectRoot(tree, projectName);
+  const relativeProjectRoot = path.relative(tree.root, projectRoot);
   const ruleExtensions = getExtends(schema.eslintType);
   if (schema.includeCypressComponent) {
     ruleExtensions.push('@tablecheck/eslint-config/component');
@@ -67,19 +68,19 @@ export function generateEslintConfig(
     createFiles: (templatePath) => {
       const fileContent = `
 module.exports = {
-    extends: [${ruleExtensions.join(',')}],
+    extends: [${ruleExtensions.map((r) => `'${r}'`).join(',')}],
     parserOptions: {
         project: [
-          '${projectRoot}/tsconfig.json',
-          '${projectRoot}/tsconfig.*?.json',
+          '${relativeProjectRoot}/tsconfig.json',
+          '${relativeProjectRoot}/tsconfig.*?.json',
         ],
     },
     settings: {
       'import/resolver': {
           typescript: {
               project: [
-                '${projectRoot}/tsconfig.json',
-                '${projectRoot}/tsconfig.*?.json',
+                '${relativeProjectRoot}/tsconfig.json',
+                '${relativeProjectRoot}/tsconfig.*?.json',
               ],
             },
         },
