@@ -1,3 +1,20 @@
+# (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- ci: fix occasional error with author identity unknown [#102](https://github.com/tablecheck/frontend/pull/102) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/prettier-config@4.0.1`
+  - fix: this commit is pretty useless, just needed to trigger the auto-release correctly [#103](https://github.com/tablecheck/frontend/pull/103) ([@SimeonC](https://github.com/SimeonC))
+  - fix: handle prettier formatting of certain json files [#101](https://github.com/tablecheck/frontend/pull/101) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/nx@6.1.5`
+  - fix(nx): eslint config generation should use relative paths [#100](https://github.com/tablecheck/frontend/pull/100) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Jan 11 2024)
 
 #### 🐛 Bug Fix

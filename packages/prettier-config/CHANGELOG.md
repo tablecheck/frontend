@@ -1,3 +1,16 @@
+# v4.0.1 (Fri Jan 26 2024)
+
+#### 🐛 Bug Fix
+
+- fix: this commit is pretty useless, just needed to trigger the auto-release correctly [#103](https://github.com/tablecheck/frontend/pull/103) ([@SimeonC](https://github.com/SimeonC))
+- fix: handle prettier formatting of certain json files [#101](https://github.com/tablecheck/frontend/pull/101) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
