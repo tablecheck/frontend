@@ -16,6 +16,12 @@ runs:
       # checkout@v2 adds a header that makes branch protection report errors ):
       run: git config --local --unset http.https://github.com/.extraheader
 
+    - name: Set git author config
+      shell: bash
+      run: |
+        git config --global user.email "dev@tablecheck.com"
+        git config --global user.name "TableCheck Inc."
+
     - name: Read .nvmrc
       shell: bash
       id: nvm
