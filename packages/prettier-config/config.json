@@ -11,6 +11,7 @@
     },
     {
       "files": [
+        "*.json",
         "devcontainer.json",
         "jsconfig.json",
         "language-configuration.json",
