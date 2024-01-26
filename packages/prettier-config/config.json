@@ -8,6 +8,17 @@
       "options": {
         "singleQuote": false
       }
+    },
+    {
+      "files": [
+        "devcontainer.json",
+        "jsconfig.json",
+        "language-configuration.json",
+        "tsconfig.json"
+      ],
+      "options": {
+        "parser": "json"
+      }
     }
   ]
 }
