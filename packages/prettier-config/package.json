@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:tablecheck/frontend.git"
   },
-  "version": "4.0.0",
+  "version": "4.0.1",
   "main": "./config.json",
   "peerDependencies": {
     "prettier": "^3"

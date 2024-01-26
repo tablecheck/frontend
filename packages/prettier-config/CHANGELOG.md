@@ -1,20 +1,19 @@
-# v4.0.1 (Fri Jan 26 2024)
-
-#### 🐛 Bug Fix
-
-- fix: this commit is pretty useless, just needed to trigger the auto-release correctly [#103](https://github.com/tablecheck/frontend/pull/103) ([@SimeonC](https://github.com/SimeonC))
-- fix: handle prettier formatting of certain json files [#101](https://github.com/tablecheck/frontend/pull/101) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/prettier-config@4.0.0...@tablecheck/prettier-config@4.0.1) (2024-01-26)
+
+
+### Bug Fixes
+
+* handle prettier formatting of certain json files ([a5ce78b](https://github.com/tablecheck/frontend/commit/a5ce78b638c751717b5051114c1a9f2fc5b496a8)), closes [/github.com/prettier/prettier/issues/15956#issuecomment-1905768038](https://github.com//github.com/prettier/prettier/issues/15956/issues/issuecomment-1905768038)
+* this commit is pretty useless, just needed to trigger the auto-release correctly ([d7cab8b](https://github.com/tablecheck/frontend/commit/d7cab8b589495dd0791dc32449a574c62874ad1f))
+
+
+
+
 
 # 4.0.0 (2023-10-11)
 
