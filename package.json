@@ -22,9 +22,7 @@
     "prepare": "husky install && npm run build:ci",
     "all-upgrade": "npm-upgrade && lerna exec --concurrency 1 -- npm-upgrade"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "devDependencies": {
     "@auto-it/all-contributors": "11.0.4",
     "@auto-it/first-time-contributor": "11.0.4",
