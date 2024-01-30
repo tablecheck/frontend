@@ -20,6 +20,7 @@ export const storybookOverrides: Linter.ConfigOverride = {
     'react/require-default-props': 'off',
     'react-refresh/only-export-components': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/ban-ts-comment': 'off',
     'consistent-return': 'error',

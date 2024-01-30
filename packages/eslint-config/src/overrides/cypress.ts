@@ -29,6 +29,7 @@ export const cypressOverrides: Linter.ConfigOverride | undefined =
           'promise/always-return': 'off',
           'import/no-import-module-exports': 'off',
           '@typescript-eslint/no-explicit-any': 'off',
+          '@typescript-eslint/no-unsafe-assignment': 'off',
           '@typescript-eslint/no-namespace': 'off',
           '@typescript-eslint/naming-convention': (
             ['error'] as Linter.RuleLevelAndOptions

@@ -17,6 +17,7 @@ export const typescriptDocumentationOverrides = mergeDeep(
     rules: {
       ...documentationOverrides.rules,
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/naming-convention': 'off',
       '@typescript-eslint/ban-ts-comment': 'off',
       // here we use the more lenient consistent-return to help prevent weird errors

@@ -35,6 +35,7 @@ module.exports = {
         '@typescript-eslint/no-empty-interface': 'warn',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
       },
     }),
     buildBaseTypescript({
