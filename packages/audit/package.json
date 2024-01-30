@@ -17,10 +17,7 @@
   "bin": {
     "tablecheck-frontend-audit": "bin/main.js"
   },
-  "files": [
-    "bin",
-    "dist"
-  ],
+  "files": ["bin", "dist"],
   "scripts": {
     "build": "tsc -p ./tsconfig.build.json",
     "prepublish": "npm run build"

@@ -13,9 +13,7 @@
     "./formatters/junit": "./formatters/junit.js"
   },
   "main": "index.js",
-  "files": [
-    "formatters"
-  ],
+  "files": ["formatters"],
   "dependencies": {
     "@commitlint/config-conventional": "^17",
     "junit-report-builder": "3.0.1"

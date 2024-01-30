@@ -9,10 +9,7 @@
   },
   "version": "7.0.0",
   "main": "index.js",
-  "files": [
-    "with-npm-publish/package.json",
-    "withNpmPublish.js"
-  ],
+  "files": ["with-npm-publish/package.json", "withNpmPublish.js"],
   "dependencies": {
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/exec": "^6.0.3",
