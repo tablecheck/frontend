@@ -1,3 +1,16 @@
+# v8.2.5 (Wed Jan 31 2024)
+
+#### 🐛 Bug Fix
+
+- chore: fix linter [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
+- fix: disable @typescript-eslint/no-unsafe-assignment where any is allowed [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

@@ -1,3 +1,18 @@
+# (Wed Jan 31 2024)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/frontend-audit@6.0.1`, `@tablecheck/commitlint-config@6.0.1`, `@tablecheck/eslint-config@8.2.5`, `@tablecheck/eslint-plugin@6.1.2`, `@tablecheck/semantic-release-config@7.0.1`
+  - chore: fix linter [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@8.2.5`
+  - fix: disable @typescript-eslint/no-unsafe-assignment where any is allowed [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Jan 26 2024)
 
 #### 🐛 Bug Fix
