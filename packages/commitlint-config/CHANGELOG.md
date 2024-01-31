@@ -1,19 +1,15 @@
-# v6.0.1 (Wed Jan 31 2024)
-
-#### 🐛 Bug Fix
-
-- chore: fix linter [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [6.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/commitlint-config@6.0.0...@tablecheck/commitlint-config@6.0.1) (2024-01-31)
+
+**Note:** Version bump only for package @tablecheck/commitlint-config
+
+
+
+
 
 # [6.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/commitlint-config@1.2.0...@tablecheck/commitlint-config@6.0.0) (2023-10-11)
 

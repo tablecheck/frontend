@@ -1,19 +1,15 @@
-# v6.1.2 (Wed Jan 31 2024)
-
-#### 🐛 Bug Fix
-
-- chore: fix linter [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [6.1.2](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@6.1.1...@tablecheck/eslint-plugin@6.1.2) (2024-01-31)
+
+**Note:** Version bump only for package @tablecheck/eslint-plugin
+
+
+
+
 
 ## [6.1.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@6.1.0...@tablecheck/eslint-plugin@6.1.1) (2023-11-27)
 

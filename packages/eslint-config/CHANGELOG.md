@@ -1,20 +1,18 @@
-# v8.2.5 (Wed Jan 31 2024)
-
-#### 🐛 Bug Fix
-
-- chore: fix linter [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
-- fix: disable @typescript-eslint/no-unsafe-assignment where any is allowed [#104](https://github.com/tablecheck/frontend/pull/104) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.2.5](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.4...@tablecheck/eslint-config@8.2.5) (2024-01-31)
+
+
+### Bug Fixes
+
+* disable @typescript-eslint/no-unsafe-assignment where any is allowed ([84095a5](https://github.com/tablecheck/frontend/commit/84095a5e27df332bf9ecb9f879f783557d1efee0))
+
+
+
+
 
 ## [8.2.4](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.3...@tablecheck/eslint-config@8.2.4) (2023-12-05)
 
