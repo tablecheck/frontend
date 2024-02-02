@@ -1,3 +1,16 @@
+# (Fri Feb 02 2024)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/commitlint-config@6.0.2`
+  - fix(commitlint-config): junit formatter updated to include top level title [#105](https://github.com/tablecheck/frontend/pull/105) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Jan 31 2024)
 
 #### 🐛 Bug Fix
