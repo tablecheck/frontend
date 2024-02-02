@@ -5,6 +5,12 @@
 
 const builder = require('junit-report-builder');
 
+const levelMap = {
+  [0]: 'Disabled',
+  [1]: 'Warning',
+  [2]: 'Error',
+};
+
 /**
  * Format the commitlint report as a valid JUnit XML report.
  *
@@ -19,19 +25,21 @@ function formatJunit(report = {}) {
     const errorCount = result.errors?.length || 0;
     const warningCount = result.warnings?.length || 0;
     const suite = builder.testSuite().name(result.input);
-    suite.property('errors', errorCount);
-    suite.property('failures', errorCount + warningCount);
-    suite.property('tests', Math.max(errorCount + warningCount, 1));
-    suite.property('skipped', 0);
 
     result.errors?.forEach((error) => {
-      const testcase = suite.testCase().className('error').name(error.name);
-      testcase.failure('error').standardOutput(error.message);
+      suite
+        .testCase()
+        .name(error.name)
+        .className(levelMap[error.level])
+        .error(error.message);
     });
 
     result.warnings?.forEach((warning) => {
-      const testcase = suite.testCase().className('warning').name(warning.name);
-      testcase.failure('warning').standardOutput(warning.message);
+      suite
+        .testCase()
+        .name(warning.name)
+        .className(levelMap[warning.level])
+        .failure(warning.message);
     });
 
     if (errorCount + warningCount === 0) {
@@ -39,7 +47,7 @@ function formatJunit(report = {}) {
     }
   });
 
-  return builder.build();
+  return builder.name('Commit Lint').build();
 }
 
 module.exports = formatJunit;

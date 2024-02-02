@@ -16,7 +16,7 @@
   "files": ["formatters"],
   "dependencies": {
     "@commitlint/config-conventional": "^17",
-    "junit-report-builder": "3.0.1"
+    "junit-report-builder": "3.2.1"
   },
   "peerDependencies": {
     "@commitlint/cli": "^17"
