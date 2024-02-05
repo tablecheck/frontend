@@ -28,6 +28,7 @@ export const baseTypescriptRules: Linter.RulesRecord = {
 
   '@typescript-eslint/no-explicit-any': 'error',
   '@typescript-eslint/no-unsafe-enum-comparison': 'off',
+  '@typescript-eslint/method-signature-style': 'error',
   '@typescript-eslint/prefer-nullish-coalescing': [
     'error',
     {
