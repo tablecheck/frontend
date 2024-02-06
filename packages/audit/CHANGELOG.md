@@ -1,19 +1,18 @@
-# v6.1.0 (Tue Feb 06 2024)
-
-#### 🚀 Enhancement
-
-- fix: correctly define quality:format so it can be cached [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [6.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/frontend-audit@6.0.1...@tablecheck/frontend-audit@6.1.0) (2024-02-06)
+
+
+### Bug Fixes
+
+* correctly define quality:format so it can be cached ([791d58f](https://github.com/tablecheck/frontend/commit/791d58fac0bf61416a90e90c0fef1308db7fdbfd))
+
+
+
+
 
 ## [6.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/frontend-audit@6.0.0...@tablecheck/frontend-audit@6.0.1) (2024-01-31)
 

@@ -1,20 +1,19 @@
-# v8.3.0 (Tue Feb 06 2024)
-
-#### 🚀 Enhancement
-
-- fix: correctly define quality:format so it can be cached [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
-- fix: add method signature style error [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [8.3.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.5...@tablecheck/eslint-config@8.3.0) (2024-02-06)
+
+
+### Bug Fixes
+
+* add method signature style error ([0f1bea0](https://github.com/tablecheck/frontend/commit/0f1bea08f26a021b542678b1bf69c67cf229cd14))
+* correctly define quality:format so it can be cached ([791d58f](https://github.com/tablecheck/frontend/commit/791d58fac0bf61416a90e90c0fef1308db7fdbfd))
+
+
+
+
 
 ## [8.2.5](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.4...@tablecheck/eslint-config@8.2.5) (2024-01-31)
 

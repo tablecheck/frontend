@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:tablecheck/frontend.git"
   },
-  "version": "6.0.2",
+  "version": "6.1.0",
   "exports": {
     ".": "./index.js",
     "./formatters/junit": "./formatters/junit.js"
