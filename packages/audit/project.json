@@ -9,14 +9,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/audit/**/*.ts"]
-      }
-    },
-    "quality:format": {
-      "executor": "@tablecheck/nx:quality",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/audit/**/*.ts"],
-        "fix": true
+      },
+      "configurations": {
+        "format": {
+          "fix": true
+        }
       }
     }
   },

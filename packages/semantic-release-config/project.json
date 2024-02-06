@@ -9,14 +9,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/semantic-release-config/index.js"]
-      }
-    },
-    "quality:format": {
-      "executor": "@tablecheck/nx:quality",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/semantic-release-config/index.js"],
-        "fix": true
+      },
+      "configurations": {
+        "format": {
+          "fix": true
+        }
       }
     }
   },

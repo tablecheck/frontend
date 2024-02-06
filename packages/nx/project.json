@@ -17,22 +17,11 @@
           "packages/nx/generators.json",
           "packages/nx/migrations.json"
         ]
-      }
-    },
-    "quality:format": {
-      "executor": "@tablecheck/nx:quality",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": [
-          "packages/nx/src/*.ts",
-          "packages/nx/src/*/*.ts",
-          "packages/nx/src/*/*/*.ts",
-          "packages/nx/executors.json",
-          "packages/nx/package.json",
-          "packages/nx/generators.json",
-          "packages/nx/migrations.json"
-        ],
-        "fix": true
+      },
+      "configurations": {
+        "format": {
+          "fix": true
+        }
       }
     }
   },
