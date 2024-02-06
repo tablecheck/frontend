@@ -1,3 +1,15 @@
+# v7.1.0 (Tue Feb 06 2024)
+
+#### 🚀 Enhancement
+
+- fix: correctly define quality:format so it can be cached [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

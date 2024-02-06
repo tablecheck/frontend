@@ -1,3 +1,23 @@
+# (Tue Feb 06 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/frontend-audit@6.1.0`, `@tablecheck/commitlint-config@6.1.0`, `@tablecheck/eslint-config@8.3.0`, `@tablecheck/eslint-plugin@6.2.0`, `@tablecheck/nx@6.2.0`, `@tablecheck/semantic-release-config@7.1.0`
+  - fix: correctly define quality:format so it can be cached [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
+- `@tablecheck/eslint-config@8.3.0`
+  - fix: add method signature style error [#106](https://github.com/tablecheck/frontend/pull/106) ([@SimeonC](https://github.com/SimeonC))
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/commitlint-config@6.1.0`
+  - fix(commitlint-config): junit formatter updated to include top level title [#105](https://github.com/tablecheck/frontend/pull/105) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Fri Feb 02 2024)
 
 #### 🐛 Bug Fix
