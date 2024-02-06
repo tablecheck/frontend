@@ -27,12 +27,12 @@ export function updateProjectConfig(tree: Tree, projectName: string) {
           ),
       ),
     },
-  };
-  const lintFormatTarget = merge({}, lintTarget, {
-    options: {
-      fix: true,
+    configurations: {
+      format: {
+        fix: true,
+      },
     },
-  });
+  };
   try {
     const projectConfig = readProjectConfiguration(tree, projectName);
     updateProjectConfiguration(
@@ -41,7 +41,6 @@ export function updateProjectConfig(tree: Tree, projectName: string) {
       merge(projectConfig, {
         targets: {
           quality: lintTarget,
-          'quality:format': lintFormatTarget,
         },
       }),
     );
@@ -55,7 +54,6 @@ export function updateProjectConfig(tree: Tree, projectName: string) {
       sourceRoot: 'src',
       targets: {
         quality: lintTarget,
-        'quality:format': lintFormatTarget,
       },
     });
   }

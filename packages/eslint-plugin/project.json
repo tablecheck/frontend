@@ -9,14 +9,11 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["packages/eslint-plugin/**/*.ts"]
-      }
-    },
-    "quality:format": {
-      "executor": "@tablecheck/nx:quality",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["packages/eslint-plugin/**/*.ts"],
-        "fix": true
+      },
+      "configurations": {
+        "format": {
+          "fix": true
+        }
       }
     },
     "quality:docs": {
