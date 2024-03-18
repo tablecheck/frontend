@@ -1340,6 +1340,70 @@
           "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2023-49293?component-type=npm&component-name=vite&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
         }
       ]
+    },
+    {
+      "coordinates": "pkg:npm/follow-redirects@1.15.4",
+      "description": "HTTP and HTTPS modules that follow redirects.",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/follow-redirects@1.15.4?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-28849",
+          "title": "[CVE-2024-28849] CWE-200: Information Exposure",
+          "description": "follow-redirects is an open source, drop-in replacement for Node's `http` and `https` modules that automatically follows redirects. In affected versions follow-redirects only clears authorization header during cross-domain redirect, but keep the proxy-authentication header which contains credentials too. This vulnerability may lead to credentials leak, but has been addressed in version 1.15.6. Users are advised to upgrade. There are no known workarounds for this vulnerability.\n\nSonatype's research suggests that this CVE's details differ from those defined at NVD. See https://ossindex.sonatype.org/vulnerability/CVE-2024-28849 for details",
+          "cvssScore": 6.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+          "cve": "CVE-2024-28849",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2024-28849?component-type=npm&component-name=follow-redirects&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/ip@2.0.0",
+      "description": "[![](https://badge.fury.io/js/ip.svg)](https://www.npmjs.com/package/ip)",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/ip@2.0.0?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2023-42282",
+          "title": "[CVE-2023-42282] CWE-918: Server-Side Request Forgery (SSRF)",
+          "description": "The ip package before 1.1.9 for Node.js might allow SSRF because some IP addresses (such as 0x7f.1) are improperly categorized as globally routable via isPublic.",
+          "cvssScore": 9.8,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cve": "CVE-2023-42282",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2023-42282?component-type=npm&component-name=ip&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/vite@4.4.9",
+      "description": "[![npm][npm-img]][npm-url] [![node][node-img]][node-url] [![unix CI status][unix-ci-img]][unix-ci-url] [![windows CI status][windows-ci-img]][windows-ci-url]",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/vite@4.4.9?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-23331",
+          "title": "[CVE-2024-23331] CWE-178: Improper Handling of Case Sensitivity",
+          "description": "Vite is a frontend tooling framework for javascript. The Vite dev server option `server.fs.deny` can be bypassed on case-insensitive file systems using case-augmented versions of filenames. Notably this affects servers hosted on Windows. This bypass is similar to CVE-2023-34092 -- with surface area reduced to hosts having case-insensitive filesystems. Since `picomatch` defaults to case-sensitive glob matching, but the file server doesn't discriminate; a blacklist bypass is possible. By requesting raw filesystem paths using augmented casing, the matcher derived from `config.server.fs.deny` fails to block access to sensitive files. This issue has been addressed in vite@5.0.12, vite@4.5.2, vite@3.2.8, and vite@2.9.17. Users are advised to upgrade. Users unable to upgrade should restrict access to dev servers.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cve": "CVE-2024-23331",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2024-23331?component-type=npm&component-name=vite&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
+    },
+    {
+      "coordinates": "pkg:npm/vite@4.4.1",
+      "description": "[![npm][npm-img]][npm-url] [![node][node-img]][node-url] [![unix CI status][unix-ci-img]][unix-ci-url] [![windows CI status][windows-ci-img]][windows-ci-url]",
+      "reference": "https://ossindex.sonatype.org/component/pkg:npm/vite@4.4.1?utm_source=auditjs&utm_medium=integration&utm_content=4.0.41",
+      "vulnerabilities": [
+        {
+          "id": "CVE-2024-23331",
+          "title": "[CVE-2024-23331] CWE-178: Improper Handling of Case Sensitivity",
+          "description": "Vite is a frontend tooling framework for javascript. The Vite dev server option `server.fs.deny` can be bypassed on case-insensitive file systems using case-augmented versions of filenames. Notably this affects servers hosted on Windows. This bypass is similar to CVE-2023-34092 -- with surface area reduced to hosts having case-insensitive filesystems. Since `picomatch` defaults to case-sensitive glob matching, but the file server doesn't discriminate; a blacklist bypass is possible. By requesting raw filesystem paths using augmented casing, the matcher derived from `config.server.fs.deny` fails to block access to sensitive files. This issue has been addressed in vite@5.0.12, vite@4.5.2, vite@3.2.8, and vite@2.9.17. Users are advised to upgrade. Users unable to upgrade should restrict access to dev servers.",
+          "cvssScore": 7.5,
+          "cvssVector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cve": "CVE-2024-23331",
+          "reference": "https://ossindex.sonatype.org/vulnerability/CVE-2024-23331?component-type=npm&component-name=vite&utm_source=auditjs&utm_medium=integration&utm_content=4.0.41"
+        }
+      ]
     }
   ],
   "ignore": [
@@ -1576,6 +1640,15 @@
     },
     {
       "id": "CVE-2023-49293"
+    },
+    {
+      "id": "CVE-2024-28849"
+    },
+    {
+      "id": "CVE-2023-42282"
+    },
+    {
+      "id": "CVE-2024-23331"
     }
   ]
 }
