@@ -1,3 +1,19 @@
+# v8.4.0 (Mon Mar 18 2024)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Akash Gupta ([@akashgupta-tc](https://github.com/akashgupta-tc)), for all your work!
+
+#### 🚀 Enhancement
+
+- fix(eslint-config): turns on rule for error when no key in map [#107](https://github.com/tablecheck/frontend/pull/107) ([@akashgupta-tc](https://github.com/akashgupta-tc))
+
+#### Authors: 1
+
+- Akash Gupta ([@akashgupta-tc](https://github.com/akashgupta-tc))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
