@@ -1,23 +1,18 @@
-# v8.4.0 (Mon Mar 18 2024)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, Akash Gupta ([@akashgupta-tc](https://github.com/akashgupta-tc)), for all your work!
-
-#### 🚀 Enhancement
-
-- fix(eslint-config): turns on rule for error when no key in map [#107](https://github.com/tablecheck/frontend/pull/107) ([@akashgupta-tc](https://github.com/akashgupta-tc))
-
-#### Authors: 1
-
-- Akash Gupta ([@akashgupta-tc](https://github.com/akashgupta-tc))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [8.4.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.3.0...@tablecheck/eslint-config@8.4.0) (2024-03-18)
+
+
+### Bug Fixes
+
+* **eslint-config:** turns on rule for error when no key in map ([c941b9b](https://github.com/tablecheck/frontend/commit/c941b9bdc508749e66a8bd5c9e61c57eb932c155))
+
+
+
+
 
 # [8.3.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.2.5...@tablecheck/eslint-config@8.3.0) (2024-02-06)
 
