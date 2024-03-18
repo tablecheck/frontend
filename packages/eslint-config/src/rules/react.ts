@@ -53,6 +53,15 @@ export const reactRules: Linter.RulesRecord = {
   'react/no-find-dom-node': 'error',
   'react/jsx-fragments': 'error',
   'react/jsx-no-useless-fragment': ['error', { allowExpressions: true }],
+  'react/jsx-key': [
+    'error',
+    {
+      checkFragmentShorthand: true,
+      checkKeyMustBeforeSpread: true,
+      warnOnDuplicates: true,
+    },
+  ],
+
   '@tablecheck/consistent-react-import': 'error',
   'react-refresh/only-export-components': [
     'warn',
