@@ -1,3 +1,15 @@
+# v8.5.0 (Mon Apr 01 2024)
+
+#### 🚀 Enhancement
+
+- feat: allow `_destroy` as a property [#108](https://github.com/tablecheck/frontend/pull/108) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

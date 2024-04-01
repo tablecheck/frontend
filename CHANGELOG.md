@@ -1,3 +1,16 @@
+# (Mon Apr 01 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@8.5.0`
+  - feat: allow `_destroy` as a property [#108](https://github.com/tablecheck/frontend/pull/108) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Mar 18 2024)
 
 :tada: This release contains work from a new contributor! :tada:
