@@ -113,6 +113,15 @@ export const namingRules: Linter.RulesRecord = {
     },
     {
       selector: ['property', 'parameterProperty'],
+      format: null,
+      types: ['boolean'],
+      filter: {
+        regex: '^_destroy(_|$)', // `_destroy` and `_destroy_*` is used in monolith APIs as a convention
+        match: true,
+      },
+    },
+    {
+      selector: ['property', 'parameterProperty'],
       format: ['camelCase', 'PascalCase', 'snake_case', 'UPPER_CASE'],
       leadingUnderscore: 'allowDouble', // double for __html
     },
