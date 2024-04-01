@@ -11,3 +11,4 @@ dist
 .prettierignore
 styleguide
 CHANGELOG.md
+.all-contributorsrc
