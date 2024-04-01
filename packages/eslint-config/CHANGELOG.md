@@ -1,19 +1,18 @@
-# v8.5.0 (Mon Apr 01 2024)
-
-#### 🚀 Enhancement
-
-- feat: allow `_destroy` as a property [#108](https://github.com/tablecheck/frontend/pull/108) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [8.5.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.4.0...@tablecheck/eslint-config@8.5.0) (2024-04-01)
+
+
+### Features
+
+* allow `_destroy` as a property ([55b389a](https://github.com/tablecheck/frontend/commit/55b389af51a8634c3f70a33f8dc020982342e090))
+
+
+
+
 
 # [8.4.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.3.0...@tablecheck/eslint-config@8.4.0) (2024-03-18)
 
