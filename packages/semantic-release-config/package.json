@@ -8,6 +8,12 @@
     "url": "git@github.com:tablecheck/frontend.git"
   },
   "version": "7.1.0",
+  "exports": {
+    ".": "./index.js",
+    "./with-npm-publish": "./withNpmPublish.js",
+    "./package.json": "./package.json",
+    "./with-npm-publish/package.json": "./with-npm-publish/package.json"
+  },
   "main": "index.js",
   "files": ["with-npm-publish/package.json", "withNpmPublish.js"],
   "dependencies": {

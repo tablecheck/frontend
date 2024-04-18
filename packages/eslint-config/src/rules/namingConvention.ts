@@ -55,6 +55,7 @@ export const namingRules: Linter.RulesRecord = {
             'does',
             'will',
             'allow',
+            'use',
           ];
           return `^(disabled$|${booleanValues.join(
             '|',
