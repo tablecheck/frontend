@@ -1,3 +1,15 @@
+# v8.6.0 (Thu Apr 18 2024)
+
+#### 🚀 Enhancement
+
+- feat: add use prefix to boolean name checking [#109](https://github.com/tablecheck/frontend/pull/109) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

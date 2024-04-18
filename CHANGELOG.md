@@ -1,3 +1,16 @@
+# (Thu Apr 18 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@8.6.0`, `@tablecheck/semantic-release-config@7.2.0`
+  - feat: add use prefix to boolean name checking [#109](https://github.com/tablecheck/frontend/pull/109) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Apr 01 2024)
 
 #### 🚀 Enhancement
