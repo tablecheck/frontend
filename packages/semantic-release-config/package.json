@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:tablecheck/frontend.git"
   },
-  "version": "7.1.0",
+  "version": "7.2.0",
   "exports": {
     ".": "./index.js",
     "./with-npm-publish": "./withNpmPublish.js",

@@ -1,19 +1,18 @@
-# v7.2.0 (Thu Apr 18 2024)
-
-#### 🚀 Enhancement
-
-- feat: add use prefix to boolean name checking [#109](https://github.com/tablecheck/frontend/pull/109) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [7.2.0](https://github.com/tablecheck/frontend/compare/@tablecheck/semantic-release-config@7.1.0...@tablecheck/semantic-release-config@7.2.0) (2024-04-18)
+
+
+### Features
+
+* add use prefix to boolean name checking ([ff5714a](https://github.com/tablecheck/frontend/commit/ff5714a01f3d35b0a6e65e0c4fd2ceec6873f483))
+
+
+
+
 
 # [7.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/semantic-release-config@7.0.1...@tablecheck/semantic-release-config@7.1.0) (2024-02-06)
 
