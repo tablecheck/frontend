@@ -17,16 +17,34 @@ const ruleTester = new RuleTester({
 const filename = './fixtures/test_src/default.tsx';
 const invalidTests = [
   {
-    code: `import { useState } from 'react';const [val, setVal] = useState(true);`,
-    output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
+    code: `
+      import { useState } from 'react';
+      const [val, setVal] = useState(true);`,
+    output: `
+      import * as React from 'react';
+      const [val, setVal] = React.useState(true);`,
   },
   {
-    code: `import React, { useState as reactUseState, useCallback } from 'react';const [val, setVal] = reactUseState(true);`,
-    output: `import * as React from 'react';const [val, setVal] = React.useState(true);`,
+    code: `
+      import React, { useState as reactUseState, useCallback } from 'react';
+      const [val, setVal] = reactUseState(true);`,
+    output: `
+      import * as React from 'react';
+      const [val, setVal] = React.useState(true);`,
   },
   {
-    code: `import { useState, useMemo } from 'react';function useHook() { const [val, setVal] = useState(true); return useMemo(() => val, []) }`,
-    output: `import * as React from 'react';function useHook() { const [val, setVal] = React.useState(true); return React.useMemo(() => val, []) }`,
+    code: `
+      import { useState, useMemo } from 'react';
+      function useHook() {
+        const [val, setVal] = useState(true);
+        return useMemo(() => val, []);
+      }`,
+    output: `
+      import * as React from 'react';
+      function useHook() {
+        const [val, setVal] = React.useState(true);
+        return React.useMemo(() => val, []);
+      }`,
   },
   {
     code: `
@@ -91,8 +109,9 @@ const invalidTests = [
       return <React.Fragment key="one"><div><>Inner <React.Fragment>Center</React.Fragment></> Outer</div></React.Fragment>;
     }`,
   },
-].map((test) => ({
-  ...test,
+].map(({ code, output }, index) => ({
+  code: `console.log('test ${index}');${code}`,
+  output: `console.log('test ${index}');${output}`,
   errors: [
     {
       messageId,

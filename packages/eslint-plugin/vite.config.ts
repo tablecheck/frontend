@@ -12,6 +12,7 @@ export default defineConfig({
   ],
 
   test: {
+    reporters: ['default'],
     globals: true,
     outputFile: '../../coverage/packages/eslint-plugin/report.junit.xml',
     cache: {

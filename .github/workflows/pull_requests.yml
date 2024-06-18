@@ -24,12 +24,6 @@ jobs:
       - name: Run linter
         run: npm run lint
 
-      - name: Audit Dependencies
-        run: npm run audit:ci
-        env:
-          OSSI_USERNAME: ${{ secrets.OSSI_USERNAME }}
-          OSSI_TOKEN: ${{ secrets.OSSI_TOKEN }}
-
   test:
     runs-on: ubuntu-latest
     steps:

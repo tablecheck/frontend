@@ -25,3 +25,4 @@ junit
 /packages/quality/build.config.ts
 /packages/utils/build.config.ts
 /packages/utils/config
+/.nx

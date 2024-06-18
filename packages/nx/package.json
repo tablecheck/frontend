@@ -23,10 +23,10 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@nx/cypress": "^16",
-    "@nx/devkit": "^16",
-    "@nx/js": "^16",
-    "@nx/linter": "^16",
+    "@nx/cypress": "^19",
+    "@nx/devkit": "^19",
+    "@nx/eslint": "^19",
+    "@nx/js": "^19",
     "chalk": "^4.1.2",
     "flat": "5.0.2",
     "fs-extra": "11.1.1",

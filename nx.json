@@ -1,18 +1,10 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "test", "lint"],
-        "accessToken": "MDFhZDUwZTMtZDMyMy00Y2YwLWEwY2QtMDQ3ZjJiZGYzMDE3fHJlYWQtd3JpdGU="
-      }
-    }
-  },
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["default", "^default", "baseTypescript"],
-      "outputs": ["{projectRoot}/dist"]
+      "outputs": ["{projectRoot}/dist"],
+      "cache": true
     },
     "docs": {
       "dependsOn": ["build"],
@@ -24,9 +16,6 @@
       "inputs": ["default", "^default", "testConfig"]
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
@@ -34,5 +23,8 @@
     "production": ["default"],
     "baseTypescript": ["{workspaceRoot}/tsconfig.base.json"],
     "testConfig": ["{projectRoot}/vite.config.ts"]
-  }
+  },
+  "nxCloudAccessToken": "MDFhZDUwZTMtZDMyMy00Y2YwLWEwY2QtMDQ3ZjJiZGYzMDE3fHJlYWQtd3JpdGU=",
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

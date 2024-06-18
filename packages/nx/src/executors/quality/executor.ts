@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 
 import { ExecutorContext } from '@nx/devkit';
-import lintRun from '@nx/linter/src/executors/eslint/lint.impl.js';
+import lintRun from '@nx/eslint/src/executors/lint/lint.impl.js';
 
 import { configCheck } from './configs.js';
 import { enforceNpmrcIsSaveExact, packageCheck } from './package.js';
@@ -9,7 +9,7 @@ import { enforceNpmrcIsSaveExact, packageCheck } from './package.js';
 export default async function runExecutor(
   options: Omit<
     Parameters<
-      typeof import('@nx/linter/src/executors/eslint/lint.impl.js').default
+      typeof import('@nx/eslint/src/executors/lint/lint.impl.js').default
     >[0],
     | 'format'
     | 'quiet'
