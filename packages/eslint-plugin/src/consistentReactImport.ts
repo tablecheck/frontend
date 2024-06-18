@@ -2,7 +2,7 @@ import type { ImportSpecifier } from '@typescript-eslint/types/dist/generated/as
 import { TSESLint, TSESTree } from '@typescript-eslint/utils';
 import { RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
 
-export const messageId = 'consistentReactImport' as const;
+export const messageId = 'consistentReactImport';
 
 export const consistentReactImport: TSESLint.RuleModule<typeof messageId> = {
   meta: {

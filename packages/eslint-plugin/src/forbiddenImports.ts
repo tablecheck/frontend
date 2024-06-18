@@ -7,7 +7,7 @@ type ImportSpecifier = TSESTree.ImportSpecifier;
 type Identifier = TSESTree.Identifier;
 type Node = TSESTree.Node;
 
-export const messageId = 'incorrectImport' as const;
+export const messageId = 'incorrectImport';
 
 function assertForbiddenImport(node: Node): asserts node is ImportDeclaration {
   if (node.type !== TSESTree.AST_NODE_TYPES.ImportDeclaration)

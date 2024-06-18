@@ -279,7 +279,7 @@ typescriptSetups.forEach((config) => {
           options: [{ preferredAlias: ['~/feature1', 'feature1'] }],
         },
       ]
-        .filter((c) => !c.skipConfigs || !c.skipConfigs.includes(config.name))
+        .filter((c) => !c.skipConfigs?.includes(config.name))
         .map(mapConfig(config.name)),
     ),
   });

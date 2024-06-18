@@ -8,7 +8,7 @@ import { CompilerOptions } from 'typescript';
 type ImportExpression = TSESTree.ImportDeclaration;
 type ImportDeclaration = TSESTree.ImportExpression;
 
-export const messageId = 'shortestImport' as const;
+export const messageId = 'shortestImport';
 
 const metaCache = new Map<string, RuleChecker>();
 
@@ -447,9 +447,8 @@ export const shortestImport: TSESLint.RuleModule<
   },
   defaultOptions: [undefined],
   create(context) {
-    const compilerOptions = context
-      .getSourceCode()
-      .parserServices.program?.getCompilerOptions();
+    const compilerOptions =
+      context.sourceCode.parserServices?.program?.getCompilerOptions();
     if (!compilerOptions) {
       return {
         Program(node) {
