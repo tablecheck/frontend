@@ -1,3 +1,16 @@
+# (Mon Jun 24 2024)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/eslint-config@9.0.0`, `@tablecheck/eslint-plugin@7.0.0`, `@tablecheck/nx@7.0.0`
+  - fix: upgrade dependencies [#110](https://github.com/tablecheck/frontend/pull/110) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Apr 18 2024)
 
 #### 🚀 Enhancement

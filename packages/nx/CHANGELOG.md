@@ -1,3 +1,15 @@
+# v7.0.0 (Mon Jun 24 2024)
+
+#### 💥 Breaking Change
+
+- fix: upgrade dependencies [#110](https://github.com/tablecheck/frontend/pull/110) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
