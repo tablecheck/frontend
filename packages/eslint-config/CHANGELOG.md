@@ -1,19 +1,23 @@
-# v9.0.0 (Mon Jun 24 2024)
-
-#### 💥 Breaking Change
-
-- fix: upgrade dependencies [#110](https://github.com/tablecheck/frontend/pull/110) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [9.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.6.0...@tablecheck/eslint-config@9.0.0) (2024-06-24)
+
+
+### Bug Fixes
+
+* upgrade dependencies ([cf6d8a9](https://github.com/tablecheck/frontend/commit/cf6d8a90f142c496f761b8edc05e86ebffd3b425))
+
+
+### BREAKING CHANGES
+
+* needs parallel nx dependency upgrade
+
+
+
+
 
 # [8.6.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.5.0...@tablecheck/eslint-config@8.6.0) (2024-04-18)
 
