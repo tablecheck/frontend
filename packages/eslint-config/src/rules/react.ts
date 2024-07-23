@@ -61,7 +61,7 @@ export const reactRules: Linter.RulesRecord = {
       warnOnDuplicates: true,
     },
   ],
-
+  'react/jsx-no-leaked-render': ['error', { validStrategies: ['ternary'] }],
   '@tablecheck/consistent-react-import': 'error',
   'react-refresh/only-export-components': [
     'warn',
