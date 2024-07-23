@@ -1,19 +1,18 @@
-# v9.1.0 (Tue Jul 23 2024)
-
-#### 🚀 Enhancement
-
-- feat: add react rule for no leaked rendering [#111](https://github.com/tablecheck/frontend/pull/111) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [9.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@9.0.0...@tablecheck/eslint-config@9.1.0) (2024-07-23)
+
+
+### Features
+
+* add react rule for no leaked rendering ([d6c9555](https://github.com/tablecheck/frontend/commit/d6c95551350fb8468c408aec10075f07ff168573))
+
+
+
+
 
 # [9.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@8.6.0...@tablecheck/eslint-config@9.0.0) (2024-06-24)
 
