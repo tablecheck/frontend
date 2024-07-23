@@ -1,3 +1,15 @@
+# v9.1.0 (Tue Jul 23 2024)
+
+#### 🚀 Enhancement
+
+- feat: add react rule for no leaked rendering [#111](https://github.com/tablecheck/frontend/pull/111) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

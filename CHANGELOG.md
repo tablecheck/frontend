@@ -1,3 +1,16 @@
+# (Tue Jul 23 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@9.1.0`
+  - feat: add react rule for no leaked rendering [#111](https://github.com/tablecheck/frontend/pull/111) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Jun 24 2024)
 
 #### 💥 Breaking Change
