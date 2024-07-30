@@ -1,3 +1,15 @@
+# v9.2.0 (Tue Jul 30 2024)
+
+#### 🚀 Enhancement
+
+- feat: add and replace stylistic rules around imports [#112](https://github.com/tablecheck/frontend/pull/112) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

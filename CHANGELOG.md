@@ -1,3 +1,16 @@
+# (Tue Jul 30 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/frontend-audit@6.2.0`, `@tablecheck/eslint-config@9.2.0`, `@tablecheck/eslint-plugin@7.1.0`, `@tablecheck/nx@7.1.0`
+  - feat: add and replace stylistic rules around imports [#112](https://github.com/tablecheck/frontend/pull/112) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Jul 23 2024)
 
 #### 🚀 Enhancement
