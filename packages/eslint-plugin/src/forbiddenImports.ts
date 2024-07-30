@@ -1,6 +1,6 @@
 import { TSESTree } from '@typescript-eslint/types';
-import { TSESLint } from '@typescript-eslint/utils';
-import { RuleFix } from '@typescript-eslint/utils/ts-eslint';
+import { type TSESLint } from '@typescript-eslint/utils';
+import { type RuleFix } from '@typescript-eslint/utils/ts-eslint';
 
 type ImportDeclaration = TSESTree.ImportDeclaration;
 type ImportSpecifier = TSESTree.ImportSpecifier;

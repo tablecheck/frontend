@@ -1,7 +1,10 @@
 import { RuleTester } from '@typescript-eslint/rule-tester';
-import { TSESLint } from '@typescript-eslint/utils';
+import { type TSESLint } from '@typescript-eslint/utils';
 
-import { forbiddenImports as rule, messageId } from '../src/forbiddenImports';
+import {
+  forbiddenImports as rule,
+  type messageId,
+} from '../src/forbiddenImports';
 
 const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',

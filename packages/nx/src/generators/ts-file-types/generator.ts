@@ -1,10 +1,10 @@
 import * as path from 'path';
 
-import { formatFiles, generateFiles, Tree } from '@nx/devkit';
+import { formatFiles, generateFiles, type Tree } from '@nx/devkit';
 
 import { getNxProjectRoot } from '../../utils/nx';
 
-import { FileTypesGeneratorSchema } from './schema';
+import { type FileTypesGeneratorSchema } from './schema';
 
 export async function tsFileTypesGenerator(
   tree: Tree,

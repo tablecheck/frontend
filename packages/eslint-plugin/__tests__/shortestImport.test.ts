@@ -2,7 +2,7 @@ import { join as pathJoin } from 'path';
 
 import { RuleTester } from '@typescript-eslint/rule-tester';
 
-import { shortestImport as rule, messageId } from '../src/shortestImport';
+import { messageId, shortestImport as rule } from '../src/shortestImport';
 
 const typescriptSetups = [
   {

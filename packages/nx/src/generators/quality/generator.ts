@@ -1,18 +1,18 @@
 import * as path from 'path';
 
 import {
+  addDependenciesToPackageJson,
   formatFiles,
   generateFiles,
-  addDependenciesToPackageJson,
-  Tree,
+  type Tree,
   updateJson,
 } from '@nx/devkit';
-import { PackageJson } from 'type-fest';
+import { type PackageJson } from 'type-fest';
 
 import { getLatestVersions } from '../../utils/dependencies';
 import generateIcons from '../ts-carbon-icons/generator';
 import generateFileTypes from '../ts-file-types/generator';
-import { FileTypesGeneratorSchema } from '../ts-file-types/schema';
+import { type FileTypesGeneratorSchema } from '../ts-file-types/schema';
 import generateConfig from '../ts-node-config/generator';
 
 import { generateEslintConfig } from './eslintConfig';

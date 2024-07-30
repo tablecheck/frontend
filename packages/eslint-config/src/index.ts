@@ -55,6 +55,7 @@ module.exports = {
     '@tablecheck',
     '@nx',
     'react-refresh',
+    'simple-import-sort',
   ],
 
   globals: {

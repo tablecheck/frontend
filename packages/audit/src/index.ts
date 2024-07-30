@@ -2,8 +2,8 @@ import * as path from 'path';
 
 import * as prompts from '@clack/prompts';
 import CVSS, {
-  DetailedVectorObject,
-  VectorMetric,
+  type DetailedVectorObject,
+  type VectorMetric,
 } from '@turingpointde/cvss.js';
 import definitions from '@turingpointde/cvss.js/lib/cvss_3_0.json' assert { type: 'json' };
 import chalk from 'chalk';

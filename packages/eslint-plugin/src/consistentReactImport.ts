@@ -1,6 +1,6 @@
 import type { ImportSpecifier } from '@typescript-eslint/types/dist/generated/ast-spec';
 import { TSESLint, TSESTree } from '@typescript-eslint/utils';
-import { RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
+import { type RuleFix } from '@typescript-eslint/utils/dist/ts-eslint';
 
 export const messageId = 'consistentReactImport';
 

@@ -1,9 +1,9 @@
 import * as path from 'path';
 
 import type { TSESTree } from '@typescript-eslint/types';
-import { AST_NODE_TYPES, TSESLint } from '@typescript-eslint/utils';
+import { AST_NODE_TYPES, type TSESLint } from '@typescript-eslint/utils';
 import fs from 'fs-extra';
-import { CompilerOptions } from 'typescript';
+import { type CompilerOptions } from 'typescript';
 
 type ImportExpression = TSESTree.ImportDeclaration;
 type ImportDeclaration = TSESTree.ImportExpression;

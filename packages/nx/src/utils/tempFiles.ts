@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { Tree, generateFiles } from '@nx/devkit';
+import { generateFiles, type Tree } from '@nx/devkit';
 import fs from 'fs-extra';
 
 type GenerateFilesFunction = (

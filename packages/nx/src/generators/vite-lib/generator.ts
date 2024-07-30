@@ -1,4 +1,4 @@
-import { Tree } from '@nx/devkit';
+import { type Tree } from '@nx/devkit';
 import { determineProjectNameAndRootOptions } from '@nx/devkit/src/generators/project-name-and-root-utils';
 import { libraryGeneratorInternal } from '@nx/js/src/generators/library/library';
 

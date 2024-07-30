@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 
-import { ExecutorContext } from '@nx/devkit';
+import { type ExecutorContext } from '@nx/devkit';
 import lintRun from '@nx/eslint/src/executors/lint/lint.impl.js';
 
 import { configCheck } from './configs.js';

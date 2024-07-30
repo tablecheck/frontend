@@ -1,9 +1,9 @@
 import * as path from 'path';
 
 import {
-  Tree,
   addProjectConfiguration,
   readProjectConfiguration,
+  type Tree,
   updateProjectConfiguration,
 } from '@nx/devkit';
 import merge from 'lodash/merge';

@@ -2,8 +2,8 @@ import * as path from 'path';
 
 import fs from 'fs-extra';
 import {
-  format as prettyFormatPackage,
   check as checkPackageFormat,
+  format as prettyFormatPackage,
 } from 'prettier-package-json';
 import * as semver from 'semver';
 import type { PackageJson } from 'type-fest';
