@@ -1,19 +1,18 @@
-# v9.2.0 (Tue Jul 30 2024)
-
-#### 🚀 Enhancement
-
-- feat: add and replace stylistic rules around imports [#112](https://github.com/tablecheck/frontend/pull/112) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [9.2.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@9.1.0...@tablecheck/eslint-config@9.2.0) (2024-07-30)
+
+
+### Features
+
+* add and replace stylistic rules around imports ([31025c7](https://github.com/tablecheck/frontend/commit/31025c7685225676adc7a1f7ba127770bc7fab83)), closes [/github.com/tablecheck/settings-frontend/pull/967#discussion_r1678656187](https://github.com//github.com/tablecheck/settings-frontend/pull/967/issues/discussion_r1678656187)
+
+
+
+
 
 # [9.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@9.0.0...@tablecheck/eslint-config@9.1.0) (2024-07-23)
 
