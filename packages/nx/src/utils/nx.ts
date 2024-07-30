@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { Tree, getProjects } from '@nx/devkit';
+import { getProjects, type Tree } from '@nx/devkit';
 
 export function getNxProjectRoot(tree: Tree, projectName: string) {
   const project = getProjects(tree).get(projectName);

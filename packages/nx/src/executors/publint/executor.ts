@@ -1,4 +1,4 @@
-import { ExecutorContext } from '@nx/devkit';
+import { type ExecutorContext } from '@nx/devkit';
 import { dynamicImport } from 'tsimportlib';
 
 export default async function runExecutor(

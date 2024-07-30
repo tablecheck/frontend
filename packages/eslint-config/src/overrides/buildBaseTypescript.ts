@@ -40,6 +40,13 @@ export const baseTypescriptRules: Linter.RulesRecord = {
       },
     },
   ],
+  '@typescript-eslint/consistent-type-imports': [
+    'error',
+    {
+      disallowTypeAnnotations: false,
+      fixStyle: 'inline-type-imports',
+    },
+  ],
   '@tablecheck/prefer-shortest-import': 'error',
 };
 

@@ -15,7 +15,14 @@ if (!process.env.NODE_ENV) {
 module.exports = {
   extends: ['airbnb', 'plugin:eslint-comments/recommended', 'prettier'],
 
-  plugins: ['eslint-comments', 'promise', '@tablecheck', '@nx', '@emotion'],
+  plugins: [
+    'eslint-comments',
+    'promise',
+    '@tablecheck',
+    '@nx',
+    '@emotion',
+    'simple-import-sort',
+  ],
 
   parserOptions: {
     ecmaVersion: 'latest',

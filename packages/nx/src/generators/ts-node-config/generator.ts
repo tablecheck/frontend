@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { Tree } from '@nx/devkit';
+import { type Tree } from '@nx/devkit';
 import * as fs from 'fs-extra';
 import uniq from 'lodash/uniq';
 

@@ -21,14 +21,33 @@ export const generalRules: Linter.RulesRecord = {
     },
   ],
   'import/newline-after-import': 'error',
-  'import/order': [
+  'import/order': 'off',
+  'simple-import-sort/imports': [
     'error',
     {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
-      'newlines-between': 'always',
-      alphabetize: { order: 'asc', caseInsensitive: false },
+      groups: [
+        // Node.js builtins.
+        [
+          '^(assert|buffer|child_process|cluster|console|constants|crypto|dgram|dns|domain|events|fs|http|https|module|net|os|path|punycode|querystring|readline|repl|stream|string_decoder|sys|timers|tls|tty|url|util|vm|zlib|freelist|v8|process|async_hooks|http2|perf_hooks)(/.*|$)',
+        ],
+        // Packages. `react` related packages come first.
+        ['^react', '^@?\\w'],
+        // Internal packages.
+        ['^(@|@local|~)(/.*|$)'],
+        // Side effect imports.
+        ['^\\u0000'],
+        // Parent imports. Put `..` last.
+        ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+        // Other relative imports. Put same-folder imports and `.` last.
+        ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+        // Style imports.
+        ['^.+\\.s?css$'],
+      ],
     },
   ],
+  'simple-import-sort/exports': 'error',
+  'import/first': 'error',
+  'import/no-duplicates': 'error',
   // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
   'import/prefer-default-export': 'off',
   'import/no-default-export': 'error',
