@@ -33,9 +33,8 @@ class RuleChecker {
 
   constructor(compilerOptions: CompilerOptions) {
     const { baseUrl, pathsBasePath, rootDir, rootDirs } = compilerOptions;
-
     this.baseUrl = baseUrl;
-    this.pathsBasePath = pathsBasePath;
+    this.pathsBasePath = pathsBasePath ?? baseUrl;
     this.rootDir = rootDir;
     this.rootDirs = rootDirs;
     this.compilerPaths = this.composeCompilerPaths(compilerOptions.paths);
@@ -172,10 +171,8 @@ class RuleChecker {
     if (importPath.startsWith('@') || importPath === '.') return true;
     const isPathMapping = Object.keys(this.allPaths).some(
       (key) =>
-        importPath.startsWith(key) ||
-        importPath.startsWith(key.replace(/\/$/, '')),
+        importPath.startsWith(key) || importPath === key.replace(/\/$/, ''),
     );
-
     if (isPathMapping) return false;
     return !importPath.startsWith('.') && !importPath.startsWith('/');
   }
