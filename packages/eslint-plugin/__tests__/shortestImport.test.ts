@@ -1,6 +1,10 @@
 import { join as pathJoin } from 'path';
 
-import { RuleTester } from '@typescript-eslint/rule-tester';
+import {
+  type InvalidTestCase,
+  RuleTester,
+  type ValidTestCase,
+} from '@typescript-eslint/rule-tester';
 
 import { messageId, shortestImport as rule } from '../src/shortestImport';
 
@@ -16,6 +20,11 @@ const typescriptSetups = [
     tsconfigRootDir: pathJoin(__dirname, 'fixtures'),
   },
   {
+    name: 'baseUrl and different root',
+    project: './tsconfig.base_root.json',
+    tsconfigRootDir: pathJoin(__dirname, 'fixtures'),
+  },
+  {
     name: 'root',
     project: './test_src/tsconfig.test_root.json',
     tsconfigRootDir: pathJoin(__dirname, 'fixtures'),
@@ -26,12 +35,6 @@ const typescriptSetups = [
     tsconfigRootDir: __dirname,
   },
 ] as const;
-
-type TestResult<T extends { path: string; fixedPath?: undefined | string }> =
-  (Omit<T, 'path' | 'fixedPath'> &
-    ([undefined] extends [T['fixedPath']]
-      ? { code: string }
-      : { code: string; output: string }))[];
 
 function buildCodeCase<
   T extends {
@@ -75,26 +78,31 @@ function convertPathCaseToCodeCase<
     path: string;
     fixedPath?: undefined | string;
   } & Record<string, any>,
->(config: T[]): TestResult<T> {
-  return config.reduce((r, { path, fixedPath, ...rest }) => {
-    r.push(
-      buildCodeCase({
-        path,
-        fixedPath,
-        importType: 'default',
-        rest,
-      }) as never,
-    );
-    r.push(
-      buildCodeCase({
-        path,
-        fixedPath,
-        importType: 'dynamic',
-        rest,
-      }) as never,
-    );
-    return r;
-  }, [] as TestResult<T>);
+>(config: T[]) {
+  return config.reduce(
+    (r, { path, fixedPath, ...rest }) => {
+      r.push(
+        buildCodeCase({
+          path,
+          fixedPath,
+          importType: 'default',
+          rest,
+        }) as never,
+      );
+      r.push(
+        buildCodeCase({
+          path,
+          fixedPath,
+          importType: 'dynamic',
+          rest,
+        }) as never,
+      );
+      return r;
+    },
+    [] as (T extends { errors: any }
+      ? InvalidTestCase<'shortestImport', unknown[]>
+      : ValidTestCase<unknown[]>)[],
+  );
 }
 
 function mapConfig<
@@ -199,6 +207,10 @@ typescriptSetups.forEach((config) => {
           filename: './test_src/feature1/slice1/inner1/index.ts',
         },
         {
+          path: 'test-package-name',
+          filename: './test_src/feature1/slice1/inner1/index.ts',
+        },
+        {
           path: '.',
           filename: './test_src/feature1/slice1/inner1/index.ts',
         },
@@ -235,7 +247,7 @@ typescriptSetups.forEach((config) => {
           errors: [{ messageId }],
         },
         {
-          skipConfigs: ['baseUrl Only'],
+          skipConfigs: ['baseUrl Only', 'baseUrl and different root'],
           name: 'prefer alias path over baseUrl resolve',
           path: 'feature2',
           fixedPath: '~/feature2',
@@ -243,6 +255,7 @@ typescriptSetups.forEach((config) => {
           errors: [{ messageId }],
         },
         {
+          skipConfigs: ['baseUrl and different root'],
           name: 'prefer relative parent path over alias/baseUrl',
           path: 'feature1/slice2',
           fixedPath: '../slice2',
