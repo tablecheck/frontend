@@ -1,19 +1,18 @@
-# v7.1.1 (Mon Sep 02 2024)
-
-#### 🐛 Bug Fix
-
-- fix(eslint-plugin): shortest import sometimes falsely tried to use relative paths [#113](https://github.com/tablecheck/frontend/pull/113) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [7.1.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@7.1.0...@tablecheck/eslint-plugin@7.1.1) (2024-09-02)
+
+
+### Bug Fixes
+
+* **eslint-plugin:** shortest import sometimes falsely tried to use relative paths ([d30de68](https://github.com/tablecheck/frontend/commit/d30de68a61bfb0d4534522ccd620faed530c33b3))
+
+
+
+
 
 # [7.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-plugin@7.0.0...@tablecheck/eslint-plugin@7.1.0) (2024-07-30)
 
