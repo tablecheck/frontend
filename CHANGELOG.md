@@ -1,3 +1,16 @@
+# (Mon Sep 02 2024)
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-plugin@7.1.1`
+  - fix(eslint-plugin): shortest import sometimes falsely tried to use relative paths [#113](https://github.com/tablecheck/frontend/pull/113) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Jul 30 2024)
 
 #### 🚀 Enhancement
