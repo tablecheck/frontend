@@ -101,6 +101,5 @@ export const generalRules: Linter.RulesRecord = {
     },
   ],
   'no-unused-vars': 'error',
-  '@tablecheck/forbidden-imports': 'error',
   '@nx/enforce-module-boundaries': 'error',
 };

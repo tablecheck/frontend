@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/*.ts",
+    "src/*.tsx",
+    "src/**/*.json",
+    "src/*.json"
+  ],
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "paths": {},
+    "types": ["vite/client", "node"]
+  },
+  "exclude": ["node_modules", "*.spec.ts"],
+  "files": []
+}

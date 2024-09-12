@@ -1,0 +1,38 @@
+{
+  "name": "@tablecheck/vite-import-massager-plugin",
+  "description": "vite plugin for ensuring performant imports",
+  "license": "MIT",
+  "author": "TableCheck Inc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tablecheck/frontend.git"
+  },
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc -p ./tsconfig.lib.json"
+  },
+  "dependencies": {
+    "magic-string": "^0.30.11"
+  },
+  "peerDependencies": {
+    "vite": "^5"
+  },
+  "devDependencies": {
+    "typescript": "5.1.6",
+    "vite": "5.3.5",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "1.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
