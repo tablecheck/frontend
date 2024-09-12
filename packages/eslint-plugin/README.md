@@ -21,10 +21,9 @@ npm install --save-dev @tablecheck/eslint-plugin
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 💭 Requires type information.
 
-| Name                                                             | Description                                                                                 | 🔧  | 💭  |
-| :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------ | :-- | :-- |
-| [consistent-react-import](docs/rules/consistent-react-import.md) | Ensure that react is always imported and used consistently                                  | 🔧  |     |
-| [forbidden-imports](docs/rules/forbidden-imports.md)             | Ensure that certain packages are using specific imports instead of using the default import | 🔧  |     |
-| [prefer-shortest-import](docs/rules/prefer-shortest-import.md)   | Enforce the consistent use of preferred import paths                                        | 🔧  | 💭  |
+| Name                                                             | Description                                                | 🔧  | 💭  |
+| :--------------------------------------------------------------- | :--------------------------------------------------------- | :-- | :-- |
+| [consistent-react-import](docs/rules/consistent-react-import.md) | Ensure that react is always imported and used consistently | 🔧  |     |
+| [prefer-shortest-import](docs/rules/prefer-shortest-import.md)   | Enforce the consistent use of preferred import paths       | 🔧  | 💭  |
 
 <!-- end auto-generated rules list -->

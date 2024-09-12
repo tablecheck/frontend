@@ -1,0 +1,44 @@
+{
+  "name": "vite-import-massager-plugin",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/vite-import-massager-plugin/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "quality": {
+      "executor": "@tablecheck/nx:quality",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/vite-import-massager-plugin/**/*.ts"]
+      },
+      "configurations": {
+        "format": {
+          "fix": true
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/vite:test",
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/vite-import-massager-plugin"
+      ],
+      "options": {
+        "coverage": true,
+        "reporters": ["junit"],
+        "passWithNoTests": true,
+        "reportsDirectory": "../../coverage/packages/vite-import-massager-plugin"
+      }
+    },
+    "test:watch": {
+      "executor": "@nx/vite:test",
+      "outputs": [
+        "{workspaceRoot}/coverage/packages/vite-import-massager-plugin"
+      ],
+      "options": {
+        "passWithNoTests": true,
+        "watch": true,
+        "reportsDirectory": "../../coverage/packages/vite-import-massager-plugin"
+      }
+    }
+  }
+}

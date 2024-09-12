@@ -2,7 +2,8 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "resolveJsonModule": true,
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "lib": ["ESNext", "DOM"]
   },
   "exclude": ["node_modules", "tmp"]
 }
