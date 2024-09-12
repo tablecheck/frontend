@@ -1,3 +1,16 @@
+# (Thu Sep 12 2024)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/eslint-config@10.0.0`, `@tablecheck/eslint-plugin@8.0.0`, `@tablecheck/vite-import-massager-plugin@2.0.0`
+  - feat: add vite import massager plugin [#114](https://github.com/tablecheck/frontend/pull/114) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Mon Sep 02 2024)
 
 #### 🐛 Bug Fix
