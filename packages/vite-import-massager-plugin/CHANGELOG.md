@@ -1,19 +1,18 @@
-# v2.1.0 (Tue Sep 17 2024)
-
-#### 🚀 Enhancement
-
-- feat: adds support for non-default exported import remapping [#115](https://github.com/tablecheck/frontend/pull/115) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [2.1.0](https://github.com/tablecheck/frontend/compare/@tablecheck/vite-import-massager-plugin@2.0.0...@tablecheck/vite-import-massager-plugin@2.1.0) (2024-09-17)
+
+
+### Features
+
+* adds support for non-default exported import remapping ([b153dbf](https://github.com/tablecheck/frontend/commit/b153dbff8b70892fd409f6261a7e4fb23ef88f93))
+
+
+
+
 
 # 2.0.0 (2024-09-12)
 
