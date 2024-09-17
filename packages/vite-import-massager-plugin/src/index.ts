@@ -16,6 +16,15 @@ interface TransformConfig {
    * Note that the new import path expects to point to a file with a default export.
    */
   importTransform?: (importName: string) => string;
+  /**
+   * This function transforms how the import is written, by default we assume a default export.
+   * For example;
+   * `import { Text } from 'icons'` would be transformed to `import Text from 'icons/Text'` by default.
+   * With the value `exportTransform: (exportName) => `{ ${exportName} }` it would be transformed to `import { Text } from 'icons/Text'`.
+   * @param importName
+   * @returns
+   */
+  exportTransform?: (importName: string, alias?: string) => string;
 }
 
 // eslint-disable-next-line import/no-default-export
@@ -58,7 +67,7 @@ export default class ImportMassagingPlugin implements Plugin {
               config,
               importName,
               quote,
-              varName: alias || importName,
+              alias,
             });
           }
           return result;
@@ -141,14 +150,20 @@ export default class ImportMassagingPlugin implements Plugin {
     importName,
     varName,
     quote,
+    alias,
   }: {
     config: TransformConfig;
     importName: string;
     quote: string;
-    varName: string;
+    varName?: string;
+    alias?: string;
   }) {
-    const transform = config.importTransform ?? ((i) => `/${i}`);
-    return `import ${varName} from ${quote}${config.packageName}${transform(
+    const importTransform = config.importTransform ?? ((i) => `/${i}`);
+    const exportTransform = config.exportTransform ?? ((i, a) => a || i);
+    return `import ${exportTransform(
+      varName || importName,
+      alias,
+    )} from ${quote}${config.packageName}${importTransform(
       importName,
     )}${quote};`;
   }

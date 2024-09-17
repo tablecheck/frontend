@@ -176,6 +176,64 @@ describe('other tests', () => {
     );
   });
 
+  it('should support non-default exports', () => {
+    plugin = new ImportMassagingPlugin([
+      {
+        packageName: '@tablecheck/tablekit-react',
+        importTransform: (importName) => `/es/${importName}.js`,
+        exportTransform: (exportName) => `{ ${exportName} }`,
+      },
+    ]);
+    const { code } = plugin.transform(
+      `import { Text } from "@tablecheck/tablekit-react";`,
+      'src/index.js',
+    );
+    expect(code).toMatchInlineSnapshot(
+      `"import { Text } from "@tablecheck/tablekit-react/es/Text.js";"`,
+    );
+  });
+
+  it('should support non-default alias exports', () => {
+    plugin = new ImportMassagingPlugin([
+      {
+        packageName: '@tablecheck/tablekit-react',
+        importTransform: (importName) => `/es/${importName}.js`,
+        exportTransform: (exportName, alias) =>
+          alias ? `{ ${exportName} as ${alias} }` : `{ ${exportName} }`,
+      },
+    ]);
+    const { code } = plugin.transform(
+      `import { Text as T2 } from "@tablecheck/tablekit-react";`,
+      'src/index.js',
+    );
+    expect(code).toMatchInlineSnapshot(
+      `"import { Text as T2 } from "@tablecheck/tablekit-react/es/Text.js";"`,
+    );
+  });
+
+  it('should handle real-world non-default exports', () => {
+    plugin = new ImportMassagingPlugin([
+      {
+        packageName: '@tablecheck/tablekit-react',
+        importTransform: (importName) => `/es/${importName}.js`,
+        exportTransform: (exportName, alias) =>
+          alias ? `{ ${exportName} as ${alias} }` : `{ ${exportName} }`,
+      },
+    ]);
+    const { code } = plugin.transform(
+      `import {
+  Button,
+  IconButton,
+  TabContent,
+  Tabs as TablekitTabs,
+} from "@tablecheck/tablekit-react";`,
+      'src/index.js',
+    );
+    expect(code).toMatchInlineSnapshot(
+      `"import { Button } from "@tablecheck/tablekit-react/es/Button.js";import { IconButton } from "@tablecheck/tablekit-react/es/IconButton.js";import { TabContent } from "@tablecheck/tablekit-react/es/TabContent.js";import { Tabs as TablekitTabs } from "@tablecheck/tablekit-react/es/Tabs.js";"`,
+    );
+  });
+
   it('should not transform node_modules', () => {
     plugin = new ImportMassagingPlugin([
       {
