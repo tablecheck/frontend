@@ -1,3 +1,16 @@
+# (Tue Sep 17 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/vite-import-massager-plugin@2.1.0`
+  - feat: adds support for non-default exported import remapping [#115](https://github.com/tablecheck/frontend/pull/115) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Thu Sep 12 2024)
 
 #### 💥 Breaking Change

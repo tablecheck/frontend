@@ -1,3 +1,15 @@
+# v2.1.0 (Tue Sep 17 2024)
+
+#### 🚀 Enhancement
+
+- feat: adds support for non-default exported import remapping [#115](https://github.com/tablecheck/frontend/pull/115) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
