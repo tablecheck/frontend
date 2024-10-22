@@ -48,6 +48,15 @@ export const baseTypescriptRules: Linter.RulesRecord = {
     },
   ],
   '@tablecheck/prefer-shortest-import': 'error',
+  '@typescript-eslint/explicit-member-accessibility': [
+    'error',
+    {
+      accessibility: 'explicit',
+      overrides: {
+        constructors: 'no-public',
+      },
+    },
+  ],
 };
 
 export function buildBaseTypescript<T extends Linter.RulesRecord>({
