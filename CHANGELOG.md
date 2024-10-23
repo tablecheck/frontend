@@ -1,3 +1,16 @@
+# (Wed Oct 23 2024)
+
+#### 🚀 Enhancement
+
+- `@tablecheck/eslint-config@10.1.0`
+  - feat(eslint-config): add ts rule to enforce member accessibility in classes [#116](https://github.com/tablecheck/frontend/pull/116) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Tue Sep 17 2024)
 
 #### 🚀 Enhancement
