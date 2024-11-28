@@ -27,7 +27,7 @@ class RuleChecker {
 
   private allPaths: Record<string, string>;
 
-  get relativeBaseUrl(): string {
+  private get relativeBaseUrl(): string {
     return path.relative(this.pathsBasePath as string, this.baseUrl ?? '');
   }
 

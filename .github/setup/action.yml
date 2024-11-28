@@ -11,11 +11,6 @@ runs:
     - name: Set shas
       uses: nrwl/nx-set-shas@v3
 
-    - name: Unset header
-      shell: bash
-      # checkout@v2 adds a header that makes branch protection report errors ):
-      run: git config --local --unset http.https://github.com/.extraheader
-
     - name: Set git author config
       shell: bash
       run: |

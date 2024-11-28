@@ -9,11 +9,16 @@
     "docs": {
       "dependsOn": ["build"],
       "inputs": ["default", "^default", "baseTypescript"],
-      "outputs": ["{projectRoot}/docs"]
+      "outputs": ["{projectRoot}/docs"],
+      "cache": true
     },
     "test": {
       "dependsOn": ["^test"],
-      "inputs": ["default", "^default", "testConfig"]
+      "inputs": ["default", "^default", "testConfig"],
+      "cache": true
+    },
+    "quality": {
+      "cache": true
     }
   },
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
@@ -24,7 +29,6 @@
     "baseTypescript": ["{workspaceRoot}/tsconfig.base.json"],
     "testConfig": ["{projectRoot}/vite.config.ts"]
   },
-  "nxCloudAccessToken": "MDFhZDUwZTMtZDMyMy00Y2YwLWEwY2QtMDQ3ZjJiZGYzMDE3fHJlYWQtd3JpdGU=",
   "useInferencePlugins": false,
   "defaultBase": "main"
 }

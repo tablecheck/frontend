@@ -22,7 +22,7 @@
     "@commitlint/cli": "^17"
   },
   "engines": {
-    "node": ">= 16.16.0"
+    "node": ">= 22.0.0"
   },
   "publishConfig": {
     "access": "public"
