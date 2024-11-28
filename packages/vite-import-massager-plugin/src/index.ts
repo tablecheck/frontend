@@ -29,9 +29,9 @@ interface TransformConfig {
 
 // eslint-disable-next-line import/no-default-export
 export default class ImportMassagingPlugin implements Plugin {
-  name = 'import-massaging';
+  public name = 'import-massaging';
 
-  configs: TransformConfig[];
+  public configs: TransformConfig[];
 
   /**
    * @param configs list of package names or transform configs to transform imports
@@ -43,7 +43,7 @@ export default class ImportMassagingPlugin implements Plugin {
     this.transform = this.transform.bind(this);
   }
 
-  transform(code: string, id: string) {
+  public transform(code: string, id: string) {
     if (!this.shouldTransform(code, id)) {
       return { code, map: null };
     }
@@ -130,22 +130,22 @@ export default class ImportMassagingPlugin implements Plugin {
     };
   }
 
-  shouldTransform(code: string, id: string) {
+  private shouldTransform(code: string, id: string) {
     const isNodeModules = id.includes('/node_modules/');
     if (!isNodeModules) {
       return /\.[cm]?[tj]sx?$/.test(id) && this.includesImport(code);
     }
-    const isTransformPackage = this.configs.some(
-      (c) => c.transformPackages?.some((pkg) => id.includes(pkg)),
+    const isTransformPackage = this.configs.some((c) =>
+      c.transformPackages?.some((pkg) => id.includes(pkg)),
     );
     return isTransformPackage && this.includesImport(code);
   }
 
-  includesImport(code: string) {
+  private includesImport(code: string) {
     return this.configs.some((c) => code.includes(c.packageName));
   }
 
-  buildImport({
+  private buildImport({
     config,
     importName,
     varName,

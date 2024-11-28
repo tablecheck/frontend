@@ -5,7 +5,7 @@ import CVSS, {
   type DetailedVectorObject,
   type VectorMetric,
 } from '@turingpointde/cvss.js';
-import definitions from '@turingpointde/cvss.js/lib/cvss_3_0.json' assert { type: 'json' };
+import definitions from '@turingpointde/cvss.js/lib/cvss_3_0.json' with { type: 'json' };
 import chalk from 'chalk';
 import { execa } from 'execa';
 import fs from 'fs-extra';
@@ -126,7 +126,7 @@ async function updateWhitelist(rootPath: string) {
       this.dep = dep;
     }
 
-    async chooseAction() {
+    public async chooseAction() {
       prompts.note(this.getHeader());
       const spinner = prompts.spinner();
       spinner.start(`Finding npm usages`);
@@ -135,7 +135,7 @@ async function updateWhitelist(rootPath: string) {
       await this.promptWhitelist();
     }
 
-    getHeader() {
+    private getHeader() {
       return [
         this.getScoreKey(),
         '',
@@ -144,7 +144,7 @@ async function updateWhitelist(rootPath: string) {
       ].join('\n');
     }
 
-    getScoreKey() {
+    private getScoreKey() {
       return `${chalk.bold('CVSS Score Reference: ')}
         ${[
           '0.0 None',
@@ -160,7 +160,7 @@ async function updateWhitelist(rootPath: string) {
           .join(', ')}`;
     }
 
-    getDescription() {
+    private getDescription() {
       return [
         `${chalk.bold('Vulnerable package:')} ${this.dep.coordinates}`,
         `${chalk.bold('Package description:')} ${this.dep.description}`,
@@ -168,7 +168,7 @@ async function updateWhitelist(rootPath: string) {
       ].join('\n');
     }
 
-    getVulnerabilities() {
+    private getVulnerabilities() {
       return this.dep.vulnerabilities.map(
         ({ title, description, cvssScore, cvssVector }) => `  ${chalk.bold(
           title,
@@ -181,7 +181,7 @@ async function updateWhitelist(rootPath: string) {
       );
     }
 
-    getCvssVector(cvssVector: string | undefined) {
+    private getCvssVector(cvssVector: string | undefined) {
       if (!cvssVector) return '';
       try {
         const vector = CVSS(cvssVector).getDetailedVectorObject();
@@ -194,7 +194,7 @@ ${this.getVectorMetrics(vector)
       }
     }
 
-    getVectorMetrics(vector: DetailedVectorObject): string[] {
+    private getVectorMetrics(vector: DetailedVectorObject): string[] {
       let scopeKey: 'changed' | 'unchanged' = 'changed';
       if (vector.metrics.S?.value) {
         scopeKey = vector.metrics.S.value.toLowerCase() as typeof scopeKey;
@@ -206,7 +206,7 @@ ${this.getVectorMetrics(vector)
       );
     }
 
-    getVectorMetricScore(
+    private getVectorMetricScore(
       scopeKey: 'changed' | 'unchanged',
       { fullName, value, abbr, valueAbbr }: VectorMetric,
     ): string {
@@ -234,7 +234,7 @@ ${this.getVectorMetrics(vector)
       return colouredByScore(score, `${chalk.bold(`${fullName}:`)} ${value}`);
     }
 
-    async loadDependencyDetails() {
+    private async loadDependencyDetails() {
       if (!this.dep.coordinates.match(/^pkg:npm\//)) return this.getHeader();
       const dependencyVersion = this.getDependencyVersion();
       try {
@@ -255,13 +255,13 @@ ${this.getVectorMetrics(vector)
       }
     }
 
-    getDependencyVersion() {
+    private getDependencyVersion() {
       return this.dep.coordinates
         .substring(8)
         .replace(/%40/g, '@') as `${string}@${string}`;
     }
 
-    async loadNpmPackages(dependencyVersion: string) {
+    private async loadNpmPackages(dependencyVersion: string) {
       const npmListExec = await execa('npm', [
         'ls',
         dependencyVersion,
@@ -281,7 +281,7 @@ ${this.getVectorMetrics(vector)
       return JSON.parse(npmListExec.stdout) as NpmLsOutput;
     }
 
-    buildDependenciesFromUsages(
+    private buildDependenciesFromUsages(
       dependencyVersion: string,
       dependencies: RecursiveDeps,
     ): treeify.TreeObject {
@@ -302,7 +302,7 @@ ${this.getVectorMetrics(vector)
       }, {} as treeify.TreeObject);
     }
 
-    async promptWhitelist() {
+    private async promptWhitelist() {
       const shouldWhitelist = await prompts.confirm({
         message: 'Do you want to whitelist this package?',
         active: 'Whitelist',
