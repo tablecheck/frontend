@@ -1,3 +1,15 @@
+# v8.0.0 (Fri Nov 29 2024)
+
+#### 💥 Breaking Change
+
+- feat: upgrade nodeJS support to v22 [#117](https://github.com/tablecheck/frontend/pull/117) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # Change Log
 
 All notable changes to this project will be documented in this file.

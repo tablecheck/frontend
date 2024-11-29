@@ -1,3 +1,16 @@
+# (Fri Nov 29 2024)
+
+#### 💥 Breaking Change
+
+- `@tablecheck/frontend-audit@7.0.0`, `@tablecheck/commitlint-config@7.0.0`, `@tablecheck/eslint-config@11.0.0`, `@tablecheck/eslint-plugin@9.0.0`, `@tablecheck/nx@8.0.0`, `@tablecheck/prettier-config@5.0.0`, `@tablecheck/vite-import-massager-plugin@3.0.0`
+  - feat: upgrade nodeJS support to v22 [#117](https://github.com/tablecheck/frontend/pull/117) ([@SimeonC](https://github.com/SimeonC))
+
+#### Authors: 1
+
+- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
+
+---
+
 # (Wed Oct 23 2024)
 
 #### 🚀 Enhancement
