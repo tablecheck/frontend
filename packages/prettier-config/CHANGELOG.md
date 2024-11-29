@@ -1,19 +1,23 @@
-# v5.0.0 (Fri Nov 29 2024)
-
-#### 💥 Breaking Change
-
-- feat: upgrade nodeJS support to v22 [#117](https://github.com/tablecheck/frontend/pull/117) ([@SimeonC](https://github.com/SimeonC))
-
-#### Authors: 1
-
-- Simeon Cheeseman ([@SimeonC](https://github.com/SimeonC))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [5.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/prettier-config@4.0.1...@tablecheck/prettier-config@5.0.0) (2024-11-29)
+
+
+### Features
+
+* upgrade nodeJS support to v22 ([c78c17f](https://github.com/tablecheck/frontend/commit/c78c17f87f1869d86fab4398c3f76ed1f1f46888))
+
+
+### BREAKING CHANGES
+
+* NodeJS v22 is now required
+
+
+
+
 
 ## [4.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/prettier-config@4.0.0...@tablecheck/prettier-config@4.0.1) (2024-01-26)
 
