@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@github.com:tablecheck/frontend.git"
   },
-  "version": "11.0.0",
+  "version": "11.0.1",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

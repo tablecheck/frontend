@@ -1,23 +1,18 @@
-# v11.0.1 (Thu Jan 16 2025)
-
-:tada: This release contains work from a new contributor! :tada:
-
-Thank you, Tirso Pascual ([@tirsop](https://github.com/tirsop)), for all your work!
-
-#### 🐛 Bug Fix
-
-- fix: bump eslint-config-airbnb-typescript to 18.0.0 [#118](https://github.com/tablecheck/frontend/pull/118) ([@tirsop](https://github.com/tirsop))
-
-#### Authors: 1
-
-- Tirso Pascual ([@tirsop](https://github.com/tirsop))
-
----
-
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [11.0.1](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@11.0.0...@tablecheck/eslint-config@11.0.1) (2025-01-16)
+
+
+### Bug Fixes
+
+* bump eslint-config-airbnb-typescript to 18.0.0 ([7bf0cca](https://github.com/tablecheck/frontend/commit/7bf0ccafb4530009567b8c84685aeef0340c115c))
+
+
+
+
 
 # [11.0.0](https://github.com/tablecheck/frontend/compare/@tablecheck/eslint-config@10.1.0...@tablecheck/eslint-config@11.0.0) (2024-11-29)
 
