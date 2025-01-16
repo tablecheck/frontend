@@ -1,3 +1,20 @@
+# (Thu Jan 16 2025)
+
+:tada: This release contains work from a new contributor! :tada:
+
+Thank you, Tirso Pascual ([@tirsop](https://github.com/tirsop)), for all your work!
+
+#### 🐛 Bug Fix
+
+- `@tablecheck/eslint-config@11.0.1`
+  - fix: bump eslint-config-airbnb-typescript to 18.0.0 [#118](https://github.com/tablecheck/frontend/pull/118) ([@tirsop](https://github.com/tirsop))
+
+#### Authors: 1
+
+- Tirso Pascual ([@tirsop](https://github.com/tirsop))
+
+---
+
 # (Fri Nov 29 2024)
 
 #### 💥 Breaking Change
